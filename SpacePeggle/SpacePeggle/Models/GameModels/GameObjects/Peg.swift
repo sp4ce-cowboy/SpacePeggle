@@ -10,6 +10,8 @@ class Peg: GameObject, PhysicsObject {
 
     var id: UUID
     var centerPosition: Vector
+    var rotation: Angle = .degrees(0)
+    var magnification: Double = 1.0
 
     var mass: Double = .infinity
     var velocity = Vector.zeroVector()

@@ -10,7 +10,7 @@ class MainViewModel: ObservableObject, GameEngineDelegate {
     var peggleGameEngine: AbstractGameEngine
     var geometryState: GeometryProxy
     var currentViewSize: CGSize { geometryState.size }
-    var isPaused = true
+    var isPaused = false
 
     init(_ geometryState: GeometryProxy) {
         self.geometryState = geometryState

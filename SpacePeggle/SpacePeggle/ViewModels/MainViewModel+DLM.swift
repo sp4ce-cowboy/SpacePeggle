@@ -22,16 +22,13 @@ extension MainViewModel: DisplayLinkManagement {
         DisplayLink.sharedInstance.setupDisplayLink()
     }
 
+    func updateGame(timeStep: TimeInterval) {
+        DispatchQueue.main.async { self.objectWillChange.send() }
+        if !isPaused { peggleGameEngine.updateGame(timeStep: timeStep) }
+    }
+
     func stopGame() {
         DisplayLink.sharedInstance.invalidate()
     }
 
-    func updateGame(timeStep: TimeInterval) {
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
-        if !isPaused {
-            peggleGameEngine.updateGame(timeStep: timeStep)
-        }
-    }
 }

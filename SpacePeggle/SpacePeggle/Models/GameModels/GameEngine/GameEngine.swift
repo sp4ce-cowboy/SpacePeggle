@@ -8,6 +8,7 @@ import SwiftUI
 ///
 /// Also see `PhysicsEngine`
 extension GameEngine: AbstractGameEngine {
+
     /// As an example:
     /// ```
     ///    func updateGame(timeSte: TimeInterval) {

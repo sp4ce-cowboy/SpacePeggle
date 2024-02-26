@@ -15,10 +15,10 @@ extension MainViewModel: LauncherControl {
 
     // LauncherView tells MainViewModel and MainViewModel tells the game engine
     func updateLauncherRotation(with dragValue: DragGesture.Value) {
-        peggleGameEngine
-            .updateLauncherRotation(
-                with: dragValue, for: CGSize(width: currentViewSize.width,
-                                             height: peggleGameEngine.launcher.launcherHeight))
+        peggleGameEngine.updateLauncherRotation(
+                with: dragValue,
+                for: CGSize(width: currentViewSize.width,
+                            height: launcher.launcherHeight))
     }
 
     var ballIsLaunched: Bool {

@@ -41,7 +41,7 @@ struct LauncherView: View {
                 .frame(width: launcherWidth, height: launcherHeight)
                 .rotationEffect(-launcher.rotationAngle, anchor: .center)
                 .position(x: screenWidthCenter, y: launcherHeightCenter)
-                .if(!viewModel.isPaused) {view in
+                .if(!viewModel.isPaused) { view in
                     view.gesture(handleLongPress.exclusively(before: handleRotation))
                 }
         }

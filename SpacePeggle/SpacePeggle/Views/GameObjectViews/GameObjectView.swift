@@ -8,6 +8,10 @@ struct GameObjectView: View {
 
     var gameObject: any GameObject
 
+    var rotation: Angle { gameObject.rotation }
+
+    var scale: Double { gameObject.magnification }
+
     var gameObjectType: String {
         gameObject.gameObjectType
     }
@@ -30,8 +34,11 @@ struct GameObjectView: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
             .position(gameObject.centerPosition.point)
-            .gesture(handleLongPress)
+            .rotationEffect(rotation, anchor: .center)
+            .scaleEffect(scale, anchor: .center)
             .opacity(viewModel.gameObjectOpacities[gameObject.id, default: 1])
+            .gesture(handleLongPress)
+            .gesture(handleMagnification.simultaneously(with: handleRotate))
 
     }
 
@@ -39,6 +46,20 @@ struct GameObjectView: View {
         LongPressGesture()
             .onEnded { _ in
                 viewModel.handleGameObjectRemoval(self)
+            }
+    }
+
+    var handleRotate: some Gesture {
+        RotateGesture()
+            .onChanged { angle in
+                viewModel.handleRotate(self, angle: angle.rotation)
+            }
+    }
+
+    var handleMagnification: some Gesture {
+        MagnifyGesture()
+            .onChanged { scale in
+                viewModel.handleMagnify(self, scale: scale.magnification)
             }
     }
 

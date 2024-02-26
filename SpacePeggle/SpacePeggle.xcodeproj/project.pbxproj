@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7661DA2B8C86010022C267 /* Assets.xcassets */; };
-		BA7661E82B8C86020022C267 /* SpacePeggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7661E72B8C86020022C267 /* SpacePeggleTests.swift */; };
 		BA76624B2B8C89590022C267 /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76620F2B8C89590022C267 /* PauseButtonView.swift */; };
 		BA76624C2B8C89590022C267 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662112B8C89590022C267 /* BackgroundView.swift */; };
 		BA76624D2B8C89590022C267 /* GameAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662122B8C89590022C267 /* GameAreaView.swift */; };
@@ -60,6 +59,8 @@
 		BA76628D2B8C8AE10022C267 /* PhysicsModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662842B8C8AE10022C267 /* PhysicsModelsTests.swift */; };
 		BA76628E2B8C8AE10022C267 /* BallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662852B8C8AE10022C267 /* BallTests.swift */; };
 		BA76628F2B8C8AE10022C267 /* PhysicsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */; };
+		BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662922B8CA2520022C267 /* View+Extensions.swift */; };
+		BA7662952B8CA7600022C267 /* GameEngine+GOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +77,6 @@
 		BA7661D32B8C85FF0022C267 /* SpacePeggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePeggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7661DA2B8C86010022C267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7661E32B8C86020022C267 /* SpacePeggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpacePeggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA7661E72B8C86020022C267 /* SpacePeggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePeggleTests.swift; sourceTree = "<group>"; };
 		BA76620F2B8C89590022C267 /* PauseButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButtonView.swift; sourceTree = "<group>"; };
 		BA7662112B8C89590022C267 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BA7662122B8C89590022C267 /* GameAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAreaView.swift; sourceTree = "<group>"; };
@@ -128,6 +128,8 @@
 		BA7662842B8C8AE10022C267 /* PhysicsModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModelsTests.swift; sourceTree = "<group>"; };
 		BA7662852B8C8AE10022C267 /* BallTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallTests.swift; sourceTree = "<group>"; };
 		BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsEngineTests.swift; sourceTree = "<group>"; };
+		BA7662922B8CA2520022C267 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+GOM.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		BA7661CA2B8C85FF0022C267 = {
 			isa = PBXGroup;
 			children = (
+				BA7661DA2B8C86010022C267 /* Assets.xcassets */,
 				BA7661D52B8C85FF0022C267 /* SpacePeggle */,
 				BA7661E62B8C86020022C267 /* SpacePeggleTests */,
 				BA7661D42B8C85FF0022C267 /* Products */,
@@ -170,10 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				BA7662432B8C89590022C267 /* Main */,
+				BA76623E2B8C89590022C267 /* Utility */,
+				BA7662392B8C89590022C267 /* Commons */,
 				BA76621B2B8C89590022C267 /* Models */,
 				BA7662452B8C89590022C267 /* ViewModels */,
 				BA76620D2B8C89590022C267 /* Views */,
-				BA7661DA2B8C86010022C267 /* Assets.xcassets */,
 			);
 			path = SpacePeggle;
 			sourceTree = "<group>";
@@ -185,7 +189,6 @@
 				BA76627D2B8C8AE10022C267 /* GameModelsTests */,
 				BA7662832B8C8AE10022C267 /* PhysicsModelsTests */,
 				BA76627A2B8C8AE10022C267 /* UtilityTests */,
-				BA7661E72B8C86020022C267 /* SpacePeggleTests.swift */,
 			);
 			path = SpacePeggleTests;
 			sourceTree = "<group>";
@@ -233,10 +236,9 @@
 		BA76621B2B8C89590022C267 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BA7662962B8CAD4C0022C267 /* LevelDesignModels */,
 				BA76621C2B8C89590022C267 /* PhysicsModels */,
 				BA7662282B8C89590022C267 /* GameModels */,
-				BA7662392B8C89590022C267 /* Commons */,
-				BA76623E2B8C89590022C267 /* Utility */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,10 +246,9 @@
 		BA76621C2B8C89590022C267 /* PhysicsModels */ = {
 			isa = PBXGroup;
 			children = (
+				BA7662912B8CA1320022C267 /* PhysicsObjects */,
 				BA76621D2B8C89590022C267 /* PhysicsShapes */,
 				BA7662202B8C89590022C267 /* PhysicsEngine */,
-				BA7662262B8C89590022C267 /* Ball.swift */,
-				BA7662272B8C89590022C267 /* PhysicsObject.swift */,
 			);
 			path = PhysicsModels;
 			sourceTree = "<group>";
@@ -264,10 +265,10 @@
 		BA7662202B8C89590022C267 /* PhysicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				BA7662242B8C89590022C267 /* AbstractPhysicsEngine.swift */,
 				BA7662212B8C89590022C267 /* PhysicsEngine.swift */,
 				BA7662222B8C89590022C267 /* PhysicsEngine+Boundary.swift */,
 				BA7662232B8C89590022C267 /* PhysicsEngine+Collision.swift */,
-				BA7662242B8C89590022C267 /* AbstractPhysicsEngine.swift */,
 			);
 			path = PhysicsEngine;
 			sourceTree = "<group>";
@@ -275,13 +276,8 @@
 		BA7662282B8C89590022C267 /* GameModels */ = {
 			isa = PBXGroup;
 			children = (
-				BA7662292B8C89590022C267 /* NormalPeg.swift */,
-				BA76622A2B8C89590022C267 /* Peg.swift */,
-				BA76622B2B8C89590022C267 /* GameObject.swift */,
+				BA7662902B8CA1180022C267 /* GameObjects */,
 				BA76622C2B8C89590022C267 /* GameEngine */,
-				BA7662332B8C89590022C267 /* Launcher.swift */,
-				BA7662352B8C89590022C267 /* GoalPeg.swift */,
-				BA7662362B8C89590022C267 /* LevelModels */,
 			);
 			path = GameModels;
 			sourceTree = "<group>";
@@ -289,12 +285,13 @@
 		BA76622C2B8C89590022C267 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
-				BA76622D2B8C89590022C267 /* GameEngine+Start.swift */,
-				BA76622E2B8C89590022C267 /* GameEngine.swift */,
-				BA76622F2B8C89590022C267 /* GameEngine+Translation.swift */,
 				BA7662302B8C89590022C267 /* AbstractGameEngine.swift */,
-				BA7662312B8C89590022C267 /* GameEngine+Removal.swift */,
+				BA76622E2B8C89590022C267 /* GameEngine.swift */,
+				BA76622D2B8C89590022C267 /* GameEngine+Start.swift */,
 				BA7662322B8C89590022C267 /* GameEngine+Game.swift */,
+				BA76622F2B8C89590022C267 /* GameEngine+Translation.swift */,
+				BA7662312B8C89590022C267 /* GameEngine+Removal.swift */,
+				BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -314,6 +311,7 @@
 				BA76623A2B8C89590022C267 /* ObjectSet.swift */,
 				BA76623B2B8C89590022C267 /* UniversalObject.swift */,
 				BA76623C2B8C89590022C267 /* LevelStub.swift */,
+				BA7662922B8CA2520022C267 /* View+Extensions.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -340,10 +338,10 @@
 		BA7662452B8C89590022C267 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BA7662462B8C89590022C267 /* MainViewModel+GOM.swift */,
-				BA7662472B8C89590022C267 /* MainViewModel+LC.swift */,
-				BA7662482B8C89590022C267 /* MainViewModel+DLM.swift */,
 				BA7662492B8C89590022C267 /* MainViewModel.swift */,
+				BA7662482B8C89590022C267 /* MainViewModel+DLM.swift */,
+				BA7662472B8C89590022C267 /* MainViewModel+LC.swift */,
+				BA7662462B8C89590022C267 /* MainViewModel+GOM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -383,6 +381,35 @@
 				BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */,
 			);
 			path = PhysicsModelsTests;
+			sourceTree = "<group>";
+		};
+		BA7662902B8CA1180022C267 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				BA76622B2B8C89590022C267 /* GameObject.swift */,
+				BA76622A2B8C89590022C267 /* Peg.swift */,
+				BA7662292B8C89590022C267 /* NormalPeg.swift */,
+				BA7662352B8C89590022C267 /* GoalPeg.swift */,
+				BA7662332B8C89590022C267 /* Launcher.swift */,
+			);
+			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		BA7662912B8CA1320022C267 /* PhysicsObjects */ = {
+			isa = PBXGroup;
+			children = (
+				BA7662262B8C89590022C267 /* Ball.swift */,
+				BA7662272B8C89590022C267 /* PhysicsObject.swift */,
+			);
+			path = PhysicsObjects;
+			sourceTree = "<group>";
+		};
+		BA7662962B8CAD4C0022C267 /* LevelDesignModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA7662362B8C89590022C267 /* LevelModels */,
+			);
+			path = LevelDesignModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,10 +534,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA76626D2B8C89590022C267 /* UniversalObject.swift in Sources */,
+				BA7662952B8CA7600022C267 /* GameEngine+GOM.swift in Sources */,
 				BA7662702B8C89590022C267 /* Constants.swift in Sources */,
 				BA76626E2B8C89590022C267 /* LevelStub.swift in Sources */,
 				BA7662732B8C89590022C267 /* Vector.swift in Sources */,
 				BA76625C2B8C89590022C267 /* Ball.swift in Sources */,
+				BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */,
 				BA7662672B8C89590022C267 /* Launcher.swift in Sources */,
 				BA7662532B8C89590022C267 /* BallView.swift in Sources */,
 				BA76625F2B8C89590022C267 /* Peg.swift in Sources */,
@@ -558,7 +587,6 @@
 				BA76628C2B8C8AE10022C267 /* PegTests.swift in Sources */,
 				BA7662872B8C8AE10022C267 /* DisplayLinkTests.swift in Sources */,
 				BA76628E2B8C8AE10022C267 /* BallTests.swift in Sources */,
-				BA7661E82B8C86020022C267 /* SpacePeggleTests.swift in Sources */,
 				BA76628B2B8C8AE10022C267 /* LevelTests.swift in Sources */,
 				BA76628F2B8C8AE10022C267 /* PhysicsEngineTests.swift in Sources */,
 				BA76628A2B8C8AE10022C267 /* GameObjectTests.swift in Sources */,
