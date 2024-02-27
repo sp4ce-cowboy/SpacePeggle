@@ -47,7 +47,6 @@ extension GameEngine {
                 continue
             }
             gameObjects[physicsObject.id] = gameObject
-
         }
     }
 

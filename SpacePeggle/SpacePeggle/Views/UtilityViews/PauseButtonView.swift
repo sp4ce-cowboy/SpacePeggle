@@ -27,6 +27,7 @@ struct PauseButtonView: View {
 
                 }
                 .padding()
+                // .disabled(viewModel.isPaused)
             }
             Spacer() // Pushes the VStack content towards the top
         }

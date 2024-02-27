@@ -7,7 +7,7 @@ public class Constants {
     static var geometry: GeometryProxy?
 
     /// Universally declared object diameter
-    static let UNIVERSAL_LENGTH: CGFloat = UIScreen.main.bounds.size.height / 30
+    static let UNIVERSAL_LENGTH: CGFloat = UIScreen.main.bounds.size.height / 25
 
     /// Universally declared unit mass
     static let UNIT_MASS: Double = 1.0
@@ -52,6 +52,11 @@ public class Constants {
         let gameScreen = CGRect(origin: .zero,
                                 size: CGSize(width: absoluteWidth, height: absoluteHeight))
         return gameScreen
+    }
+
+    /// Helper function to calculate distance between two points
+    static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
+        sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2))
     }
 
 }

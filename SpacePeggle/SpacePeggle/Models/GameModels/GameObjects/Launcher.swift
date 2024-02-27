@@ -25,6 +25,12 @@ class Launcher: UniversalObject {
         Vector(x: centerPosition.x, y: centerPosition.y - launcherHeight / 2.0)
     }
 
+    var launcherTipPosition: Vector {
+        var hypotenuse = launcherHeight / 2.0
+        return Vector(x: centerPosition.x + (hypotenuse * sin(rotationAngle.radians)),
+                      y: centerPosition.y + (hypotenuse * cos(rotationAngle.radians)))
+    }
+
     var getadjustedRotationAngle: Angle {
         Angle(radians: atan((tan(rotationAngle.radians)) * 2))
     }
@@ -47,8 +53,32 @@ class Launcher: UniversalObject {
         let start = dragValue.startLocation
         let current = dragValue.location
         var newAngle = calculateAngle(center: center, start: start, current: current)
-        newAngle = max(min(newAngle, maxAngle), minAngle)
-        setRotationAngle(to: newAngle)
+
+        let xDirectionIsNegative = (dragValue.location.x - centerPosition.x) < 0
+        let yDirectionIsNegative = (dragValue.location.y - centerPosition.y) < 0
+
+        if xDirectionIsNegative && !yDirectionIsNegative {
+            newAngle = max(newAngle, minAngle)
+            setRotationAngle(to: newAngle)
+            print("first if: new angle is \(newAngle)")
+        }
+
+        if !xDirectionIsNegative {
+            newAngle = min(newAngle, maxAngle)
+            setRotationAngle(to: newAngle)
+            print("second if: new angle is \(newAngle)")
+        }
+
+        // newAngle = max(min(newAngle, maxAngle), minAngle)
+        // setRotationAngle(to: newAngle)
+
+        let newVector = Vector(x: dragValue.location.x - centerPosition.x,
+                               y: dragValue.location.y - centerPosition.y)
+
+        // print("x is \(newVector.x) and y is \(newVector.y)")
+        // print("new translation is \(dragValue.translation)")
+        // setRotationAngle(to: -newVector.angle)
+
     }
 
     private func calculateAngle(center: CGPoint, start: CGPoint, current: CGPoint) -> Angle {

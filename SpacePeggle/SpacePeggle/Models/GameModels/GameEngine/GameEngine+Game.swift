@@ -23,10 +23,8 @@ extension GameEngine {
     func launchBall() {
         if !isBallLaunched {
             isBallLaunched = true
-            // ball.force = launcher.launcherVelocityVector
-            // ball.force.x = 0
             ball.velocity = launcher.launcherVelocityVector
-            ball.centerPosition = launcher.centerPosition
+            ball.centerPosition = launcher.launcherTipPosition
 
             self.addPhysicsObject(object: ball)
             startCheckingForStuckBall()

@@ -44,6 +44,11 @@ struct Vector: Equatable {
         self.rawY = point.y / UIScreen.main.bounds.size.height
     }
 
+    init(withScaledPoint point: CGPoint) {
+        self.rawX = point.x
+        self.rawY = point.y
+    }
+
     /// Compute the magnitude of the vector
     var magnitude: Double {
         sqrt(pow(x, 2) + pow(y, 2))

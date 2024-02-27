@@ -12,6 +12,9 @@ extension GameEngine {
     }
 
     func handleGameObjectMagnification(id: UUID, scale: Double) {
+        /*if let centerPosition = gameObjects[id]?.centerPosition {
+            gameObjects[id]?.centerPosition = centerPosition * scale
+        }*/
         gameObjects[id]?.magnification = scale
     }
 }

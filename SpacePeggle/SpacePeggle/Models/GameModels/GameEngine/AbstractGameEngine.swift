@@ -9,12 +9,8 @@ import SwiftUI
 /// Engine, effectively decoupling the Renderer from any concrete Game Engine class.
 ///
 /// Also see `AbstractPhysicsEngine`
-protocol AbstractGameEngine {
+protocol AbstractGameEngine: LaunchMechanic {
     var delegate: GameEngineDelegate? { get set }
-
-    var launcher: Launcher { get set }
-    var isBallLaunched: Bool { get set }
-    var currentBallPosition: Vector { get }
 
     var currentLevel: any AbstractLevel { get }
     var gameObjects: [UUID: any GameObject] { get }
@@ -31,5 +27,10 @@ protocol AbstractGameEngine {
 
     func updateLauncherRotation(with dragValue: DragGesture.Value, for size: CGSize)
     func launchBall()
+}
 
+protocol LaunchMechanic {
+    var launcher: Launcher { get set }
+    var isBallLaunched: Bool { get set }
+    var currentBallPosition: Vector { get }
 }

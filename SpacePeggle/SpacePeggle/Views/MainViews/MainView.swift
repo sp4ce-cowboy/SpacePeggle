@@ -16,11 +16,11 @@ struct MainView: View {
             LevelView()
             PauseButtonView()
             if viewModel.isPaused {
-                Rectangle()
-                    .foregroundColor(.red)
+                RoundedRectangle(cornerRadius: 100.0)
+                    .foregroundColor(Color.black)
                     .padding()
-                    .frame(width: 400, height: 600)
-                    .contentShape(Rectangle())
+                    .frame(width: 600, height: 800)
+                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
             }
         }
         .background {

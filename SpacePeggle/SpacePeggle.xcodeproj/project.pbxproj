@@ -130,6 +130,7 @@
 		BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsEngineTests.swift; sourceTree = "<group>"; };
 		BA7662922B8CA2520022C267 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+GOM.swift"; sourceTree = "<group>"; };
+		BA7662972B8CE3480022C267 /* DeveloperGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DeveloperGuide.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +154,7 @@
 		BA7661CA2B8C85FF0022C267 = {
 			isa = PBXGroup;
 			children = (
+				BA7662972B8CE3480022C267 /* DeveloperGuide.md */,
 				BA7661DA2B8C86010022C267 /* Assets.xcassets */,
 				BA7661D52B8C85FF0022C267 /* SpacePeggle */,
 				BA7661E62B8C86020022C267 /* SpacePeggleTests */,
