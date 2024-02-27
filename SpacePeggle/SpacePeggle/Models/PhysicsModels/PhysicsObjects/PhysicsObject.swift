@@ -41,6 +41,11 @@ extension PhysicsObject {
         kineticEnergy + potentialEnergy
     }
 
+    var momentum: Vector {
+        get { velocity * mass }
+        set { velocity = newValue / mass }
+    }
+
     var isMovable: Bool {
         mass.isFinite
     }
