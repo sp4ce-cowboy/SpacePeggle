@@ -29,6 +29,18 @@ extension PhysicsObject {
         force / mass
     }
 
+    var kineticEnergy: Double {
+        0.5 * mass * pow(velocity.magnitude, 2)
+    }
+
+    var potentialEnergy: Double {
+        mass * Constants.UNIVERSAL_GRAVITY.y * -centerPosition.y
+    }
+
+    var totalEnergy: Double {
+        kineticEnergy + potentialEnergy
+    }
+
     var isMovable: Bool {
         mass.isFinite
     }
@@ -55,6 +67,7 @@ extension PhysicsObject {
     mutating func subjectToGravity() {
         force = Constants.UNIVERSAL_GRAVITY * mass
     }
+
 }
 
 /// Default collision resolution for PhysicsObjects

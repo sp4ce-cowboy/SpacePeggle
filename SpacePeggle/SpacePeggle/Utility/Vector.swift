@@ -78,6 +78,12 @@ struct Vector: Equatable {
 
 /// This extension provides static functions to return normalized vectors
 extension Vector {
+
+    /// Returns a zero vector
+    static var zero: Vector {
+        Vector(x: .zero, y: .zero)
+    }
+
     /// Returns a unit vector in the X direction
     static func unitVectorX() -> Vector {
         Vector(x: 1, y: .zero)
@@ -91,11 +97,6 @@ extension Vector {
     /// Returns a unit 2D Vector
     static func unitVector() -> Vector {
         Vector(x: 1, y: 1).normalized()
-    }
-
-    /// Returns a zero vector
-    static func zeroVector() -> Vector {
-        Vector(x: .zero, y: .zero)
     }
 
     /// Returns a normalized unit Vector
@@ -130,7 +131,7 @@ extension Vector {
     // Scalar division
     static func / (_ vector: Vector, _ scalar: Double) -> Vector {
         guard scalar != 0 else {
-            return .zeroVector()
+            return .zero
         }
         return Vector(x: vector.x / scalar, y: vector.y / scalar)
     }
@@ -145,19 +146,4 @@ extension Vector {
         left.x * right.y - left.y * right.x
     }
 
-}
-
-/// Allow for scaling of Vectors.
-///
-/// All vector positions are relative to screen size.
-extension Vector {
-
-   func unitPointVector() -> Vector {
-       Vector(x: self.x / 834.0, y: self.y / 1_194.0)
-    }
-
-   func scaledVector() -> Vector {
-       Vector(x: self.unitPointVector().x * UIScreen.main.bounds.size.width,
-              y: self.unitPointVector().y * UIScreen.main.bounds.size.height)
-    }
 }

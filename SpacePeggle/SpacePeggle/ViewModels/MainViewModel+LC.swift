@@ -2,9 +2,9 @@ import SwiftUI
 
 protocol LauncherControl {
     var launcher: Launcher { get set }
+    var ballIsLaunched: Bool { get }
     func updateLauncherRotation(with dragValue: DragGesture.Value)
     func handleBallLaunch()
-    var ballIsLaunched: Bool { get }
 }
 
 extension MainViewModel: LauncherControl {
@@ -15,10 +15,9 @@ extension MainViewModel: LauncherControl {
 
     // LauncherView tells MainViewModel and MainViewModel tells the game engine
     func updateLauncherRotation(with dragValue: DragGesture.Value) {
-        peggleGameEngine.updateLauncherRotation(
-            with: dragValue,
-            for: CGSize(width: currentViewSize.width,
-                        height: launcher.launcherHeight))
+        peggleGameEngine.updateLauncherRotation(with: dragValue,
+                                                for: CGSize(width: currentViewSize.width,
+                                                            height: launcher.launcherHeight))
     }
 
     var ballIsLaunched: Bool {
@@ -30,7 +29,6 @@ extension MainViewModel: LauncherControl {
     }
 
     func calculateTrajectory() -> some View {
-
         Path { path in
             let startPoint = launcher.launcherTipPosition.point
             path.move(to: startPoint)
@@ -56,13 +54,11 @@ extension MainViewModel: LauncherControl {
         }
         .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .bevel, dash: [3, 10]))
         .if(ballIsLaunched) { view in
-            view
-                .foregroundStyle(Color.red)
+            view.foregroundStyle(Color.red)
                 .opacity(0.2)
         }
         .if(!ballIsLaunched) { view in
-            view
-                .foregroundStyle(Color.black)
+            view.foregroundStyle(Color.green)
                 .opacity(0.9)
         }
     }

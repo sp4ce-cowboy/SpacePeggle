@@ -9,7 +9,7 @@ struct SpacePeggleApp: App {
                 MainView(forGeometry: proxy)
                     // .ignoresSafeArea()
                     .onAppear {
-                        print(proxy.size)
+                        Logger.log("\(proxy.size)")
                     }
             }
         }

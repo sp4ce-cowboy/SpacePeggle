@@ -19,9 +19,9 @@ class Ball: PhysicsObject {
     var isSubjectToGravity = false
 
     required init(mass: Double = 100,
-                  velocity: Vector = .zeroVector(),
-                  centerPosition: Vector = .zeroVector(),
-                  force: Vector = .zeroVector(),
+                  velocity: Vector = Vector.zero,
+                  centerPosition: Vector = .zero,
+                  force: Vector = .zero,
                   id: UUID = UUID()) {
 
         self.mass = mass

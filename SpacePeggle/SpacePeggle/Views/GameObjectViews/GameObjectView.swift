@@ -37,9 +37,7 @@ struct GameObjectView: View {
             .rotationEffect(rotation, anchor: .center)
             .scaleEffect(scale, anchor: .center)
             .opacity(viewModel.gameObjectOpacities[gameObject.id, default: 1])
-            .onTapGesture {
-                self.isSelected.toggle()
-            }
+            .onTapGesture { self.isSelected.toggle() }
 
         // .gesture(handleLongPress)
         // .gesture(handleMagnify.simultaneously(with: handleRotate))
@@ -128,12 +126,10 @@ struct GameObjectView: View {
                     let currentAngle = atan2(value.location.y - center.y, value.location.x - center.x)
                     let angleDifference = currentAngle - startAngle
 
-                    var rotationAngle = Angle(radians: Double(angleDifference)) + gameObject.rotation
+                    let rotationAngle = Angle(radians: Double(angleDifference))
                     print(rotationAngle)
 
                     viewModel.handleRotate(self, angle: rotationAngle)
                 })
-
     }
-
 }

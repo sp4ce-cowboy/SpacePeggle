@@ -26,7 +26,7 @@ class Launcher: UniversalObject {
     }
 
     var launcherTipPosition: Vector {
-        var hypotenuse = launcherHeight / 2.0
+        let hypotenuse = launcherHeight / 2.0
         return Vector(x: centerPosition.x + (hypotenuse * sin(rotationAngle.radians)),
                       y: centerPosition.y + (hypotenuse * cos(rotationAngle.radians)))
     }
@@ -60,24 +60,15 @@ class Launcher: UniversalObject {
         if xDirectionIsNegative && !yDirectionIsNegative {
             newAngle = max(newAngle, minAngle)
             setRotationAngle(to: newAngle)
-            print("first if: new angle is \(newAngle)")
         }
 
         if !xDirectionIsNegative {
             newAngle = min(newAngle, maxAngle)
             setRotationAngle(to: newAngle)
-            print("second if: new angle is \(newAngle)")
         }
 
         // newAngle = max(min(newAngle, maxAngle), minAngle)
         // setRotationAngle(to: newAngle)
-
-        let newVector = Vector(x: dragValue.location.x - centerPosition.x,
-                               y: dragValue.location.y - centerPosition.y)
-
-        // print("x is \(newVector.x) and y is \(newVector.y)")
-        // print("new translation is \(dragValue.translation)")
-        // setRotationAngle(to: -newVector.angle)
 
     }
 

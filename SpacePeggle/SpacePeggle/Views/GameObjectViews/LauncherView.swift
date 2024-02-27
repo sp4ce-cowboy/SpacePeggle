@@ -43,12 +43,11 @@ struct LauncherView: View {
                 .position(x: screenWidthCenter, y: launcherHeightCenter)
                 .gesture(handleLongPress.exclusively(before: handleRotation))
                 .disabled(viewModel.isPaused)
-                // .if(!viewModel.isPaused) { view in
-                //    view.gesture(handleLongPress.exclusively(before: handleRotation))
-                // }
         }
     }
 
+    /// While launcher rotation can be handled directly, passage through the ViewModel
+    /// ensures that the proper MVVM architecture is preserved.
     private var handleRotation: some Gesture {
         DragGesture()
             .onChanged { value in
@@ -56,7 +55,7 @@ struct LauncherView: View {
             }
     }
 
-    var handleLongPress: some Gesture {
+    private var handleLongPress: some Gesture {
         LongPressGesture(minimumDuration: 1.0)
             .onEnded { _ in
                 viewModel.handleBallLaunch()

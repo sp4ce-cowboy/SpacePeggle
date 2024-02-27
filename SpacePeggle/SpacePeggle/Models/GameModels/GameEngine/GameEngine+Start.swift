@@ -8,11 +8,16 @@ extension GameEngine {
         self.loadLevel()
     }
 
+    func loadLevel(with level: AbstractLevel = LevelStub.levelStub) {
+        self.currentLevel = level
+        self.updatePhysicsObjectsFromGameObjects() // Add game objects from level to physics engine
+    }
+
     func updateGame(timeStep: TimeInterval) {
-        physicsEngine.updatePhysics(timeStep: timeStep)
-        updateGameObjectState()
-        updateBallState()
-        updateGameState()
+        physicsEngine.updatePhysics(timeStep: timeStep) // Updates PhysicsObjects
+        updateGameObjectState() // Updates GameObjects from PhysicsObjects
+        updateBallState() // Checks if ball out of bounds
+        updateGameState() // Check if game board is empty
     }
 
     func stopGame() {
@@ -20,18 +25,13 @@ extension GameEngine {
         isGameActive = false
     }
 
-    func loadLevel(with level: AbstractLevel = LevelStub.levelStub) {
-        self.currentLevel = level
-        self.updatePhysicsObjectsFromGameObjects()
-    }
-
     func updateGameState() {
-        Logger.log("number of game objects = \(gameObjects.values.count)")
+        // Logger.log("number of game objects = \(gameObjects.values.count)")
         if gameObjects.values.isEmpty {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 // MARK: - Level restart/progress point. Can be used to load other levels in the future.
                 self.startGame()    // These are commented out to comply with PS3 requirements
-            }
+            // }
         }
     }
 

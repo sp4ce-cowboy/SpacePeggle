@@ -14,8 +14,8 @@ class Peg: GameObject, PhysicsObject {
     var magnification: Double = 1.0
 
     var mass: Double = .infinity
-    var velocity = Vector.zeroVector()
-    var force = Vector.zeroVector()
+    var velocity: Vector = .zero
+    var force: Vector = .zero
     var shape: PhysicsShape
 
     var gameObjectType: String
@@ -28,7 +28,7 @@ class Peg: GameObject, PhysicsObject {
         self.id = id
         self.gameObjectType = gameObjectType
         self.mass = .infinity
-        self.velocity = Vector.zeroVector()
+        self.velocity = .zero
         self.shape = CircleShape(center: centerPosition, radius: Peg.PEG_RADIUS)
     }
 

@@ -54,14 +54,6 @@ class LevelStub {
         GoalPeg(centerPosition: Vector(scaled_x: 0.141, scaled_y: 0.389))
     ]
 
-    static func scaledGameStub() -> [any GameObject] {
-        var objects = LevelStub.gameObjectsStub
-        for i in 0...objects.count - 1 {
-            objects[i].centerPosition = objects[i].centerPosition.scaledVector()
-        }
-        return objects
-    }
-
     /// To test for level refreshing
     static let singleObjectStub: [any GameObject] = [
         NormalPeg(centerPosition: Vector(x: 195, y: 633))

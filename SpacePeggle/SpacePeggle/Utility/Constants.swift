@@ -31,7 +31,7 @@ public class Constants {
     static let TRANSITION_INTERVAL: TimeInterval = 1.0
 
     /// Set logging state
-    static let LOGGING_IS_ACTIVE = false
+    static let LOGGING_IS_ACTIVE = true
 
     /// Threshold velocity to determine is a ball is stuck
     static let STUCK_VELOCITY_THRESHOLD = 20.0
