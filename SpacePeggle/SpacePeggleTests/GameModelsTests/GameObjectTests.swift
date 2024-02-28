@@ -1,9 +1,12 @@
 import XCTest
-@testable import PeggleGameplay
+import SwiftUI
+@testable import SpacePeggle
 
 class GameObjectTests: XCTestCase {
 
     final class TestGameObject: GameObject {
+        var rotation = Angle(degrees: 0)
+        var magnification: Double = 1.0
         var centerPosition: Vector
         var id: UUID
         var gameObjectType: String

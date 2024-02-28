@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUI
 
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class PegTests: XCTestCase {
 
@@ -13,7 +13,7 @@ class PegTests: XCTestCase {
                        "Peg's centerPosition should match the initialized value.")
         XCTAssertEqual(peg.mass, .infinity,
                        "Peg's mass should be infinity.")
-        XCTAssertEqual(peg.velocity, Vector.zeroVector(),
+        XCTAssertEqual(peg.velocity, Vector.zero,
                        "Peg's initial velocity should be a zero vector.")
         XCTAssertFalse(peg.isActive,
                        "Peg should initially be inactive.")

@@ -47,6 +47,10 @@ final class PhysicsEngine {
         self.domain = areaOfEffect
     }
 
+    deinit {
+        Logger.log("PhysicsEngine is deinitialized", self)
+    }
+
     func addPhysicsObject(object: any PhysicsObject) {
         self.physicsObjects[object.id] = object
     }

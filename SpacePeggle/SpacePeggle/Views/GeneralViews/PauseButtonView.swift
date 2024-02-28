@@ -17,9 +17,7 @@ struct PauseButtonView: View {
                 Button(action: {
                     viewModel.handlePause()
                 }) {
-                    Image(systemName: viewModel.isPaused
-                          ? "play.circle.fill"
-                          : "pause.circle.fill")
+                    Image(systemName: viewModel.isPaused ? "play.circle.fill" : "pause.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40.0)

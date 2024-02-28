@@ -38,9 +38,9 @@ class Ball: PhysicsObject {
     }
 
     func applyPhysics(timeStep: TimeInterval) {
-        if !isSubjectToGravity {
+        // if !isSubjectToGravity {
             subjectToGravity()
-        }
+        // }
         applyAccelerationOnVelocity(timeStep: timeStep)
         applyVelocityOnPosition(timeStep: timeStep)
     }
@@ -57,8 +57,8 @@ class Ball: PhysicsObject {
     }
 
     func subjectToGravity() {
-        let tempForce = force + (Constants.UNIVERSAL_GRAVITY * mass)
-        force = tempForce
+        // let tempForce = force + (Constants.UNIVERSAL_GRAVITY * mass)
+        force.y = Constants.UNIVERSAL_GRAVITY.y * mass
         isSubjectToGravity = true
     }
 

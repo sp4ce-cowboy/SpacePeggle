@@ -43,6 +43,7 @@ class DisplayLink: NSObject {
     func invalidate() {
         displayLink?.invalidate()
         displayLink = nil
+        onUpdate = nil
     }
 
 }

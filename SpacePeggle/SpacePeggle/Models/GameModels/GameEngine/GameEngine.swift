@@ -33,7 +33,7 @@ final class GameEngine {
     var physicsEngine: AbstractPhysicsEngine
     var currentScreenGeometry: GeometryProxy
 
-    var currentLevel: AbstractLevel
+    var currentLevel: AbstractLevel = LevelStub().getLevelStub()
     var isGameActive = false
 
     var launcher: Launcher  // Can be swapped for a [UUID : Launcher] map if needed
@@ -55,13 +55,17 @@ final class GameEngine {
         set { currentLevel.gameObjects = newValue }
     }
 
-    init(geometry: GeometryProxy, currentLevel: AbstractLevel = LevelStub.levelStub) {
+    init(geometry: GeometryProxy) {
+        Logger.log("Game Engine is initialized")
         self.launcher = Launcher(layoutSize: geometry.size)
         self.ball = Ball()
-        self.currentLevel = currentLevel
         self.currentScreenGeometry = geometry
         self.physicsEngine = PhysicsEngine(
             areaOfEffect: Constants.getGameScreen(from: geometry))
+    }
+
+    deinit {
+        Logger.log("Game Engine is deinitialized.")
     }
 
 }

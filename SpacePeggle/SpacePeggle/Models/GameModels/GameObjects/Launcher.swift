@@ -14,16 +14,12 @@ class Launcher: UniversalObject {
     let launcherHeight: Double =
     Double(ObjectSet.defaultGameObjectSet["Launcher"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
-    let maxAngle = Angle(degrees: 89.0)
-    let minAngle = Angle(degrees: -89.0)
-    var rotationAngle = Angle(degrees: 0.0)
-    var launcherVelocity: Double
-    var launcherVelocityVector: Vector {
-        Vector(magnitude: launcherVelocity, angle: rotationAngle)
-    }
-    var launcherBasePosition: Vector {
-        Vector(x: centerPosition.x, y: centerPosition.y - launcherHeight / 2.0)
-    }
+    private let maxAngle = Angle(degrees: 89.0)
+    private let minAngle = Angle(degrees: -89.0)
+    private(set) var rotationAngle = Angle(degrees: 0.0)
+    private(set) var launcherVelocity: Double // Allows for custom launch values.
+
+    var launchVelocityVector: Vector { Vector(magnitude: launcherVelocity, angle: rotationAngle) }
 
     var launcherTipPosition: Vector {
         let hypotenuse = launcherHeight / 2.0
@@ -44,12 +40,17 @@ class Launcher: UniversalObject {
         self.centerPosition = Vector(x: layoutSize.width / 2, y: launcherHeight / 2)
     }
 
+    // Internal method to safely set the angle
     func setRotationAngle(to angle: Angle) {
+        guard angle <= maxAngle && minAngle <= angle else {
+            return
+        }
         rotationAngle = angle
     }
 
     func updateRotation(with dragValue: DragGesture.Value, for size: CGSize) {
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
+        // let tip = CGPoint(x: launcherTipPosition.x, y: launcherTipPosition.y)
         let start = dragValue.startLocation
         let current = dragValue.location
         var newAngle = calculateAngle(center: center, start: start, current: current)

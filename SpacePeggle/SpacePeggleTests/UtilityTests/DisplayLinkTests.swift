@@ -1,5 +1,5 @@
 import XCTest
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 // Running this test class might sometimes cause an exception to be thrown.
 class DisplayLinkTests: XCTestCase {

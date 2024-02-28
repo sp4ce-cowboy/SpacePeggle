@@ -13,6 +13,8 @@ class ObjectSet {
     /// For cases where images can go missing. The Peggle app icon nicely serves this purposes.
     static let DEFAULT_IMAGE_STUB: String = "peggle"
 
+    static var currentBackground: String = "background"
+
     /// A dictionary of gameObjectTypes and their corresponding visual imagery.
     /// The keys represent the gameObjectTypes as Strings, and the values represent
     /// the images that they correspond to. This can very easily be converted to

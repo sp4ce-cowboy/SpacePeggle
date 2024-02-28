@@ -23,7 +23,7 @@ extension GameEngine {
     func launchBall() {
         if !isBallLaunched {
             isBallLaunched = true
-            ball.velocity = launcher.launcherVelocityVector
+            ball.velocity = launcher.launchVelocityVector
             ball.centerPosition = launcher.launcherTipPosition
 
             self.addPhysicsObject(object: ball)
@@ -31,18 +31,14 @@ extension GameEngine {
         }
     }
 
-    func updateBallState() {
+    func updateGameState() {
         if ballIsOutofBounds {
-            DispatchQueue.main
-                .asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
-                    self.updateLevelState()
-                }
-        }
-    }
+            resetBall()
 
-    func updateLevelState() {
-        resetBall()
-        removeActiveGameObjects()
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
+                self.removeActiveGameObjects()
+            }
+        }
     }
 
     func resetBall() {
@@ -58,6 +54,7 @@ extension GameEngine {
                 continue
             }
             delegate?.processActiveGameObjects(withID: id)
+
             // Object needs to be removed from the physics object
             // storage to ensure that it does not get resusciated from
             // the game-physics engine synchronization-loop

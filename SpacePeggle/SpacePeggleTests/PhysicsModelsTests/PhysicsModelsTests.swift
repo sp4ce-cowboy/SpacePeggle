@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUI
 
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class PhysicsModelsTests: XCTestCase {
 
@@ -28,8 +28,8 @@ class PhysicsModelsTests: XCTestCase {
     }
 
     func testAccelerationCalculation() {
-        let object = MockPhysicsObject(mass: 2.0, velocity: .zeroVector(),
-                                       centerPosition: .zeroVector(), force: Vector(x: 0, y: 10), id: UUID())
+        let object = MockPhysicsObject(mass: 2.0, velocity: .zero,
+                                       centerPosition: .zero, force: Vector(x: 0, y: 10), id: UUID())
         XCTAssertEqual(object.acceleration, Vector(x: 0, y: 5),
                        "Acceleration should be correctly calculated as force divided by mass.")
     }

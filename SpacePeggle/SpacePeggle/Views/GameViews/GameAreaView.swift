@@ -23,10 +23,6 @@ struct GameAreaView: View {
             .foregroundColor(.clear)
             .padding()
             .frame(width: width, height: height)
-            // .ignoresSafeArea()
             .contentShape(Rectangle())
-            .onAppear {
-                Logger.log("game area size is \(size)")
-            }
     }
 }

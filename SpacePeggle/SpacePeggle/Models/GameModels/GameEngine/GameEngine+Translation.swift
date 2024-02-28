@@ -13,7 +13,7 @@ extension GameEngine {
     /// the conforming types are classes).
     ///
     /// - Requires: Pre-populated collection of physics objects. No side-effect otherwise.
-    func updateGameObjectState() {
+    func synchronizeGameObjects() {
         for (id, physicsObject) in physicsEngine.physicsObjects {
             guard let physicsObjectAsGameObject = physicsObject as? (any GameObject) else {
                 continue // Skip to the next iteration if the cast fails

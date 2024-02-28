@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUI
 
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class BallTests: XCTestCase {
 
@@ -35,7 +35,7 @@ class BallTests: XCTestCase {
     }
 
     func testApplyPhysics() {
-        let ball = Ball(mass: 1.0, velocity: .zeroVector(), centerPosition: .zeroVector())
+        let ball = Ball(mass: 1.0, velocity: .zero, centerPosition: .zero)
         let timeStep: TimeInterval = 1.0
 
         ball.applyPhysics(timeStep: timeStep)

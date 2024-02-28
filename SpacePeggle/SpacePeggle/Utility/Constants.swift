@@ -16,7 +16,7 @@ public class Constants {
     static let VELOCITY_CUTOFF: Double = 20.0
 
     /// Universally declared gravitational field strength
-    static let UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
+    static var UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
 
     /// Universally declared restitution
     static let UNIVERSAL_RESTITUTION: Double = 0.8
@@ -58,5 +58,8 @@ public class Constants {
     static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
         sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2))
     }
+
+    /// Helper function to generate a unit of length equivalent to a fraction of
+    /// the sizes pro
 
 }

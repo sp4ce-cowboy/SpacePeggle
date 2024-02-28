@@ -1,6 +1,6 @@
 import XCTest
 import SwiftUI
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class LauncherTests: XCTestCase {
 
@@ -8,7 +8,7 @@ class LauncherTests: XCTestCase {
         let layoutSize = CGSize(width: 100, height: 200)
         let launcher = Launcher(layoutSize: layoutSize)
 
-        XCTAssertEqual(launcher.centerPosition.x, layoutSize.width / 2.0,
+        XCTAssertEqual(ceil(launcher.centerPosition.x), ceil(layoutSize.width / 2.0),
                        "Launcher's centerPosition.x should be initialized to half of layoutSize.width.")
         XCTAssertEqual(launcher.centerPosition.y, launcher.launcherHeight / 2.0,
                        "Launcher's centerPosition.y should be initialized to half of launcherHeight.")

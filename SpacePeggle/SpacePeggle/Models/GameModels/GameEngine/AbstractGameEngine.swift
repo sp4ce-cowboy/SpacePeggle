@@ -12,16 +12,14 @@ import SwiftUI
 protocol AbstractGameEngine: LaunchMechanic {
     var delegate: GameEngineDelegate? { get set }
 
-    var currentLevel: any AbstractLevel { get }
+    var currentLevel: any AbstractLevel { get set }
     var gameObjects: [UUID: any GameObject] { get }
     var isGameActive: Bool { get set }
 
     mutating func startGame()
     func stopGame()
     func updateGame(timeStep: TimeInterval)
-    func loadLevel(with level: AbstractLevel)
     func handleGameObjectRemoval(id: UUID)
-
     func handleGameObjectRotation(id: UUID, value: Angle)
     func handleGameObjectMagnification(id: UUID, scale: Double)
 

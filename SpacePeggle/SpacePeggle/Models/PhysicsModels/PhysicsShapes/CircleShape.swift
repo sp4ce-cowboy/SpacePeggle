@@ -30,6 +30,6 @@ extension CircleShape {
 
     func intersects(with circle: CircleShape) -> Bool {
         let distance = (self.center - circle.center).magnitude
-        return distance <= (self.radius + circle.radius)
+        return distance < (self.radius + circle.radius)
     }
 }

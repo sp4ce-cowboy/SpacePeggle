@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUI
 
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class PhysicsEngineTests: XCTestCase {
 

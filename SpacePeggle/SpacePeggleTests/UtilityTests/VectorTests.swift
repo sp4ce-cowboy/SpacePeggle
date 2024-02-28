@@ -1,6 +1,6 @@
 import XCTest
 import SwiftUI
-@testable import PeggleGameplay
+@testable import SpacePeggle
 
 class VectorTests: XCTestCase {
 
@@ -59,7 +59,7 @@ class VectorTests: XCTestCase {
     }
 
     func testZeroVector() {
-        let vector = Vector.zeroVector()
+        let vector = Vector.zero
         XCTAssertEqual(vector.x, 0.0, "Zero vector should have x component of 0.")
         XCTAssertEqual(vector.y, 0.0, "Zero vector should have y component of 0.")
     }

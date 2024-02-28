@@ -17,9 +17,10 @@ extension MainViewModel: DisplayLinkManagement {
     }
 
     func startGame() {
+        Logger.log("Game has started from MainViewModel", self)
         isPaused = false
-        peggleGameEngine.startGame()
         DisplayLink.sharedInstance.setupDisplayLink()
+        peggleGameEngine.startGame()
     }
 
     func updateGame(timeStep: TimeInterval) {
@@ -28,7 +29,10 @@ extension MainViewModel: DisplayLinkManagement {
     }
 
     func stopGame() {
+        Logger.log("Game has been stopped from MainViewModel", self)
+        peggleGameEngine.delegate = nil
         DisplayLink.sharedInstance.invalidate()
+        print("game stopped from viewmodel")
     }
 
 }

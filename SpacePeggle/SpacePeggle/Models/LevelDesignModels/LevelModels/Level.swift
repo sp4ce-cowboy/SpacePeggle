@@ -17,6 +17,11 @@ final class Level {
     init(name: String, gameObjects: [UUID: any GameObject]) {
         self.name = name
         self.gameObjects = gameObjects
+        Logger.log("Level is initialized with \(gameObjects.count)", self)
+    }
+
+    deinit {
+        Logger.log("Level is deinitialized with \(gameObjects.count)", self)
     }
 
     func getGameObject(id: UUID) -> (any GameObject)? {
