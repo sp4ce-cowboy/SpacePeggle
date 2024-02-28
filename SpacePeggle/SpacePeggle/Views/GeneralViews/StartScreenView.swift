@@ -15,7 +15,7 @@ struct StartScreenView: View {
                             Text("SPACE PEGGLE")
                                 .font(.largeTitle)
                                 .fontDesign(.monospaced)
-                                .fontWeight(.bold)
+                                .fontWeight(.heavy)
                                 .foregroundStyle(Color.white)
                                 .padding()
 
