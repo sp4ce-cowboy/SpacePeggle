@@ -16,18 +16,17 @@ class LevelTests: XCTestCase {
             isActive = true
         }
 
-        // Note to grader: Choosing to ignore this warning as it would require significant refactoring
-        // for no significant benefit
-        init(centerPosition: Vector, id: UUID = UUID(), gameObjectType: String) {
+        init(centerPosition: Vector, id: UUID, gameObjectType: String) {
             self.centerPosition = centerPosition
-            self.id = id
+            self.id = UUID()
             self.gameObjectType = gameObjectType
         }
     }
 
     func testLevelInitialization() {
         let gameObjects: [UUID: any GameObject] = [
-            UUID(): TestGameObject(centerPosition: Vector(x: 1, y: 2), gameObjectType: "Test")]
+            UUID(): TestGameObject(centerPosition: Vector(x: 1, y: 2),
+                                   id: UUID(), gameObjectType: "Test")]
         let level = Level(name: "TestLevel", gameObjects: gameObjects)
 
         XCTAssertEqual(level.name,
@@ -38,7 +37,7 @@ class LevelTests: XCTestCase {
 
     func testStoreGameObject() {
         let level = Level(name: "TestLevel", gameObjects: [:])
-        let gameObject = TestGameObject(centerPosition: Vector(x: 3, y: 4), gameObjectType: "Test")
+        let gameObject = TestGameObject(centerPosition: Vector(x: 3, y: 4), id: UUID(), gameObjectType: "Test")
 
         level.storeGameObject(gameObject)
         XCTAssertEqual(level.gameObjects[gameObject.id]?.id, gameObject.id,
@@ -46,7 +45,8 @@ class LevelTests: XCTestCase {
     }
 
     func testGetGameObject() {
-        let gameObject = TestGameObject(centerPosition: Vector(x: 5, y: 6), gameObjectType: "Test")
+        let gameObject = TestGameObject(centerPosition: Vector(x: 5, y: 6),
+                                        id: UUID(), gameObjectType: "Test")
         let gameObjects: [UUID: any GameObject] = [gameObject.id: gameObject]
         let level = Level(name: "TestLevel", gameObjects: gameObjects)
 
@@ -64,7 +64,8 @@ class LevelTests: XCTestCase {
     }
 
     func testVerifyGameObjectsIntegrity() {
-        let gameObject = TestGameObject(centerPosition: Vector(x: 7, y: 8), gameObjectType: "Test")
+        let gameObject = TestGameObject(centerPosition: Vector(x: 7, y: 8),
+                                        id: UUID(), gameObjectType: "Test")
         let gameObjects: [UUID: any GameObject] = [gameObject.id: gameObject]
         let level = Level(name: "TestLevel", gameObjects: gameObjects)
 
@@ -74,7 +75,8 @@ class LevelTests: XCTestCase {
 
     func testVerifyGameObjectsIntegrityFailsWithCorruptId() {
         let corruptId = UUID()
-        let gameObject = TestGameObject(centerPosition: Vector(x: 9, y: 10), gameObjectType: "Test")
+        let gameObject = TestGameObject(centerPosition: Vector(x: 9, y: 10),
+                                        id: UUID(), gameObjectType: "Test")
         let gameObjects: [UUID: any GameObject] = [corruptId: gameObject]
         let level = Level(name: "MismatchLevel", gameObjects: gameObjects)
 
