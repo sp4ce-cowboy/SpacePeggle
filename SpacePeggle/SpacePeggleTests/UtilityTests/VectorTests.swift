@@ -112,4 +112,5 @@ class VectorTests: XCTestCase {
         XCTAssertEqual(result, 11.0,
                        "Dot product should correctly calculate the sum of the products of the vectors' components.")
     }
+
 }
