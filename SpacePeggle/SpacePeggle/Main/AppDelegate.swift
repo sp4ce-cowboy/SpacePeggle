@@ -14,6 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
         AudioManager.shared.setupAudioPlayer()
+
         Logger.log("AppDelegate has completed delegated tasks", self)
 
         /// Load scenes into scene controller

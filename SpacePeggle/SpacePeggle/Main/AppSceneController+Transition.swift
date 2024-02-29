@@ -37,6 +37,5 @@ extension AppSceneController {
 extension AppSceneController {
     func transitionToLevelScene() {
         updateScene(to: "LevelScene")
-
     }
 }

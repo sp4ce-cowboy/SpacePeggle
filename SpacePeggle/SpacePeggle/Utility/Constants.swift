@@ -26,7 +26,7 @@ public class Constants {
     static var UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
 
     /// Computed restitution range for more natural physics
-    static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.3...0.9) }
+    static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
     /// Universally declared launch force
     static let UNIVERSAL_LAUNCH_FORCE: Double = 1_000

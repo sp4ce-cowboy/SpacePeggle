@@ -34,8 +34,6 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func processActiveGameObjects(withID id: UUID) {
-        DispatchQueue.main.async { self.objectWillChange.send() }
-
         withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
             gameObjectOpacities[id] = 0
         }
@@ -47,6 +45,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     func handlePause() {
         isPaused.toggle()
+        AudioManager.shared.toggle()
     }
 
 }

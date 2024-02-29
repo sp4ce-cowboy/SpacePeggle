@@ -23,8 +23,12 @@ struct GameScene: View {
         }
         .background { BackgroundView() }
         .environmentObject(viewModel)
-        .onAppear { viewModel.startGame() }
-        .onDisappear { viewModel.stopGame() }
+        .onAppear {
+            viewModel.startGame()
+        }
+        .onDisappear {
+            viewModel.stopGame()
+        }
     }
 }
 
