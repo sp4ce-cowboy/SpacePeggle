@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA12BB002B90782400BCE72C /* AppSceneController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */; };
 		BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB012B907F9100BCE72C /* AudioManager.swift */; };
-		BA12BB042B90886100BCE72C /* CurrentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* CurrentScene.swift */; };
+		BA12BB042B90886100BCE72C /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* AppScene.swift */; };
 		BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7661DA2B8C86010022C267 /* Assets.xcassets */; };
 		BA76624B2B8C89590022C267 /* PauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76620F2B8C89590022C267 /* PauseButtonView.swift */; };
 		BA76624C2B8C89590022C267 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662112B8C89590022C267 /* BackgroundView.swift */; };
@@ -72,6 +72,7 @@
 		BACF21CD2B90329E007FCE8D /* GameSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21CC2B90329E007FCE8D /* GameSceneViewModel.swift */; };
 		BACF21D42B9046AE007FCE8D /* LevelSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */; };
 		BACF21D92B904CA5007FCE8D /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21D82B904CA5007FCE8D /* StartMenuView.swift */; };
+		BAD80ADC2B90B243008E998F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD80ADB2B90B243008E998F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +88,7 @@
 /* Begin PBXFileReference section */
 		BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppSceneController+Transition.swift"; sourceTree = "<group>"; };
 		BA12BB012B907F9100BCE72C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		BA12BB032B90886100BCE72C /* CurrentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentScene.swift; sourceTree = "<group>"; };
+		BA12BB032B90886100BCE72C /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
 		BA7661D32B8C85FF0022C267 /* SpacePeggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePeggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7661DA2B8C86010022C267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7661E32B8C86020022C267 /* SpacePeggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpacePeggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +154,7 @@
 		BACF21CC2B90329E007FCE8D /* GameSceneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneViewModel.swift; sourceTree = "<group>"; };
 		BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSceneViewModel.swift; sourceTree = "<group>"; };
 		BACF21D82B904CA5007FCE8D /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
+		BAD80ADB2B90B243008E998F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,10 +351,11 @@
 		BA7662432B8C89590022C267 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BAD80ADB2B90B243008E998F /* AppDelegate.swift */,
 				BA7662442B8C89590022C267 /* SpacePeggleApp.swift */,
+				BA12BB032B90886100BCE72C /* AppScene.swift */,
 				BA85C6702B8F3EC900039CCE /* AppSceneController.swift */,
 				BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */,
-				BA12BB032B90886100BCE72C /* CurrentScene.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -475,8 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				BAAC29FB2B8E094100938B85 /* StartScene.swift */,
-				BAAC2A002B8E0A8800938B85 /* StartBackgroundView.swift */,
 				BACF21D82B904CA5007FCE8D /* StartMenuView.swift */,
+				BAAC2A002B8E0A8800938B85 /* StartBackgroundView.swift */,
 			);
 			path = StartScene;
 			sourceTree = "<group>";
@@ -623,7 +626,7 @@
 				BA7662732B8C89590022C267 /* Vector.swift in Sources */,
 				BA76625C2B8C89590022C267 /* Ball.swift in Sources */,
 				BAAC29FF2B8E095F00938B85 /* LevelScene.swift in Sources */,
-				BA12BB042B90886100BCE72C /* CurrentScene.swift in Sources */,
+				BA12BB042B90886100BCE72C /* AppScene.swift in Sources */,
 				BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */,
 				BACF21D92B904CA5007FCE8D /* StartMenuView.swift in Sources */,
 				BA7662672B8C89590022C267 /* Launcher.swift in Sources */,
@@ -648,6 +651,7 @@
 				BA85C6712B8F3EC900039CCE /* AppSceneController.swift in Sources */,
 				BA7662572B8C89590022C267 /* PhysicsEngine.swift in Sources */,
 				BA8B6AEA2B8DEA3100A4FD96 /* GameMenuView.swift in Sources */,
+				BAD80ADC2B90B243008E998F /* AppDelegate.swift in Sources */,
 				BA7662742B8C89590022C267 /* SpacePeggleApp.swift in Sources */,
 				BA76625E2B8C89590022C267 /* NormalPeg.swift in Sources */,
 				BA7662662B8C89590022C267 /* GameEngine+Game.swift in Sources */,
@@ -836,6 +840,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -871,6 +876,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

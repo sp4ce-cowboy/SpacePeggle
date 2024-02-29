@@ -17,7 +17,7 @@ class AudioManager: NSObject, AVAudioPlayerDelegate {
         }
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
             audioPlayer = try AVAudioPlayer(data: audioData)
             audioPlayer?.delegate = self
@@ -41,5 +41,13 @@ class AudioManager: NSObject, AVAudioPlayerDelegate {
     func stop() {
         audioPlayer?.stop()
         audioPlayer?.currentTime = 0
+    }
+
+    func mute() {
+        audioPlayer?.volume = 0
+    }
+
+    func unmute() {
+        audioPlayer?.volume = 1.0
     }
 }

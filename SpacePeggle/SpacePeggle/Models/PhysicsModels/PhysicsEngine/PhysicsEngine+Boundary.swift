@@ -10,6 +10,7 @@ extension PhysicsEngine {
         let screenBounds = domain.size
 
         // Check for left or right boundary collision
+        // TODO: add object widths here!
         if object.centerPosition.x <= 0 || object.centerPosition.x >= screenBounds.width {
             if object.centerPosition.x < 0 {
                 object.centerPosition.x = 0

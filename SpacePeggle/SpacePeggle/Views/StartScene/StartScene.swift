@@ -11,10 +11,15 @@ struct StartScene: View {
             ZStack {
                 StyleSheet
                     .getRectangleOverlay()
-                    .overlay { StartMenuView() }
+                    .overlay {
+                        StartMenuView()
+                    }
             }
-            .frame(width: proxy.size.width, height: proxy.size.height)
-            .background { StartBackgroundView(proxy: proxy) }
+            .frame(width: proxy.size.width,
+                   height: proxy.size.height)
+            .background {
+                StartBackgroundView(proxy: proxy)
+            }
     }
 }
 

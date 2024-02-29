@@ -6,7 +6,7 @@ import SwiftUI
 class PhysicsEngineTests: XCTestCase {
 
     func testAddPhysicsObject() {
-        let engine = PhysicsEngine(areaOfEffect: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 100, height: 100))
         let ball = Ball(centerPosition: Vector(x: 50, y: 50))
 
         engine.addPhysicsObject(object: ball)
@@ -15,20 +15,20 @@ class PhysicsEngineTests: XCTestCase {
     }
 
     func testUpdatePhysicsWithBoundaryCollision() {
-        let areaOfEffect = CGRect(x: 0, y: 0, width: 100, height: 100)
-        let engine = PhysicsEngine(areaOfEffect: areaOfEffect)
+        let domain = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let engine = PhysicsEngine(domain: domain)
         let ball = Ball(velocity: Vector(x: 10, y: 0), centerPosition: Vector(x: 99, y: 50))
 
         engine.addPhysicsObject(object: ball)
         engine.updatePhysics(timeStep: 1)
 
         let updatedBall = engine.physicsObjects[ball.id]
-        XCTAssertLessThanOrEqual(updatedBall!.centerPosition.x, areaOfEffect.width,
+        XCTAssertLessThanOrEqual(updatedBall!.centerPosition.x, domain.width,
                                  "Ball should collide and stay within the right boundary.")
     }
 
     func testCollisionActivatesGameObject() {
-        let engine = PhysicsEngine(areaOfEffect: CGRect(x: 0, y: 0, width: 300, height: 300))
+        let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 300, height: 300))
         let peg = NormalPeg(centerPosition: Vector(x: 150, y: 150))
         let ball = Ball(velocity: Vector(x: 5, y: 0), centerPosition: Vector(x: 145, y: 150))
 
@@ -43,7 +43,7 @@ class PhysicsEngineTests: XCTestCase {
 
     // Testing for objects at the edge of the boundary to ensure they don't escape or behave unexpectedly
     func testObjectsAtBoundaryEdge() {
-        let engine = PhysicsEngine(areaOfEffect: CGRect(x: 0, y: 0, width: 300, height: 300))
+        let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 300, height: 300))
         let edgeBall = Ball(velocity: Vector(x: -10, y: 0), centerPosition: Vector(x: 0, y: 150))
 
         engine.addPhysicsObject(object: edgeBall)

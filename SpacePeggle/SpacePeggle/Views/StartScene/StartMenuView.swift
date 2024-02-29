@@ -14,7 +14,7 @@ struct StartMenuView: View {
             Spacer()
 
             Text("🪐 SPACE PEGGLE 🪐")
-                .font(.system(size: StyleSheet.getScaledWidth(5)))
+                .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                 .fontDesign(.monospaced)
                 .fontWeight(.heavy)
                 .foregroundStyle(Color.white)

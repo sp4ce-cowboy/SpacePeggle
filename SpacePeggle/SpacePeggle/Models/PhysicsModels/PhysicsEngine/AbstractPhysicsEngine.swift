@@ -12,7 +12,7 @@ import SwiftUI
 /// Also see `AbstractGameEngine`
 protocol AbstractPhysicsEngine {
 
-    init(areaOfEffect: CGRect, physicsObjects: [UUID: any PhysicsObject])
+    init(domain: CGRect, physicsObjects: [UUID: any PhysicsObject])
 
     var physicsObjects: [UUID: any PhysicsObject] { get set }
 

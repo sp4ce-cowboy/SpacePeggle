@@ -61,7 +61,7 @@ final class GameEngine {
         self.ball = Ball()
         self.currentScreenGeometry = geometry
         self.physicsEngine = PhysicsEngine(
-            areaOfEffect: Constants.getGameScreen(from: geometry))
+            domain: Constants.getFullScreen(from: geometry))
     }
 
     deinit {

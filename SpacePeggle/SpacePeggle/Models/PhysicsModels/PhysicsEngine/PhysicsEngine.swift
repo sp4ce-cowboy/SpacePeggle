@@ -42,9 +42,9 @@ final class PhysicsEngine {
 
     var physicsObjects: [UUID: any PhysicsObject]
 
-    init(areaOfEffect: CGRect, physicsObjects: [UUID: any PhysicsObject] = [:]) {
+    init(domain: CGRect, physicsObjects: [UUID: any PhysicsObject] = [:]) {
         self.physicsObjects = physicsObjects
-        self.domain = areaOfEffect
+        self.domain = domain
     }
 
     deinit {

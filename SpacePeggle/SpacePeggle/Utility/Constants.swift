@@ -26,7 +26,7 @@ public class Constants {
     static var UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
 
     /// Computed restitution range for more natural physics
-    static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.75...0.85) }
+    static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.3...0.9) }
 
     /// Universally declared launch force
     static let UNIVERSAL_LAUNCH_FORCE: Double = 1_000
@@ -49,12 +49,14 @@ public class Constants {
     }
 
     /// Given a GeometryProxy, returns a rectangle oriented at the origin
-    static func getGameScreen(from geometry: GeometryProxy) -> CGRect {
-        let absoluteWidth = geometry.size.width
-        let absoluteHeight = geometry.size.height
+    static func getFullScreen(from geometry: GeometryProxy) -> CGRect {
 
-        let gameScreen = CGRect(origin: .zero,
-                                size: CGSize(width: absoluteWidth, height: absoluteHeight))
+        let edges = geometry.safeAreaInsets
+        let totalWidth = geometry.size.width + edges.leading + edges.trailing
+        let totalHeight = geometry.size.height + edges.top + edges.bottom
+        let fullSize = CGSize(width: totalWidth, height: totalHeight)
+
+        let gameScreen = CGRect(origin: .zero, size: fullSize)
         return gameScreen
     }
 

@@ -9,7 +9,7 @@ class StyleSheet {
     static let screenWidth: Double = screenSize.width
 
     static var themeMainColor = Color.black
-    static var themeAccentColor = Color.blue
+    static var themeAccentColor = Color.accentColor
     static var themeTextColor = Color.black
 
     /// A helper function to define a universal size scale.
@@ -39,7 +39,6 @@ class StyleSheet {
     static func getTitleText(text: String) -> some View {
         Text(text)
             .font(.system(size: getScaledWidth(3.5))) // ensures consistent appearance
-            // .font(.largeTitle)
             .fontDesign(.monospaced)
             .fontWeight(.bold)
             .foregroundStyle(themeTextColor)
@@ -50,7 +49,6 @@ class StyleSheet {
     static func getRectangleWithText(text: String) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
-                .foregroundColor(themeAccentColor)
                 .padding()
                 .frame(width: getScaledWidth(55),
                        height: getScaledHeight(12))
