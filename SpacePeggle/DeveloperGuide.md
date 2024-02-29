@@ -8,6 +8,8 @@
 
 ### Section header
 
+Music: Field of Memories by "WaterFlame" (free for non-commercial use)
+Music Credits: https://www.waterflame.com/contact-info
 
 ## App Structure
 

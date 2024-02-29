@@ -33,9 +33,8 @@ extension GameEngine {
 
     func updateGameState() {
         if ballIsOutofBounds {
-            resetBall()
-
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
+                self.resetBall()
                 self.removeActiveGameObjects()
             }
         }

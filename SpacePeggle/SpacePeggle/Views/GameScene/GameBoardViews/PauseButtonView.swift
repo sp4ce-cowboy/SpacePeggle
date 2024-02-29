@@ -8,24 +8,21 @@
 import SwiftUI
 
 struct PauseButtonView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
 
     var body: some View {
         VStack {
             HStack {
                 Spacer() // Pushes the following items to the right
-                Button(action: {
-                    viewModel.handlePause()
-                }) {
+                Button(action: { viewModel.handlePause() }) {
                     Image(systemName: viewModel.isPaused ? "play.circle.fill" : "pause.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40.0)
                     .foregroundStyle(Color.green)
-
                 }
                 .padding()
-                // .disabled(viewModel.isPaused)
+                .disabled(viewModel.isPaused)
             }
             Spacer() // Pushes the VStack content towards the top
         }

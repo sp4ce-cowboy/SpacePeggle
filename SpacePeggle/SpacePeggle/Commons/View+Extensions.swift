@@ -22,3 +22,31 @@ extension View {
         }
     }
 }
+
+/// Extensions to allow for a safer retrieval of screen size in the
+/// context of SwiftUI where geometry reader might not be available.
+///
+/// Adapted from
+/// 
+/// '''
+/// https://stackoverflow.com/questions/74458971/
+/// correct-way-to-get-the-screen-size-on-ios-after-uiscreen-main-deprecation
+/// '''
+extension UIWindow {
+    static var current: UIWindow? {
+        for scene in UIApplication.shared.connectedScenes {
+            guard let windowScene = scene as? UIWindowScene else { continue }
+            for window in windowScene.windows where window.isKeyWindow {
+                    return window
+            }
+        }
+        return nil
+    }
+}
+
+extension UIScreen {
+    static var currentSize: CGSize {
+        UIWindow.current?.windowScene?.keyWindow?.bounds.size ??
+        UIScreen.main.bounds.size
+    }
+}

@@ -1,11 +1,11 @@
 import SwiftUI
 
-protocol GameObjectManagement {
+protocol GameObjectManager {
     func getCurrentBallPosition() -> Vector
     func handleGameObjectRemoval(_ view: GameObjectView)
 }
 
-extension MainViewModel: GameObjectManagement {
+extension GameSceneViewModel: GameObjectManager {
 
     // Communication intermediary method between BallView and GameEngine
     func getCurrentBallPosition() -> Vector {

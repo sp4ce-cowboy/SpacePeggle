@@ -6,13 +6,13 @@ import SwiftUI
 /// Benefits of this approach:
 ///
 /// * Decoupling: DisplayLink is decoupled from the view model, making it easier to use and manage.
-///   It can be used by any part of the app that requires frame updates, not just the MainViewModel.
+///   It can be used by any part of the app that requires frame updates, not just the GameSceneViewModel.
 ///
 /// * Reusability: The DisplayLink class can be reused across different parts of the game
 ///   wherever a CADisplayLink is needed outside the scope of the GameEngine
 ///
 /// * Single Responsibility: Each class has a clear responsibility; DisplayLink manages
-///   frame timing, while MainViewModel handles game state updates and UI notifications.
+///   frame timing, while GameSceneViewModel handles game state updates and UI notifications.
 ///
 /// Solution adapted from [here]
 /// (https://stackoverflow.com/questions/67658580/how-to-properly-link-cadisplaylink-with-swiftui)

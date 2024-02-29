@@ -4,7 +4,7 @@ struct GameObjectView: View {
     /// Despite its non-usage, having the viewModel here is important to
     /// allow for the view to refresh and redraw every time the viewModel is
     /// refreshed.
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
     @State private var isSelected = false
     var gameObject: any GameObject
 

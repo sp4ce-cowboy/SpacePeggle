@@ -5,7 +5,7 @@ import SwiftUI
 ///
 /// For Problem Set 3 this is a stub, as no GameLoading is required.
 struct GameAreaView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
 
     var size: CGSize {
         viewModel.geometryState.size

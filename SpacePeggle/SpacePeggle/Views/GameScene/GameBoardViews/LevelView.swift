@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LevelView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
 
     var body: some View {
         ForEach(Array(viewModel.gameObjects.keys), id: \.self) { id in

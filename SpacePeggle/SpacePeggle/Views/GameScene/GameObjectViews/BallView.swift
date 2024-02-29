@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BallView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
 
     var ballWidth: Double {
         Double(ObjectSet.defaultGameObjectSet["Ball"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))

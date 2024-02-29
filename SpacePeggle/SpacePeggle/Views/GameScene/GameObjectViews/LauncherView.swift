@@ -11,18 +11,18 @@ import SwiftUI
 /// if that becomes a requirement in the future, BallLauncher is now just
 /// LauncherView.
 struct LauncherView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: GameSceneViewModel
 
     var launcher: Launcher { viewModel.launcher }
     var isBallLaunched: Bool { viewModel.ballIsLaunched }
     var screenWidthCenter: Double { launcher.centerPosition.x }
     var launcherHeightCenter: Double { launcherHeight / 2.0 }
 
-    var launcherWidth = ObjectSet
-        .defaultGameObjectSet["Launcher"]?.size.width ?? Constants.UNIVERSAL_LENGTH
+    var launcherWidth = Double(ObjectSet
+        .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
-    var launcherHeight = ObjectSet
-        .defaultGameObjectSet["Launcher"]?.size.height ?? Constants.UNIVERSAL_LENGTH
+    var launcherHeight = Double(ObjectSet
+        .defaultGameObjectSet["Launcher"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
     var inactiveLauncherImageName = ObjectSet
         .defaultGameObjectSet["Launcher"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB

@@ -35,7 +35,7 @@ extension PhysicsEngine: AbstractPhysicsEngine { }
 final class PhysicsEngine {
     let gravity = Constants.UNIVERSAL_GRAVITY
     let velocityCutOff = Constants.VELOCITY_CUTOFF
-    let restitution = Constants.UNIVERSAL_RESTITUTION
+    var restitution: Double { Constants.UNIVERSAL_RESTITUTION }
 
     /// The area monitored by the Engine.
     var domain: CGRect

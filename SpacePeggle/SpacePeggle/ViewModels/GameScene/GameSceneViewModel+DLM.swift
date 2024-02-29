@@ -1,14 +1,14 @@
 import Foundation
 import SwiftUI
 
-protocol DisplayLinkManagement {
+protocol DisplayLinkManager {
     func setupDisplayLink()
     func startGame()
     func stopGame()
     func updateGame(timeStep: TimeInterval)
 }
 
-extension MainViewModel: DisplayLinkManagement {
+extension GameSceneViewModel: DisplayLinkManager {
 
     func setupDisplayLink() {
         DisplayLink.sharedInstance.onUpdate = { [weak self] frameDuration in

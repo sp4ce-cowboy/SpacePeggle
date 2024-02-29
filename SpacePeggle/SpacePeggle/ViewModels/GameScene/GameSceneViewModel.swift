@@ -1,10 +1,12 @@
 import SwiftUI
-
+/// This scene allows any internal game engine to weakly refer to the
+/// parent ViewModel in order to provide for callback functions like
+/// updating the views of game object states.
 protocol GameEngineDelegate: AnyObject {
     func processActiveGameObjects(withID id: UUID)
 }
 
-class MainViewModel: ObservableObject, GameEngineDelegate {
+class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     @Published var gameObjectOpacities: [UUID: Double] = [:]
     var peggleGameEngine: AbstractGameEngine

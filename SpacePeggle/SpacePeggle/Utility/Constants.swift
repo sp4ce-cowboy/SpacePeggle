@@ -3,11 +3,18 @@ import SwiftUI
 /// A universal source of truth and control for certain application wide configurations
 /// and properties. Also includes some universal utility methods.
 public class Constants {
-    /// Universally declared Geometry
-    static var geometry: GeometryProxy?
+
+    /// Universally declared screen size
+    static var UI_SCREEN_SIZE: CGSize = UIScreen.currentSize
+
+    /// Universally declared screen width
+    static var UI_SCREEN_WIDTH: Double = UIScreen.currentSize.width
+
+    /// Universally declared screen height
+    static var UI_SCREEN_HEIGHT: Double = UIScreen.currentSize.height
 
     /// Universally declared object diameter
-    static let UNIVERSAL_LENGTH: CGFloat = UIScreen.main.bounds.size.height / 25
+    static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.height / 25.0
 
     /// Universally declared unit mass
     static let UNIT_MASS: Double = 1.0
@@ -18,14 +25,11 @@ public class Constants {
     /// Universally declared gravitational field strength
     static var UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
 
-    /// Universally declared restitution
-    static let UNIVERSAL_RESTITUTION: Double = 0.8
+    /// Computed restitution range for more natural physics
+    static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.75...0.85) }
 
     /// Universally declared launch force
     static let UNIVERSAL_LAUNCH_FORCE: Double = 1_000
-
-    /// Universally declared screen size
-    static let UI_SCREEN_SIZE: CGSize = UIScreen.main.bounds.size
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = 1.0
@@ -58,8 +62,5 @@ public class Constants {
     static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
         sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2))
     }
-
-    /// Helper function to generate a unit of length equivalent to a fraction of
-    /// the sizes pro
 
 }

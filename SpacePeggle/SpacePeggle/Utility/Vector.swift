@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 /// A class to model a vector quantity with 2 generic doubles
 struct Vector: Equatable {
@@ -6,13 +7,13 @@ struct Vector: Equatable {
     private var rawY: Double
 
     var x: Double {
-        get { self.rawX * UIScreen.main.bounds.size.width }
-        set { self.rawX = newValue / UIScreen.main.bounds.size.width }
+        get { self.rawX * Constants.UI_SCREEN_WIDTH }
+        set { self.rawX = newValue / Constants.UI_SCREEN_WIDTH }
     }
 
     var y: Double {
-        get { self.rawY * UIScreen.main.bounds.size.height }
-        set { self.rawY = newValue / UIScreen.main.bounds.size.height }
+        get { self.rawY * Constants.UI_SCREEN_HEIGHT }
+        set { self.rawY = newValue / Constants.UI_SCREEN_HEIGHT }
     }
 
     var area: Double { x * y }
@@ -24,8 +25,8 @@ struct Vector: Equatable {
 
     // Initialize with components
     init(x: Double, y: Double) {
-        self.rawX = x / UIScreen.main.bounds.size.width
-        self.rawY = y / UIScreen.main.bounds.size.height
+        self.rawX = x / Constants.UI_SCREEN_WIDTH
+        self.rawY = y / Constants.UI_SCREEN_HEIGHT
     }
 
     init(scaled_x: Double, scaled_y: Double) {
@@ -35,18 +36,18 @@ struct Vector: Equatable {
 
     /// Initialize with magnitude and angle (in radians)
     init(magnitude: Double, angle: Angle) {
-        self.rawX = (magnitude * sin(angle.radians)) / UIScreen.main.bounds.size.width
-        self.rawY = (magnitude * cos(angle.radians)) / UIScreen.main.bounds.size.height
+        self.rawX = (magnitude * sin(angle.radians)) / Constants.UI_SCREEN_WIDTH
+        self.rawY = (magnitude * cos(angle.radians)) / Constants.UI_SCREEN_HEIGHT
     }
 
     init(with point: CGPoint) {
-        self.rawX = point.x / UIScreen.main.bounds.size.width
-        self.rawY = point.y / UIScreen.main.bounds.size.height
+        self.rawX = Double(point.x) / Constants.UI_SCREEN_WIDTH
+        self.rawY = Double(point.y) / Constants.UI_SCREEN_HEIGHT
     }
 
     init(withScaledPoint point: CGPoint) {
-        self.rawX = point.x
-        self.rawY = point.y
+        self.rawX = Double(point.x)
+        self.rawY = Double(point.y)
     }
 
     /// Compute the magnitude of the vector
@@ -82,16 +83,6 @@ extension Vector {
     /// Returns a zero vector
     static var zero: Vector {
         Vector(x: .zero, y: .zero)
-    }
-
-    /// Returns a unit vector in the X direction
-    static func unitVectorX() -> Vector {
-        Vector(x: 1, y: .zero)
-    }
-
-    /// Returns a unit vector in the Y direction
-    static func unitVectorY() -> Vector {
-        Vector(x: .zero, y: 1)
     }
 
     /// Returns a unit 2D Vector

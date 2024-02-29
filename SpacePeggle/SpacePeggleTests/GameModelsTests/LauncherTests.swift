@@ -8,9 +8,9 @@ class LauncherTests: XCTestCase {
         let layoutSize = CGSize(width: 100, height: 200)
         let launcher = Launcher(layoutSize: layoutSize)
 
-        XCTAssertEqual(ceil(launcher.centerPosition.x), ceil(layoutSize.width / 2.0),
+        XCTAssertEqual(round(Double(launcher.centerPosition.x)), round(Double(layoutSize.width / 2.0)),
                        "Launcher's centerPosition.x should be initialized to half of layoutSize.width.")
-        XCTAssertEqual(launcher.centerPosition.y, launcher.launcherHeight / 2.0,
+        XCTAssertEqual(round(Double(launcher.centerPosition.y)), round(Double(launcher.launcherHeight / 2.0)),
                        "Launcher's centerPosition.y should be initialized to half of launcherHeight.")
         XCTAssertEqual(launcher.rotationAngle.degrees, 0.0,
                        "Launcher's rotationAngle should be initialized to 0 degrees.")

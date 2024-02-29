@@ -1,19 +1,19 @@
 import SwiftUI
 
-protocol LauncherControl {
+protocol LaunchManager {
     var launcher: Launcher { get set }
     var ballIsLaunched: Bool { get }
     func updateLauncherRotation(with dragValue: DragGesture.Value)
     func handleBallLaunch()
 }
 
-extension MainViewModel: LauncherControl {
+extension GameSceneViewModel: LaunchManager {
     var launcher: Launcher {
         get { peggleGameEngine.launcher }
         set { peggleGameEngine.launcher = newValue }
     }
 
-    // LauncherView tells MainViewModel and MainViewModel tells the game engine
+    // LauncherView tells GameSceneViewModel and GameSceneViewModel tells the game engine
     func updateLauncherRotation(with dragValue: DragGesture.Value) {
         peggleGameEngine.updateLauncherRotation(with: dragValue,
                                                 for: CGSize(width: currentViewSize.width,

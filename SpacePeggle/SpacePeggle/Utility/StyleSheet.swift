@@ -32,14 +32,14 @@ class StyleSheet {
         RoundedRectangle(cornerRadius: 80.0)
             .foregroundColor(themeMainColor)
             .padding()
-            .frame(width: getScaledWidth(70),
-                   height: getScaledHeight(75))
+            .frame(width: getScaledWidth(70), height: getScaledHeight(75))
             .opacity(0.9)
     }
 
     static func getTitleText(text: String) -> some View {
         Text(text)
-            .font(.title2)
+            .font(.system(size: getScaledWidth(3.5))) // ensures consistent appearance
+            // .font(.largeTitle)
             .fontDesign(.monospaced)
             .fontWeight(.bold)
             .foregroundStyle(themeTextColor)
@@ -55,8 +55,10 @@ class StyleSheet {
                 .frame(width: getScaledWidth(55),
                        height: getScaledHeight(12))
                 .contentShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-
-            getTitleText(text: text)
+                .overlay {
+                    getTitleText(text: text)
+                        .frame(width: getScaledWidth(50))
+                }
         }
     }
 

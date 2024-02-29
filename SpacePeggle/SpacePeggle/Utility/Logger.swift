@@ -5,7 +5,7 @@ import SwiftUI
 class Logger {
     static var isActive = Constants.LOGGING_IS_ACTIVE
 
-    static func log(_ string: String, _ caller: AnyObject? = nil) {
+    static func log(_ string: String, _ caller: Any? = nil) {
         if isActive {
             let callerType = caller == nil ? "Unknown" : String(describing: type(of: caller!))
             print("[\(callerType)] \(string)")

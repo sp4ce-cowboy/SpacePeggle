@@ -35,11 +35,11 @@ class PhysicsModelsTests: XCTestCase {
     }
 
     func testApplyPhysics() {
-        var object = MockPhysicsObject(mass: 1.0, velocity: Vector(x: 1, y: 0),
-                                       centerPosition: Vector(x: 0, y: 0), force: Vector(x: 2, y: 0), id: UUID())
-        object.applyPhysics(timeStep: 1)
+        var object = MockPhysicsObject(mass: 1.0, velocity: Vector(x: 10.0, y: 0),
+                                       centerPosition: Vector(x: 0.0, y: 0.0), force: Vector(x: 20, y: 0.0), id: UUID())
+        object.applyPhysics(timeStep: 1.0)
 
-        XCTAssertEqual(object.velocity, Vector(x: 3, y: 0),
+        XCTAssertEqual(object.velocity, Vector(x: 30.0, y: 0),
                        "Velocity should be correctly updated based on force and mass over a time step.")
     }
 

@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct MainView: View {
+struct GameScene: View {
     /// StateObject becauses MainView owns this ViewModel
-    @StateObject var viewModel: MainViewModel
-    // @EnvironmentObject var sceneController: SceneController
+    @StateObject var viewModel: GameSceneViewModel
 
     init(forGeometry geometryState: GeometryProxy) {
-        _viewModel = StateObject(wrappedValue: MainViewModel(geometryState))
+        _viewModel = StateObject(wrappedValue: GameSceneViewModel(geometryState))
     }
 
+    @ViewBuilder
     var body: some View {
         ZStack {
             GameAreaView()
@@ -19,7 +19,7 @@ struct MainView: View {
             LevelView()
         }
         .if(viewModel.isPaused) { view in
-            view.overlay { MenuView() }
+            view.overlay { GameMenuView() }
         }
         .background { BackgroundView() }
         .environmentObject(viewModel)
@@ -30,6 +30,6 @@ struct MainView: View {
 
 #Preview {
     GeometryReader { proxy in
-        MainView(forGeometry: proxy)
+        GameScene(forGeometry: proxy)
     }
 }
