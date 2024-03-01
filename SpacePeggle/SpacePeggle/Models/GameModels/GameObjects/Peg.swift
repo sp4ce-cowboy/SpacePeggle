@@ -10,39 +10,42 @@ class Peg: GameObject, PhysicsObject {
 
     var id: UUID
     var centerPosition: Vector
-    var rotation: Angle = .degrees(0)
-    var magnification: Double = 1.0
 
     var mass: Double = .infinity
     var velocity: Vector = .zero
     var force: Vector = .zero
-    var shape: PhysicsShape
+    var shape: UniversalShape
 
-    var gameObjectType: String
+    var gameObjectType: String = "DefaultPeg"
     var isActive = false
 
     /// Initializer for Peg as a GameObject
-    required init(centerPosition: Vector, id: UUID = UUID(),
-                  gameObjectType: String = "DefaultPeg") {
+    required init(centerPosition: Vector,
+                  id: UUID = UUID(),
+                  gameObjectType: String,
+                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
         self.centerPosition = centerPosition
         self.id = id
         self.gameObjectType = gameObjectType
         self.mass = .infinity
         self.velocity = .zero
-        self.shape = CircleShape(center: centerPosition, radius: Peg.PEG_RADIUS)
+        self.shape = shape
     }
 
     /// Initializer for Peg as a PhysicsObject
-    required init(mass: Double, velocity: Vector,
-                  centerPosition: Vector, force: Vector, id: UUID = UUID()) {
-        self.mass = .infinity
+    required init(mass: Double = .infinity,
+                  velocity: Vector,
+                  centerPosition: Vector,
+                  force: Vector,
+                  id: UUID = UUID(),
+                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+        self.mass = mass
         self.velocity = velocity
         self.force = force
         self.centerPosition = centerPosition
         self.id = id
         self.gameObjectType = "DefaultPeg"
-        self.shape = CircleShape(center: centerPosition, radius: Peg.PEG_RADIUS)
-
+        self.shape = shape
     }
 
     func activateGameObject() {

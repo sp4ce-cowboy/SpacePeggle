@@ -9,7 +9,6 @@ class LevelStub {
         return Level(name: "Level1",
                      gameObjects: LevelStub.getGameObjects(
                          for: LevelStub().scaledGameObjectsStub))
-
     }
 
     static func getGameObjects(for objects: [any GameObject]) -> [UUID: any GameObject] {

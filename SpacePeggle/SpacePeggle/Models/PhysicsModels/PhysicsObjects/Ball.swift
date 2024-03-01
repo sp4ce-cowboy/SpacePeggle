@@ -15,31 +15,32 @@ class Ball: PhysicsObject {
     var centerPosition: Vector
     var velocity: Vector
     var force: Vector
-    var shape: PhysicsShape
+    var shape: UniversalShape
     var isSubjectToGravity = false
 
     required init(mass: Double = 100,
                   velocity: Vector = Vector.zero,
                   centerPosition: Vector = .zero,
                   force: Vector = .zero,
-                  id: UUID = UUID()) {
+                  id: UUID = UUID(),
+                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.mass = mass
         self.centerPosition = centerPosition
         self.velocity = velocity
         self.force = force
         self.id = id
-        self.shape = CircleShape(center: centerPosition, radius: Ball.BALL_RADIUS)
+        self.shape = shape
     }
 
     func updatePosition(to finalLocation: Vector) {
         self.centerPosition = finalLocation
-        self.shape.updateCenter(to: self.centerPosition)
+        // self.shape.center = self.centerPosition
     }
 
     func applyPhysics(timeStep: TimeInterval) {
         // if !isSubjectToGravity {
-            subjectToGravity()
+        subjectToGravity()
         // }
         applyAccelerationOnVelocity(timeStep: timeStep)
         applyVelocityOnPosition(timeStep: timeStep)
