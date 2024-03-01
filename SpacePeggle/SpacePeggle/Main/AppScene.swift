@@ -19,11 +19,11 @@ struct AppScene: View {
                     .currentScene(geometry: geometry)
                     .id(sceneController.currentSceneName)
             }
-            .animation(.default, value: sceneController.currentSceneName)
+            .animation(.default.delay(0.5), value: sceneController.currentSceneName)
             .onAppear {
                 Constants.UI_SCREEN_SIZE = Constants.getFullScreen(from: geometry).size
             }
         }
-
     }
+
 }

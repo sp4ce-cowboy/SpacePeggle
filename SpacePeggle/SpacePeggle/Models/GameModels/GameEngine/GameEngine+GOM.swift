@@ -8,13 +8,13 @@ import SwiftUI
 /// them into an equivalent level engine class.
 extension GameEngine {
     func handleGameObjectRotation(id: UUID, value: Angle) {
-        gameObjects[id]?.rotation = value
+        // gameObjects[id]?.rotation = value
     }
 
     func handleGameObjectMagnification(id: UUID, scale: Double) {
         /*if let centerPosition = gameObjects[id]?.centerPosition {
             gameObjects[id]?.centerPosition = centerPosition * scale
         }*/
-        gameObjects[id]?.magnification = scale
+        // gameObjects[id]?.magnification = scale
     }
 }

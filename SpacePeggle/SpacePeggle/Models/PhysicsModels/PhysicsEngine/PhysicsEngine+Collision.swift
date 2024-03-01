@@ -44,7 +44,7 @@ extension PhysicsEngine {
     private func handleCollision(movingObject: inout any PhysicsObject,
                                  stationaryObject: inout any PhysicsObject) {
 
-        let normalVector = (movingObject.centerPosition - stationaryObject.centerPosition).normalized()
+        let normalVector = (movingObject.centerPosition - stationaryObject.centerPosition).normalized
         let dotProduct = Vector.dot(movingObject.velocity, normalVector)
         let reflection = (normalVector * 2.0) * dotProduct
 
@@ -55,4 +55,37 @@ extension PhysicsEngine {
             gameObject.activateGameObject()
         }
     }
+
+    /// Rectangle collision
+    func closestPointOnRect(to circleCenter: Vector, rect: CGRect) -> Vector {
+        let clampedX = max(rect.minX, min(circleCenter.x, rect.maxX))
+        let clampedY = max(rect.minY, min(circleCenter.y, rect.maxY))
+        return Vector(x: clampedX, y: clampedY)
+    }
+
+    /*
+    func resolveCircleRectangleCollision(circle: inout Circle, rect: CGRect) {
+        let closestPoint = closestPointOnRect(to: circle.center, rect: rect)
+        let direction = (circle.center - closestPoint)
+        let distance = direction.magnitude
+
+        if distance < circle.radius {
+            // Collision detected, resolve it
+            let overlap = circle.radius - distance
+            let correction = direction.normalized * overlap
+            circle.center = circle.center + correction
+
+            // Reflect velocity (simplified reflection for demonstration)
+            let normal = direction.normalized
+            let dotProduct = Vector.dot(circle.velocity, normal)
+            let reflection = (normal * 2.0) * dotProduct
+            circle.velocity = circle.velocity - reflection
+
+            // Activate the game object if needed
+            // if let gameObject = rect as? (any GameObject) {
+            //     gameObject.activateGameObject()
+            // }
+        }
+    }
+     */
 }

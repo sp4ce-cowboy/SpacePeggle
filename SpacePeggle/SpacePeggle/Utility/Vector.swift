@@ -16,11 +16,18 @@ struct Vector: Equatable {
         set { self.rawY = newValue / Constants.UI_SCREEN_HEIGHT }
     }
 
-    var area: Double { x * y }
+    var area: Double {
+        x * y
+    }
 
-    var normal: Vector {
+    var normalVector: Vector {
         Vector(magnitude: self.magnitude,
                angle: Angle(degrees: (self.angle.degrees - 90)))
+    }
+
+    /// Returns a normalized unit Vector
+    var normalized: Vector {
+        self / self.magnitude
     }
 
     // Initialize with components
@@ -87,12 +94,7 @@ extension Vector {
 
     /// Returns a unit 2D Vector
     static func unitVector() -> Vector {
-        Vector(x: 1, y: 1).normalized()
-    }
-
-    /// Returns a normalized unit Vector
-    func normalized() -> Vector {
-        self / self.magnitude
+        Vector(x: 1, y: 1).normalized
     }
 
     func applyDamping(_ factor: Double) -> Vector {

@@ -22,14 +22,3 @@ protocol UniversalObject: Identifiable {
     // var shape: UniversalShape { get set }
 
 }
-
-/*
- struct UniversalShape: Shape {
- var width: Double
- var height: Double
- 
- func path(in rect: CGRect) -> Path {
- 
- }
- }
- */

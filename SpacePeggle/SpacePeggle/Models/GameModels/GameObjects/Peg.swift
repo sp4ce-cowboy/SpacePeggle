@@ -49,4 +49,25 @@ class Peg: GameObject, PhysicsObject {
         isActive = true
     }
 
+    /*
+    static var powerMap: [String: (any GameObject) -> Void] {
+        ["DefaultPeg": { object in object.defaultAbility(...) }]
+    }
+
+    func gameObjectAbility() {
+        /// fade out after ball disappears
+        /// - Tell viewmodel to fade out and game engine to remove
+        // processActiveGameObjects(withID: self.id)
+        ///
+    }
+    
+    func spookyAbility() {
+        /// Tell game engine to change boundary for a while until game enters bucket
+    }
+    
+    func kaboomAbility() {
+        /// if active, apply a normal velocity to all objects in the region
+    }
+     */
+
 }

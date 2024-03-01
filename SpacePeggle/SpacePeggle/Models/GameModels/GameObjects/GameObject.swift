@@ -19,8 +19,6 @@ import SwiftUI
 protocol GameObject: UniversalObject, Codable {
     var gameObjectType: String { get set }
     var isActive: Bool { get set }
-    var rotation: Angle { get set }
-    var magnification: Double { get set }
 
     func activateGameObject()
     init(centerPosition: Vector, id: UUID, gameObjectType: String)

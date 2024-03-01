@@ -53,7 +53,7 @@ class VectorTests: XCTestCase {
     }
 
     func testNormalized() {
-        let vector = Vector(x: 3.0, y: 4.0).normalized()
+        let vector = Vector(x: 3.0, y: 4.0).normalized
         XCTAssertEqual(vector.magnitude, 1.0, accuracy: 0.01, "Normalized vector should have a magnitude of 1.")
     }
 

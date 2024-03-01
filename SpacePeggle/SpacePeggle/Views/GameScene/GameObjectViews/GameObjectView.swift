@@ -8,9 +8,9 @@ struct GameObjectView: View {
     @State private var isSelected = false
     var gameObject: any GameObject
 
-    var rotation: Angle { gameObject.rotation }
+    var rotation: Angle { Angle(degrees: 90) }
 
-    var scale: Double { gameObject.magnification }
+    var scale: Double { 1.0 }
 
     var gameObjectType: String {
         gameObject.gameObjectType
@@ -34,19 +34,18 @@ struct GameObjectView: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
             .position(gameObject.centerPosition.point)
-            .rotationEffect(rotation, anchor: .center)
-            .scaleEffect(scale, anchor: .center)
+            // .rotationEffect(rotation, anchor: .center)
+            // .scaleEffect(scale, anchor: .center)
             .opacity(viewModel.gameObjectOpacities[gameObject.id, default: 1])
             .onTapGesture { self.isSelected.toggle() }
-
-        // .gesture(handleLongPress)
-        // .gesture(handleMagnify.simultaneously(with: handleRotate))
+            .gesture(handleLongPress)
+        //  .gesture(handleMagnify.simultaneously(with: handleRotate))
 
         if isSelected {
             Rectangle()
                 .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                .frame(width: gameObjectImageWidth * gameObject.magnification,
-                       height: gameObjectImageHeight * gameObject.magnification)
+                .frame(width: gameObjectImageWidth * scale,
+                       height: gameObjectImageHeight * scale)
                 .position(gameObject.centerPosition.point)
                 .overlay(resizerView.position(x: gameObject.centerPosition.point.x + 20,
                                               y: gameObject.centerPosition.point.y + 20)

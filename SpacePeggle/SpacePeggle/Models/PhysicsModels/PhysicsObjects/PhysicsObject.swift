@@ -75,9 +75,9 @@ extension PhysicsObject {
 
 }
 
-/// Default collision resolution for PhysicsObjects
-extension PhysicsObject {
-    func intersects(with object: any PhysicsObject) -> Bool {
-        self.shape.intersects(with: object.shape)
-    }
-}
+ /// Default collision resolution for PhysicsObjects
+ extension PhysicsObject {
+     func intersects(with object: any PhysicsObject) -> Bool {
+         self.shape.intersects(with: object.shape)
+     }
+ }
