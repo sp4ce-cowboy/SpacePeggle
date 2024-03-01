@@ -363,8 +363,8 @@
 		BA7662452B8C89590022C267 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BACF21CF2B903308007FCE8D /* LevelScene */,
-				BACF21CE2B9032F8007FCE8D /* GameScene */,
+				BACF21CF2B903308007FCE8D /* LevelSceneVM */,
+				BACF21CE2B9032F8007FCE8D /* GameSceneVM */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 			path = LevelScene;
 			sourceTree = "<group>";
 		};
-		BACF21CE2B9032F8007FCE8D /* GameScene */ = {
+		BACF21CE2B9032F8007FCE8D /* GameSceneVM */ = {
 			isa = PBXGroup;
 			children = (
 				BACF21CC2B90329E007FCE8D /* GameSceneViewModel.swift */,
@@ -453,15 +453,15 @@
 				BA7662472B8C89590022C267 /* GameSceneViewModel+LC.swift */,
 				BA7662462B8C89590022C267 /* GameSceneViewModel+GOM.swift */,
 			);
-			path = GameScene;
+			path = GameSceneVM;
 			sourceTree = "<group>";
 		};
-		BACF21CF2B903308007FCE8D /* LevelScene */ = {
+		BACF21CF2B903308007FCE8D /* LevelSceneVM */ = {
 			isa = PBXGroup;
 			children = (
 				BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */,
 			);
-			path = LevelScene;
+			path = LevelSceneVM;
 			sourceTree = "<group>";
 		};
 		BACF21D02B903320007FCE8D /* GameScene */ = {
