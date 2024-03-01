@@ -45,7 +45,7 @@ extension CircularShape {
 
         let distance = (thisPosition - otherPosition).magnitude
         let totalRadius = self.radius + circle.radius
-        
+
         if distance < totalRadius {
             Logger.log("Overlap is \((totalRadius - distance) / 2.0)", self)
             return (totalRadius - distance) / 2.0

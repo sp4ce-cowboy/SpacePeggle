@@ -23,13 +23,13 @@ public class Constants {
     static let VELOCITY_CUTOFF: Double = 20.0
 
     /// Universally declared gravitational field strength
-    static var UNIVERSAL_GRAVITY = Vector(x: 0, y: 981)
+    static var UNIVERSAL_GRAVITY = Vector(x: 0, y: UI_SCREEN_HEIGHT)
 
     /// Computed restitution range for more natural physics
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
     /// Universally declared launch force
-    static let UNIVERSAL_LAUNCH_FORCE: Double = 1_000
+    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_HEIGHT * 1.5
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = 1.0

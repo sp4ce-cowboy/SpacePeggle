@@ -320,6 +320,7 @@
 		BA7662392B8C89590022C267 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				BA7662422B8C89590022C267 /* Vector.swift */,
 				BA76623A2B8C89590022C267 /* ObjectSet.swift */,
 				BA76623C2B8C89590022C267 /* LevelStub.swift */,
 				BA7662922B8CA2520022C267 /* View+Extensions.swift */,
@@ -333,7 +334,6 @@
 				BA76623F2B8C89590022C267 /* Constants.swift */,
 				BA7662402B8C89590022C267 /* Logger.swift */,
 				BA7662412B8C89590022C267 /* DisplayLink.swift */,
-				BA7662422B8C89590022C267 /* Vector.swift */,
 				BA85C6752B8F567D00039CCE /* StyleSheet.swift */,
 				BA12BB012B907F9100BCE72C /* AudioManager.swift */,
 			);

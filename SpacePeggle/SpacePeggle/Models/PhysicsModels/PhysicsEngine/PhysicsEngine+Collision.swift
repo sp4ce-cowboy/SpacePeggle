@@ -12,8 +12,8 @@ extension PhysicsEngine {
             for j in (i + 1)..<physicsObjectsArray.count {
                 var object2 = physicsObjectsArray[j]
 
-                if isColliding(object1: object1, object2: object2) != nil {
-                    handleCollisionBetween(object1: &object1, object2: &object2)
+                if let collideDistance = isColliding(object1: object1, object2: object2) {
+                    handleCollisionBetween(object1: &object1, object2: &object2, with: collideDistance)
                     physicsObjects[object1.id] = object1
                     physicsObjects[object2.id] = object2
                 }
@@ -28,26 +28,32 @@ extension PhysicsEngine {
     }
 
     private func handleCollisionBetween(object1: inout any PhysicsObject,
-                                        object2: inout any PhysicsObject) {
+                                        object2: inout any PhysicsObject,
+                                        with distance: Double) {
 
         // Assuming object1 is always the moving object for simplicity.
         // This function now checks for collisions between any two physics objects
         // and handles them based on their properties rather than their types.
         if object1.mass.isFinite {
-            handleCollision(movingObject: &object1, stationaryObject: &object2)
+            handleCollision(movingObject: &object1, stationaryObject: &object2, with: distance)
         } else if object2.mass.isFinite {
-            handleCollision(movingObject: &object2, stationaryObject: &object1)
+            handleCollision(movingObject: &object2, stationaryObject: &object1, with: distance)
         }
-        // If both objects are immovable or have infinite mass, no need to process further.
+        
     }
 
     private func handleCollision(movingObject: inout any PhysicsObject,
-                                 stationaryObject: inout any PhysicsObject) {
+                                 stationaryObject: inout any PhysicsObject,
+                                 with distance: Double) {
 
         let normalVector = (movingObject.centerPosition - stationaryObject.centerPosition).normalized
+        let correction = normalVector * distance
+        let correctedPosition = movingObject.centerPosition + correction
+        movingObject.centerPosition = correctedPosition
+        Logger.log("Correction is \(correction.magnitude)", self)
+
         let dotProduct = Vector.dot(movingObject.velocity, normalVector)
         let reflection = (normalVector * 2.0) * dotProduct
-
         let finalVelocity = movingObject.velocity - reflection
         movingObject.velocity = finalVelocity
 
