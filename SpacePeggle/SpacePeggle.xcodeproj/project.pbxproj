@@ -62,6 +62,7 @@
 		BA76628F2B8C8AE10022C267 /* PhysicsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */; };
 		BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662922B8CA2520022C267 /* View+Extensions.swift */; };
 		BA7662952B8CA7600022C267 /* GameEngine+GOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */; };
+		BA8256922B91BBB800EF31C9 /* UniversalShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8256912B91BBB800EF31C9 /* UniversalShape.swift */; };
 		BA85C6712B8F3EC900039CCE /* AppSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85C6702B8F3EC900039CCE /* AppSceneController.swift */; };
 		BA85C6762B8F567D00039CCE /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85C6752B8F567D00039CCE /* StyleSheet.swift */; };
 		BA8B6AE82B8DEA2000A4FD96 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8B6AE72B8DEA2000A4FD96 /* BucketView.swift */; };
@@ -144,6 +145,7 @@
 		BA7662922B8CA2520022C267 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+GOM.swift"; sourceTree = "<group>"; };
 		BA7662972B8CE3480022C267 /* DeveloperGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DeveloperGuide.md; sourceTree = "<group>"; };
+		BA8256912B91BBB800EF31C9 /* UniversalShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalShape.swift; sourceTree = "<group>"; };
 		BA85C6702B8F3EC900039CCE /* AppSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSceneController.swift; sourceTree = "<group>"; };
 		BA85C6752B8F567D00039CCE /* StyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
 		BA8B6AE72B8DEA2000A4FD96 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		BA76621B2B8C89590022C267 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BA8256892B91BB2600EF31C9 /* UniversalModels */,
 				BA7662962B8CAD4C0022C267 /* LevelDesignModels */,
 				BA76621C2B8C89590022C267 /* PhysicsModels */,
 				BA7662282B8C89590022C267 /* GameModels */,
@@ -328,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				BA76623A2B8C89590022C267 /* ObjectSet.swift */,
-				BA76623B2B8C89590022C267 /* UniversalObject.swift */,
 				BA76623C2B8C89590022C267 /* LevelStub.swift */,
 				BA7662922B8CA2520022C267 /* View+Extensions.swift */,
 			);
@@ -434,6 +436,15 @@
 				BA7662362B8C89590022C267 /* LevelDesigner */,
 			);
 			path = LevelDesignModels;
+			sourceTree = "<group>";
+		};
+		BA8256892B91BB2600EF31C9 /* UniversalModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA76623B2B8C89590022C267 /* UniversalObject.swift */,
+				BA8256912B91BBB800EF31C9 /* UniversalShape.swift */,
+			);
+			path = UniversalModels;
 			sourceTree = "<group>";
 		};
 		BAAC29FD2B8E094900938B85 /* LevelScene */ = {
@@ -549,6 +560,7 @@
 				TargetAttributes = {
 					BA7661D22B8C85FF0022C267 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					BA7661E22B8C86020022C267 = {
 						CreatedOnToolsVersion = 15.2;
@@ -675,6 +687,7 @@
 				BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */,
 				BA7662642B8C89590022C267 /* AbstractGameEngine.swift in Sources */,
 				BA76626C2B8C89590022C267 /* ObjectSet.swift in Sources */,
+				BA8256922B91BBB800EF31C9 /* UniversalShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +842,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BPB6799M73;
@@ -855,6 +869,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -865,6 +880,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BPB6799M73;
