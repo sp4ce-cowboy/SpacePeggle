@@ -91,8 +91,12 @@ extension GameObject {
 
 extension GameObject {
     func overlap(with object: any GameObject) -> Bool {
-        self.shape.intersects(with: object.shape,
-                              at: self.centerPosition,
-                              and: object.centerPosition)
+        if self.shape.intersects(with: object.shape,
+                                 at: self.centerPosition,
+                                 and: object.centerPosition) != nil {
+            return false
+        } else {
+            return true
+        }
     }
 }

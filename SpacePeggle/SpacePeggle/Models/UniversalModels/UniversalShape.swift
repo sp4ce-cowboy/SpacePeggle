@@ -12,13 +12,13 @@ protocol UniversalShape {
 
     func intersects(with shape: UniversalShape,
                     at position: Vector,
-                    and otherPosition: Vector) -> Bool
+                    and otherPosition: Vector) -> Double?
 
     func intersects(withCircle circle: CircularShape,
                     at thisPosition: Vector,
-                    and otherPosition: Vector) -> Bool
+                    and otherPosition: Vector) -> Double?
 
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
-                    and otherPosition: Vector) -> Bool
+                    and otherPosition: Vector) -> Double?
 }

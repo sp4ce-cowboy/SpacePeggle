@@ -55,7 +55,7 @@ public class Constants {
         case rectangle
     }
 
-    static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Bool] = [
+    static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Double?] = [
         ShapeType.circle.rawValue: { this, other, start, end in this.intersects(with: other, at: start, and: end) }
         ]
 

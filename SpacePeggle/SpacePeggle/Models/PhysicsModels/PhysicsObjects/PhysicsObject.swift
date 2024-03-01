@@ -18,7 +18,7 @@ protocol PhysicsObject: UniversalObject {
 
     mutating func applyPhysics(timeStep: TimeInterval)
 
-    func collide(with object: any PhysicsObject) -> Bool
+    func collide(with object: any PhysicsObject) -> Double?
 }
 
 /// The default implementation of a Physics Object.
@@ -78,7 +78,7 @@ extension PhysicsObject {
 
 /// Default collision resolution for PhysicsObjects
  extension PhysicsObject {
-     func collide(with object: any PhysicsObject) -> Bool {
+     func collide(with object: any PhysicsObject) -> Double? {
          self.shape.intersects(with: object.shape,
                                at: self.centerPosition,
                                and: object.centerPosition)

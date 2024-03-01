@@ -19,8 +19,6 @@
 		BA7662502B8C89590022C267 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662162B8C89590022C267 /* LauncherView.swift */; };
 		BA7662522B8C89590022C267 /* GameObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662182B8C89590022C267 /* GameObjectView.swift */; };
 		BA7662532B8C89590022C267 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662192B8C89590022C267 /* BallView.swift */; };
-		BA7662552B8C89590022C267 /* PhysicsShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76621E2B8C89590022C267 /* PhysicsShape.swift */; };
-		BA7662562B8C89590022C267 /* CircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76621F2B8C89590022C267 /* CircleShape.swift */; };
 		BA7662572B8C89590022C267 /* PhysicsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662212B8C89590022C267 /* PhysicsEngine.swift */; };
 		BA7662582B8C89590022C267 /* PhysicsEngine+Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662222B8C89590022C267 /* PhysicsEngine+Boundary.swift */; };
 		BA7662592B8C89590022C267 /* PhysicsEngine+Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662232B8C89590022C267 /* PhysicsEngine+Collision.swift */; };
@@ -103,8 +101,6 @@
 		BA7662162B8C89590022C267 /* LauncherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
 		BA7662182B8C89590022C267 /* GameObjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObjectView.swift; sourceTree = "<group>"; };
 		BA7662192B8C89590022C267 /* BallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
-		BA76621E2B8C89590022C267 /* PhysicsShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsShape.swift; sourceTree = "<group>"; };
-		BA76621F2B8C89590022C267 /* CircleShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShape.swift; sourceTree = "<group>"; };
 		BA7662212B8C89590022C267 /* PhysicsEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsEngine.swift; sourceTree = "<group>"; };
 		BA7662222B8C89590022C267 /* PhysicsEngine+Boundary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Boundary.swift"; sourceTree = "<group>"; };
 		BA7662232B8C89590022C267 /* PhysicsEngine+Collision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Collision.swift"; sourceTree = "<group>"; };
@@ -273,19 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				BA7662912B8CA1320022C267 /* PhysicsObjects */,
-				BA76621D2B8C89590022C267 /* PhysicsShapes */,
 				BA7662202B8C89590022C267 /* PhysicsEngine */,
 			);
 			path = PhysicsModels;
-			sourceTree = "<group>";
-		};
-		BA76621D2B8C89590022C267 /* PhysicsShapes */ = {
-			isa = PBXGroup;
-			children = (
-				BA76621E2B8C89590022C267 /* PhysicsShape.swift */,
-				BA76621F2B8C89590022C267 /* CircleShape.swift */,
-			);
-			path = PhysicsShapes;
 			sourceTree = "<group>";
 		};
 		BA7662202B8C89590022C267 /* PhysicsEngine */ = {
@@ -445,12 +431,20 @@
 		BA8256892B91BB2600EF31C9 /* UniversalModels */ = {
 			isa = PBXGroup;
 			children = (
+				BA96F3092B9220E7006BE36D /* Shapes */,
 				BA76623B2B8C89590022C267 /* UniversalObject.swift */,
 				BA8256912B91BBB800EF31C9 /* UniversalShape.swift */,
+			);
+			path = UniversalModels;
+			sourceTree = "<group>";
+		};
+		BA96F3092B9220E7006BE36D /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
 				BA8256932B91E4D800EF31C9 /* CircularShape.swift */,
 				BA8256952B91E4E500EF31C9 /* RectangularShape.swift */,
 			);
-			path = UniversalModels;
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 		BAAC29FD2B8E094900938B85 /* LevelScene */ = {
@@ -686,11 +680,9 @@
 				BA8256942B91E4D800EF31C9 /* CircularShape.swift in Sources */,
 				BAAC2A012B8E0A8800938B85 /* StartBackgroundView.swift in Sources */,
 				BA7662622B8C89590022C267 /* GameEngine.swift in Sources */,
-				BA7662562B8C89590022C267 /* CircleShape.swift in Sources */,
 				BA7662592B8C89590022C267 /* PhysicsEngine+Collision.swift in Sources */,
 				BA7662612B8C89590022C267 /* GameEngine+Start.swift in Sources */,
 				BA7662762B8C89590022C267 /* GameSceneViewModel+LC.swift in Sources */,
-				BA7662552B8C89590022C267 /* PhysicsShape.swift in Sources */,
 				BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */,
 				BA8256962B91E4E500EF31C9 /* RectangularShape.swift in Sources */,
 				BA7662642B8C89590022C267 /* AbstractGameEngine.swift in Sources */,

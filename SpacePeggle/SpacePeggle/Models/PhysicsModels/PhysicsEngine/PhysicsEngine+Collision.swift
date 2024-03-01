@@ -12,7 +12,7 @@ extension PhysicsEngine {
             for j in (i + 1)..<physicsObjectsArray.count {
                 var object2 = physicsObjectsArray[j]
 
-                if isColliding(object1: object1, object2: object2) {
+                if isColliding(object1: object1, object2: object2) != nil {
                     handleCollisionBetween(object1: &object1, object2: &object2)
                     physicsObjects[object1.id] = object1
                     physicsObjects[object2.id] = object2
@@ -23,7 +23,7 @@ extension PhysicsEngine {
     }
 
     private func isColliding(object1: any PhysicsObject,
-                             object2: any PhysicsObject) -> Bool {
+                             object2: any PhysicsObject) -> Double? {
         object1.collide(with: object2)
     }
 

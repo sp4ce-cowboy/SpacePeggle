@@ -24,7 +24,7 @@ class RectangularShape: NSObject, UniversalShape {
 extension RectangularShape {
     func intersects(with shape: UniversalShape,
                     at thisPosition: Vector,
-                    and otherPosition: Vector) -> Bool {
+                    and otherPosition: Vector) -> Double? {
         shape.intersects(withRectangle: self, at: thisPosition,
                          and: otherPosition)
     }
@@ -34,16 +34,16 @@ extension RectangularShape {
 
     func intersects(withCircle circle: CircularShape,
                     at thisPosition: Vector,
-                    and otherPosition: Vector) -> Bool {
+                    and otherPosition: Vector) -> Double? {
 
-        false
+        nil
     }
 }
 
 extension RectangularShape {
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
-                    and otherPosition: Vector) -> Bool {
-        false
+                    and otherPosition: Vector) -> Double? {
+        nil
     }
 }
