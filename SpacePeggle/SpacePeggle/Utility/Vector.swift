@@ -2,7 +2,8 @@ import SwiftUI
 import Foundation
 
 /// A class to model a vector quantity with 2 generic doubles
-struct Vector: Equatable {
+struct Vector {
+
     private var rawX: Double
     private var rawY: Double
 
@@ -137,6 +138,10 @@ extension Vector {
     // Pseudo-cross product of two vectors (result is a scalar)
     static func cross(_ left: Vector, _ right: Vector) -> Double {
         left.x * right.y - left.y * right.x
+    }
+
+    static func == (lhs: Vector, rhs: Vector) -> Bool {
+        lhs.x == rhs.x && lhs.y == rhs.y
     }
 
 }

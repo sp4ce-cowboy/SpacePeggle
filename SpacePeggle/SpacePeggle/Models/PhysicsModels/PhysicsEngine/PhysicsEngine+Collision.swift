@@ -24,7 +24,7 @@ extension PhysicsEngine {
 
     private func isColliding(object1: any PhysicsObject,
                              object2: any PhysicsObject) -> Bool {
-        object1.intersects(with: object2)
+        object1.collide(with: object2)
     }
 
     private func handleCollisionBetween(object1: inout any PhysicsObject,

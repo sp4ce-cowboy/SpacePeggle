@@ -1,6 +1,19 @@
 import SwiftUI
 
-struct CircleShape: PhysicsShape {
+/*
+struct CircleShape: UniversalShape {
+    var rotation: Angle
+    
+    var scale: Double
+    
+    func intersects(with shape: UniversalShape) -> Bool {
+        <#code#>
+    }
+    
+    init(height: Double, width: Double, rotation: Angle, scale: Double) {
+        <#code#>
+    }
+    
     var center: Vector
     var radius: Double
     var width: Double {
@@ -13,15 +26,15 @@ struct CircleShape: PhysicsShape {
     }
 
 }
+*/
 
 /// Adding each intersection as an extension for each shape ensures
 /// that more PhysicsShapes can be added without the Open-closed principle
 /// being violated.
 ///
-/// For problem set 3, since both Ball and Peg are of CircleShape, circle-circle
-/// intersection alone is sufficient.
+/*
 extension CircleShape {
-    func intersects(with shape: PhysicsShape) -> Bool {
+    func intersects(with shape: UniversalShape) -> Bool {
         if let circle = shape as? CircleShape {
             return self.intersects(with: circle)
         }
@@ -39,3 +52,4 @@ extension CircleShape {
         }*/
     }
 }
+*/

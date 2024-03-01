@@ -10,5 +10,6 @@ class Logger {
             let callerType = caller == nil ? "Unknown" : String(describing: type(of: caller!))
             print("[\(callerType)] \(string)")
         }
+
     }
 }

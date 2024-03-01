@@ -63,6 +63,8 @@
 		BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662922B8CA2520022C267 /* View+Extensions.swift */; };
 		BA7662952B8CA7600022C267 /* GameEngine+GOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */; };
 		BA8256922B91BBB800EF31C9 /* UniversalShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8256912B91BBB800EF31C9 /* UniversalShape.swift */; };
+		BA8256942B91E4D800EF31C9 /* CircularShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8256932B91E4D800EF31C9 /* CircularShape.swift */; };
+		BA8256962B91E4E500EF31C9 /* RectangularShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8256952B91E4E500EF31C9 /* RectangularShape.swift */; };
 		BA85C6712B8F3EC900039CCE /* AppSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85C6702B8F3EC900039CCE /* AppSceneController.swift */; };
 		BA85C6762B8F567D00039CCE /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85C6752B8F567D00039CCE /* StyleSheet.swift */; };
 		BA8B6AE82B8DEA2000A4FD96 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8B6AE72B8DEA2000A4FD96 /* BucketView.swift */; };
@@ -146,6 +148,8 @@
 		BA7662942B8CA7600022C267 /* GameEngine+GOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+GOM.swift"; sourceTree = "<group>"; };
 		BA7662972B8CE3480022C267 /* DeveloperGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DeveloperGuide.md; sourceTree = "<group>"; };
 		BA8256912B91BBB800EF31C9 /* UniversalShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalShape.swift; sourceTree = "<group>"; };
+		BA8256932B91E4D800EF31C9 /* CircularShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularShape.swift; sourceTree = "<group>"; };
+		BA8256952B91E4E500EF31C9 /* RectangularShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularShape.swift; sourceTree = "<group>"; };
 		BA85C6702B8F3EC900039CCE /* AppSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSceneController.swift; sourceTree = "<group>"; };
 		BA85C6752B8F567D00039CCE /* StyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
 		BA8B6AE72B8DEA2000A4FD96 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
@@ -353,8 +357,8 @@
 		BA7662432B8C89590022C267 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BAD80ADB2B90B243008E998F /* AppDelegate.swift */,
 				BA7662442B8C89590022C267 /* SpacePeggleApp.swift */,
+				BAD80ADB2B90B243008E998F /* AppDelegate.swift */,
 				BA12BB032B90886100BCE72C /* AppScene.swift */,
 				BA85C6702B8F3EC900039CCE /* AppSceneController.swift */,
 				BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */,
@@ -443,6 +447,8 @@
 			children = (
 				BA76623B2B8C89590022C267 /* UniversalObject.swift */,
 				BA8256912B91BBB800EF31C9 /* UniversalShape.swift */,
+				BA8256932B91E4D800EF31C9 /* CircularShape.swift */,
+				BA8256952B91E4E500EF31C9 /* RectangularShape.swift */,
 			);
 			path = UniversalModels;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				BA76625A2B8C89590022C267 /* AbstractPhysicsEngine.swift in Sources */,
 				BA76624F2B8C89590022C267 /* LevelView.swift in Sources */,
 				BA7662722B8C89590022C267 /* DisplayLink.swift in Sources */,
+				BA8256942B91E4D800EF31C9 /* CircularShape.swift in Sources */,
 				BAAC2A012B8E0A8800938B85 /* StartBackgroundView.swift in Sources */,
 				BA7662622B8C89590022C267 /* GameEngine.swift in Sources */,
 				BA7662562B8C89590022C267 /* CircleShape.swift in Sources */,
@@ -685,6 +692,7 @@
 				BA7662762B8C89590022C267 /* GameSceneViewModel+LC.swift in Sources */,
 				BA7662552B8C89590022C267 /* PhysicsShape.swift in Sources */,
 				BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */,
+				BA8256962B91E4E500EF31C9 /* RectangularShape.swift in Sources */,
 				BA7662642B8C89590022C267 /* AbstractGameEngine.swift in Sources */,
 				BA76626C2B8C89590022C267 /* ObjectSet.swift in Sources */,
 				BA8256922B91BBB800EF31C9 /* UniversalShape.swift in Sources */,

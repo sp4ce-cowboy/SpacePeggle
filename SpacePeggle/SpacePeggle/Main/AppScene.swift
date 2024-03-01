@@ -27,3 +27,9 @@ struct AppScene: View {
     }
 
 }
+
+#Preview {
+    AppScene()
+        .environmentObject(AppSceneController.shared)
+        .preferredColorScheme(.dark)
+}

@@ -10,14 +10,15 @@ protocol PhysicsObject: UniversalObject {
     var velocity: Vector { get set }
     var force: Vector { get set }
     var acceleration: Vector { get }
-    var shape: PhysicsShape { get }
+
+    var shape: UniversalShape { get set }
 
     init(mass: Double, velocity: Vector,
-         centerPosition: Vector, force: Vector, id: UUID)
+         centerPosition: Vector, force: Vector, id: UUID, shape: UniversalShape)
 
     mutating func applyPhysics(timeStep: TimeInterval)
 
-    func intersects(with object: any PhysicsObject) -> Bool
+    func collide(with object: any PhysicsObject) -> Bool
 }
 
 /// The default implementation of a Physics Object.
@@ -75,9 +76,11 @@ extension PhysicsObject {
 
 }
 
- /// Default collision resolution for PhysicsObjects
+/// Default collision resolution for PhysicsObjects
  extension PhysicsObject {
-     func intersects(with object: any PhysicsObject) -> Bool {
-         self.shape.intersects(with: object.shape)
+     func collide(with object: any PhysicsObject) -> Bool {
+         self.shape.intersects(with: object.shape,
+                               at: self.centerPosition,
+                               and: object.centerPosition)
      }
  }

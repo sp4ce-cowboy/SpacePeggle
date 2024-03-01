@@ -3,7 +3,7 @@ import Foundation
 
 /// The launcher model models the cannon launcher itself, and defines the layout 
 /// of the launcher
-class Launcher: UniversalObject {
+class Launcher {
     var id = UUID()
     var centerPosition: Vector
 
