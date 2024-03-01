@@ -42,7 +42,7 @@ extension GameObject {
 
         let shapeWidth = try container.decode(Double.self, forKey: .shapeWidth)
         let shapeHeight = try container.decode(Double.self, forKey: .shapeHeight)
-        //let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
+        // let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeScale = try container.decode(Double.self, forKey: .shapeScale)
         let shapeType = try container.decode(String.self, forKey: .shapeType)
@@ -80,7 +80,7 @@ extension GameObject {
 
         try container.encode(shape.width, forKey: .shapeWidth)
         try container.encode(shape.height, forKey: .shapeHeight)
-        //try container.encode(shape.rotation.radians, forKey: .shapeRotation)
+        // try container.encode(shape.rotation.radians, forKey: .shapeRotation)
         try container.encode(shape.rotation, forKey: .shapeRotation)
         try container.encode(shape.scale, forKey: .shapeScale)
         try container.encode(shape.shapeType, forKey: .shapeType)

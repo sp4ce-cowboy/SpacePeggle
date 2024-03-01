@@ -13,6 +13,9 @@ public class Constants {
     /// Universally declared screen height
     static var UI_SCREEN_HEIGHT: Double = UIScreen.currentSize.height
 
+    /// The name of the folder used to store the levels locally
+    public static let STORAGE_CONTAINER_NAME: String = "Levels"
+
     /// Universally declared object diameter
     static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.height / 25.0
 

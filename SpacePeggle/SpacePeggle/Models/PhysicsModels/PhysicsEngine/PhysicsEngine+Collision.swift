@@ -39,7 +39,7 @@ extension PhysicsEngine {
         } else if object2.mass.isFinite {
             handleCollision(movingObject: &object2, stationaryObject: &object1, with: distance)
         }
-        
+
     }
 
     private func handleCollision(movingObject: inout any PhysicsObject,
