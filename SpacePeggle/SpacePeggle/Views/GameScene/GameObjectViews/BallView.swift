@@ -4,8 +4,8 @@ struct BallView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
 
     var ballShape: UniversalShape { viewModel.getCurrentBallShape()}
-    var ballWidth: Double { ballShape.width }
-    var ballHeight: Double { ballShape.height }
+    var ballWidth: Double { ballShape.trueWidth }
+    var ballHeight: Double { ballShape.trueHeight }
     var imageName: String { ObjectSet.defaultGameObjectSet["Ball"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB }
 
     var body: some View {

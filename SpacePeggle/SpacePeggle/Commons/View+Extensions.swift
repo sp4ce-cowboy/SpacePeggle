@@ -62,3 +62,13 @@ extension CGFloat {
     var half: Double { self * 0.5 }
     var twice: Double { self * 2.0 }
 }
+
+extension CGPoint {
+    var half: CGPoint {
+        CGPoint(x: self.x / 2.0, y: self.y / 2.0)
+    }
+
+    var unitPoint: UnitPoint {
+        UnitPoint(x: Double(self.x), y: Double(self.y))
+    }
+}

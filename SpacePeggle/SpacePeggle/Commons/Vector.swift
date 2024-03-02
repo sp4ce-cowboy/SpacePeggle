@@ -78,6 +78,10 @@ struct Vector: Equatable {
         CGPoint(x: self.x, y: self.y)
     }
 
+    var unitPoint: UnitPoint {
+        UnitPoint(x: rawX, y: rawY)
+    }
+
     mutating func invert() {
         x.negate()
         y.negate()

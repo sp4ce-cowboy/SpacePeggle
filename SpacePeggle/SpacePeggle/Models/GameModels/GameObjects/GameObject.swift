@@ -33,15 +33,10 @@ protocol GameObject: UniversalObject, Codable {
 /// This extension adds computed properties that provide quicker access to the
 /// properties of the GameObject's shape
 extension GameObject {
-    var width: Double {
-        get { shape.width }
-        set { shape.width = newValue }
-    }
-
-    var height: Double {
-        get { shape.height }
-        set { shape.height = newValue }
-    }
+    var width: Double { shape.width }
+    var trueWidth: Double { shape.trueWidth }
+    var height: Double { shape.height }
+    var trueHeight: Double { shape.trueHeight }
 
     var scale: Double {
         get { shape.scale }
@@ -54,11 +49,10 @@ extension GameObject {
     var rotation: Angle {
         get { Angle(radians: shape.rotation) }
         set {
-            Logger.log("Rotation for \(self.id) updated to \(newValue)")
+            Logger.log("Rotation for \(self.id) updated to \(newValue)", self)
             shape.rotation = newValue.radians
         }
     }
-
 }
 
 /// This provides a default implementation for a GameObject to be coded and decoded
@@ -109,8 +103,8 @@ extension GameObject {
         try container.encode(centerPosition.y, forKey: .centerPositionY)
         try container.encode(gameObjectType, forKey: .gameObjectType)
 
-        try container.encode(shape.width, forKey: .shapeWidth)
-        try container.encode(shape.height, forKey: .shapeHeight)
+        try container.encode(shape.trueWidth, forKey: .shapeWidth)
+        try container.encode(shape.trueHeight, forKey: .shapeHeight)
         // try container.encode(shape.rotation.radians, forKey: .shapeRotation)
         try container.encode(shape.rotation, forKey: .shapeRotation)
         try container.encode(shape.scale, forKey: .shapeScale)
@@ -124,9 +118,9 @@ extension GameObject {
     func overlap(with object: any GameObject) -> Bool {
         if self.shape.intersects(with: object.shape, at: self.centerPosition,
                                  and: object.centerPosition) != nil {
-            return false
-        } else {
             return true
+        } else {
+            return false
         }
     }
 }

@@ -1,20 +1,17 @@
 import SwiftUI
 
-class RectangularShape: NSObject, UniversalShape {
+struct RectangularShape: UniversalShape {
 
     var shapeType: String = Constants.ShapeType.rectangle.rawValue
 
-    var height: Double
-
-    var width: Double
-
+    let trueHeight: Double
+    let trueWidth: Double
     var rotation: Double
-
     var scale: Double
 
     init(height: Double, width: Double, rotation: Double, scale: Double) {
-        self.height = height
-        self.width = width
+        self.trueHeight = height
+        self.trueWidth = width
         self.rotation = rotation
         self.scale = scale
     }

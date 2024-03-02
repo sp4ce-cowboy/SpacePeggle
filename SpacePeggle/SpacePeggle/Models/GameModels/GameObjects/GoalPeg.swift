@@ -1,24 +1,48 @@
 import Foundation
 import SwiftUI
 
-class GoalPeg: Peg {
+final class GoalPeg: Peg {
+    var id: UUID
+    var centerPosition: Vector
+    var shape: UniversalShape
 
-    required init(mass: Double, velocity: Vector, centerPosition: Vector,
-                  force: Vector, id: UUID = UUID(),
-                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+    var mass: Double = .infinity
+    var velocity: Vector = .zero
+    var force: Vector = .zero
 
-        super.init(mass: mass, velocity: velocity, centerPosition: centerPosition, force: force, id: id, shape: shape)
+    var gameObjectType: String = "GoalPeg"
+    var isActive = false
+
+    /// Initializer for Peg as a GameObject
+    init(centerPosition: Vector,
+         id: UUID = UUID(),
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+
+        self.centerPosition = centerPosition
+        self.id = id
+        self.shape = shape
+
     }
 
-    required init(centerPosition: Vector, id: UUID = UUID(),
-                  gameObjectType: String = "GoalPeg",
-                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+    /// Initializer for Peg as a PhysicsObject
+    init(mass: Double = .infinity,
+         velocity: Vector = .zero,
+         centerPosition: Vector,
+         force: Vector = .zero,
+         id: UUID = UUID(),
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
-        super.init(centerPosition: centerPosition, id: id, gameObjectType: gameObjectType, shape: shape)
+        self.mass = mass
+        self.velocity = velocity
+        self.centerPosition = centerPosition
+        self.force = force
+        self.id = id
+        self.shape = shape
     }
 
-    override func activateGameObject() {
+    func activateGameObject() {
         self.gameObjectType = "GoalPegActive"
         isActive = true
     }
+
 }

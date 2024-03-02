@@ -1,6 +1,6 @@
 import SwiftUI
 
-class LevelStub {
+struct LevelStub {
 
     /// This level stub generates some random Pegs to be used for simulation
     /// of a predesigned level

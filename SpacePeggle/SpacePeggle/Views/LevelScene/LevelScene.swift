@@ -10,11 +10,9 @@ struct LevelScene: View {
     // @ViewBuilder
     var body: some View {
         ZStack {
-            LauncherView()
-                .environmentObject(GameSceneViewModel(viewModel.geometryState))
             PlayableAreaView()
-            LevelPauseButtonView()
             LevelObjectsBoardView()
+            LevelPauseButtonView()
             // ActionBarView()
         }
         .if(viewModel.isLevelDesignerPaused) { view in

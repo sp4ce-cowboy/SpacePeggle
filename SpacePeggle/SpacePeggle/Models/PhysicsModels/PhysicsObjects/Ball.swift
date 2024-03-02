@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// The Ball model extends the PhysicsObject protocol
-class Ball: PhysicsObject {
+final class Ball: PhysicsObject {
 
     var id: UUID
     var mass: Double
@@ -11,12 +11,12 @@ class Ball: PhysicsObject {
     var shape: UniversalShape
     var isSubjectToGravity = false
 
-    required init(mass: Double = 100,
-                  velocity: Vector = Vector.zero,
-                  centerPosition: Vector = .zero,
-                  force: Vector = .zero,
-                  id: UUID = UUID(),
-                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+    init(mass: Double = 100,
+         velocity: Vector = Vector.zero,
+         centerPosition: Vector = .zero,
+         force: Vector = .zero,
+         id: UUID = UUID(),
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.mass = mass
         self.centerPosition = centerPosition

@@ -14,6 +14,7 @@ struct SpacePeggleApp: App {
             AppScene()
                 .environmentObject(sceneController)
                 .preferredColorScheme(.dark)
+                // .aspectRatio(3 / 4, contentMode: .fit)
         }
     }
 }

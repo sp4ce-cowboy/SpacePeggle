@@ -16,7 +16,7 @@ struct LevelPauseButtonView: View {
                             .foregroundStyle(Color.black)
                             .opacity(0.6)
                     }
-                    .padding()
+                    .padding([.all], 30)
                 }
                 Spacer() // Pushes the VStack content towards the top
             }

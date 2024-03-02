@@ -80,6 +80,7 @@
 		BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAC29FB2B8E094100938B85 /* StartScene.swift */; };
 		BAAC29FF2B8E095F00938B85 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAC29FE2B8E095F00938B85 /* LevelScene.swift */; };
 		BAAC2A012B8E0A8800938B85 /* StartBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAC2A002B8E0A8800938B85 /* StartBackgroundView.swift */; };
+		BABA64A52B937F8900A02BD1 /* LevelObjectResizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABA64A42B937F8900A02BD1 /* LevelObjectResizerView.swift */; };
 		BACF21CD2B90329E007FCE8D /* GameSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21CC2B90329E007FCE8D /* GameSceneViewModel.swift */; };
 		BACF21D42B9046AE007FCE8D /* LevelSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */; };
 		BACF21D92B904CA5007FCE8D /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21D82B904CA5007FCE8D /* StartMenuView.swift */; };
@@ -173,6 +174,7 @@
 		BAAC29FB2B8E094100938B85 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		BAAC29FE2B8E095F00938B85 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		BAAC2A002B8E0A8800938B85 /* StartBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBackgroundView.swift; sourceTree = "<group>"; };
+		BABA64A42B937F8900A02BD1 /* LevelObjectResizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelObjectResizerView.swift; sourceTree = "<group>"; };
 		BACF21CC2B90329E007FCE8D /* GameSceneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneViewModel.swift; sourceTree = "<group>"; };
 		BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSceneViewModel.swift; sourceTree = "<group>"; };
 		BACF21D82B904CA5007FCE8D /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
@@ -479,6 +481,12 @@
 		BA96F3182B931664006BE36D /* LevelBoardViews */ = {
 			isa = PBXGroup;
 			children = (
+				BA96F3192B931F0B006BE36D /* LevelBackgroundView.swift */,
+				BA96F30E2B9312F4006BE36D /* PlayableAreaView.swift */,
+				BA96F3102B931300006BE36D /* LevelObjectsBoardView.swift */,
+				BA96F3122B93132D006BE36D /* ActionBarView.swift */,
+				BA96F3142B93133E006BE36D /* SelectionBarView.swift */,
+				BA96F3162B93134A006BE36D /* FunctionBarView.swift */,
 			);
 			path = LevelBoardViews;
 			sourceTree = "<group>";
@@ -486,19 +494,22 @@
 		BAAC29FD2B8E094900938B85 /* LevelScene */ = {
 			isa = PBXGroup;
 			children = (
-				BA96F3182B931664006BE36D /* LevelBoardViews */,
 				BAAC29FE2B8E095F00938B85 /* LevelScene.swift */,
-				BA96F30E2B9312F4006BE36D /* PlayableAreaView.swift */,
-				BA96F3102B931300006BE36D /* LevelObjectsBoardView.swift */,
-				BA96F3122B93132D006BE36D /* ActionBarView.swift */,
-				BA96F3142B93133E006BE36D /* SelectionBarView.swift */,
-				BA96F3162B93134A006BE36D /* FunctionBarView.swift */,
-				BA96F3192B931F0B006BE36D /* LevelBackgroundView.swift */,
+				BABA64A32B93782100A02BD1 /* LevelObjectViews */,
+				BA96F3182B931664006BE36D /* LevelBoardViews */,
+			);
+			path = LevelScene;
+			sourceTree = "<group>";
+		};
+		BABA64A32B93782100A02BD1 /* LevelObjectViews */ = {
+			isa = PBXGroup;
+			children = (
 				BA96F31B2B9321DA006BE36D /* LevelObjectView.swift */,
 				BA96F31F2B933133006BE36D /* LevelPauseButtonView.swift */,
 				BA96F3212B9332D6006BE36D /* LevelMenuView.swift */,
+				BABA64A42B937F8900A02BD1 /* LevelObjectResizerView.swift */,
 			);
-			path = LevelScene;
+			path = LevelObjectViews;
 			sourceTree = "<group>";
 		};
 		BACF21CE2B9032F8007FCE8D /* GameSceneVM */ = {
@@ -730,6 +741,7 @@
 				BA7662622B8C89590022C267 /* GameEngine.swift in Sources */,
 				BA7662592B8C89590022C267 /* PhysicsEngine+Collision.swift in Sources */,
 				BA7662612B8C89590022C267 /* GameEngine+Start.swift in Sources */,
+				BABA64A52B937F8900A02BD1 /* LevelObjectResizerView.swift in Sources */,
 				BA7662762B8C89590022C267 /* GameSceneViewModel+LC.swift in Sources */,
 				BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */,
 				BA8256962B91E4E500EF31C9 /* RectangularShape.swift in Sources */,

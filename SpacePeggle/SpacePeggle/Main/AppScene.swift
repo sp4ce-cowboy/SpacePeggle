@@ -19,13 +19,16 @@ struct AppScene: View {
                     .currentScene(geometry: geometry)
                     .id(sceneController.currentSceneName)
             }
+
             .animation(.default.delay(0.5), value: sceneController.currentSceneName)
             .onAppear {
                 Constants.UI_SCREEN_SIZE = Constants.getFullScreen(from: geometry).size
-                Logger.log("Screen size is \(Constants.UI_SCREEN_SIZE)")
+                Logger.log("Screen size is \(Constants.UI_SCREEN_SIZE)", self)
             }
         }
+        .ignoresSafeArea()
         // .aspectRatio(3 / 4, contentMode: .fit) // MARK: This changes the UI_SCREEN_SIZE above!
+
     }
 
 }

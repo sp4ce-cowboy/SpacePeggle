@@ -1,26 +1,30 @@
 import SwiftUI
 
-class CircularShape: UniversalShape {
+struct CircularShape: UniversalShape {
 
-    var shapeType: String = Constants.ShapeType.circle.rawValue
-    var radius: Double
+    let shapeType: String = Constants.ShapeType.circle.rawValue
+    let trueRadius: Double
     var rotation: Double
     var scale: Double
 
-    var height: Double {
-        get { radius * 2 }
-        set { radius = newValue / 2 }
+    var trueHeight: Double {
+        trueRadius * 2
+        // set { radius = newValue / 2 }
     }
 
-    var width: Double {
-        get { radius * 2 }
-        set { radius = newValue / 2 }
+    var trueWidth: Double {
+        trueRadius * 2
+        // set { radius = newValue / 2 }
+    }
+
+    var radius: Double {
+        trueRadius * scale
     }
 
     init(radius: Double = Constants.UNIVERSAL_LENGTH,
          rotation: Double = 0.0,
          scale: Double = 1.0) {
-        self.radius = radius
+        self.trueRadius = radius
         self.rotation = rotation
         self.scale = scale
     }

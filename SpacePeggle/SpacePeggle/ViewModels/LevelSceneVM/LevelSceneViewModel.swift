@@ -4,10 +4,11 @@ class LevelSceneViewModel: ObservableObject {
 
     @Published var isLevelDesignerPaused = false
     @Published var isLevelObjectSelected = false
+    @Published var currentGameObject: UUID?
     var geometryState: GeometryProxy
-    var selectedGameObject: Constants.GameObjectType = .NormalPeg
-    // var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
-    @Published var currentLevel: AbstractLevelAdvanced = LevelStub().getLevelStub()
+    var selectedMode: Constants.LevelMode = .NormalPeg
+    var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    // @Published var currentLevel: AbstractLevelAdvanced = LevelStub().getLevelStub()
 
     init(_ geometryState: GeometryProxy) {
         self.geometryState = geometryState
@@ -42,37 +43,69 @@ extension LevelSceneViewModel {
         let locationVector = Vector(with: location)
         var gameObject: any GameObject = NormalPeg(centerPosition: locationVector)
 
-        switch selectedGameObject {
+        switch selectedMode {
         case .NormalPeg:
             gameObject = NormalPeg(centerPosition: locationVector)
         case .GoalPeg:
             gameObject = GoalPeg(centerPosition: locationVector)
         case .Block:
             break
+        case .Remove:
+            break
         }
 
         currentLevel.storeGameObject(gameObject)
-        Logger.log("GameObject \(selectedGameObject) stored at \(locationVector)", self)
+        Logger.log("GameObject \(selectedMode) stored at \(locationVector)", self)
         Logger.log("Level now contains \(currentLevel.gameObjects.keys.count) items", self)
     }
 
-    func handleLevelObjectRotation(_ view: LevelObjectView, angle: Angle) {
+    func handleLevelObjectRotation(_ object: any GameObject, angle: Angle) {
         triggerRefresh()
-        Logger.log("New angle for \(view.levelObject.id) is \(angle)", self)
-        currentLevel.handleObjectRotation(id: view.levelObject.id, value: angle)
+        Logger.log("New angle for \(object.id) is \(angle)", self)
+        currentLevel.handleObjectRotation(id: object.id, value: angle)
     }
 
-    func handleLevelObjectMagnification(_ view: LevelObjectView, scale: Double) {
+    func handleLevelObjectMagnification(_ object: any GameObject, scale: Double) {
         triggerRefresh()
-        Logger.log("New scale is \(scale)", self)
-        currentLevel.handleObjectMagnification(id: view.levelObject.id, scale: scale)
+        Logger.log("New scale for \(object.id) is \(scale)", self)
+        currentLevel.handleObjectMagnification(id: object.id, scale: scale)
     }
 
-    func handleLevelObjectLongPress(_ view: LevelObjectView) {
+    func handleLevelObjectRemoval(_ object: any GameObject) {
         triggerRefresh()
-        Logger.log("LevelObject \(view.levelObject.id) removed")
-        currentLevel.handleObjectRemoval(id: view.levelObject.id)
+        Logger.log("LevelObject \(object.id) removed", self)
+        currentLevel.handleObjectRemoval(id: object.id)
     }
+
+    func handleLevelObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
+        triggerRefresh()
+        var startLocation = drag.startLocation
+        var stopLocation = drag.location
+        var latestValidLocation = object.centerPosition.point
+
+        var newObject = object
+        newObject.centerPosition = Vector(with: stopLocation)
+        Logger.log("Drag gesture triggered with location \(stopLocation)", self)
+
+        var isOverlap = false
+        for gameObject in currentLevel.gameObjects.values where object.id != gameObject.id {
+            if newObject.overlap(with: gameObject) {
+                Logger.log("Overlapping", self)
+                isOverlap = true
+                return
+            }
+        }
+
+        if !isOverlap {
+            Logger.log("Moving object while boolean is: \(isOverlap)", self)
+            currentLevel.gameObjects[object.id]?.centerPosition = Vector(with: stopLocation)
+        }
+    }
+
+}
+
+/// This extension provides for the rotation and scaling functionality.
+extension LevelSceneViewModel {
 
 }
 

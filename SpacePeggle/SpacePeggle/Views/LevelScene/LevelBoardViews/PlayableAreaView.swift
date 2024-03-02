@@ -11,27 +11,27 @@ import SwiftUI
 struct PlayableAreaView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
 
-    var size: CGSize {
-        viewModel.geometryState.size
-    }
-
-    var width: Double {
-        size.width
-    }
-    var height: Double {
-        size.height
-    }
+    var size: CGSize { viewModel.geometryState.size }
+    var width: Double { size.width }
+    var height: Double { size.height }
 
     var body: some View {
         Rectangle()
             .foregroundColor(.clear)
-            // .padding()
+            .padding()
             .frame(width: width, height: height)
-            // .pos
             .contentShape(Rectangle())
-            .onTapGesture { location in
-                Logger.log("Tap detected at \(location)", self)
-                viewModel.handleAreaTap(in: location)
+            .if(!viewModel.isLevelDesignerPaused) { view in
+                view.gesture(handleTap)
+            }
+    }
+
+    private var handleTap: some Gesture {
+        SpatialTapGesture()
+            .onEnded { value in
+                viewModel.currentGameObject = nil
+                Logger.log("Tap detected at \(value.location)", self)
+                viewModel.handleAreaTap(in: value.location)
             }
     }
 }

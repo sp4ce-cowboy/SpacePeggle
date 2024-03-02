@@ -47,6 +47,9 @@ public class Constants {
     /// Threshold duration to activate peg removal
     static let STUCK_DURATION_THRESHOLD = 3.0
 
+    /// The minimum movement required to register a drag gesture
+    static let MOVEMENT_THRESHOLD: CGFloat = 1.0
+
     /// CodingKeys enum for a universal coding means
     enum CodingKeys: String, CodingKey {
         case id, centerPositionX, centerPositionY, gameObjectType,
@@ -59,10 +62,11 @@ public class Constants {
         case rectangle
     }
 
-    enum GameObjectType: String, Codable {
+    enum LevelMode: String, Codable {
         case NormalPeg
         case GoalPeg
         case Block
+        case Remove
     }
 
     static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Double?] = [
