@@ -36,7 +36,7 @@ extension Level {
             if let distance = object.overlap(with: gameObject) {
                 let normalVector = (object.centerPosition - gameObject.centerPosition).normalized
                 let correction = normalVector * (distance + 0.000000001)
-                let correctedPosition = oacbject.centerPosition + correction
+                let correctedPosition = object.centerPosition + correction
                 updateObjectPosition(object, with: correctedPosition)
                 Logger.log("Overlapping", self)
                 isOverlap = true
