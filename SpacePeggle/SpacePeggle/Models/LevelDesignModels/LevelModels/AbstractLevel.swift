@@ -26,4 +26,7 @@ protocol AbstractLevelAdvanced: AbstractLevel {
     func handleObjectRotation(id: UUID, value: Angle)
     func handleObjectMagnification(id: UUID, scale: Double)
     func handleObjectRemoval(id: UUID)
+    func updateObjectPosition(id: UUID, with position: Vector)
+    func updateObjectPosition(_ gameObject: any GameObject, with position: Vector)
+    func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value)
 }

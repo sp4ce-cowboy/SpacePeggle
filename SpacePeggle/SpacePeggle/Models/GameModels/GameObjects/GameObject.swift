@@ -27,7 +27,7 @@ protocol GameObject: UniversalObject, Codable {
 
     /// GameObjects overlap while PhysicsObjects collide, both of which
     /// are determined by UniversalShapes that intersect.
-    func overlap(with object: any GameObject) -> Bool
+    func overlap(with object: any GameObject) -> Double?
 }
 
 /// This extension adds computed properties that provide quicker access to the
@@ -115,12 +115,8 @@ extension GameObject {
 /// This extension adds default collision resolution measures to game objects
 
 extension GameObject {
-    func overlap(with object: any GameObject) -> Bool {
-        if self.shape.intersects(with: object.shape, at: self.centerPosition,
-                                 and: object.centerPosition) != nil {
-            return true
-        } else {
-            return false
-        }
+    func overlap(with object: any GameObject) -> Double? {
+        self.shape.intersects(with: object.shape, at: self.centerPosition,
+                                 and: object.centerPosition)
     }
 }

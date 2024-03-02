@@ -43,6 +43,14 @@ final class Level {
         // assert(verify())
     }
 
+    func updateObjectPosition(id: UUID, with position: Vector) {
+        gameObjects[id]?.centerPosition = position
+    }
+
+    func updateObjectPosition(_ gameObject: any GameObject, with position: Vector) {
+        gameObjects[gameObject.id]?.centerPosition = position
+    }
+
     /// Implicit checkRep
     func verify() -> Bool {
         gameObjects.allSatisfy({ (key: UUID, value: GameObject) in
