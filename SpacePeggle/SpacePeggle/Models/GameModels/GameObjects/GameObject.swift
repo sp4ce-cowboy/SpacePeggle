@@ -30,6 +30,27 @@ protocol GameObject: UniversalObject, Codable {
     func overlap(with object: any GameObject) -> Bool
 }
 
+/// This extension adds computed properties that provide quicker access to the
+/// properties of the GameObject's shape
+extension GameObject {
+    var width: Double {
+        shape.width
+    }
+
+    var height: Double {
+        shape.height
+    }
+
+    var scale: Double {
+        shape.scale
+    }
+
+    var rotation: Angle {
+        Angle(radians: shape.rotation)
+    }
+
+}
+
 /// This provides a default implementation for a GameObject to be coded and decoded
 extension GameObject {
 

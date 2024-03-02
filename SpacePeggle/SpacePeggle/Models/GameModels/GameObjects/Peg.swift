@@ -3,11 +3,6 @@ import Foundation
 
 class Peg: GameObject, PhysicsObject {
 
-    /// See Ball.swift
-    static let PEG_RADIUS =
-    Double(ObjectSet
-        .defaultPhysicsObjectSet["DefaultPeg"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH)) / 2
-
     var id: UUID
     var centerPosition: Vector
 

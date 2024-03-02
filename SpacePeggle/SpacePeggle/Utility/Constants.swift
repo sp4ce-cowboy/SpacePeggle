@@ -20,22 +20,22 @@ public class Constants {
     static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.height / 25.0
 
     /// Universally declared unit mass
-    static let UNIT_MASS: Double = 1.0
+    static let UNIT_MASS: Double = .unit
 
     /// Universally declared velocity cut-off
     static let VELOCITY_CUTOFF: Double = 20.0
 
     /// Universally declared gravitational field strength
-    static var UNIVERSAL_GRAVITY = Vector(x: 0, y: UI_SCREEN_HEIGHT)
+    static var UNIVERSAL_GRAVITY = Vector(x: .zero, y: UI_SCREEN_HEIGHT)
 
     /// Computed restitution range for more natural physics
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
     /// Universally declared launch force
-    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_HEIGHT * 1.5
+    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_HEIGHT
 
     /// Universal interval duration for animations etc.
-    static let TRANSITION_INTERVAL: TimeInterval = 1.0
+    static let TRANSITION_INTERVAL: TimeInterval = .unit
 
     /// Set logging state
     static let LOGGING_IS_ACTIVE = true
@@ -64,16 +64,16 @@ public class Constants {
 
     /// Universally default circular shape
     static let DEFAULT_CIRCULAR_SHAPE =
-    CircularShape(radius: Constants.UNIVERSAL_LENGTH / 2,
-                  rotation: 0.0,
-                  scale: 1.0)
+    CircularShape(radius: Constants.UNIVERSAL_LENGTH.half,
+                  rotation: .zero,
+                  scale: .unit)
 
     /// Universally default rectangular (square) shape
     static let DEFAULT_RECTANGULAR_SHAPE =
-    RectangularShape(height: Constants.UNIVERSAL_LENGTH / 2,
-                     width: Constants.UNIVERSAL_LENGTH / 2,
-                     rotation: 0.0,
-                     scale: 1.0)
+    RectangularShape(height: Constants.UNIVERSAL_LENGTH,
+                     width: Constants.UNIVERSAL_LENGTH,
+                     rotation: .zero,
+                     scale: .unit)
 
     /// Given a GeometryProxy, returns a rectangle oriented at the origin
     static func getFullScreen(from geometry: GeometryProxy) -> CGRect {
@@ -88,8 +88,8 @@ public class Constants {
     }
 
     /// Helper function to calculate distance between two points
-    static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> CGFloat {
-        sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2))
+    static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> Double {
+        Double(sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2)))
     }
 
 }

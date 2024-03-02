@@ -3,17 +3,10 @@ import SwiftUI
 struct BallView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
 
-    var ballWidth: Double {
-        Double(ObjectSet.defaultGameObjectSet["Ball"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
-    }
-
-    var ballHeight: Double {
-        Double(ObjectSet.defaultGameObjectSet["Ball"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
-    }
-
-    var imageName: String {
-        ObjectSet.defaultGameObjectSet["Ball"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
-    }
+    var ballShape: UniversalShape { viewModel.getCurrentBallShape()}
+    var ballWidth: Double { ballShape.width }
+    var ballHeight: Double { ballShape.height }
+    var imageName: String { ObjectSet.defaultGameObjectSet["Ball"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB }
 
     var body: some View {
         if viewModel.ballIsLaunched {

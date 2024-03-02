@@ -8,24 +8,14 @@ struct GameObjectView: View {
     @State private var isSelected = false
     var gameObject: any GameObject
 
-    var rotation: Angle { Angle(degrees: 90) }
+    var rotation: Angle { gameObject.rotation }
+    var scale: Double { gameObject.scale }
+    var gameObjectType: String { gameObject.gameObjectType }
+    var gameObjectImageHeight: Double { gameObject.height }
+    var gameObjectImageWidth: Double { gameObject.width }
 
-    var scale: Double { 1.0 }
-
-    var gameObjectType: String {
-        gameObject.gameObjectType
-    }
     var gameObjectImage: String {
-        ObjectSet.defaultGameObjectSet[gameObjectType]?.name ??
-        ObjectSet.DEFAULT_IMAGE_STUB
-    }
-    var gameObjectImageHeight: Double {
-        Double(ObjectSet.defaultGameObjectSet[gameObjectType]?.size.height ??
-               CGFloat(Constants.UNIVERSAL_LENGTH))
-    }
-    var gameObjectImageWidth: Double {
-        Double(ObjectSet.defaultGameObjectSet[gameObjectType]?.size.width ??
-               CGFloat(Constants.UNIVERSAL_LENGTH))
+        ObjectSet.defaultGameObjectSet[gameObjectType]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
     }
 
     var body: some View {

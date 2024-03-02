@@ -16,28 +16,28 @@ class Launcher {
 
     private let maxAngle = Angle(degrees: 89.0)
     private let minAngle = Angle(degrees: -89.0)
-    private(set) var rotationAngle = Angle(degrees: 0.0)
+    private(set) var rotationAngle = Angle(degrees: .zero)
     private(set) var launcherVelocity: Double // Allows for custom launch values.
 
     var launchVelocityVector: Vector { Vector(magnitude: launcherVelocity, angle: rotationAngle) }
 
     var launcherTipPosition: Vector {
-        let hypotenuse = launcherHeight / 2.0
+        let hypotenuse = launcherHeight.half
         return Vector(x: centerPosition.x + (hypotenuse * sin(rotationAngle.radians)),
                       y: centerPosition.y + (hypotenuse * cos(rotationAngle.radians)))
     }
 
     var getadjustedRotationAngle: Angle {
-        Angle(radians: atan((tan(rotationAngle.radians)) * 2))
+        Angle(radians: atan((tan(rotationAngle.radians)).twice))
     }
 
     init(layoutSize: CGSize,
-         rotationAngle: Angle = Angle(degrees: 0.0),
+         rotationAngle: Angle = Angle(degrees: .zero),
          launcherVelocity: Double = Constants.UNIVERSAL_LAUNCH_FORCE) {
 
         self.rotationAngle = rotationAngle
         self.launcherVelocity = launcherVelocity
-        self.centerPosition = Vector(x: layoutSize.width / 2, y: launcherHeight / 2)
+        self.centerPosition = Vector(x: layoutSize.width.half, y: launcherHeight.half)
     }
 
     // Internal method to safely set the angle
@@ -49,7 +49,7 @@ class Launcher {
     }
 
     func updateRotation(with dragValue: DragGesture.Value, for size: CGSize) {
-        let center = CGPoint(x: size.width / 2, y: size.height / 2)
+        let center = CGPoint(x: size.width.half, y: size.height.half)
         // let tip = CGPoint(x: launcherTipPosition.x, y: launcherTipPosition.y)
         let start = dragValue.startLocation
         let current = dragValue.location

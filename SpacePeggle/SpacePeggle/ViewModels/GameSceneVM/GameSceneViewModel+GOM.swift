@@ -12,6 +12,11 @@ extension GameSceneViewModel: GameObjectManager {
         peggleGameEngine.currentBallPosition
     }
 
+    // Communication intermediary method between BallView and GameEngine
+    func getCurrentBallShape() -> UniversalShape {
+        peggleGameEngine.currentBallShape
+    }
+
     func handleGameObjectRemoval(_ view: GameObjectView) {
         peggleGameEngine.handleGameObjectRemoval(id: view.gameObject.id)
     }

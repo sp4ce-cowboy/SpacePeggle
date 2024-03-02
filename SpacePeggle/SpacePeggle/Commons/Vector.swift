@@ -2,7 +2,7 @@ import SwiftUI
 import Foundation
 
 /// A class to model a vector quantity with 2 generic doubles
-struct Vector {
+struct Vector: Equatable {
 
     private var rawX: Double
     private var rawY: Double

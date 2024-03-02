@@ -8,13 +8,13 @@ class CircularShape: UniversalShape {
     var scale: Double
 
     var height: Double {
-        get { radius }
-        set { radius = newValue }
+        get { radius * 2 }
+        set { radius = newValue / 2 }
     }
 
     var width: Double {
-        get { radius }
-        set { radius = newValue }
+        get { radius * 2 }
+        set { radius = newValue / 2 }
     }
 
     init(radius: Double = Constants.UNIVERSAL_LENGTH,

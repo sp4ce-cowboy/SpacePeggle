@@ -16,12 +16,13 @@ struct LauncherView: View {
     var launcher: Launcher { viewModel.launcher }
     var isBallLaunched: Bool { viewModel.ballIsLaunched }
     var screenWidthCenter: Double { launcher.centerPosition.x }
-    var launcherHeightCenter: Double { launcherHeight / 2.0 }
+    var launcherHeightCenter: Double { launcher.centerPosition.y }
+    var launcherHeight: Double { launcher.launcherHeight }
 
     var launcherWidth = Double(ObjectSet
         .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
-    var launcherHeight = Double(ObjectSet
+    var launcherHeights = Double(ObjectSet
         .defaultGameObjectSet["Launcher"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
     var inactiveLauncherImageName = ObjectSet

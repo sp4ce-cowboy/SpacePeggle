@@ -31,4 +31,5 @@ protocol LaunchMechanic {
     var launcher: Launcher { get set }
     var isBallLaunched: Bool { get set }
     var currentBallPosition: Vector { get }
+    var currentBallShape: UniversalShape { get }
 }

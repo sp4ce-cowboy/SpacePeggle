@@ -50,3 +50,15 @@ extension UIScreen {
         UIScreen.main.bounds.size
     }
 }
+
+extension Double {
+    static var unit: Double { 1.0 }
+    var half: Double { self * 0.5 }
+    var twice: Double { self * 2.0 }
+}
+
+extension CGFloat {
+    static var unit: Double { 1.0 }
+    var half: Double { self * 0.5 }
+    var twice: Double { self * 2.0 }
+}
