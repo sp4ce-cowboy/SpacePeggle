@@ -4,7 +4,7 @@ struct LevelPauseButtonView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
 
     var body: some View {
-        if !viewModel.isPaused {
+        if !viewModel.isLevelDesignerPaused {
             VStack {
                 HStack {
                     Spacer() // Pushes the following items to the right

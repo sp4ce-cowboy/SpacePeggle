@@ -16,6 +16,12 @@ class LevelStub {
         objects.forEach { object in
             objectsMap[object.id] = object
         }
+
+        let id = objectsMap.values.map { value in
+            value.id
+        }
+
+        Logger.log("Level objects are \(id)")
         return objectsMap
     }
 

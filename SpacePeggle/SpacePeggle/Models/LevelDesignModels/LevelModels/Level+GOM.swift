@@ -12,6 +12,7 @@ extension Level: AbstractLevelAdvanced { }
 /// them into an equivalent level engine class.
 extension Level {
     func handleObjectRotation(id: UUID, value: Angle) {
+        Logger.log("New angle is \(value)", self)
         gameObjects[id]?.rotation = value
     }
 

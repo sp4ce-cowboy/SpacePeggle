@@ -7,15 +7,17 @@ struct LevelScene: View {
         _viewModel = StateObject(wrappedValue: LevelSceneViewModel(geometryState))
     }
 
-    @ViewBuilder
+    // @ViewBuilder
     var body: some View {
         ZStack {
+            LauncherView()
+                .environmentObject(GameSceneViewModel(viewModel.geometryState))
             PlayableAreaView()
             LevelPauseButtonView()
             LevelObjectsBoardView()
             // ActionBarView()
         }
-        .if(viewModel.isPaused) { view in
+        .if(viewModel.isLevelDesignerPaused) { view in
             view.overlay { LevelMenuView() }
                 .onAppear {
                     Logger.log("Level menu triggered", self)

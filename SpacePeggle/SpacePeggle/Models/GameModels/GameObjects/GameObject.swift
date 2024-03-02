@@ -45,12 +45,18 @@ extension GameObject {
 
     var scale: Double {
         get { shape.scale }
-        set { shape.scale = newValue }
+        set {
+            Logger.log("Scale for \(self.id) updated to \(newValue)")
+            shape.scale = newValue
+        }
     }
 
     var rotation: Angle {
         get { Angle(radians: shape.rotation) }
-        set { shape.rotation = newValue.radians }
+        set {
+            Logger.log("Rotation for \(self.id) updated to \(newValue)")
+            shape.rotation = newValue.radians
+        }
     }
 
 }

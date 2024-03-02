@@ -5,12 +5,13 @@ struct LevelObjectView: View {
     /// allow for the view to refresh and redraw every time the viewModel is
     /// refreshed.
     @EnvironmentObject var viewModel: LevelSceneViewModel
-    // @State private var isSelected = false
+    @State var isSelected = false
 
     var levelObject: any GameObject
 
     var rotation: Angle { levelObject.rotation }
     var scale: Double { levelObject.scale }
+    var center: CGPoint { levelObject.centerPosition.point}
     var levelObjectType: String { levelObject.gameObjectType }
     var levelObjectImageHeight: Double { levelObject.height }
     var levelObjectImageWidth: Double { levelObject.width }
@@ -20,35 +21,38 @@ struct LevelObjectView: View {
     }
 
     var body: some View {
-        Image(levelObjectImage)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: levelObjectImageWidth, height: levelObjectImageHeight)
-            .position(levelObject.centerPosition.point)
-            .rotationEffect(rotation, anchor: .center)
-            // .scaleEffect(scale, anchor: .center)
-            // .onTapGesture { self.isSelected.toggle() }
-        //  .gesture(handleMagnify.simultaneously(with: handleRotate))
+        ZStack {
+            Image(levelObjectImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: levelObjectImageWidth, height: levelObjectImageHeight)
+                .position(center)
+                .rotationEffect(rotation, anchor: .center)
+                .onTapGesture { self.isSelected.toggle() }
+                .onLongPressGesture { viewModel.handleLevelObjectLongPress(self) }
+            //  .gesture(handleMagnify.simultaneously(with: handleRotate))
 
-        /*
-        if isSelected {
-            Rectangle()
-                .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                .frame(width: levelObjectImageWidth * scale,
-                       height: levelObjectImageHeight * scale)
-                .position(levelObject.centerPosition.point)
-                .overlay(resizerView.position(x: levelObject.centerPosition.point.x + 20,
-                                              y: levelObject.centerPosition.point.y + 20)
-                         // Position resizer at bottom-right corner
-                )
-        }*/
+            if isSelected {
+                Rectangle()
+                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
+                    .frame(width: levelObjectImageWidth * scale,
+                           height: levelObjectImageHeight * scale)
+                    .position(center)
+                    .rotationEffect(rotation, anchor: .center)
+                    .overlay(resizerIconView
+                        .position(x: center.x + (levelObjectImageWidth * scale).half,
+                                  y: center.y + (levelObjectImageHeight * scale).half)
+                            .rotationEffect(rotation, anchor: .center)
+                    )
+            }
+        }
 
     }
 
     var handleLongPress: some Gesture {
         LongPressGesture()
             .onEnded { _ in
-                viewModel.handleLevelObjectRemoval(self)
+                viewModel.handleLevelObjectLongPress(self)
             }
     }
 
@@ -89,14 +93,15 @@ struct LevelObjectView: View {
             }
     }
 
-    /*
-    var resizerView: some View {
+    /// The resizer view represents the corner of the size adjustment box.
+    var resizerIconView: some View {
         Image(systemName: "arrow.down.right.circle.fill")
-            .imageScale(.large)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
             .frame(width: 30, height: 30)
             .foregroundColor(.red)
             .opacity(isSelected ? 1 : 0)
-            .simultaneousGesture(DragGesture()
+            .gesture(DragGesture()
                 .onChanged { value in
 
                     let width = levelObjectImageWidth + value.translation.width
@@ -108,9 +113,8 @@ struct LevelObjectView: View {
                     let newScale = newDiagonal / originalDiagonal
                     let clampedScale = min(max(newScale, 1.0), 4.0)
 
-                    print(clampedScale)
-                    //viewModel.handleMagnify(self, scale: clampedScale)
-                    
+                    Logger.log("New scale is \(clampedScale)", self)
+
                     viewModel.handleLevelObjectMagnification(self, scale: clampedScale)
 
                     let center = levelObject.centerPosition // Example center, adjust as needed
@@ -119,10 +123,8 @@ struct LevelObjectView: View {
                     let angleDifference = currentAngle - startAngle
 
                     let rotationAngle = Angle(radians: Double(angleDifference))
-                    print(rotationAngle)
 
                     viewModel.handleLevelObjectRotation(self, angle: rotationAngle)
                 })
     }
-     */
 }

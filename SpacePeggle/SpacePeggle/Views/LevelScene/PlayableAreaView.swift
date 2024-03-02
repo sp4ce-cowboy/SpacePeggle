@@ -27,15 +27,11 @@ struct PlayableAreaView: View {
             .foregroundColor(.clear)
             // .padding()
             .frame(width: width, height: height)
+            // .pos
             .contentShape(Rectangle())
-            .gesture(handleTapGesture)
-    }
-
-    var handleTapGesture: some Gesture {
-        SpatialTapGesture()
-            .onEnded { value in
-                Logger.log("Tap detected at \(value.location)", self)
-                viewModel.handleAreaTap(in: value.location)
+            .onTapGesture { location in
+                Logger.log("Tap detected at \(location)", self)
+                viewModel.handleAreaTap(in: location)
             }
     }
 }

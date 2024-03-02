@@ -2,10 +2,12 @@ import SwiftUI
 
 class LevelSceneViewModel: ObservableObject {
 
-    @Published var isPaused = false
+    @Published var isLevelDesignerPaused = false
+    @Published var isLevelObjectSelected = false
     var geometryState: GeometryProxy
     var selectedGameObject: Constants.GameObjectType = .NormalPeg
-    var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    // var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    @Published var currentLevel: AbstractLevelAdvanced = LevelStub().getLevelStub()
 
     init(_ geometryState: GeometryProxy) {
         self.geometryState = geometryState
@@ -20,7 +22,8 @@ class LevelSceneViewModel: ObservableObject {
     }
 
     func handlePause() {
-        isPaused.toggle()
+        triggerRefresh()
+        isLevelDesignerPaused.toggle()
     }
 
     func triggerRefresh() {
@@ -54,14 +57,20 @@ extension LevelSceneViewModel {
     }
 
     func handleLevelObjectRotation(_ view: LevelObjectView, angle: Angle) {
+        triggerRefresh()
+        Logger.log("New angle for \(view.levelObject.id) is \(angle)", self)
         currentLevel.handleObjectRotation(id: view.levelObject.id, value: angle)
     }
 
     func handleLevelObjectMagnification(_ view: LevelObjectView, scale: Double) {
+        triggerRefresh()
+        Logger.log("New scale is \(scale)", self)
         currentLevel.handleObjectMagnification(id: view.levelObject.id, scale: scale)
     }
 
-    func handleLevelObjectRemoval(_ view: LevelObjectView) {
+    func handleLevelObjectLongPress(_ view: LevelObjectView) {
+        triggerRefresh()
+        Logger.log("LevelObject \(view.levelObject.id) removed")
         currentLevel.handleObjectRemoval(id: view.levelObject.id)
     }
 
