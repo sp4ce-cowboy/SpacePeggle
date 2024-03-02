@@ -62,43 +62,20 @@ extension LevelSceneViewModel {
     func handleLevelObjectRotation(_ object: any GameObject, angle: Angle) {
         triggerRefresh()
         Logger.log("New angle for \(object.id) is \(angle)", self)
-        currentLevel.handleObjectRotation(id: object.id, value: angle)
+        currentLevel.handleObjectRotation(object, value: angle)
     }
 
     func handleLevelObjectMagnification(_ object: any GameObject, scale: Double) {
         triggerRefresh()
         Logger.log("New scale for \(object.id) is \(scale)", self)
-        currentLevel.handleObjectMagnification(id: object.id, scale: scale)
+        currentLevel.handleObjectMagnification(object, scale: scale)
     }
 
     func handleLevelObjectRemoval(_ object: any GameObject) {
         triggerRefresh()
         Logger.log("LevelObject \(object.id) removed", self)
-        currentLevel.handleObjectRemoval(id: object.id)
+        currentLevel.handleObjectRemoval(object)
     }
-
-    /*func handleLevelObjectMovements(_ object: any GameObject, with drag: DragGesture.Value) {
-        triggerRefresh()
-        var startLocation = drag.startLocation
-        var stopLocation = drag.location
-        var latestValidLocation = object.centerPosition.point
-
-        Logger.log("Drag gesture triggered with location \(stopLocation)", self)
-
-        var isOverlap = false
-        for gameObject in currentLevel.gameObjects.values where object.id != gameObject.id {
-            if object.overlap(with: gameObject) != nil {
-                Logger.log("Overlapping", self)
-                isOverlap = true
-                break
-            }
-        }
-
-        if !isOverlap {
-            Logger.log("Moving object while boolean is: \(isOverlap)", self)
-            currentLevel.gameObjects[object.id]?.centerPosition = Vector(with: stopLocation)
-        }
-    }*/
 
     func handleLevelObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
         triggerRefresh()

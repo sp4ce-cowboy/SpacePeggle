@@ -117,6 +117,6 @@ extension GameObject {
 extension GameObject {
     func overlap(with object: any GameObject) -> Double? {
         self.shape.intersects(with: object.shape, at: self.centerPosition,
-                                 and: object.centerPosition)
+                              and: object.centerPosition)
     }
 }

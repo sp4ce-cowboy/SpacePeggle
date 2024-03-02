@@ -13,16 +13,29 @@ extension Level: AbstractLevelAdvanced {
 /// This is a temporary measure to finalize the gestures before moving
 /// them into an equivalent level engine class.
 extension Level {
-    func handleObjectRotation(id: UUID, value: Angle) {
-        gameObjects[id]?.rotation = value
+    func handleObjectRotation(_ object: any GameObject, value: Angle) {
+        gameObjects[object.id]?.rotation = value
     }
 
-    func handleObjectMagnification(id: UUID, scale: Double) {
-        gameObjects[id]?.scale = scale
+    func handleObjectMagnification(_ object: any GameObject, scale: Double) {
+        var isOverlap = false
+        for gameObject in gameObjects.values where object.id != gameObject.id {
+            if let distance = object.overlap(with: gameObject) {
+                isOverlap = true
+                let correctedScale = object.scale - (distance * 0.001)
+                gameObjects[object.id]?.scale = correctedScale
+                Logger.log("Overlapping while scaling with \(correctedScale)", self)
+                break
+            }
+        }
+
+        if !isOverlap {
+            gameObjects[object.id]?.scale = scale
+        }
     }
 
-    func handleObjectRemoval(id: UUID) {
-        gameObjects.removeValue(forKey: id)
+    func handleObjectRemoval(_ object: any GameObject) {
+        gameObjects.removeValue(forKey: object.id)
     }
 
     func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
@@ -34,12 +47,12 @@ extension Level {
         var isOverlap = false
         for gameObject in gameObjects.values where object.id != gameObject.id {
             if let distance = object.overlap(with: gameObject) {
+                isOverlap = true
                 let normalVector = (object.centerPosition - gameObject.centerPosition).normalized
-                let correction = normalVector * (distance + 0.000000001)
+                let correction = normalVector * (distance + 0.0000000001)
                 let correctedPosition = object.centerPosition + correction
                 updateObjectPosition(object, with: correctedPosition)
-                Logger.log("Overlapping", self)
-                isOverlap = true
+                Logger.log("Overlapping while moving", self)
                 break
             }
         }

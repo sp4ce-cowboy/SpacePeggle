@@ -23,9 +23,9 @@ protocol AbstractLevel {
 /// Note: The term "Advanced" refers to the additional abilities added, not an improvement
 /// over the current AbstractLevel's existing functionality.
 protocol AbstractLevelAdvanced: AbstractLevel {
-    func handleObjectRotation(id: UUID, value: Angle)
-    func handleObjectMagnification(id: UUID, scale: Double)
-    func handleObjectRemoval(id: UUID)
+    func handleObjectRotation(_ object: any GameObject, value: Angle)
+    func handleObjectMagnification(_ object: any GameObject, scale: Double)
+    func handleObjectRemoval(_ object: any GameObject)
     func updateObjectPosition(id: UUID, with position: Vector)
     func updateObjectPosition(_ gameObject: any GameObject, with position: Vector)
     func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value)
