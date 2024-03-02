@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// The UnivershalShape contains basic information about a given
-/// object
+/// The UnivershalShape contains basic information about a given object's
+/// contained shape. The height and width of the shape refers to the
 protocol UniversalShape {
     var shapeType: String { get set }
     var height: Double { get set }

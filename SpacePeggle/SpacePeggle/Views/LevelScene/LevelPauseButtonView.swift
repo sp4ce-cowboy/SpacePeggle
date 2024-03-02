@@ -1,14 +1,7 @@
-//
-//  PauseButtonView.swift
-//  PeggleGameplay
-//
-//  Created by Rubesh on 25/2/24.
-//
-
 import SwiftUI
 
-struct PauseButtonView: View {
-    @EnvironmentObject var viewModel: GameSceneViewModel
+struct LevelPauseButtonView: View {
+    @EnvironmentObject var viewModel: LevelSceneViewModel
 
     var body: some View {
         if !viewModel.isPaused {

@@ -1,13 +1,6 @@
-//
-//  LevelView.swift
-//  PeggleGameplay
-//
-//  Created by Rubesh on 18/2/24.
-//
-
 import SwiftUI
 
-struct LevelView: View {
+struct GameObjectsBoardView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
 
     var body: some View {

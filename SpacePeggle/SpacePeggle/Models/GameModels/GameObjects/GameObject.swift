@@ -34,19 +34,23 @@ protocol GameObject: UniversalObject, Codable {
 /// properties of the GameObject's shape
 extension GameObject {
     var width: Double {
-        shape.width
+        get { shape.width }
+        set { shape.width = newValue }
     }
 
     var height: Double {
-        shape.height
+        get { shape.height }
+        set { shape.height = newValue }
     }
 
     var scale: Double {
-        shape.scale
+        get { shape.scale }
+        set { shape.scale = newValue }
     }
 
     var rotation: Angle {
-        Angle(radians: shape.rotation)
+        get { Angle(radians: shape.rotation) }
+        set { shape.rotation = newValue.radians }
     }
 
 }

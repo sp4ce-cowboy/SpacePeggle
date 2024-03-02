@@ -26,8 +26,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             AnyView(GameScene(forGeometry: geometry))
         }
 
-        AppSceneController.uploadScene(withName: "LevelScene") { _ in
-            AnyView(LevelScene())
+        AppSceneController.uploadScene(withName: "LevelScene") { geometry in
+            AnyView(LevelScene(forGeometry: geometry))
         }
 
         Logger.log("AppDelegate has uploaded app scenes", self)

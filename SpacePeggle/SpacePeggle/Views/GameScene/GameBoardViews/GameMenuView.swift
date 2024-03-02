@@ -51,9 +51,4 @@ struct GameMenuView: View {
         Button(action: { Constants.UNIVERSAL_GRAVITY = value },
                label: { StyleSheet.getRectangleWithText(text: text) })
     }
-
-    func getMenuButtonForBackground(text: String, image: String) -> some View {
-        Button(action: { ObjectSet.currentBackground = image },
-               label: { StyleSheet.getRectangleWithText(text: text) })
-    }
 }

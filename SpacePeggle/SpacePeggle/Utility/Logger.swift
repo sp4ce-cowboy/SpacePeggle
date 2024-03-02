@@ -8,7 +8,8 @@ class Logger {
     static func log(_ string: String, _ caller: Any? = nil) {
         if isActive {
             let callerType = caller == nil ? "Unknown" : String(describing: type(of: caller!))
-            print("[\(callerType)] \(string)")
+            let date = Date.now.formatted(date: .omitted, time: .standard)
+            print("[\(date)] -- [\(callerType)] \(string)")
         }
 
     }

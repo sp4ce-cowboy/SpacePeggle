@@ -24,6 +24,10 @@ final class Level {
         Logger.log("Level is deinitialized with \(gameObjects.count)", self)
     }
 
+    static func getDefaultLevel() -> Level {
+        Level(name: "LevelName", gameObjects: [:])
+    }
+
     func getGameObject(id: UUID) -> (any GameObject)? {
         let gameObject = gameObjects[id]
         // Ensures no UUID corruption
@@ -45,4 +49,5 @@ final class Level {
             key == value.id
         })
     }
+
 }

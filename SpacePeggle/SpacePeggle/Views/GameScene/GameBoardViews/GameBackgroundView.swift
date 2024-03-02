@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// A View that presents the backdrop of the playable area
-struct BackgroundView: View {
+struct GameBackgroundView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
 
     // The width is required to ensure that the backgroud is displayed consistently

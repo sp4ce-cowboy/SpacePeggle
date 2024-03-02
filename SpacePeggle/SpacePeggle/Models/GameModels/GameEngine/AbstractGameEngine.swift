@@ -20,8 +20,6 @@ protocol AbstractGameEngine: LaunchMechanic {
     func stopGame()
     func updateGame(timeStep: TimeInterval)
     func handleGameObjectRemoval(id: UUID)
-    func handleGameObjectRotation(id: UUID, value: Angle)
-    func handleGameObjectMagnification(id: UUID, scale: Double)
 
     func updateLauncherRotation(with dragValue: DragGesture.Value, for size: CGSize)
     func launchBall()

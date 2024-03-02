@@ -67,4 +67,11 @@ class StyleSheet {
         Button(action: { action() },
                label: { getRectangleWithText(text: text) })
     }
+
+    /// A function that returns a scaled rectangular button with some text
+    /// and an action to set the background to the image specified by the string input
+    static func getMenuButtonForBackground(text: String, image: String) -> some View {
+        Button(action: { ObjectSet.currentBackground = image },
+               label: { StyleSheet.getRectangleWithText(text: text) })
+    }
 }

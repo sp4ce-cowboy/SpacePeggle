@@ -16,8 +16,9 @@ public class Constants {
     /// The name of the folder used to store the levels locally
     public static let STORAGE_CONTAINER_NAME: String = "Levels"
 
-    /// Universally declared object diameter
-    static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.height / 25.0
+    /// Universally declared object diameter. Scaled to a certain appropriate
+    /// length based on the most optimal visual appearance of objects in game.
+    static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.width / 18.0
 
     /// Universally declared unit mass
     static let UNIT_MASS: Double = .unit
@@ -56,6 +57,12 @@ public class Constants {
     enum ShapeType: String, Codable {
         case circle
         case rectangle
+    }
+
+    enum GameObjectType: String, Codable {
+        case NormalPeg
+        case GoalPeg
+        case Block
     }
 
     static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Double?] = [

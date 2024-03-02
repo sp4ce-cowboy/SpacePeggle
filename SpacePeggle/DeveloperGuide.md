@@ -10,6 +10,7 @@
 
 Music: Field of Memories by "WaterFlame" (free for non-commercial use)
 Music Credits: https://www.waterflame.com/contact-info
+Background Image Credits: https://www.vecteezy.com/vector-art/1268880-a-galaxy-space-theme-background
 
 ## App Structure
 
