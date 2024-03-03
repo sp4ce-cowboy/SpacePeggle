@@ -11,6 +11,8 @@
 		BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB012B907F9100BCE72C /* AudioManager.swift */; };
 		BA12BB042B90886100BCE72C /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* AppScene.swift */; };
 		BA67193D2B941F50004FA712 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67193C2B941F50004FA712 /* LevelDesigner.swift */; };
+		BA6719422B943E53004FA712 /* LevelDesigner+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */; };
+		BA6719442B943E96004FA712 /* LevelDesigner+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719432B943E96004FA712 /* LevelDesigner+Movement.swift */; };
 		BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7661DA2B8C86010022C267 /* Assets.xcassets */; };
 		BA76624B2B8C89590022C267 /* GamePauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76620F2B8C89590022C267 /* GamePauseButtonView.swift */; };
 		BA76624C2B8C89590022C267 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662112B8C89590022C267 /* GameBackgroundView.swift */; };
@@ -102,6 +104,8 @@
 		BA12BB012B907F9100BCE72C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BA12BB032B90886100BCE72C /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
 		BA67193C2B941F50004FA712 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
+		BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Resizing.swift"; sourceTree = "<group>"; };
+		BA6719432B943E96004FA712 /* LevelDesigner+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Movement.swift"; sourceTree = "<group>"; };
 		BA7661D32B8C85FF0022C267 /* SpacePeggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePeggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7661DA2B8C86010022C267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7661E32B8C86020022C267 /* SpacePeggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpacePeggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +215,16 @@
 			path = MainApp;
 			sourceTree = "<group>";
 		};
+		BA6719402B943E2D004FA712 /* LevelDesigner */ = {
+			isa = PBXGroup;
+			children = (
+				BA67193C2B941F50004FA712 /* LevelDesigner.swift */,
+				BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */,
+				BA6719432B943E96004FA712 /* LevelDesigner+Movement.swift */,
+			);
+			path = LevelDesigner;
+			sourceTree = "<group>";
+		};
 		BA7661CA2B8C85FF0022C267 = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +305,8 @@
 			children = (
 				BA96F3092B9220E7006BE36D /* Shapes */,
 				BA96F30B2B922B2D006BE36D /* Storage */,
-				BA7662962B8CAD4C0022C267 /* LevelModels */,
+				BA7662962B8CAD4C0022C267 /* Level */,
+				BA6719402B943E2D004FA712 /* LevelDesigner */,
 				BA76621C2B8C89590022C267 /* PhysicsModels */,
 				BA7662282B8C89590022C267 /* GameModels */,
 			);
@@ -441,14 +456,13 @@
 			path = PhysicsObjects;
 			sourceTree = "<group>";
 		};
-		BA7662962B8CAD4C0022C267 /* LevelModels */ = {
+		BA7662962B8CAD4C0022C267 /* Level */ = {
 			isa = PBXGroup;
 			children = (
 				BA7662382B8C89590022C267 /* Level.swift */,
 				BA7662372B8C89590022C267 /* AbstractLevel.swift */,
-				BA67193C2B941F50004FA712 /* LevelDesigner.swift */,
 			);
-			path = LevelModels;
+			path = Level;
 			sourceTree = "<group>";
 		};
 		BA96F3092B9220E7006BE36D /* Shapes */ = {
@@ -675,12 +689,14 @@
 				BA12BB042B90886100BCE72C /* AppScene.swift in Sources */,
 				BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */,
 				BACF21D92B904CA5007FCE8D /* StartMenuView.swift in Sources */,
+				BA6719422B943E53004FA712 /* LevelDesigner+Resizing.swift in Sources */,
 				BA7662672B8C89590022C267 /* Launcher.swift in Sources */,
 				BA7662532B8C89590022C267 /* BallView.swift in Sources */,
 				BA76625F2B8C89590022C267 /* Peg.swift in Sources */,
 				BA96F3222B9332D6006BE36D /* LevelMenuView.swift in Sources */,
 				BA96F31C2B9321DA006BE36D /* LevelObjectView.swift in Sources */,
 				BA7662582B8C89590022C267 /* PhysicsEngine+Boundary.swift in Sources */,
+				BA6719442B943E96004FA712 /* LevelDesigner+Movement.swift in Sources */,
 				BA85C6762B8F567D00039CCE /* StyleSheet.swift in Sources */,
 				BA7662602B8C89590022C267 /* GameObject.swift in Sources */,
 				BACF21D42B9046AE007FCE8D /* LevelSceneViewModel.swift in Sources */,

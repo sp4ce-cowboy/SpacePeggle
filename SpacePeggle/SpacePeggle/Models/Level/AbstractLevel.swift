@@ -6,8 +6,6 @@ protocol AbstractLevel {
     var name: String { get }
     var gameObjects: [UUID: any GameObject] { get set }
 
-    // init(name: String, gameObjects: [UUID: any GameObject])
-
     func getGameObject(id: UUID) -> (any GameObject)?
     func storeGameObject(_ gameObject: any GameObject)
     func updateLevel(_ gameObjects: [UUID: any GameObject])

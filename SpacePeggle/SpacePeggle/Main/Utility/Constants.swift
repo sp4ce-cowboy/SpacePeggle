@@ -8,10 +8,10 @@ public class Constants {
     static var UI_SCREEN_SIZE: CGSize = UIScreen.currentSize
 
     /// Universally declared screen width
-    static var UI_SCREEN_WIDTH: Double = UIScreen.currentSize.width
+    static var UI_SCREEN_WIDTH: Double { UI_SCREEN_SIZE.width }
 
     /// Universally declared screen height
-    static var UI_SCREEN_HEIGHT: Double = UIScreen.currentSize.height
+    static var UI_SCREEN_HEIGHT: Double { UI_SCREEN_SIZE.height }
 
     /// The name of the folder used to store the levels locally
     public static let STORAGE_CONTAINER_NAME: String = "Levels"
@@ -23,7 +23,7 @@ public class Constants {
     /// Universally declared unit mass
     static let UNIT_MASS: Double = .unit
 
-    /// Universally declared velocity cut-off
+    /// Universally declared velocity cut-off for removing stuck ball after launch
     static let VELOCITY_CUTOFF: Double = 20.0
 
     /// Universally declared gravitational field strength
@@ -88,7 +88,6 @@ public class Constants {
 
     /// Given a GeometryProxy, returns a rectangle oriented at the origin
     static func getFullScreen(from geometry: GeometryProxy) -> CGRect {
-
         let edges = geometry.safeAreaInsets
         let totalWidth = geometry.size.width + edges.leading + edges.trailing
         let totalHeight = geometry.size.height + edges.top + edges.bottom
@@ -98,9 +97,23 @@ public class Constants {
         return gameScreen
     }
 
+    static func getFullScreenWithSafeEdges(from geometry: GeometryProxy) -> CGRect {
+        let totalWidth = geometry.size.width
+        let totalHeight = geometry.size.height
+        let fullSize = CGSize(width: totalWidth, height: totalHeight)
+
+        let gameScreen = CGRect(origin: .zero, size: fullSize)
+        return gameScreen
+    }
+
     static func getDefaultFullScreen() -> CGRect {
         let fullSize = CGSize(width: UI_SCREEN_WIDTH, height: UI_SCREEN_HEIGHT)
         return CGRect(origin: .zero, size: fullSize)
+    }
+
+    /// Returns a customized 
+    static func getAdjustedGameArea() -> CGRect {
+        getDefaultFullScreen()
     }
 
     /// Helper function to calculate distance between two points

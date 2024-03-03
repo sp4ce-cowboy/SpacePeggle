@@ -4,17 +4,20 @@ import Foundation
 /// A class to model a vector quantity with 2 generic doubles
 struct Vector: Equatable {
 
+    var widthScale = Constants.UI_SCREEN_WIDTH
+    var heightScale = Constants.UI_SCREEN_HEIGHT
+
     private var rawX: Double
     private var rawY: Double
 
     var x: Double {
-        get { self.rawX * Constants.UI_SCREEN_WIDTH }
-        set { self.rawX = newValue / Constants.UI_SCREEN_WIDTH }
+        get { self.rawX * widthScale }
+        set { self.rawX = newValue / widthScale }
     }
 
     var y: Double {
-        get { self.rawY * Constants.UI_SCREEN_HEIGHT }
-        set { self.rawY = newValue / Constants.UI_SCREEN_HEIGHT }
+        get { self.rawY * heightScale }
+        set { self.rawY = newValue / heightScale }
     }
 
     var area: Double {
@@ -33,8 +36,8 @@ struct Vector: Equatable {
 
     // Initialize with components
     init(x: Double, y: Double) {
-        self.rawX = x / Constants.UI_SCREEN_WIDTH
-        self.rawY = y / Constants.UI_SCREEN_HEIGHT
+        rawX = x / widthScale
+        rawY = y / heightScale
     }
 
     init(scaled_x: Double, scaled_y: Double) {
@@ -44,13 +47,13 @@ struct Vector: Equatable {
 
     /// Initialize with magnitude and angle (in radians)
     init(magnitude: Double, angle: Angle) {
-        self.rawX = (magnitude * sin(angle.radians)) / Constants.UI_SCREEN_WIDTH
-        self.rawY = (magnitude * cos(angle.radians)) / Constants.UI_SCREEN_HEIGHT
+        self.rawX = (magnitude * sin(angle.radians)) / widthScale
+        self.rawY = (magnitude * cos(angle.radians)) / heightScale
     }
 
     init(with point: CGPoint) {
-        self.rawX = Double(point.x) / Constants.UI_SCREEN_WIDTH
-        self.rawY = Double(point.y) / Constants.UI_SCREEN_HEIGHT
+        self.rawX = Double(point.x) / widthScale
+        self.rawY = Double(point.y) / heightScale
     }
 
     init(withScaledPoint point: CGPoint) {

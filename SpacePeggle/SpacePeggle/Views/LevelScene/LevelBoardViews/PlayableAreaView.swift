@@ -20,6 +20,7 @@ struct PlayableAreaView: View {
             .foregroundColor(.clear)
             .padding()
             .frame(width: width, height: height)
+            .border(Color.red)
             .contentShape(Rectangle())
             .if(!viewModel.isLevelDesignerPaused) { view in
                 view.gesture(handleTap)
