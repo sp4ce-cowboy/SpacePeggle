@@ -4,9 +4,9 @@ import SwiftUI
 /// UI elements across the application.
 class StyleSheet {
 
-    static let screenSize: CGSize = Constants.UI_SCREEN_SIZE
-    static let screenHeight: Double = screenSize.height
-    static let screenWidth: Double = screenSize.width
+    static var screenSize: CGSize { Constants.UI_SCREEN_SIZE }
+    static var screenHeight: Double { screenSize.height }
+    static var screenWidth: Double { screenSize.width }
 
     static var themeMainColor = Color.black
     static var themeAccentColor = Color.accentColor

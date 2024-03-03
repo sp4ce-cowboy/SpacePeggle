@@ -41,8 +41,10 @@ class ObjectSet {
                                                   height: Constants.UNIVERSAL_LENGTH)),
         "Ball": ("ball", CGSize(width: Constants.UNIVERSAL_LENGTH,
                                 height: Constants.UNIVERSAL_LENGTH)),
-        "Launcher": ("cannon", CGSize(width: 90.0, height: 90.0)),
-        "LauncherActive": ("active-cannon", CGSize(width: 90.0, height: 90.0))
+        "Launcher": ("cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_SIZE,
+                                      height: Constants.UNIVERSAL_LAUNCH_FORCE)),
+        "LauncherActive": ("active-cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_SIZE,
+                                                   height: Constants.UNIVERSAL_LAUNCHER_SIZE))
     ]
 
     /// The physics object set is essentially exactly the same as the default game object set

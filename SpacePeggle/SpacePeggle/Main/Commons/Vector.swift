@@ -2,13 +2,17 @@ import SwiftUI
 import Foundation
 
 /// A class to model a vector quantity with 2 generic doubles
-struct Vector: Equatable {
+struct Vector: Equatable, CustomStringConvertible {
 
     var widthScale = Constants.UI_SCREEN_WIDTH
     var heightScale = Constants.UI_SCREEN_HEIGHT
 
-    private var rawX: Double
-    private var rawY: Double
+    var rawX: Double
+    var rawY: Double
+
+    var description: String {
+        "Vector(x: \(rawX * widthScale), y: \(rawY * heightScale), rawX: \(rawX), rawY: \(rawY)"
+    }
 
     var x: Double {
         get { self.rawX * widthScale }

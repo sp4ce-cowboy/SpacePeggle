@@ -10,7 +10,7 @@ protocol UniversalShape {
     var rotation: Double { get set }
     var scale: Double { get set }
 
-    func intersects(with shape: UniversalShape,
+    func intersects(with shape: any UniversalShape,
                     at position: Vector,
                     and otherPosition: Vector) -> Double?
 

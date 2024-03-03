@@ -20,6 +20,10 @@ public class Constants {
     /// length based on the most optimal visual appearance of objects in game.
     static let UNIVERSAL_LENGTH: Double = UI_SCREEN_SIZE.width / 18.0
 
+    /// Adjusted launcher height ensures that the launcher will always be
+    /// of a minimum size so that drag gestures work properly.
+    static var UNIVERSAL_LAUNCHER_SIZE: Double { max(90.0, StyleSheet.getScaledWidth(10)) }
+
     /// Universally declared unit mass
     static let UNIT_MASS: Double = .unit
 
@@ -111,9 +115,21 @@ public class Constants {
         return CGRect(origin: .zero, size: fullSize)
     }
 
-    /// Returns a customized 
+    /// Returns a customized letterboxed GameScreen that can work on all
+    /// iPad screen sizes. iPad screen ratios range from 4:3 (1.33) to
+    /// the newer 1.44. This means that the new iPads are about 8% taller, and
+    /// accomodating to the width would ensure that all iPads fit.
+    ///
+    /// The game area will essentially be a square that the user can interact with.
+    /// Regardless of the screen size, the start of the game area will be adjusted
+    /// by 100 points in the positive y-direction. This is to accomodate the launcher's
+    /// minimum size.
     static func getAdjustedGameArea() -> CGRect {
-        getDefaultFullScreen()
+        let width = UI_SCREEN_WIDTH
+        let height = UI_SCREEN_WIDTH
+        let size = CGSize(width: width, height: height)
+        let origin = Vector(x: 0, y: 100).point
+        return CGRect(origin: origin, size: size)
     }
 
     /// Helper function to calculate distance between two points

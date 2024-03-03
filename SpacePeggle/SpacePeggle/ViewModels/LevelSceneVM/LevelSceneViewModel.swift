@@ -13,6 +13,7 @@ class LevelSceneViewModel: ObservableObject {
 
     init(_ geometryState: GeometryProxy) {
         self.geometryState = geometryState
+        levelDesigner.domain = Constants.getAdjustedGameArea()
     }
 
     deinit {

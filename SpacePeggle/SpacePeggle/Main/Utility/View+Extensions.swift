@@ -89,6 +89,15 @@ extension CGRect {
     }
 }
 
+extension CGRect: Shape, @unchecked Sendable {
+    public func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addRect(self)
+        return path
+    }
+
+}
+
 extension Angle: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()

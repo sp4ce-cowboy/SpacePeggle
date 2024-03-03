@@ -25,7 +25,7 @@ extension LevelDesigner: AbstractLevelDesigner { }
 class LevelDesigner {
 
     var currentLevel: AbstractLevel
-    var domain: CGRect = Constants.getDefaultFullScreen()
+    var domain: CGRect = Constants.getAdjustedGameArea()
     var levelName: String { currentLevel.name }
     var levelObjects: [UUID: any GameObject] {
         get { currentLevel.gameObjects }

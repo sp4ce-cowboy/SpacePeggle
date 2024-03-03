@@ -11,20 +11,28 @@ import SwiftUI
 struct PlayableAreaView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
 
-    var size: CGSize { viewModel.geometryState.size }
+    var area: CGRect { viewModel.levelDomain }
+    var geometrySize: CGSize { viewModel.geometryState.size }
+    
+    /*var size: CGSize { area.size }
     var width: Double { size.width }
     var height: Double { size.height }
+    var xOffset: Double { area.origin.x }
+    var yOffset: Double { area.origin.y }
+     */
 
     var body: some View {
-        Rectangle()
-            .foregroundColor(.clear)
-            .padding()
-            .frame(width: width, height: height)
-            .border(Color.red)
-            .contentShape(Rectangle())
-            .if(!viewModel.isLevelDesignerPaused) { view in
-                view.gesture(handleTap)
-            }
+        ZStack {
+            area
+                .stroke(style: StrokeStyle(lineWidth: 3.0, lineCap: .round,
+                                           lineJoin: .bevel, dash: [3, 10]))
+                .foregroundStyle(Color.red)
+                .foregroundColor(.clear)
+                .contentShape(area) // Will only register hits within playable area
+                .if(!viewModel.isLevelDesignerPaused) { view in
+                    view.gesture(handleTap)
+                }
+        }
     }
 
     private var handleTap: some Gesture {
