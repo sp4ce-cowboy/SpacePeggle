@@ -15,6 +15,9 @@ class ObjectSet {
 
     static var currentBackground: String = "background"
 
+    static let CONSTANT_SIZE = CGSize(width: Constants.UNIVERSAL_LENGTH,
+                                      height: Constants.UNIVERSAL_LENGTH)
+
     /// A dictionary of gameObjectTypes and their corresponding visual imagery.
     /// The keys represent the gameObjectTypes as Strings, and the values represent
     /// the images that they correspond to. This can very easily be converted to
@@ -29,22 +32,24 @@ class ObjectSet {
     /// together with the corresponding images. Thus, images for ball and cannon are also
     /// included, even though they are not gameObjectTypes.
     private(set) static var defaultGameObjectSet: [String: (name: String, size: CGSize)] = [
-        "NormalPeg": ("peg-orange", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                           height: Constants.UNIVERSAL_LENGTH)),
-        "DefaultPeg": ("peg-orange", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                            height: Constants.UNIVERSAL_LENGTH)),
-        "GoalPeg": ("peg-blue", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                       height: Constants.UNIVERSAL_LENGTH)),
-        "NormalPegActive": ("peg-orange-glow", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                                      height: Constants.UNIVERSAL_LENGTH)),
-        "GoalPegActive": ("peg-blue-glow", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                                  height: Constants.UNIVERSAL_LENGTH)),
-        "Ball": ("ball", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                height: Constants.UNIVERSAL_LENGTH)),
-        "Launcher": ("cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_SIZE,
-                                      height: Constants.UNIVERSAL_LAUNCH_FORCE)),
-        "LauncherActive": ("active-cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_SIZE,
-                                                   height: Constants.UNIVERSAL_LAUNCHER_SIZE))
+        "NormalPeg": ("peg-blue", CONSTANT_SIZE),
+        "DefaultPeg": ("peg-blue", CONSTANT_SIZE),
+        "GoalPeg": ("peg-orange", CONSTANT_SIZE),
+        "NormalPegActive": ("peg-blue-glow", CONSTANT_SIZE),
+        "GoalPegActive": ("peg-orange-glow", CONSTANT_SIZE),
+        "Ball": ("ball", CONSTANT_SIZE),
+        "Launcher": ("cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_HEIGHT,
+                                      height: Constants.UNIVERSAL_LAUNCHER_HEIGHT)),
+        "LauncherActive": ("active-cannon", CGSize(width: Constants.UNIVERSAL_LAUNCHER_HEIGHT,
+                                                   height: Constants.UNIVERSAL_LAUNCHER_HEIGHT)),
+        "SpookyPeg": ("peg-green", CONSTANT_SIZE),
+        "SpookyPegActive": ("peg-green-glow", CONSTANT_SIZE),
+        "KaboomPeg": ("delete", CONSTANT_SIZE),
+        "KaboomPegActive": ("delete", CONSTANT_SIZE),
+        "StubbornPeg": ("delete", CONSTANT_SIZE),
+        "StubbornPegActive": ("delete", CONSTANT_SIZE),
+        "Remove": ("delete", CONSTANT_SIZE),
+        "BlockPeg": ("block", CONSTANT_SIZE)
     ]
 
     /// The physics object set is essentially exactly the same as the default game object set

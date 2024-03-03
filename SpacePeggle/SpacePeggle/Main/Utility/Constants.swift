@@ -22,7 +22,7 @@ public class Constants {
 
     /// Adjusted launcher height ensures that the launcher will always be
     /// of a minimum size so that drag gestures work properly.
-    static var UNIVERSAL_LAUNCHER_SIZE: Double { max(90.0, StyleSheet.getScaledWidth(10)) }
+    static var UNIVERSAL_LAUNCHER_HEIGHT: Double { max(90.0, StyleSheet.getScaledWidth(10)) }
 
     /// Universally declared unit mass
     static let UNIT_MASS: Double = .unit
@@ -54,28 +54,12 @@ public class Constants {
     /// The minimum movement required to register a drag gesture
     static let MOVEMENT_THRESHOLD: CGFloat = 1.0
 
-    /// CodingKeys enum for a universal coding means
-    enum CodingKeys: String, CodingKey {
-        case id, centerPositionX, centerPositionY, gameObjectType,
-             shapeWidth, shapeHeight, shapeRotation, shapeScale, shapeType
-    }
-
-    /// CodingKeys for shape types
-    enum ShapeType: String, Codable {
-        case circle
-        case rectangle
-    }
-
-    enum LevelMode: String, Codable {
-        case NormalPeg
-        case GoalPeg
-        case Block
-        case Remove
-    }
-
+    /*
     static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Double?] = [
-        ShapeType.circle.rawValue: { this, other, start, end in this.intersects(with: other, at: start, and: end) }
+        Enums.ShapeType.circle.rawValue: { this, other, 
+     start, end in this.intersects(with: other, at: start, and: end) }
         ]
+     */
 
     /// Universally default circular shape
     static let DEFAULT_CIRCULAR_SHAPE =
@@ -122,15 +106,25 @@ public class Constants {
     ///
     /// The game area will essentially be a square that the user can interact with.
     /// Regardless of the screen size, the start of the game area will be adjusted
-    /// by 100 points in the positive y-direction. This is to accomodate the launcher's
-    /// minimum size.
+    /// by x points in the positive y-direction where x is a ratio of the launcher
+    /// size, determined by the screen. This is to accomodate the launcher's
+    /// minimum size, and some added buffer space so that game objects do not get
+    /// in the way of the user's ability to aim and launch the cannon.
     static func getAdjustedGameArea() -> CGRect {
         let width = UI_SCREEN_WIDTH
         let height = UI_SCREEN_WIDTH
         let size = CGSize(width: width, height: height)
-        let origin = Vector(x: 0, y: 100).point
+        let origin = Vector(x: 0, y: UNIVERSAL_LAUNCHER_HEIGHT * 1.2).point
         return CGRect(origin: origin, size: size)
     }
+
+    /// Returns the width remaining after accounting for adjustment for GameArea
+    static let getAdjustedActionBarHeight: Double =
+    UI_SCREEN_HEIGHT - (UI_SCREEN_WIDTH + StyleSheet.getScaledHeight(18))
+
+        /*Logger.log("HEIGHT: \(UI_SCREEN_HEIGHT)  WIDTH: \(UI_SCREEN_WIDTH)", self)
+        Logger.log("Adjusted height is \(height)", self)
+        return height*/
 
     /// Helper function to calculate distance between two points
     static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> Double {

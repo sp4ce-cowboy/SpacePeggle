@@ -97,11 +97,11 @@ extension LevelDesigner {
 
         // Check for top or bottom collision
         if objectTopMost < screenYStart || objectBottomMost > screenYEnd {
-            if objectY < screenYStart {
+            if objectTopMost < screenYStart {
                 object.height = heightY.twice
                 return true
             }
-            if objectY > screenYEnd {
+            if objectBottomMost > screenYEnd {
                 object.height = heightY.twice
                 return true
             }

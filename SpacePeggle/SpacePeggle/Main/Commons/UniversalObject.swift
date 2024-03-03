@@ -67,3 +67,12 @@ extension UniversalObject {
     }
 
 }
+
+/// This extension adds basic object detection measures to an object
+extension UniversalObject {
+    func contains(_ vector: Vector) -> Bool {
+        let withinXAxis = vector.x >= rightMostPosition.x && vector.x <= leftMostPosition.x
+        let withinYAxis = vector.y >= topMostPosition.y && vector.y <= bottomMostPosition.y
+        return withinXAxis && withinYAxis
+    }
+}

@@ -4,24 +4,17 @@ import SwiftUI
 /// around the level board.
 extension LevelDesigner {
     func updateObjectPosition(_ object: any GameObject, with position: Vector) {
-        guard var object = levelObjects[object.id] else {
-            return
+        if var object = levelObjects[object.id] {
+            object.centerPosition = position
+            handleBoundaryMovementCollision(object: &object)
         }
-
-        object.centerPosition = position
-        handleBoundaryMovementCollision(object: &object)
-    }
-
-    func handleObjectRemoval(_ object: any GameObject) {
-        levelObjects.removeValue(forKey: object.id)
     }
 
     func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
         let stopLocation = drag.location
         var isMovingAway = false
-        Logger.log("Drag gesture triggered with location \(stopLocation)", self)
-
         var isOverlap = false
+
         for gameObject in levelObjects.values where object.id != gameObject.id {
             if let distance = object.overlap(with: gameObject) {
                 isOverlap = true
@@ -38,7 +31,6 @@ extension LevelDesigner {
         }
 
         if !isOverlap || isMovingAway {
-            Logger.log("Moving object while boolean is: \(isOverlap)", self)
             updateObjectPosition(object, with: Vector(with: stopLocation))
         }
     }

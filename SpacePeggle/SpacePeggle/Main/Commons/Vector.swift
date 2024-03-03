@@ -7,8 +7,8 @@ struct Vector: Equatable, CustomStringConvertible {
     var widthScale = Constants.UI_SCREEN_WIDTH
     var heightScale = Constants.UI_SCREEN_HEIGHT
 
-    var rawX: Double
-    var rawY: Double
+    private var rawX: Double
+    private var rawY: Double
 
     var description: String {
         "Vector(x: \(rawX * widthScale), y: \(rawY * heightScale), rawX: \(rawX), rawY: \(rawY)"

@@ -13,13 +13,6 @@ struct PlayableAreaView: View {
 
     var area: CGRect { viewModel.levelDomain }
     var geometrySize: CGSize { viewModel.geometryState.size }
-    
-    /*var size: CGSize { area.size }
-    var width: Double { size.width }
-    var height: Double { size.height }
-    var xOffset: Double { area.origin.x }
-    var yOffset: Double { area.origin.y }
-     */
 
     var body: some View {
         ZStack {

@@ -11,15 +11,14 @@ struct LevelScene: View {
     var body: some View {
         ZStack {
             PlayableAreaView()
+            ActionBarView()
             LevelObjectsBoardView()
+            LauncherStubView()
             LevelPauseButtonView()
-            // ActionBarView()
         }
         .if(viewModel.isLevelDesignerPaused) { view in
             view.overlay { LevelMenuView() }
-                .onAppear {
-                    Logger.log("Level menu triggered", self)
-                }
+                .onAppear { Logger.log("Level menu triggered", self) }
         }
         .background { LevelBackgroundView() }
         .environmentObject(viewModel)

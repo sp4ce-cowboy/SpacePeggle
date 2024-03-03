@@ -13,6 +13,7 @@ protocol AbstractLevelDesigner {
     func handleObjectResizing(_ value: DragGesture.Value, _ levelObject: any GameObject)
     func handleObjectAddition(_ object: any GameObject)
     func handleObjectRemoval(_ object: any GameObject)
+    func handleObjectRemoval(_ location: Vector)
     func updateObjectPosition(_ gameObject: any GameObject, with position: Vector)
     func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value)
 }
@@ -33,7 +34,7 @@ class LevelDesigner {
     }
 
     init(currentLevel: AbstractLevel = LevelDesigner.getEmptyLevel(),
-         domain: CGRect = Constants.getDefaultFullScreen()) {
+         domain: CGRect = Constants.getAdjustedGameArea()) {
         defer { Logger.log("LevelDesigner is initialized with \(levelName)", self) }
 
         self.currentLevel = currentLevel
@@ -51,7 +52,7 @@ class LevelDesigner {
 }
 
 /// This extension allows the LevelDesigner to handle tap gestures for
-/// basic object creation.
+/// basic object creation and removal
 extension LevelDesigner {
     func handleObjectAddition(_ object: any GameObject) {
         guard isValidPosition(object) && !isOverlapping(object) else {
@@ -69,5 +70,15 @@ extension LevelDesigner {
         levelObjects.values
             .filter { $0.id != object.id }
             .contains { $0.overlap(with: object) != nil }
+    }
+
+    func handleObjectRemoval(_ object: any GameObject) {
+        levelObjects.removeValue(forKey: object.id)
+    }
+
+    func handleObjectRemoval(_ location: Vector) {
+        if let object = levelObjects.values.first(where: { $0.contains(location) }) {
+            handleObjectRemoval(object)
+        }
     }
 }

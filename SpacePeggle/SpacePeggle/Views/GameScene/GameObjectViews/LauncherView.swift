@@ -22,9 +22,6 @@ struct LauncherView: View {
     var launcherWidth = Double(ObjectSet
         .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
-    var launcherHeights = Double(ObjectSet
-        .defaultGameObjectSet["Launcher"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
-
     var inactiveLauncherImageName = ObjectSet
         .defaultGameObjectSet["Launcher"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
 

@@ -19,7 +19,7 @@ struct AppScene: View {
                     .currentScene(geometry: geometry)
                     .id(sceneController.currentSceneName)
             }
-            .animation(.default.delay(0.5), value: sceneController.currentSceneName)
+            .animation(.default, value: sceneController.currentSceneName)
             .onAppear {
                 Constants.UI_SCREEN_SIZE = Constants.getFullScreenWithSafeEdges(from: geometry).size
                 Logger.log("Screen size is \(Constants.UI_SCREEN_SIZE)", self)

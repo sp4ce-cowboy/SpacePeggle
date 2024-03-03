@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CircularShape: UniversalShape {
 
-    let shapeType: String = Constants.ShapeType.circle.rawValue
+    let shapeType: String = Enums.ShapeType.circle.rawValue
     let trueRadius: Double
     var rotation: Double
     var scale: Double

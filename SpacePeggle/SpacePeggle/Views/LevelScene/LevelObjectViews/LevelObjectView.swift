@@ -5,7 +5,6 @@ struct LevelObjectView: View {
     /// allow for the view to refresh and redraw every time the viewModel is
     /// refreshed.
     @EnvironmentObject var viewModel: LevelSceneViewModel
-    @GestureState var isGestureActive = false
     var levelObject: any GameObject
 
     var isSelected: Bool { viewModel.currentGameObject == levelObject.id }
@@ -32,7 +31,9 @@ struct LevelObjectView: View {
                 // .onLongPressGesture { viewModel.handleLevelObjectRemoval(levelObject) }
                 .simultaneousGesture(handleLongPress.exclusively(before: handleDrag))
                 .if(isSelected) { view in
-                    view.overlay(getResizerView)
+                    view
+                        .overlay(LevelObjectResizerView(levelObject: levelObject))
+                        .environmentObject(viewModel)
                 }
                 .if(viewModel.isLevelDesignerPaused) { view in
                     view.disabled(true)
@@ -68,49 +69,8 @@ struct LevelObjectView: View {
 
     private var handleDrag: some Gesture {
         DragGesture(minimumDistance: Constants.MOVEMENT_THRESHOLD)
-            .updating($isGestureActive) { _, state, _ in
-                state = true
-            }
             .onChanged { value in
                 viewModel.handleLevelObjectMovement(levelObject, with: value)
             }
-            .onEnded { value in
-                viewModel.handleLevelObjectMovement(levelObject, with: value)
-            }
     }
-
-    private var getResizerView: some View {
-        ZStack {
-            getResizerViewOverlay
-            getResizerViewIcon
-        }
-    }
-
-    private var getResizerViewOverlay: some View {
-        Rectangle()
-            .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
-            .frame(width: levelObjectImageWidth,
-                   height: levelObjectImageHeight)
-            .position(center.point)
-            .rotationEffect(rotation, anchor: center.unitPoint)
-    }
-
-    /// The resizer view represents the corner of the size adjustment box.
-    private var getResizerViewIcon: some View {
-        Image(systemName: "arrow.down.right.circle.fill")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: Constants.UNIVERSAL_LENGTH,
-                   height: Constants.UNIVERSAL_LENGTH)
-            .position(x: center.x + (levelObjectImageWidth).half,
-                      y: center.y + (levelObjectImageHeight).half)
-            .rotationEffect(rotation, anchor: center.unitPoint)
-            .foregroundColor(.red)
-            // .opacity(isSelected ? 1 : 0)
-            .gesture(DragGesture()
-                .onChanged { value in
-                    viewModel.handleDragGestureChange(value, levelObject)
-                })
-    }
-
 }

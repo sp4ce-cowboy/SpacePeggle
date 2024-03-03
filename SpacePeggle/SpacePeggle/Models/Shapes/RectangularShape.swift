@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RectangularShape: UniversalShape {
 
-    var shapeType: String = Constants.ShapeType.rectangle.rawValue
+    var shapeType: String = Enums.ShapeType.rectangle.rawValue
 
     let trueHeight: Double
     let trueWidth: Double
