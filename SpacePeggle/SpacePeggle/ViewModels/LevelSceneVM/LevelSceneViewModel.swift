@@ -7,7 +7,8 @@ class LevelSceneViewModel: ObservableObject {
     @Published var currentGameObject: UUID?
     var geometryState: GeometryProxy
     var selectedMode: Constants.LevelMode = .NormalPeg
-    var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    // var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    var levelDesigner: AbstractLevelDesigner = LevelDesigner()
     // @Published var currentLevel: AbstractLevelAdvanced = LevelStub().getLevelStub()
 
     init(_ geometryState: GeometryProxy) {
@@ -19,7 +20,11 @@ class LevelSceneViewModel: ObservableObject {
     }
 
     var levelObjects: [UUID: any GameObject] {
-        currentLevel.gameObjects
+        levelDesigner.levelObjects
+    }
+
+    var levelDomain: CGRect {
+        levelDesigner.domain
     }
 
     func handlePause() {
@@ -33,8 +38,7 @@ class LevelSceneViewModel: ObservableObject {
 
 }
 
-/// This extension adds level object management abilities to the
-/// view model.
+/// This extension adds basic level object management abilities.
 extension LevelSceneViewModel {
 
     func handleAreaTap(in location: CGPoint) {
@@ -51,42 +55,36 @@ extension LevelSceneViewModel {
         case .Block:
             break
         case .Remove:
+            // return
             break
         }
 
-        currentLevel.storeGameObject(gameObject)
-        Logger.log("GameObject \(selectedMode) stored at \(locationVector)", self)
-        Logger.log("Level now contains \(currentLevel.gameObjects.keys.count) items", self)
-    }
-
-    func handleLevelObjectRotation(_ object: any GameObject, angle: Angle) {
-        triggerRefresh()
-        Logger.log("New angle for \(object.id) is \(angle)", self)
-        currentLevel.handleObjectRotation(object, value: angle)
-    }
-
-    func handleLevelObjectMagnification(_ object: any GameObject, scale: Double) {
-        triggerRefresh()
-        Logger.log("New scale for \(object.id) is \(scale)", self)
-        currentLevel.handleObjectMagnification(object, scale: scale)
+        levelDesigner.handleObjectAddition(gameObject)
     }
 
     func handleLevelObjectRemoval(_ object: any GameObject) {
         triggerRefresh()
         Logger.log("LevelObject \(object.id) removed", self)
-        currentLevel.handleObjectRemoval(object)
+        // currentLevel.handleObjectRemoval(object)
+        levelDesigner.handleObjectRemoval(object)
     }
 
     func handleLevelObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
         triggerRefresh()
-        currentLevel.handleObjectMovement(object, with: drag)
+        // currentLevel.handleObjectMovement(object, with: drag)
+        levelDesigner.handleObjectMovement(object, with: drag)
     }
 
 }
 
-/// This extension provides for the rotation and scaling functionality.
+/// This extension adds the ability for the rotation and scaling functionality.
 extension LevelSceneViewModel {
 
+    func handleDragGestureChange(_ value: DragGesture.Value, _ levelObject: any GameObject) {
+        triggerRefresh()
+        levelDesigner.handleObjectResizing(value, levelObject)
+
+    }
 }
 
 protocol PegManipulation {

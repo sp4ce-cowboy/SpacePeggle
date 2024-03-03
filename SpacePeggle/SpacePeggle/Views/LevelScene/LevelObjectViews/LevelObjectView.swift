@@ -5,6 +5,7 @@ struct LevelObjectView: View {
     /// allow for the view to refresh and redraw every time the viewModel is
     /// refreshed.
     @EnvironmentObject var viewModel: LevelSceneViewModel
+    @GestureState var isGestureActive = false
     var levelObject: any GameObject
 
     var isSelected: Bool { viewModel.currentGameObject == levelObject.id }
@@ -32,6 +33,9 @@ struct LevelObjectView: View {
                 .simultaneousGesture(handleLongPress.exclusively(before: handleDrag))
                 .if(isSelected) { view in
                     view.overlay(getResizerView)
+                }
+                .if(viewModel.isLevelDesignerPaused) { view in
+                    view.disabled(true)
                 }
 
             // if isSelected { getResizerView }
@@ -64,7 +68,13 @@ struct LevelObjectView: View {
 
     private var handleDrag: some Gesture {
         DragGesture(minimumDistance: Constants.MOVEMENT_THRESHOLD)
+            .updating($isGestureActive) { _, state, _ in
+                state = true
+            }
             .onChanged { value in
+                viewModel.handleLevelObjectMovement(levelObject, with: value)
+            }
+            .onEnded { value in
                 viewModel.handleLevelObjectMovement(levelObject, with: value)
             }
     }
@@ -90,42 +100,17 @@ struct LevelObjectView: View {
         Image(systemName: "arrow.down.right.circle.fill")
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 30, height: 30)
+            .frame(width: Constants.UNIVERSAL_LENGTH,
+                   height: Constants.UNIVERSAL_LENGTH)
             .position(x: center.x + (levelObjectImageWidth).half,
                       y: center.y + (levelObjectImageHeight).half)
             .rotationEffect(rotation, anchor: center.unitPoint)
             .foregroundColor(.red)
-            .opacity(isSelected ? 1 : 0)
-            .gesture(DragGesture().onChanged(handleDragGestureChange))
-            .if(viewModel.isLevelDesignerPaused) { view in
-                view.disabled(true)
-            }
+            // .opacity(isSelected ? 1 : 0)
+            .gesture(DragGesture()
+                .onChanged { value in
+                    viewModel.handleDragGestureChange(value, levelObject)
+                })
     }
 
-    private func handleDragGestureChange(_ value: DragGesture.Value) {
-        let width = levelObject.trueWidth + value.translation.width
-        let height = levelObject.trueHeight + value.translation.height
-
-        let newScale = calculateNewScale(width: width, height: height)
-        Logger.log("New scale is \(newScale)", self)
-        viewModel.handleLevelObjectMagnification(levelObject, scale: newScale)
-
-        let rotationAngle = calculateRotationAngle(from: value)
-        Logger.log("Rotation angle is \(rotationAngle)", self)
-        viewModel.handleLevelObjectRotation(levelObject, angle: rotationAngle)
-    }
-
-    private func calculateNewScale(width: CGFloat, height: CGFloat) -> Double {
-        let originalDiagonal = sqrt(pow(levelObject.trueHeight, 2) + pow(levelObject.trueWidth, 2))
-        let newDiagonal = sqrt(pow(width, 2) + pow(height, 2))
-        return min(max(newDiagonal / originalDiagonal, 1.0), 4.0)
-    }
-
-    private func calculateRotationAngle(from value: DragGesture.Value) -> Angle {
-        let center = levelObject.centerPosition // Assuming this is a CGPoint
-        let startAngle = atan2(value.startLocation.y - center.y, value.startLocation.x - center.x)
-        let currentAngle = atan2(value.location.y - center.y, value.location.x - center.x)
-        let angleDifference = currentAngle - startAngle
-        return Angle(radians: Double(angleDifference))
-    }
 }

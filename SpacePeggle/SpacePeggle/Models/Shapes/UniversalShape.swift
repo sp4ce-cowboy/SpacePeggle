@@ -24,6 +24,13 @@ protocol UniversalShape {
 }
 
 extension UniversalShape {
-    var height: Double { trueHeight * scale }
-    var width: Double { trueWidth * scale }
+    var height: Double {
+        get { trueHeight * scale }
+        set { scale = newValue / trueHeight }
+    }
+
+    var width: Double {
+        get { trueWidth * scale }
+        set { scale = newValue / trueWidth }
+    }
 }

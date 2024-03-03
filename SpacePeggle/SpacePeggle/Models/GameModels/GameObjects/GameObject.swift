@@ -30,28 +30,12 @@ protocol GameObject: UniversalObject, Codable {
     func overlap(with object: any GameObject) -> Double?
 }
 
-/// This extension adds computed properties that provide quicker access to the
-/// properties of the GameObject's shape
+/// This extension adds default collision resolution measures to game objects
+
 extension GameObject {
-    var width: Double { shape.width }
-    var trueWidth: Double { shape.trueWidth }
-    var height: Double { shape.height }
-    var trueHeight: Double { shape.trueHeight }
-
-    var scale: Double {
-        get { shape.scale }
-        set {
-            Logger.log("Scale for \(self.id) updated to \(newValue)")
-            shape.scale = newValue
-        }
-    }
-
-    var rotation: Angle {
-        get { Angle(radians: shape.rotation) }
-        set {
-            Logger.log("Rotation for \(self.id) updated to \(newValue)", self)
-            shape.rotation = newValue.radians
-        }
+    func overlap(with object: any GameObject) -> Double? {
+        self.shape.intersects(with: object.shape, at: self.centerPosition,
+                              and: object.centerPosition)
     }
 }
 
@@ -109,14 +93,5 @@ extension GameObject {
         try container.encode(shape.rotation, forKey: .shapeRotation)
         try container.encode(shape.scale, forKey: .shapeScale)
         try container.encode(shape.shapeType, forKey: .shapeType)
-    }
-}
-
-/// This extension adds default collision resolution measures to game objects
-
-extension GameObject {
-    func overlap(with object: any GameObject) -> Double? {
-        self.shape.intersects(with: object.shape, at: self.centerPosition,
-                              and: object.centerPosition)
     }
 }

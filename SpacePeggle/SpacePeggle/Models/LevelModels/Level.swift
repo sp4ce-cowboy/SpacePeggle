@@ -1,31 +1,33 @@
 import SwiftUI
 
-extension Level: AbstractLevel { }
+extension Level: AbstractLevel {
+}
 
 /// The Level Model encapsulates information about the level name
 /// and contains a collection of GameObjects. This collection is represented
 /// with a hashmap to provide for quick access. UUID is Hashable, and GameObjects
 /// are implicitly equatable. The chances of a UUID collision is infinitesimal.
 ///
-/// This allows for O(1) average access time. The representation invariant (kind of)
-/// here is that all UUID keys must correspond to the UUID contained within the
+/// This allows for O(1) average access time.
+///
+/// Additionally, the Level Model also plays the role of the "Level Engine" equivalent,
+/// directly handling game objects movement and collision resolution.
 final class Level {
 
     var name: String
     var gameObjects: [UUID: any GameObject]
+    var domain: CGRect = Constants.getDefaultFullScreen()
 
-    init(name: String, gameObjects: [UUID: any GameObject]) {
+    init(name: String, gameObjects: [UUID: any GameObject],
+         domain: CGRect = Constants.getDefaultFullScreen()) {
+        defer { Logger.log("Level is initialized with \(gameObjects.count)", self) }
         self.name = name
         self.gameObjects = gameObjects
-        Logger.log("Level is initialized with \(gameObjects.count)", self)
+        self.domain = domain
     }
 
     deinit {
         Logger.log("Level is deinitialized with \(gameObjects.count)", self)
-    }
-
-    static func getDefaultLevel() -> Level {
-        Level(name: "LevelName", gameObjects: [:])
     }
 
     func getGameObject(id: UUID) -> (any GameObject)? {
@@ -43,12 +45,10 @@ final class Level {
         // assert(verify())
     }
 
-    func updateObjectPosition(id: UUID, with position: Vector) {
-        gameObjects[id]?.centerPosition = position
-    }
-
-    func updateObjectPosition(_ gameObject: any GameObject, with position: Vector) {
-        gameObjects[gameObject.id]?.centerPosition = position
+    func updateLevel(_ gameObjects: [UUID: any GameObject]) {
+        if verify() {
+            self.gameObjects = gameObjects
+        }
     }
 
     /// Implicit checkRep

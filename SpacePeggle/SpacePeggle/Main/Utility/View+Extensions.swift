@@ -55,12 +55,16 @@ extension Double {
     static var unit: Double { 1.0 }
     var half: Double { self * 0.5 }
     var twice: Double { self * 2.0 }
+    var square: Double { pow(self, 2) }
+    var sqroot: Double { sqrt(self) }
 }
 
 extension CGFloat {
-    static var unit: Double { 1.0 }
-    var half: Double { self * 0.5 }
-    var twice: Double { self * 2.0 }
+    static var unit: Double { Double.unit }
+    var half: Double { Double(self).half }
+    var twice: Double { Double(self).twice }
+    var square: Double { Double(self).square }
+    var sqroot: Double { Double(self).sqroot }
 }
 
 extension CGPoint {
@@ -70,5 +74,29 @@ extension CGPoint {
 
     var unitPoint: UnitPoint {
         UnitPoint(x: Double(self.x), y: Double(self.y))
+    }
+}
+
+extension CGRect {
+    func containsVector(_ vector: Vector) -> Bool {
+        self.contains(vector.point)
+    }
+
+    func containsAllVectors(_ vectors: [Vector]) -> Bool {
+        vectors.allSatisfy { vector in
+            self.containsVector(vector)
+        }
+    }
+}
+
+extension Angle: Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.radians)
+    }
+
+    public init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Double.self)
+        self.init(radians: value)
     }
 }

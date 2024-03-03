@@ -98,6 +98,11 @@ public class Constants {
         return gameScreen
     }
 
+    static func getDefaultFullScreen() -> CGRect {
+        let fullSize = CGSize(width: UI_SCREEN_WIDTH, height: UI_SCREEN_HEIGHT)
+        return CGRect(origin: .zero, size: fullSize)
+    }
+
     /// Helper function to calculate distance between two points
     static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> Double {
         Double(sqrt(pow((endPoint.x - startPoint.x), 2) + pow((endPoint.y - startPoint.y), 2)))
