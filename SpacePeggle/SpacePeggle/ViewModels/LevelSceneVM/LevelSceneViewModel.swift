@@ -44,9 +44,16 @@ extension LevelSceneViewModel {
         triggerRefresh()
 
         let locationVector = Vector(with: location)
-        var gameObject: any GameObject = NormalPeg(centerPosition: locationVector)
+        // var gameObject: any GameObject = NormalPeg(centerPosition: locationVector)
+        guard selectedMode != .Remove else {
+            levelDesigner.handleObjectRemoval(locationVector)
+            return
+        }
 
-        switch selectedMode {
+        var gameObject = ObjectSet.gameObjectCollection[selectedMode]?(locationVector) ??
+                                ObjectSet.defaultGameObject(locationVector)
+
+        /*switch selectedMode {
         case .NormalPeg:
             gameObject = NormalPeg(centerPosition: locationVector)
         case .GoalPeg:
@@ -62,7 +69,7 @@ extension LevelSceneViewModel {
         case .Remove:
             levelDesigner.handleObjectRemoval(locationVector)
             return
-        }
+        }*/
 
         levelDesigner.handleObjectAddition(gameObject)
     }

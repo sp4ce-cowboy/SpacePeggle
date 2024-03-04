@@ -52,6 +52,19 @@ class ObjectSet {
         "BlockPeg": ("block", CONSTANT_SIZE)
     ]
 
+    /// A dictionary of available game objects and closures that create them
+    static var gameObjectCollection: [Enums.SelectedMode: (Vector) -> any GameObject] = [
+     .NormalPeg: { center in NormalPeg(centerPosition: center) },
+     .GoalPeg: { center in GoalPeg(centerPosition: center) },
+     .BlockPeg: { center in BlockPeg(centerPosition: center) },
+     .SpookyPeg: { center in SpookyPeg(centerPosition: center) },
+     .KaboomPeg: { center in KaboomPeg(centerPosition: center) },
+     .StubbonPeg: { center in StubbornPeg(centerPosition: center) }
+     ]
+
+    /// Returns a closure that takes in a vector and creates a default game object.
+    static var defaultGameObject: (Vector) -> any GameObject = { center in NormalPeg(centerPosition: center) }
+
     /// The physics object set is essentially exactly the same as the default game object set
     /// for this problem set and most cases. However, having them separated ensures that the
     /// physics shape of a physics object is not dependent on the visual shape of an object.
@@ -63,20 +76,20 @@ class ObjectSet {
     /// The image name is also retained if a custom physics shape is to be generated
     /// (from let's say, a vector or raster image file)
     private(set) static var defaultPhysicsObjectSet: [String: (name: String, size: CGSize)] = [
-        "NormalPeg": ("peg-orange", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                           height: Constants.UNIVERSAL_LENGTH)),
-        "DefaultPeg": ("peg-orange", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                            height: Constants.UNIVERSAL_LENGTH)),
-        "GoalPeg": ("peg-blue", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                       height: Constants.UNIVERSAL_LENGTH)),
-        "NormalPegActive": ("peg-orange-glow", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                                      height: Constants.UNIVERSAL_LENGTH)),
-        "GoalPegActive": ("peg-blue-glow", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                                  height: Constants.UNIVERSAL_LENGTH)),
-        "Ball": ("ball", CGSize(width: Constants.UNIVERSAL_LENGTH,
-                                height: Constants.UNIVERSAL_LENGTH)),
-        "Launcher": ("cannon", CGSize(width: 100.0, height: 90.0))
-    ]
+    "NormalPeg": ("peg-blue", CONSTANT_SIZE),
+    "DefaultPeg": ("peg-blue", CONSTANT_SIZE),
+    "GoalPeg": ("peg-orange", CONSTANT_SIZE),
+    "NormalPegActive": ("peg-blue-glow", CONSTANT_SIZE),
+    "GoalPegActive": ("peg-orange-glow", CONSTANT_SIZE),
+    "Ball": ("ball", CONSTANT_SIZE),
+    "SpookyPeg": ("peg-green", CONSTANT_SIZE),
+    "SpookyPegActive": ("peg-green-glow", CONSTANT_SIZE),
+    "KaboomPeg": ("delete", CONSTANT_SIZE),
+    "KaboomPegActive": ("delete", CONSTANT_SIZE),
+    "StubbornPeg": ("delete", CONSTANT_SIZE),
+    "StubbornPegActive": ("delete", CONSTANT_SIZE),
+    "BlockPeg": ("block", CONSTANT_SIZE)
+]
 
     // GameObjectSet related function, can be replicated for PhysicsObjectSet as well.
 
