@@ -18,6 +18,7 @@
 		BA67193D2B941F50004FA712 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67193C2B941F50004FA712 /* LevelDesigner.swift */; };
 		BA6719422B943E53004FA712 /* LevelDesigner+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */; };
 		BA6719442B943E96004FA712 /* LevelDesigner+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719432B943E96004FA712 /* LevelDesigner+Movement.swift */; };
+		BA716F312B95DC3300C8EB3B /* space-background-compressed.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BA716F302B95DC3300C8EB3B /* space-background-compressed.jpeg */; };
 		BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7661DA2B8C86010022C267 /* Assets.xcassets */; };
 		BA76624B2B8C89590022C267 /* GamePauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76620F2B8C89590022C267 /* GamePauseButtonView.swift */; };
 		BA76624C2B8C89590022C267 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662112B8C89590022C267 /* GameBackgroundView.swift */; };
@@ -123,6 +124,7 @@
 		BA67193C2B941F50004FA712 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Resizing.swift"; sourceTree = "<group>"; };
 		BA6719432B943E96004FA712 /* LevelDesigner+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Movement.swift"; sourceTree = "<group>"; };
+		BA716F302B95DC3300C8EB3B /* space-background-compressed.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "space-background-compressed.jpeg"; sourceTree = "<group>"; };
 		BA7661D32B8C85FF0022C267 /* SpacePeggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePeggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7661DA2B8C86010022C267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7661E32B8C86020022C267 /* SpacePeggleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpacePeggleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +249,7 @@
 				BA12BB032B90886100BCE72C /* AppScene.swift */,
 				BA85C6702B8F3EC900039CCE /* AppSceneController.swift */,
 				BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */,
+				BA716F302B95DC3300C8EB3B /* space-background-compressed.jpeg */,
 				BAC447372B95CC740011581F /* LaunchScreen.storyboard */,
 			);
 			path = MainApp;
@@ -695,6 +698,7 @@
 			files = (
 				BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */,
 				BAC447382B95CC740011581F /* LaunchScreen.storyboard in Resources */,
+				BA716F312B95DC3300C8EB3B /* space-background-compressed.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,7 +983,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = NO;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -1019,7 +1023,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = NO;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;

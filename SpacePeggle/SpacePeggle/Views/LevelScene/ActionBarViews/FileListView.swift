@@ -30,6 +30,7 @@ struct FileListView: View {
             }), trailing: Button("Done") {
                 viewModel.options.isPresented = true
             })
+
             .alert(isPresented: viewModel.showingDeleteAllAlertBinding) {
                 Alert(
                     title: Text("Confirm Deletion"),

@@ -52,7 +52,7 @@ class ObjectSet {
         "BlockPeg": ("block", CONSTANT_SIZE)
     ]
 
-    /// A dictionary of available game objects and closures that create them
+    /// A dictionary of available game objects and closures that create default instances
     static var gameObjectCollection: [Enums.SelectedMode: (Vector) -> any GameObject] = [
      .NormalPeg: { center in NormalPeg(centerPosition: center) },
      .GoalPeg: { center in GoalPeg(centerPosition: center) },
@@ -71,6 +71,15 @@ class ObjectSet {
      .KaboomPeg: { center in KaboomPeg(centerPosition: center) },
      .StubbonPeg: { center in StubbornPeg(centerPosition: center) }
      ]
+
+    /// A dictionary of available game objects and closures that create full instances
+    static var fullGameObjectCreation: [Enums.GameObjectType: (Vector, UUID, UniversalShape) -> any GameObject] = [
+        .NormalPeg: { center, id, shape in NormalPeg(centerPosition: center, id: id, shape: shape) },
+        .GoalPeg: { center, id, shape in GoalPeg(centerPosition: center, id: id, shape: shape) },
+        .SpookyPeg: { center, id, shape in SpookyPeg(centerPosition: center, id: id, shape: shape) },
+        .KaboomPeg: { center, id, shape in KaboomPeg(centerPosition: center, id: id, shape: shape) },
+        .BlockPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) }
+    ]
 
     /// Returns a closure that takes in a vector and creates a default game object.
     static var defaultGameObject: (Vector) -> any GameObject = { center in NormalPeg(centerPosition: center) }

@@ -70,4 +70,81 @@ final class Level {
         })
     }
 
+    func encode(to encoder: Encoder) throws {
+        Logger.log("Level encoded called", "Level+Storage")
+        var container = encoder.container(keyedBy: Enums.LevelCodingKeys.self)
+        try container.encode(name, forKey: .name)
+
+        // Encode each GameObject with type discrimination
+        // var objectsContainer = container.nestedUnkeyedContainer(forKey: .gameObjects)
+        var objectsContainer = container.nestedUnkeyedContainer(forKey: .gameObjects)
+
+        for object in gameObjects.values {
+            let gameObjectType = object.gameObjectType
+
+            switch gameObjectType {
+            case .NormalPeg, .NormalPegActive:
+                try objectsContainer.encode(object)
+            case .GoalPeg, .GoalPegActive:
+                try objectsContainer.encode(object as? GoalPeg)
+            case .SpookyPeg, .SpookyPegActive:
+                break
+            case .KaboomPeg, .KaboomPegActive:
+                break
+            case .StubbornPeg:
+                break
+            case .BlockPeg:
+                break
+            }
+        }
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Enums.LevelCodingKeys.self)
+        let name = try container.decode(String.self, forKey: .name)
+
+        var objectsArrayForType = try container.nestedUnkeyedContainer(forKey: .gameObjects)
+        var objects: [any GameObject] = []
+
+        while !objectsArrayForType.isAtEnd {
+            let gameObjectDict = try objectsArrayForType.nestedContainer(keyedBy: Enums.GameObjectCodingKeys.self)
+            if let gameObject = try decodeObject(gameObjectDict) {
+                objects.append(gameObject)
+            }
+        }
+
+        Logger.log("Loaded level with \(objects.count)")
+        let gameObjectsMap = Level.generateGameObjectsCollection(objects)
+        Logger.log("New loaded level now contains \(gameObjectsMap)", "Level+Storage")
+        self.name = name
+        self.gameObjects = gameObjectsMap
+    }
+
+    private func decodeObject(_ gameObjectDict: KeyedDecodingContainer<Enums.GameObjectCodingKeys>)
+    throws -> (any GameObject)? {
+
+        let gameObjectType = try gameObjectDict.decode(Enums.GameObjectType.self, forKey: .gameObjectType)
+        let id = try gameObjectDict.decode(UUID.self, forKey: .id)
+        let center = try gameObjectDict.decode(Vector.self, forKey: .center)
+        let shapeWidth = try gameObjectDict.decode(Double.self, forKey: .shapeWidth)
+        let shapeHeight = try gameObjectDict.decode(Double.self, forKey: .shapeHeight)
+        let shapeRotation = try gameObjectDict.decode(Double.self, forKey: .shapeRotation)
+        let shapeScale = try gameObjectDict.decode(Double.self, forKey: .shapeScale)
+        let shapeType = try gameObjectDict.decode(Enums.ShapeType.self, forKey: .shapeType)
+
+        var decodedShape: UniversalShape
+
+        switch shapeType {
+        case Enums.ShapeType.circle:
+            decodedShape = CircularShape(diameter: shapeWidth, rotation: shapeRotation, scale: shapeScale)
+
+        case Enums.ShapeType.rectangle:
+            decodedShape = RectangularShape(height: shapeHeight, width: shapeWidth,
+                                            rotation: shapeRotation, scale: shapeScale)
+        }
+
+        let gameObject = ObjectSet.fullGameObjectCreation[gameObjectType]?(center, id, decodedShape)
+        return gameObject
+    }
+
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RectangularShape: UniversalShape {
 
-    let shapeType: Enums.ShapeType = .rectangle
+    var shapeType: Enums.ShapeType = .rectangle
     let trueHeight: Double
     let trueWidth: Double
     var rotation: Double

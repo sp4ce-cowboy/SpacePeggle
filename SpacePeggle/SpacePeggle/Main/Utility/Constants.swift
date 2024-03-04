@@ -69,7 +69,7 @@ public class Constants {
 
     /// Universally default circular shape
     static let DEFAULT_CIRCULAR_SHAPE =
-    CircularShape(radius: Constants.UNIVERSAL_LENGTH.half,
+    CircularShape(diameter: Constants.UNIVERSAL_LENGTH,
                   rotation: .zero,
                   scale: .unit)
 

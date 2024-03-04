@@ -43,5 +43,6 @@ extension AppSceneController {
 extension AppSceneController {
     static func transitionToGameScene(with: any AbstractLevel) {
         shared.updateScene(to: "GameScene")
+        AudioManager.shared.play()
     }
 }

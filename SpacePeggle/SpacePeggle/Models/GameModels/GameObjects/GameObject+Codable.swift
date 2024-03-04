@@ -1,9 +1,11 @@
 import SwiftUI
 
 /// This provides a default implementation for a GameObject to be coded and decoded
+
 extension GameObject {
 
     init(from decoder: Decoder) throws {
+        Logger.log("GameObject decoder init", (any GameObject).self)
         let container = try decoder.container(keyedBy: Enums.GameObjectCodingKeys.self)
         let id = try container.decode(UUID.self, forKey: .id)
         let center = try container.decode(Vector.self, forKey: .center)
@@ -19,7 +21,7 @@ extension GameObject {
 
         switch shapeType {
         case Enums.ShapeType.circle:
-            decodedShape = CircularShape(radius: shapeWidth,
+            decodedShape = CircularShape(diameter: shapeWidth,
                                          rotation: shapeRotation,
                                          scale: shapeScale)
 
@@ -35,6 +37,7 @@ extension GameObject {
     }
 
     func encode(to encoder: Encoder) throws {
+        Logger.log("GameObject encoder func", (any GameObject).self)
         var container = encoder.container(keyedBy: Enums.GameObjectCodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(centerPosition, forKey: .center)

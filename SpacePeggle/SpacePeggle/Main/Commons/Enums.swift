@@ -14,10 +14,12 @@ class Enums {
         case shapeHeight
         case shapeRotation
         case shapeScale
+        case shape
     }
 
     enum LevelCodingKeys: String, CodingKey {
-        case name, gameObjects
+        case name
+        case gameObjects
     }
 
     /// CodingKeys for shape types
@@ -37,7 +39,7 @@ class Enums {
         case Remove
     }
 
-    enum GameObjectType: String, Codable {
+    enum GameObjectType: String, Codable, CodingKey {
         case NormalPeg, NormalPegActive
         case GoalPeg, GoalPegActive
         case BlockPeg

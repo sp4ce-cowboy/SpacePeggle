@@ -27,8 +27,6 @@ protocol Peg: GameObject, PhysicsObject {
 
 }
 
-/// Adds default methods for Peg struct
-
 /*
  extension Peg {
  
