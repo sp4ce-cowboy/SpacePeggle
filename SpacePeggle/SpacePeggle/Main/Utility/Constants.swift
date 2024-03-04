@@ -118,7 +118,7 @@ public class Constants {
     /// in the way of the user's ability to aim and launch the cannon.
     static func getAdjustedGameArea() -> CGRect {
         let width = UI_SCREEN_WIDTH
-        let height = UI_SCREEN_WIDTH
+        let height = UI_SCREEN_WIDTH * 1.1
         let size = CGSize(width: width, height: height)
         let origin = Vector(x: 0, y: UNIVERSAL_LAUNCHER_HEIGHT * 1.2).point
         return CGRect(origin: origin, size: size)
