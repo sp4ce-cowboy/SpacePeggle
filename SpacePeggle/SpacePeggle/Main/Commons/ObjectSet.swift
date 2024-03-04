@@ -81,6 +81,17 @@ class ObjectSet {
         .BlockPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) }
     ]
 
+    static var fullShapeCreation: [Enums.ShapeType: (Double, Double, Double, Double) -> any UniversalShape] = [
+        .circle: { height, _, angle, scale in CircularShape(diameter: height,
+                                                                rotation: angle,
+                                                                scale: scale)},
+
+        .rectangle: { height, width, angle, scale in RectangularShape(height: height,
+                                                                      width: width,
+                                                                      rotation: angle,
+                                                                      scale: scale)}
+    ]
+
     /// Returns a closure that takes in a vector and creates a default game object.
     static var defaultGameObject: (Vector) -> any GameObject = { center in NormalPeg(centerPosition: center) }
 
