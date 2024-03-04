@@ -14,6 +14,7 @@
 		BA12BB002B90782400BCE72C /* AppSceneController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */; };
 		BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB012B907F9100BCE72C /* AudioManager.swift */; };
 		BA12BB042B90886100BCE72C /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* AppScene.swift */; };
+		BA28FD6C2B962DD00044CAC8 /* StartSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */; };
 		BA63CCAB2B945CCF005D23EB /* LauncherStubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA63CCAA2B945CCF005D23EB /* LauncherStubView.swift */; };
 		BA67193D2B941F50004FA712 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67193C2B941F50004FA712 /* LevelDesigner.swift */; };
 		BA6719422B943E53004FA712 /* LevelDesigner+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */; };
@@ -120,6 +121,7 @@
 		BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppSceneController+Transition.swift"; sourceTree = "<group>"; };
 		BA12BB012B907F9100BCE72C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BA12BB032B90886100BCE72C /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
+		BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneViewModel.swift; sourceTree = "<group>"; };
 		BA63CCAA2B945CCF005D23EB /* LauncherStubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStubView.swift; sourceTree = "<group>"; };
 		BA67193C2B941F50004FA712 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Resizing.swift"; sourceTree = "<group>"; };
@@ -230,6 +232,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA28FD6A2B962DBE0044CAC8 /* StartSceneVM */ = {
+			isa = PBXGroup;
+			children = (
+				BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */,
+			);
+			path = StartSceneVM;
+			sourceTree = "<group>";
+		};
 		BA2BFD262B94611900161917 /* ActionBarViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +444,7 @@
 		BA7662452B8C89590022C267 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BA28FD6A2B962DBE0044CAC8 /* StartSceneVM */,
 				BACF21CF2B903308007FCE8D /* LevelSceneVM */,
 				BACF21CE2B9032F8007FCE8D /* GameSceneVM */,
 			);
@@ -785,6 +796,7 @@
 				BAC4B9C52B94884C00F9F405 /* KaboomPeg.swift in Sources */,
 				BAD80ADC2B90B243008E998F /* AppDelegate.swift in Sources */,
 				BA7662742B8C89590022C267 /* SpacePeggleApp.swift in Sources */,
+				BA28FD6C2B962DD00044CAC8 /* StartSceneViewModel.swift in Sources */,
 				BA76625E2B8C89590022C267 /* NormalPeg.swift in Sources */,
 				BA7662662B8C89590022C267 /* GameEngine+Game.swift in Sources */,
 				BAC4B9C12B94880E00F9F405 /* SpookyPeg.swift in Sources */,
