@@ -118,13 +118,9 @@ public class Constants {
         return CGRect(origin: origin, size: size)
     }
 
-    /// Returns the width remaining after accounting for adjustment for GameArea
+    /// Returns the width remaining after accounting for adjustment for GameArea.
     static let getAdjustedActionBarHeight: Double =
     UI_SCREEN_HEIGHT - (UI_SCREEN_WIDTH + StyleSheet.getScaledHeight(18))
-
-        /*Logger.log("HEIGHT: \(UI_SCREEN_HEIGHT)  WIDTH: \(UI_SCREEN_WIDTH)", self)
-        Logger.log("Adjusted height is \(height)", self)
-        return height*/
 
     /// Helper function to calculate distance between two points
     static func distance(from startPoint: CGPoint, to endPoint: CGPoint) -> Double {

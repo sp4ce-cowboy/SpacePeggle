@@ -72,5 +72,8 @@ struct LevelObjectView: View {
             .onChanged { value in
                 viewModel.handleLevelObjectMovement(levelObject, with: value)
             }
+            .onEnded { value in
+                viewModel.handleLevelObjectMovement(levelObject, with: value)
+            }
     }
 }

@@ -26,6 +26,7 @@ struct AppScene: View {
                 Logger.log("Safe area total top + bottom is " +
                            "\(geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom)", self)
                 Logger.log("Vector size is \(Vector.zero.widthScale) and \(Vector.zero.heightScale)", self)
+                Logger.log("Universal Length is \(Constants.UNIVERSAL_LENGTH)")
             }
         }
         // .ignoresSafeArea()

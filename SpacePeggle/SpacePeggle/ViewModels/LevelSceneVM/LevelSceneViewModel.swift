@@ -5,8 +5,8 @@ class LevelSceneViewModel: ObservableObject {
     @Published var isLevelObjectSelected = false
     @Published var currentGameObject: UUID?
     var geometryState: GeometryProxy
-    @Published var selectedMode: Enums.SelectedMode = .NormalPeg // currenltly active, isremove, all in one
-    // var currentLevel: AbstractLevelAdvanced = Level(name: "LevelName", gameObjects: [:])
+    @Published var selectedMode: Enums.SelectedMode = .NormalPeg
+    var hasCollided = false
     var levelDesigner: AbstractLevelDesigner = LevelDesigner()
     var levelNameInput: String = ""
 
@@ -73,9 +73,10 @@ extension LevelSceneViewModel {
         levelDesigner.handleObjectRemoval(object)
     }
 
-    func handleLevelObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
+    func handleLevelObjectMovement(_ object: any GameObject,
+                                   with drag: DragGesture.Value) {
         triggerRefresh()
-        levelDesigner.handleObjectMovement(object, with: drag)
+        levelDesigner.handleObjectMovement(object, with: drag, and: &hasCollided)
     }
 }
 

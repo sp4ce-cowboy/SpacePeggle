@@ -15,7 +15,9 @@ protocol AbstractLevelDesigner {
     func handleObjectRemoval(_ object: any GameObject)
     func handleObjectRemoval(_ location: Vector)
     func updateObjectPosition(_ gameObject: any GameObject, with position: Vector)
-    func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value)
+    func handleObjectMovement(_ object: any GameObject,
+                              with drag: DragGesture.Value,
+                              and state: inout Bool)
 }
 
 /// See PhysicsEngine and GameEngine

@@ -28,7 +28,6 @@ extension UniversalObject {
     var scale: Double {
         get { shape.scale }
         set {
-            Logger.log("Scale for \(self.id) updated to \(newValue)")
             shape.scale = newValue
         }
     }

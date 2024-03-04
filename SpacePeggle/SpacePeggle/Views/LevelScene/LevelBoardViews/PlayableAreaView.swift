@@ -17,7 +17,7 @@ struct PlayableAreaView: View {
     var body: some View {
         ZStack {
             area
-                .stroke(style: StrokeStyle(lineWidth: 3.0, lineCap: .round,
+                .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round,
                                            lineJoin: .bevel, dash: [3, 10]))
                 .foregroundStyle(Color.red)
                 .foregroundColor(.clear)

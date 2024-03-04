@@ -31,7 +31,6 @@ protocol GameObject: UniversalObject, Codable {
 }
 
 /// This extension adds default collision resolution measures to game objects
-
 extension GameObject {
     func overlap(with object: any GameObject) -> Double? {
         self.shape.intersects(with: object.shape, at: self.centerPosition,

@@ -10,7 +10,10 @@ extension LevelDesigner {
         }
     }
 
-    func handleObjectMovement(_ object: any GameObject, with drag: DragGesture.Value) {
+    func handleObjectMovement(_ object: any GameObject,
+                              with drag: DragGesture.Value,
+                              and state: inout Bool) {
+
         let stopLocation = drag.location
         var isMovingAway = false
         var isOverlap = false
@@ -19,7 +22,7 @@ extension LevelDesigner {
             if let distance = object.overlap(with: gameObject) {
                 isOverlap = true
                 let normalVector = (object.centerPosition - gameObject.centerPosition).normalized
-                let correction = normalVector * (distance + 0.0000000001)
+                let correction = normalVector * (distance) // 0.0000000000000)
                 let correctedPosition = object.centerPosition + correction
                 updateObjectPosition(object, with: correctedPosition)
 

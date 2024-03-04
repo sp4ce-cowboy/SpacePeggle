@@ -17,7 +17,6 @@ struct SelectionBarView: View {
             Spacer()
             deleteButton
         }
-        .background(Color.white)
     }
 
     // Helper function to determine the image name based on the selected object's type.

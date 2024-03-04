@@ -8,11 +8,9 @@ extension LevelDesigner {
         let height = levelObject.trueHeight + value.translation.height
 
         let newScale = calculateNewScale(width: width, height: height, levelObject)
-        Logger.log("New scale is \(newScale)", self)
         handleObjectMagnification(levelObject, scale: newScale.0, isDecreasing: newScale.1)
 
         let rotationAngle = calculateRotationAngle(from: value, levelObject)
-        Logger.log("Rotation angle is \(rotationAngle)", self)
         updateObjectRotation(levelObject, value: rotationAngle)
     }
 

@@ -5,8 +5,7 @@ struct LevelStub {
     /// This level stub generates some random Pegs to be used for simulation
     /// of a predesigned level
     func getLevelStub() -> Level {
-        Logger.log("getLevelStub is called", self)
-        return Level(name: "Level1",
+        Level(name: "Level1",
                      gameObjects: LevelStub.getGameObjects(
                          for: LevelStub().scaledGameObjectsStub))
     }
@@ -20,8 +19,6 @@ struct LevelStub {
         let id = objectsMap.values.map { value in
             value.id
         }
-
-        Logger.log("Level objects are \(id)")
         return objectsMap
     }
 
