@@ -79,7 +79,7 @@ extension LevelDesigner {
     }
 
     private func isValidPosition(_ object: any GameObject) -> Bool {
-        domain.containsAllVectors(object.edgeVectors)
+        domain.containsAllVectors(object.sideVectors)
     }
 
     private func isOverlapping(_ object: any GameObject) -> Bool {

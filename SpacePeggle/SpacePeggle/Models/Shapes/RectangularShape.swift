@@ -32,7 +32,7 @@ extension RectangularShape {
                     at thisPosition: Vector,
                     and otherPosition: Vector) -> Double? {
 
-        nil
+        circle.intersects(withRectangle: self, at: otherPosition, and: thisPosition)
     }
 }
 

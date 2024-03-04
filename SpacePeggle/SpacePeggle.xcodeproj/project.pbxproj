@@ -620,8 +620,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA7661F72B8C86020022C267 /* Build configuration list for PBXNativeTarget "SpacePeggle" */;
 			buildPhases = (
-				BA76620C2B8C87960022C267 /* ShellScript */,
 				BA7661CF2B8C85FF0022C267 /* Sources */,
+				BA76620C2B8C87960022C267 /* ShellScript */,
 				BA7661D02B8C85FF0022C267 /* Frameworks */,
 				BA7661D12B8C85FF0022C267 /* Resources */,
 			);

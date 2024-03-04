@@ -83,8 +83,8 @@ class ObjectSet {
 
     static var fullShapeCreation: [Enums.ShapeType: (Double, Double, Double, Double) -> any UniversalShape] = [
         .circle: { height, _, angle, scale in CircularShape(diameter: height,
-                                                                rotation: angle,
-                                                                scale: scale)},
+                                                            rotation: angle,
+                                                            scale: scale)},
 
         .rectangle: { height, width, angle, scale in RectangularShape(height: height,
                                                                       width: width,

@@ -35,6 +35,8 @@ extension LevelDesigner {
 extension LevelDesigner {
     func updateObjectRotation(_ object: any GameObject, value: Angle) {
         levelObjects[object.id]?.rotation = value
+        Logger.log("New object static sides are \(String(describing: levelObjects[object.id]?.sideVectors))")
+        Logger.log("New object edges are \(String(describing: levelObjects[object.id]?.edgeVectors))")
     }
 
     func handleObjectMagnification(_ object: any GameObject, scale: Double, isDecreasing: Bool) {

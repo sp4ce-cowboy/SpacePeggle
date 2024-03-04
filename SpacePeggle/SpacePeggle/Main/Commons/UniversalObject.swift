@@ -27,17 +27,22 @@ extension UniversalObject {
 
     var scale: Double {
         get { shape.scale }
-        set {
-            shape.scale = newValue
-        }
+        set { shape.scale = newValue }
     }
 
     var rotation: Angle {
         get { Angle(radians: shape.rotation) }
-        set {
-            Logger.log("Rotation for \(self.id) updated to \(newValue)", self)
-            shape.rotation = newValue.radians
-        }
+        set { shape.rotation = newValue.radians }
+    }
+
+    var rotationRadians: Double {
+        get { shape.rotation }
+        set { shape.rotation = newValue }
+    }
+
+    var rotationDegrees: Double {
+        get { shape.rotation }
+        set { shape.rotation = Angle(degrees: newValue).radians }
     }
 }
 
@@ -61,8 +66,42 @@ extension UniversalObject {
         Vector(x: centerPosition.x, y: centerPosition.y + height.half)
     }
 
-    var edgeVectors: [Vector] {
+    var sideVectors: [Vector] {
         [rightMostPosition, leftMostPosition, topMostPosition, bottomMostPosition]
+    }
+
+    var topRightCorner: Vector {
+        let x: Double = width / 2
+        let y: Double = height / 2
+        return Vector(x: centerPosition.x + (x * cos(rotationRadians) - y * sin(rotationRadians)),
+                      y: centerPosition.y + (x * sin(rotationRadians) + y * cos(rotationRadians)))
+    }
+
+    var bottomRightCorner: Vector {
+        let x: Double = width / 2
+        let y: Double = height / 2
+        let adjustedWidth = (x * cos(rotationRadians) - y * sin(rotationRadians))
+        let adjustedHeight = (x * sin(rotationRadians) + y * cos(rotationRadians))
+        return Vector(x: centerPosition.x + adjustedWidth,
+                      y: centerPosition.y + adjustedHeight)
+    }
+
+    var topLeftCorner: Vector {
+        let x: Double = -width / 2
+        let y: Double = height / 2
+        return Vector(x: centerPosition.x + (x * cos(rotationRadians) - y * sin(rotationRadians)),
+                      y: centerPosition.y + (x * sin(rotationRadians) + y * cos(rotationRadians)))
+    }
+
+    var bottomLeftCorner: Vector {
+        let x: Double = -width / 2
+        let y: Double = -height / 2
+        return Vector(x: centerPosition.x + (x * cos(rotationRadians) - y * sin(rotationRadians)),
+                      y: centerPosition.y + (x * sin(rotationRadians) + y * cos(rotationRadians)))
+    }
+
+    var edgeVectors: [Vector] {
+        [topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner]
     }
 
 }
