@@ -71,4 +71,43 @@ extension LevelDesigner {
             }
         }
     }
+
+    /// Modifies a gameObject's centerposition in place
+    private func alternateHandleBoundaryMovementCollision(object: inout any GameObject) {
+        let objectX = object.centerPosition.x
+        let objectY = object.centerPosition.y
+        let widthX = object.width.half
+        let heightY = object.height.half
+
+        let objectRightMost = object.rightMostPosition.x // objectX + widthX
+        let objectLeftMost = object.leftMostPosition.x // objectX - widthX
+        let objectTopMost = object.topMostPosition.y // objectY - heightY
+        let objectBottomMost = object.bottomMostPosition.y // objectY + heightY
+
+        let screenBounds = domain.size
+        let screenXStart = domain.origin.x
+        let screenYStart = domain.origin.y
+        let screenXEnd = screenBounds.width + screenXStart
+        let screenYEnd = screenBounds.height + screenYStart
+
+        // Check for left or right boundary collision
+        if objectLeftMost < screenXStart || objectRightMost > screenXEnd {
+            if objectLeftMost < screenXStart {
+                object.centerPosition.x = (screenXStart + objectLeftMost)
+            }
+            if objectRightMost > screenXEnd {
+                object.centerPosition.x = (screenXEnd - objectRightMost)
+            }
+        }
+
+        // Check for top or bottom collision
+        if objectTopMost < screenYStart || objectBottomMost > screenYEnd {
+            if objectTopMost < screenYStart {
+                object.centerPosition.y = (screenYStart + objectTopMost)
+            }
+            if objectBottomMost > screenYEnd {
+                object.centerPosition.y = (screenYEnd - objectBottomMost)
+            }
+        }
+    }
 }

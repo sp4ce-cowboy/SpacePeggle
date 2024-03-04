@@ -71,10 +71,10 @@ extension LevelDesigner {
         let widthX = object.width.half
         let heightY = object.height.half
 
-        let objectRightMost = objectX + widthX
-        let objectLeftMost = objectX - widthX
-        let objectTopMost = objectY - heightY
-        let objectBottomMost = objectY + heightY
+        let objectRightMost = object.rightMostPosition.x // objectX + widthX
+        let objectLeftMost = object.leftMostPosition.x // objectX - widthX
+        let objectTopMost = object.topMostPosition.y // objectY - heightY
+        let objectBottomMost = object.bottomMostPosition.y // objectY + heightY
 
         let screenBounds = domain.size
 

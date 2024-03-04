@@ -50,24 +50,24 @@ extension UniversalObject {
 /// on objects.
 extension UniversalObject {
 
-    var rightMostPosition: Vector {
+    var sideVectors: [Vector] {
+        [rightCenter, leftCenter, topCenter, bottomCenter]
+    }
+
+    var rightCenter: Vector {
         Vector(x: centerPosition.x + width.half, y: centerPosition.y)
     }
 
-    var leftMostPosition: Vector {
+    var leftCenter: Vector {
         Vector(x: centerPosition.x - width.half, y: centerPosition.y)
     }
 
-    var topMostPosition: Vector {
+    var topCenter: Vector {
         Vector(x: centerPosition.x, y: centerPosition.y - height.half)
     }
 
-    var bottomMostPosition: Vector {
+    var bottomCenter: Vector {
         Vector(x: centerPosition.x, y: centerPosition.y + height.half)
-    }
-
-    var sideVectors: [Vector] {
-        [rightMostPosition, leftMostPosition, topMostPosition, bottomMostPosition]
     }
 
     var topRightCorner: Vector {
@@ -104,13 +104,53 @@ extension UniversalObject {
         [topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner]
     }
 
+    // Function to find the right-most position of the object
+    var rightMostPosition: Vector {
+        let corners = shape.corners(centerPosition: centerPosition)
+        // Find the corner with the largest x-value
+        if let rightMost = corners.max(by: { $0.x < $1.x }) {
+            return rightMost
+        } else {
+            return centerPosition
+        }
+    }
+
+    var leftMostPosition: Vector {
+        let corners = shape.corners(centerPosition: centerPosition)
+        if let leftMost = corners.min(by: { $0.x < $1.x }) {
+            return leftMost
+        } else {
+            return centerPosition // Fallback
+        }
+    }
+
+    // Function to find the bottom-most position of object
+    var bottomMostPosition: Vector {
+        let corners = shape.corners(centerPosition: centerPosition)
+        if let bottomMost = corners.max(by: { $0.y < $1.y }) {
+            return bottomMost
+        } else {
+            return centerPosition // Fallback
+        }
+    }
+
+    // Function to find the top-most position of object
+    var topMostPosition: Vector {
+        let corners = shape.corners(centerPosition: centerPosition)
+        if let topMost = corners.min(by: { $0.y < $1.y }) {
+            return topMost
+        } else {
+            return centerPosition // Fallback
+        }
+    }
+
 }
 
 /// This extension adds basic object detection measures to an object
 extension UniversalObject {
     func contains(_ vector: Vector) -> Bool {
-        let withinXAxis = vector.x >= rightMostPosition.x && vector.x <= leftMostPosition.x
-        let withinYAxis = vector.y >= topMostPosition.y && vector.y <= bottomMostPosition.y
+        let withinXAxis = vector.x >= rightCenter.x && vector.x <= leftCenter.x
+        let withinYAxis = vector.y >= topCenter.y && vector.y <= bottomCenter.y
         return withinXAxis && withinYAxis
     }
 }

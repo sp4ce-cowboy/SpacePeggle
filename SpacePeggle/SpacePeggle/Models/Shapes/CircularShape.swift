@@ -27,6 +27,22 @@ struct CircularShape: UniversalShape {
         self.scale = scale
     }
 
+    // Function to calculate the corners of the object
+    // For circular objects, this is simply the
+    func corners(centerPosition: Vector) -> [Vector] {
+        let halfWidth = width / 2
+        let halfHeight = height / 2
+        let corners = [
+            Vector(x: 0, y: -halfHeight),    // Top
+            Vector(x: halfWidth, y: 0),      // Right
+            Vector(x: -halfWidth, y: 0),     // Left
+            Vector(x: 0, y: halfHeight)      // Bottom
+        ]
+
+        return corners.map { corner in
+            Vector(x: corner.x + centerPosition.x, y: corner.y + centerPosition.y)
+        }
+    }
 }
 
 extension CircularShape {
@@ -63,7 +79,8 @@ extension CircularShape {
                     and otherPosition: Vector) -> Double? {
 
         // Step 1: Translate the system to the rectangle's center
-        let translatedCircleCenter = Vector(x: thisPosition.x - otherPosition.x, y: thisPosition.y - otherPosition.y)
+        let translatedCircleCenter = Vector(x: thisPosition.x - otherPosition.x,
+                                            y: thisPosition.y - otherPosition.y)
 
         // Step 2: Rotate the circle's center by the negative of the rectangle's rotation angle
         let rotatedCircleX = translatedCircleCenter.x * cos(-rectangle.rotation)
@@ -74,7 +91,7 @@ extension CircularShape {
 
         let rotatedCircleCenter = Vector(x: rotatedCircleX, y: rotatedCircleY)
 
-        // Calculate axis-aligned rectangle's edge positions relative to its center (now at the origin)
+        // Calculate axis-aligned rectangle's edge positions relative to its center
         let leftMostX = -rectangle.width / 2
         let rightMostX = rectangle.width / 2
         let topMostY = -rectangle.height / 2
@@ -95,87 +112,4 @@ extension CircularShape {
 
         return nil
     }
-
-    func intersectss(withRectangle rectangle: RectangularShape,
-                     at thisPosition: Vector,
-                     and otherPosition: Vector) -> Double? {
-
-        // Calculate the rectangle's edge positions based on its center, width, and height
-        let leftMostPosition = Vector(x: otherPosition.x - rectangle.width / 2, y: otherPosition.y)
-        let rightMostPosition = Vector(x: otherPosition.x + rectangle.width / 2, y: otherPosition.y)
-        let topMostPosition = Vector(x: otherPosition.x, y: otherPosition.y - rectangle.height / 2)
-        let bottomMostPosition = Vector(x: otherPosition.x, y: otherPosition.y + rectangle.height / 2)
-
-        // Find the closest point on the rectangle to the circle's center by
-        // clamping the circle's center coordinates to the edge of the rectangle
-        let closestX = max(leftMostPosition.x, min(thisPosition.x, rightMostPosition.x))
-        let closestY = max(topMostPosition.y, min(thisPosition.y, bottomMostPosition.y))
-
-        // Calculate the distance from the circle's center to the closest point on the rectangle
-        let deltaX = thisPosition.x - closestX
-        let deltaY = thisPosition.y - closestY
-        let distance = sqrt(deltaX * deltaX + deltaY * deltaY)
-
-        // Check for collision
-        if distance < self.radius {
-            Logger.log("Overlap is \(self.radius - distance)", self)
-            return self.radius - distance
-        }
-
-        return nil
-    }
-
-    // Find the closest point on the rectangle to the circle's center
-    /*var topRightCorner: Vector {
-     let x: Double = width / 2
-     let y: Double = -height / 2
-     return Vector(x: otherPosition.x + (x * cos(rotation) - y * sin(rotation)),
-     y: otherPosition.y + (x * sin(rotation) + y * cos(rotation)))
-     }
-     
-     var bottomRightCorner: Vector {
-     let x: Double = width / 2
-     let y: Double = height / 2
-     let adjustedWidth = (x * cos(rotation) - y * sin(rotation))
-     let adjustedHeight = (x * sin(rotation) + y * cos(rotation))
-     return Vector(x: otherPosition.x + adjustedWidth,
-     y: otherPosition.y + adjustedHeight)
-     }
-     
-     var topLeftCorner: Vector {
-     let x: Double = -width / 2
-     let y: Double = height / 2
-     return Vector(x: otherPosition.x + (x * cos(rotation) - y * sin(rotation)),
-     y: otherPosition.y + (x * sin(rotation) + y * cos(rotation)))
-     }
-     
-     var bottomLeftCorner: Vector {
-     let x: Double = -width / 2
-     let y: Double = -height / 2
-     return Vector(x: otherPosition.x + (x * cos(rotation) - y * sin(rotation)),
-     y: otherPosition.y + (x * sin(rotation) + y * cos(rotation)))
-     }
-     
-     /* let deltaX = max(leftMostPosition.x - thisPosition.x,
-      0, thisPosition.x - rightMostPosition.x)
-      let deltaY = max(topMostPosition.y - thisPosition.y,
-      0, thisPosition.y - bottomMostPosition.y)
-      */
-     
-     let deltaX = max(leftMostCorner.x - thisPosition.x,
-     0, thisPosition.x - rightMostPosition.x)
-     let deltaY = max(topMostPosition.y - thisPosition.y,
-     0, thisPosition.y - bottomMostPosition.y)
-     
-     // Calculate the distance from the circle's center to the closest point
-     let distance = sqrt(deltaX * deltaX + deltaY * deltaY)
-     
-     // Check for collision
-     if distance < self.radius {
-     Logger.log("Overlap is \(self.radius - distance)", self)
-     return self.radius - distance
-     }
-     
-     return nil
-     }*/
 }

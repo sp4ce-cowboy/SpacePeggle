@@ -39,7 +39,7 @@ struct LauncherView: View {
                 .frame(width: launcherWidth, height: launcherHeight)
                 .rotationEffect(-launcher.rotationAngle, anchor: .center)
                 .position(x: screenWidthCenter, y: launcherHeightCenter)
-                .gesture(handleLongPress.exclusively(before: handleRotation))
+                .gesture(handleRotation.exclusively(before: handleTap))
                 .disabled(viewModel.isPaused)
         }
     }
@@ -53,10 +53,10 @@ struct LauncherView: View {
             }
     }
 
-    private var handleLongPress: some Gesture {
-        LongPressGesture(minimumDuration: 1.0)
+    private var handleTap: some Gesture {
+        SpatialTapGesture()
             .onEnded { _ in
-                viewModel.handleBallLaunch()
+                viewModel.handleLongPress()
             }
     }
 

@@ -21,6 +21,8 @@ protocol UniversalShape {
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
                     and otherPosition: Vector) -> Double?
+
+    func corners(centerPosition: Vector) -> [Vector]
 }
 
 extension UniversalShape {
@@ -33,4 +35,5 @@ extension UniversalShape {
         get { trueWidth * scale }
         set { scale = newValue / trueWidth }
     }
+
 }
