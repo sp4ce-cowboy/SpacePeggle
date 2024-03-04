@@ -61,6 +61,12 @@ public class Constants {
         ]
      */
 
+    // A universal helper function to dismiss the keyboard from anywhere
+    public static func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(
+            UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
     /// Universally default circular shape
     static let DEFAULT_CIRCULAR_SHAPE =
     CircularShape(radius: Constants.UNIVERSAL_LENGTH.half,

@@ -4,46 +4,40 @@ import SwiftUI
 extension GameObject {
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Enums.CodingKeys.self)
+        let container = try decoder.container(keyedBy: Enums.GameObjectCodingKeys.self)
         let id = try container.decode(UUID.self, forKey: .id)
-        let x = try container.decode(Double.self, forKey: .centerPositionX)
-        let y = try container.decode(Double.self, forKey: .centerPositionY)
-        let type = try container.decode(String.self, forKey: .gameObjectType)
+        let center = try container.decode(Vector.self, forKey: .center)
+        let gameObjectType = try container.decode(Enums.GameObjectType.self, forKey: .gameObjectType)
 
         let shapeWidth = try container.decode(Double.self, forKey: .shapeWidth)
         let shapeHeight = try container.decode(Double.self, forKey: .shapeHeight)
-        // let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeScale = try container.decode(Double.self, forKey: .shapeScale)
-        let shapeType = try container.decode(String.self, forKey: .shapeType)
+        let shapeType = try container.decode(Enums.ShapeType.self, forKey: .shapeType)
 
-        var shape: UniversalShape
+        var decodedShape: UniversalShape
 
         switch shapeType {
-        case Enums.ShapeType.circle.rawValue:
-            shape = CircularShape(radius: shapeWidth,
-                                  rotation: shapeRotation,// Angle(radians: shapeRotation),
-                                  scale: shapeScale)
+        case Enums.ShapeType.circle:
+            decodedShape = CircularShape(radius: shapeWidth,
+                                         rotation: shapeRotation,
+                                         scale: shapeScale)
 
-        case Enums.ShapeType.rectangle.rawValue:
-            shape = RectangularShape(height: shapeHeight, width: shapeWidth,
-                                     rotation: shapeRotation, // Angle(radians: shapeRotation),
-                                     scale: shapeScale)
-        default:
-            shape = RectangularShape(height: shapeHeight, width: shapeWidth,
-                                     rotation: shapeRotation, // Angle(radians: shapeRotation),
-                                     scale: shapeScale)
+        case Enums.ShapeType.rectangle:
+            decodedShape = RectangularShape(height: shapeHeight,
+                                            width: shapeWidth,
+                                            rotation: shapeRotation,
+                                            scale: shapeScale)
         }
 
-        self.init(centerPosition: Vector(x: x, y: y), id: id,
-                  gameObjectType: type, shape: shape)
+        self.init(centerPosition: center, id: id,
+                  gameObjectType: gameObjectType, shape: decodedShape)
     }
 
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: Enums.CodingKeys.self)
+        var container = encoder.container(keyedBy: Enums.GameObjectCodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encode(centerPosition.x, forKey: .centerPositionX)
-        try container.encode(centerPosition.y, forKey: .centerPositionY)
+        try container.encode(centerPosition, forKey: .center)
         try container.encode(gameObjectType, forKey: .gameObjectType)
 
         try container.encode(shape.trueWidth, forKey: .shapeWidth)

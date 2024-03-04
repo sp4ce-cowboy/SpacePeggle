@@ -6,18 +6,14 @@ struct LevelStub {
     /// of a predesigned level
     func getLevelStub() -> Level {
         Level(name: "Level1",
-                     gameObjects: LevelStub.getGameObjects(
-                         for: LevelStub().scaledGameObjectsStub))
+              gameObjects: LevelStub.getGameObjects(
+                for: LevelStub().scaledGameObjectsStub))
     }
 
     static func getGameObjects(for objects: [any GameObject]) -> [UUID: any GameObject] {
         var objectsMap: [UUID: any GameObject] = [:]
         objects.forEach { object in
             objectsMap[object.id] = object
-        }
-
-        let id = objectsMap.values.map { value in
-            value.id
         }
         return objectsMap
     }

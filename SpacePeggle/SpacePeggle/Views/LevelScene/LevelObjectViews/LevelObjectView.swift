@@ -12,7 +12,7 @@ struct LevelObjectView: View {
     var rotation: Angle { levelObject.rotation }
     var center: Vector { levelObject.centerPosition }
 
-    var levelObjectType: String { levelObject.gameObjectType }
+    var levelObjectType: String { levelObject.gameObjectType.rawValue }
     var levelObjectImageHeight: Double { levelObject.height }
     var levelObjectImageWidth: Double { levelObject.width }
     var levelObjectImage: String {
@@ -28,7 +28,6 @@ struct LevelObjectView: View {
                 .position(center.point)
                 .rotationEffect(rotation, anchor: center.unitPoint)
                 .onTapGesture { handleTap() }
-                // .onLongPressGesture { viewModel.handleLevelObjectRemoval(levelObject) }
                 .simultaneousGesture(handleLongPress.exclusively(before: handleDrag))
                 .if(isSelected) { view in
                     view

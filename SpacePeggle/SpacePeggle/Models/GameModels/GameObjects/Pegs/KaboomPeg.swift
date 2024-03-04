@@ -9,11 +9,12 @@ final class KaboomPeg: Peg {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var gameObjectType: String = "KaboomPeg"
+    var gameObjectType: Enums.GameObjectType = .KaboomPeg
     var isActive = false
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
+         gameObjectType: Enums.GameObjectType = .KaboomPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.centerPosition = centerPosition
@@ -37,7 +38,7 @@ final class KaboomPeg: Peg {
     }
 
     func activateGameObject() {
-        self.gameObjectType = "KaboomPegActive"
+        self.gameObjectType = .KaboomPegActive
         isActive = true
     }
 }

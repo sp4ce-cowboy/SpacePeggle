@@ -3,7 +3,7 @@ import SwiftUI
 
 protocol DisplayLinkManager {
     func setupDisplayLink()
-    func startGame()
+    func startGame(with level: AbstractLevel)
     func stopGame()
     func updateGame(timeStep: TimeInterval)
 }
@@ -16,11 +16,11 @@ extension GameSceneViewModel: DisplayLinkManager {
         }
     }
 
-    func startGame() {
+    func startGame(with level: AbstractLevel = LevelStub().getLevelStub()) {
         Logger.log("Game has started from MainViewModel", self)
         isPaused = false
         DisplayLink.sharedInstance.setupDisplayLink()
-        peggleGameEngine.startGame()
+        peggleGameEngine.startGame(with: level)
     }
 
     func updateGame(timeStep: TimeInterval) {
@@ -33,6 +33,10 @@ extension GameSceneViewModel: DisplayLinkManager {
         peggleGameEngine.delegate = nil
         DisplayLink.sharedInstance.invalidate()
         print("game stopped from viewmodel")
+    }
+
+    func uploadLevel(to level: AbstractLevel) {
+        peggleGameEngine.currentLevel = level
     }
 
 }

@@ -13,8 +13,8 @@ protocol PhysicsObject: UniversalObject {
 
     var shape: UniversalShape { get set }
 
-    init(mass: Double, velocity: Vector,
-         centerPosition: Vector, force: Vector, id: UUID, shape: UniversalShape)
+    // init(mass: Double, velocity: Vector,
+      //   centerPosition: Vector, force: Vector, id: UUID, shape: UniversalShape)
 
     mutating func applyPhysics(timeStep: TimeInterval)
 

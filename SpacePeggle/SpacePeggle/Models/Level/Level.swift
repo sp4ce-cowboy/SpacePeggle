@@ -14,16 +14,14 @@ extension Level: AbstractLevel {
 /// directly handling game objects movement and collision resolution.
 final class Level {
 
-    var name: String
-    var gameObjects: [UUID: any GameObject]
-    var domain: CGRect = Constants.getDefaultFullScreen()
+    var name: String = "DefaultLevel"
+    var gameObjects: [UUID: any GameObject] = [:]
 
-    init(name: String, gameObjects: [UUID: any GameObject],
-         domain: CGRect = Constants.getDefaultFullScreen()) {
+    init(name: String = "DefaultLevel",
+         gameObjects: [UUID: any GameObject] = [:] ) {
         defer { Logger.log("Level is initialized with \(gameObjects.count)", self) }
         self.name = name
         self.gameObjects = gameObjects
-        self.domain = domain
     }
 
     deinit {
@@ -45,10 +43,24 @@ final class Level {
         // assert(verify())
     }
 
-    func updateLevel(_ gameObjects: [UUID: any GameObject]) {
+    func updateLevel(fromDictionary gameObjects: [UUID: any GameObject]) {
         if verify() {
             self.gameObjects = gameObjects
         }
+    }
+
+    func updateLevel(fromArray gameObjects: [any GameObject]) {
+        self.gameObjects = Level.generateGameObjectsCollection(gameObjects)
+    }
+
+    static func generateGameObjectsCollection(_ gameObjects: [any GameObject]) -> [UUID: any GameObject] {
+        var gameObjectsMap: [UUID: any GameObject] = [:]
+
+        for gameObject in gameObjects {
+            gameObjectsMap[gameObject.id] = gameObject
+        }
+
+        return gameObjectsMap
     }
 
     /// Implicit checkRep

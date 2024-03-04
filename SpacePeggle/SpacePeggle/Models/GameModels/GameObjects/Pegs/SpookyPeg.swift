@@ -9,11 +9,12 @@ final class SpookyPeg: Peg {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var gameObjectType: String = "SpookyPeg"
+    var gameObjectType: Enums.GameObjectType = .SpookyPeg
     var isActive = false
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
+         gameObjectType: Enums.GameObjectType = .SpookyPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.centerPosition = centerPosition
@@ -37,7 +38,7 @@ final class SpookyPeg: Peg {
     }
 
     func activateGameObject() {
-        self.gameObjectType = "SpookyPegActive"
+        self.gameObjectType = .SpookyPegActive
         isActive = true
     }
 }

@@ -14,9 +14,12 @@ struct ActionBarView: View {
             VStack {
                 Spacer()
                 VStack(spacing: 0) {
-                    SelectionBarView()
-                    FunctionBarView()
+                    // ScrollView {
+                        SelectionBarView()
+                        FunctionBarView() // .ignoresSafeArea()
+                    // }
                 }
+                .frame(maxHeight: Constants.getAdjustedActionBarHeight)
                 .frame(width: Constants.UI_SCREEN_WIDTH,
                        height: Constants.getAdjustedActionBarHeight,
                        alignment: .bottom)
@@ -25,7 +28,7 @@ struct ActionBarView: View {
                         .white
                         .opacity(0.9)
                         .blur(radius: 2.0)
-                        .ignoresSafeArea()
+
                 }
             }
         }

@@ -9,7 +9,7 @@ struct GameObjectView: View {
 
     var rotation: Angle { gameObject.rotation }
     var scale: Double { gameObject.scale }
-    var gameObjectType: String { gameObject.gameObjectType }
+    var gameObjectType: String { gameObject.gameObjectType.rawValue }
     var gameObjectImageHeight: Double { gameObject.height }
     var gameObjectImageWidth: Double { gameObject.width }
 

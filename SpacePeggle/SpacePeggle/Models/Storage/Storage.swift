@@ -58,4 +58,38 @@ class Storage {
         Logger.log("All files deleted.")
     }
 
+    static func saveLevel(_ level: Level,
+                          withName name: String = UUID().uuidString,
+                          folderName: String = folderName) {
+        guard !name.isEmpty else {
+            return
+        }
+        let fileName = name + ".json"
+
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(level)
+            let folderURL = try Storage.createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(fileName)
+
+            try data.write(to: fileURL)
+            Logger.log("Saved Level at: \(fileURL.path)")
+        } catch {
+            Logger.log("Error saving level: \(error)")
+        }
+    }
+
+    static func loadLevel(from fileName: String, folderName: String = folderName) -> AbstractLevel? {
+        do {
+            let folderURL = try Storage.createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(fileName)
+            let data = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            return try decoder.decode(Level.self, from: data)
+        } catch {
+            Logger.log("Error loading level: \(error)")
+            return nil
+        }
+    }
+
 }

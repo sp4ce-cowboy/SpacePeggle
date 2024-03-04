@@ -19,7 +19,7 @@ struct LevelMenuView: View {
                             text: "Exit to Menu",
                             action: {
                                 viewModel.handlePause()
-                                AppSceneController.shared.transitionToStartScene()
+                                AppSceneController.transitionToStartScene()
                             })
                         .foregroundColor(Color.red)
 

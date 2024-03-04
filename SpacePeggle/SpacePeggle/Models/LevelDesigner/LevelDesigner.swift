@@ -8,8 +8,11 @@ import SwiftUI
 /// long as the interface specifications are fulfilled. 
 protocol AbstractLevelDesigner {
     var levelObjects: [UUID: any GameObject] { get }
+    var levelName: String { get set }
     var domain: CGRect { get set }
 
+    func clearLevel()
+    func loadLevel(with level: AbstractLevel)
     func handleObjectResizing(_ value: DragGesture.Value, _ levelObject: any GameObject)
     func handleObjectAddition(_ object: any GameObject)
     func handleObjectRemoval(_ object: any GameObject)
@@ -29,10 +32,13 @@ class LevelDesigner {
 
     var currentLevel: AbstractLevel
     var domain: CGRect = Constants.getAdjustedGameArea()
-    var levelName: String { currentLevel.name }
+    var levelName: String {
+        get { currentLevel.name }
+        set { currentLevel.name = newValue }
+    }
     var levelObjects: [UUID: any GameObject] {
         get { currentLevel.gameObjects }
-        set { currentLevel.updateLevel(newValue) }
+        set { currentLevel.updateLevel(fromDictionary: newValue) }
     }
 
     init(currentLevel: AbstractLevel = LevelDesigner.getEmptyLevel(),
@@ -50,6 +56,14 @@ class LevelDesigner {
     /// Returns an empty level
     static func getEmptyLevel() -> Level {
         Level(name: "LevelName", gameObjects: [:])
+    }
+
+    func clearLevel() {
+        currentLevel.gameObjects.removeAll()
+    }
+
+    func loadLevel(with level: AbstractLevel) {
+        currentLevel = level
     }
 }
 

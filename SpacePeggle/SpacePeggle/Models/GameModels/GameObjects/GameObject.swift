@@ -17,13 +17,13 @@ import SwiftUI
 /// Levels become a subset or superset of another sub-level or super-level like "Stage")
 /// LevelObjects as they are interpreted are formally referred to as "GameObjects".
 protocol GameObject: UniversalObject, Codable {
-    var gameObjectType: String { get set }
+    var gameObjectType: Enums.GameObjectType { get set }
     var isActive: Bool { get set }
     var shape: UniversalShape { get set }
 
     func activateGameObject()
     init(centerPosition: Vector, id: UUID,
-         gameObjectType: String, shape: UniversalShape)
+         gameObjectType: Enums.GameObjectType, shape: UniversalShape)
 
     /// GameObjects overlap while PhysicsObjects collide, both of which
     /// are determined by UniversalShapes that intersect.

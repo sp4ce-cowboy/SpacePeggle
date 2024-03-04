@@ -1,27 +1,26 @@
 import SwiftUI
-import Foundation
 
 /// A class to model a vector quantity with 2 generic doubles
-struct Vector: Equatable, CustomStringConvertible {
+struct Vector: Codable, Equatable, CustomStringConvertible {
 
-    var widthScale = Constants.UI_SCREEN_WIDTH
-    var heightScale = Constants.UI_SCREEN_HEIGHT
+    static let widthScale = Constants.UI_SCREEN_WIDTH
+    static let heightScale = Constants.UI_SCREEN_HEIGHT
 
     private var rawX: Double
     private var rawY: Double
 
     var description: String {
-        "Vector(x: \(rawX * widthScale), y: \(rawY * heightScale), rawX: \(rawX), rawY: \(rawY)"
+        "Vector(x: \(rawX * Vector.widthScale), y: \(rawY * Vector.heightScale), rawX: \(rawX), rawY: \(rawY)"
     }
 
     var x: Double {
-        get { self.rawX * widthScale }
-        set { self.rawX = newValue / widthScale }
+        get { self.rawX * Vector.widthScale }
+        set { self.rawX = newValue / Vector.widthScale }
     }
 
     var y: Double {
-        get { self.rawY * heightScale }
-        set { self.rawY = newValue / heightScale }
+        get { self.rawY * Vector.heightScale }
+        set { self.rawY = newValue / Vector.heightScale }
     }
 
     var area: Double {
@@ -40,8 +39,8 @@ struct Vector: Equatable, CustomStringConvertible {
 
     // Initialize with components
     init(x: Double, y: Double) {
-        rawX = x / widthScale
-        rawY = y / heightScale
+        rawX = x / Vector.widthScale
+        rawY = y / Vector.heightScale
     }
 
     init(scaled_x: Double, scaled_y: Double) {
@@ -51,13 +50,13 @@ struct Vector: Equatable, CustomStringConvertible {
 
     /// Initialize with magnitude and angle (in radians)
     init(magnitude: Double, angle: Angle) {
-        self.rawX = (magnitude * sin(angle.radians)) / widthScale
-        self.rawY = (magnitude * cos(angle.radians)) / heightScale
+        self.rawX = (magnitude * sin(angle.radians)) / Vector.widthScale
+        self.rawY = (magnitude * cos(angle.radians)) / Vector.heightScale
     }
 
     init(with point: CGPoint) {
-        self.rawX = Double(point.x) / widthScale
-        self.rawY = Double(point.y) / heightScale
+        self.rawX = Double(point.x) / Vector.widthScale
+        self.rawY = Double(point.y) / Vector.heightScale
     }
 
     init(withScaledPoint point: CGPoint) {

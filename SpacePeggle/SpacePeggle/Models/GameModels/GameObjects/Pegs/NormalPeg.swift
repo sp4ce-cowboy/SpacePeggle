@@ -14,12 +14,13 @@ final class NormalPeg: Peg {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var gameObjectType: String = "NormalPeg"
+    var gameObjectType: Enums.GameObjectType = .NormalPeg
     var isActive = false
 
     /// Initializer for Peg as a GameObject
     init(centerPosition: Vector,
          id: UUID = UUID(),
+         gameObjectType: Enums.GameObjectType = .NormalPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.centerPosition = centerPosition
@@ -45,7 +46,7 @@ final class NormalPeg: Peg {
     }
 
     func activateGameObject() {
-        self.gameObjectType = "NormalPegActive"
+        self.gameObjectType = .NormalPegActive
         isActive = true
     }
 

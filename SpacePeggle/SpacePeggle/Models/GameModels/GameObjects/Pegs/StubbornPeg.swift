@@ -1,6 +1,7 @@
 import SwiftUI
 
 final class StubbornPeg: Peg {
+
     var id: UUID
     var centerPosition: Vector
     var shape: UniversalShape
@@ -9,11 +10,12 @@ final class StubbornPeg: Peg {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var gameObjectType: String = "StubbornPeg"
+    var gameObjectType: Enums.GameObjectType = .StubbornPeg
     var isActive = false
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
+         gameObjectType: Enums.GameObjectType = .StubbornPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.centerPosition = centerPosition
@@ -36,8 +38,5 @@ final class StubbornPeg: Peg {
         self.shape = shape
     }
 
-    func activateGameObject() {
-        self.gameObjectType = "StubbornPegActive"
-        isActive = true
-    }
+    func activateGameObject() {  }
 }

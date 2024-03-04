@@ -1,6 +1,7 @@
 import SwiftUI
 
 final class BlockPeg: Peg {
+
     var id: UUID
     var centerPosition: Vector
     var shape: UniversalShape
@@ -9,11 +10,12 @@ final class BlockPeg: Peg {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var gameObjectType: String = "BlockPeg"
+    var gameObjectType: Enums.GameObjectType = .BlockPeg
     var isActive = false
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
+         gameObjectType: Enums.GameObjectType = .BlockPeg,
          shape: UniversalShape = Constants.DEFAULT_RECTANGULAR_SHAPE) {
 
         self.centerPosition = centerPosition

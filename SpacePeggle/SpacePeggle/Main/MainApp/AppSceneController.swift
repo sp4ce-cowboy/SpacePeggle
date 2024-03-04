@@ -33,6 +33,8 @@ final class AppSceneController: ObservableObject {
         }
     }
 
+    // func newGameScene(geometry: GeometryProxy)
+
     func updateScene(to sceneName: String) {
         guard AppSceneController.sceneCollection.keys.contains(sceneName) else {
             return

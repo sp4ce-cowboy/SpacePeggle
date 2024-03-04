@@ -3,7 +3,7 @@ import SwiftUI
 /// The UnivershalShape contains basic information about a given object's
 /// contained shape. The height and width of the shape refers to the
 protocol UniversalShape {
-    var shapeType: String { get }
+    var shapeType: Enums.ShapeType { get }
     var trueHeight: Double { get }
     var trueWidth: Double { get }
 
