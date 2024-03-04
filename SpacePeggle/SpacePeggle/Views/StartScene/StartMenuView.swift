@@ -24,15 +24,15 @@ struct StartMenuView: View {
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "LOAD LEVEL",
-                action: { AppSceneController.shared.transitionToGameScene() })
+                action: { AppSceneController.transitionToGameScene() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "DESIGN LEVEL",
-                action: { AppSceneController.shared.transitionToLevelScene() })
+                action: { AppSceneController.transitionToLevelScene() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "SETTINGS",
-                action: { AppSceneController.shared.transitionToGameScene() })
+                action: { AppSceneController.transitionToGameScene() })
 
             Spacer()
         }

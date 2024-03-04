@@ -8,20 +8,20 @@ struct GameScene: View {
         _viewModel = StateObject(wrappedValue: GameSceneViewModel(geometryState))
     }
 
-    @ViewBuilder
+    // @ViewBuilder
     var body: some View {
         ZStack {
             GameAreaView()
-            PauseButtonView()
+            GamePauseButtonView()
             BallView()
             LauncherView()
             BucketView()
-            LevelView()
+            GameObjectsBoardView()
         }
         .if(viewModel.isPaused) { view in
             view.overlay { GameMenuView() }
         }
-        .background { BackgroundView() }
+        .background { GameBackgroundView() }
         .environmentObject(viewModel)
         .onAppear {
             viewModel.startGame()

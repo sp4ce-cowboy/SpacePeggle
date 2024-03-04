@@ -3,7 +3,9 @@ import SwiftUI
 /// This View presents a transparent, rectangular overlay that can
 /// defining the bounds for the gameplay area independently of other views.
 ///
-/// For Problem Set 3 this is a stub, as no GameLoading is required.
+/// The GameAreaView can be individually modified to fit within a particular
+/// aspect ratio, or can follow the aspect ratio specified by the parent
+/// geometry.
 struct GameAreaView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
 
@@ -21,8 +23,11 @@ struct GameAreaView: View {
     var body: some View {
         Rectangle()
             .foregroundColor(.clear)
-            .padding()
+            // .padding()
             .frame(width: width, height: height)
             .contentShape(Rectangle())
+            .onAppear {
+                Logger.log("Game Area size is \(size)", self)
+            }
     }
 }

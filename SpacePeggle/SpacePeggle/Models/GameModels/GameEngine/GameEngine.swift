@@ -37,7 +37,7 @@ final class GameEngine {
     var isGameActive = false
 
     var launcher: Launcher  // Can be swapped for a [UUID : Launcher] map if needed
-    var ball: Ball          // Can be swapped for a [UUID : Ball] map if needed
+    @Published var ball: Ball          // Can be swapped for a [UUID : Ball] map if needed
     var isBallLaunched = false // Can be swapped for a [UUID : Bool] if needed
 
     var velocityCheckTimer: Timer?

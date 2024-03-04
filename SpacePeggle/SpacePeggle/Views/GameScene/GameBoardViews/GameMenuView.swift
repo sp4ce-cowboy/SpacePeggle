@@ -37,7 +37,7 @@ struct GameMenuView: View {
                             text: "Exit to Menu",
                             action: {
                                 viewModel.handlePause()
-                                AppSceneController.shared.transitionToStartScene()
+                                AppSceneController.transitionToStartScene()
                             })
                         .foregroundColor(Color.red)
 
@@ -49,11 +49,6 @@ struct GameMenuView: View {
 
     func getMenuButtonForGravity(text: String, value: Vector) -> some View {
         Button(action: { Constants.UNIVERSAL_GRAVITY = value },
-               label: { StyleSheet.getRectangleWithText(text: text) })
-    }
-
-    func getMenuButtonForBackground(text: String, image: String) -> some View {
-        Button(action: { ObjectSet.currentBackground = image },
                label: { StyleSheet.getRectangleWithText(text: text) })
     }
 }

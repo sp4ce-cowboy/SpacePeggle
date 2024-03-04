@@ -5,6 +5,10 @@ import SwiftUI
 class LevelTests: XCTestCase {
 
     final class TestGameObject: GameObject {
+        var gameObjectType: SpacePeggle.Enums.GameObjectType
+
+        var shape: SpacePeggle.UniversalShape
+
         var rotation = Angle(degrees: 0)
         var magnification: Double = 1.0
         var centerPosition: Vector

@@ -1,18 +1,33 @@
-//
-//  LevelDesignerView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 27/2/24.
-//
-
 import SwiftUI
 
 struct LevelScene: View {
+    @StateObject var viewModel: LevelSceneViewModel
+
+    init(forGeometry geometryState: GeometryProxy) {
+        _viewModel = StateObject(wrappedValue: LevelSceneViewModel(geometryState))
+    }
+
+    // @ViewBuilder
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            PlayableAreaView()
+            LevelObjectsBoardView()
+            LauncherStubView()
+            LevelPauseButtonView()
+            ActionBarView()
+        }
+        .if(viewModel.isLevelDesignerPaused) { view in
+            view.overlay { LevelMenuView() }
+                .onAppear { Logger.log("Level menu triggered", self) }
+        }
+        .background { LevelBackgroundView() }
+        .environmentObject(viewModel)
     }
 }
 
 #Preview {
-    LevelScene()
+    GeometryReader { proxy in
+        LevelScene(forGeometry: proxy)
+    }
+
 }

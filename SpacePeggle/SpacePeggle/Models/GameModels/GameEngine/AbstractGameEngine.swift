@@ -16,12 +16,10 @@ protocol AbstractGameEngine: LaunchMechanic {
     var gameObjects: [UUID: any GameObject] { get }
     var isGameActive: Bool { get set }
 
-    mutating func startGame()
+    mutating func startGame(with level: AbstractLevel)
     func stopGame()
     func updateGame(timeStep: TimeInterval)
     func handleGameObjectRemoval(id: UUID)
-    func handleGameObjectRotation(id: UUID, value: Angle)
-    func handleGameObjectMagnification(id: UUID, scale: Double)
 
     func updateLauncherRotation(with dragValue: DragGesture.Value, for size: CGSize)
     func launchBall()
@@ -31,4 +29,5 @@ protocol LaunchMechanic {
     var launcher: Launcher { get set }
     var isBallLaunched: Bool { get set }
     var currentBallPosition: Vector { get }
+    var currentBallShape: UniversalShape { get }
 }

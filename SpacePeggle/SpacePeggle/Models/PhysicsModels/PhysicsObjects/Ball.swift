@@ -1,14 +1,7 @@
 import SwiftUI
 
 /// The Ball model extends the PhysicsObject protocol
-class Ball: PhysicsObject {
-
-    /// The Ball's physics radius is tied to the same radius as the view of the ball,
-    /// without the ball depending on the view nor vice versa. This allows physics
-    /// interactions to be synchronized with the visual representations without
-    /// them being dependent on each other.
-    static let BALL_RADIUS = Double(ObjectSet
-        .defaultPhysicsObjectSet["Ball"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH)) / 2
+final class Ball: PhysicsObject {
 
     var id: UUID
     var mass: Double
@@ -18,12 +11,12 @@ class Ball: PhysicsObject {
     var shape: UniversalShape
     var isSubjectToGravity = false
 
-    required init(mass: Double = 100,
-                  velocity: Vector = Vector.zero,
-                  centerPosition: Vector = .zero,
-                  force: Vector = .zero,
-                  id: UUID = UUID(),
-                  shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+    init(mass: Double = 100,
+         velocity: Vector = Vector.zero,
+         centerPosition: Vector = .zero,
+         force: Vector = .zero,
+         id: UUID = UUID(),
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
         self.mass = mass
         self.centerPosition = centerPosition

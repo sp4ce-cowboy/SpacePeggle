@@ -4,7 +4,7 @@ protocol LaunchManager {
     var launcher: Launcher { get set }
     var ballIsLaunched: Bool { get }
     func updateLauncherRotation(with dragValue: DragGesture.Value)
-    func handleBallLaunch()
+    func handleLongPress()
 }
 
 extension GameSceneViewModel: LaunchManager {
@@ -24,7 +24,7 @@ extension GameSceneViewModel: LaunchManager {
         peggleGameEngine.isBallLaunched
     }
 
-    func handleBallLaunch() {
+    func handleLongPress() {
         peggleGameEngine.launchBall()
     }
 

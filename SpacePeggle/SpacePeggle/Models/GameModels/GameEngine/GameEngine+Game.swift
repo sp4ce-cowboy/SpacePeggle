@@ -9,6 +9,7 @@ import SwiftUI
 extension GameEngine {
 
     var currentBallPosition: Vector { ball.centerPosition }
+    var currentBallShape: UniversalShape { ball.shape }
     var ballIsOutofBounds: Bool { currentBallPosition.y > physicsEngine.domain.height }
 
     func addPhysicsObject(object: any PhysicsObject) {

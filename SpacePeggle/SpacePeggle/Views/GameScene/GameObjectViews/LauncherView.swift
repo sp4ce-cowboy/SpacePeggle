@@ -16,13 +16,11 @@ struct LauncherView: View {
     var launcher: Launcher { viewModel.launcher }
     var isBallLaunched: Bool { viewModel.ballIsLaunched }
     var screenWidthCenter: Double { launcher.centerPosition.x }
-    var launcherHeightCenter: Double { launcherHeight / 2.0 }
+    var launcherHeightCenter: Double { launcher.centerPosition.y }
+    var launcherHeight: Double { launcher.launcherHeight }
 
     var launcherWidth = Double(ObjectSet
         .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
-
-    var launcherHeight = Double(ObjectSet
-        .defaultGameObjectSet["Launcher"]?.size.height ?? CGFloat(Constants.UNIVERSAL_LENGTH))
 
     var inactiveLauncherImageName = ObjectSet
         .defaultGameObjectSet["Launcher"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
@@ -41,7 +39,7 @@ struct LauncherView: View {
                 .frame(width: launcherWidth, height: launcherHeight)
                 .rotationEffect(-launcher.rotationAngle, anchor: .center)
                 .position(x: screenWidthCenter, y: launcherHeightCenter)
-                .gesture(handleLongPress.exclusively(before: handleRotation))
+                .gesture(handleRotation.exclusively(before: handleTap))
                 .disabled(viewModel.isPaused)
         }
     }
@@ -55,10 +53,10 @@ struct LauncherView: View {
             }
     }
 
-    private var handleLongPress: some Gesture {
-        LongPressGesture(minimumDuration: 1.0)
+    private var handleTap: some Gesture {
+        SpatialTapGesture()
             .onEnded { _ in
-                viewModel.handleBallLaunch()
+                viewModel.handleLongPress()
             }
     }
 

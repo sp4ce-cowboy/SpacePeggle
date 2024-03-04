@@ -1,0 +1,48 @@
+import SwiftUI
+
+/// This extension allows for safe, pre-defined transitions between scenes.
+///
+/// As opposed to having views call the `updateScene` method directly, the
+/// call predefined transition triggers that encapsulate the calling of
+/// the `updateScene` method with the appropriate scene name.
+///
+/// This approach allows for the retention of the dictionary's cyclomatic
+/// simplicity as opposed to a non-extendable enum while preserving the
+/// sub-type safety offered by enums. Essentially, the scene collection can be
+/// extended with more scenes (via a simple store method) and this new scene
+/// can be safely retrieved from the dictionary by adding an extension to the
+/// `AppSceneController` class that includes a method to transition to this new
+/// state.
+///
+/// Unlike enums whose cases need to be modified to add scenes, this
+/// approach respects the open-closed principle. Additionally, unlike dictionaries
+/// whose retrieval mechanisms are entirely open-ended as compared to enums,
+/// this approach enforces a certain restriction on the transitions available.
+///
+/// To demonstrate this in practise, I add extensions for every new Scene transition
+/// I make, with the transition function contained therein.
+extension AppSceneController {
+
+    static func transitionToStartScene() {
+        AudioManager.shared.stop()
+        shared.updateScene(to: "StartScene")
+    }
+
+    static func transitionToGameScene() {
+        shared.updateScene(to: "GameScene")
+        AudioManager.shared.play()
+    }
+}
+
+extension AppSceneController {
+    static func transitionToLevelScene() {
+        shared.updateScene(to: "LevelScene")
+    }
+}
+
+extension AppSceneController {
+    static func transitionToGameScene(with: any AbstractLevel) {
+        shared.updateScene(to: "GameScene")
+        AudioManager.shared.play()
+    }
+}
