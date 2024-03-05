@@ -14,7 +14,7 @@ final class BucketLeft: PhysicsObject {
                CGFloat(Constants.UNIVERSAL_LENGTH))
 
     static let DEFAULT_SHAPE = RectangularShape(height: DEFAULT_HEIGHT,
-                                                width: DEFAULT_WIDTH / 15)
+                                                width: DEFAULT_WIDTH / 10.0)
 
     static let DEFAULT_CENTER = Vector(x: Constants.UI_SCREEN_WIDTH.half
                                        - DEFAULT_WIDTH.half

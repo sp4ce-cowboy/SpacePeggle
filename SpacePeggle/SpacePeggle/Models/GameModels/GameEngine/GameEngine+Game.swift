@@ -34,7 +34,7 @@ extension GameEngine {
 
     func updateGameState() {
         if bucket.containsObject(ball) {
-            Logger.log("bucket contains ball!")
+            Logger.log("bucket contains ball!", self)
             self.resetBall()
         }
 

@@ -29,12 +29,12 @@ class Bucket {
     }
 
     func containsObject(_ object: any UniversalObject) -> Bool {
-        let withinXAxis = object.rightMostPosition.x <= bucketRight.rightMostPosition.x
-        && object.leftMostPosition.x >= bucketRight.rightMostPosition.x
+        let withinXAxis = object.rightCenter.x <= bucketRight.leftCenter.x
+        && object.leftCenter.x >= bucketLeft.rightCenter.x
 
-        let withinYAxis = object.topMostPosition.y >= bucketRight.topMostPosition.y
-        && object.bottomMostPosition.y <= bucketRight.bottomMostPosition.y
+        let withinYAxis = object.topCenter.y >= bucketRight.topCenter.y
 
+        Logger.log("Contains object is \(withinXAxis && withinYAxis)")
         return withinXAxis && withinYAxis
     }
 }
