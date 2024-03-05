@@ -153,4 +153,13 @@ extension UniversalObject {
         let withinYAxis = vector.y >= topCenter.y && vector.y <= bottomCenter.y
         return withinXAxis && withinYAxis
     }
+
+    func containsObject(_ object: any UniversalObject) -> Bool {
+        let withinXAxis = object.rightMostPosition.x <= rightMostPosition.x
+        && object.leftMostPosition.x >= rightMostPosition.x
+
+        let withinYAxis = object.topMostPosition.y >= topMostPosition.y
+        && object.bottomMostPosition.y <= bottomMostPosition.y
+        return withinXAxis && withinYAxis
+    }
 }

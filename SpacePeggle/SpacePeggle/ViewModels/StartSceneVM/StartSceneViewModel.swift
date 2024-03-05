@@ -18,8 +18,8 @@ class StartSceneViewModel: ObservableObject {
     /// But having Enums as the keys allows for stricter input control
     private var menuCollection: [Enums.MenuState: () -> AnyView] = [
         .MainMenu: { AnyView(StartMenuDefaultView()) },
-        .LevelSelectionMenu: { AnyView(LevelSelectionMenu()) },
-        .SettingsMenu: { AnyView(StartSettingsView()) }
+        .LevelSelectionMenu: { AnyView(LevelSelectionMenuView()) },
+        .SettingsMenu: { AnyView(StartSettingsMenuView()) }
     ]
 
     @ViewBuilder

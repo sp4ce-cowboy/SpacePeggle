@@ -48,9 +48,28 @@ class Enums {
         case StubbornPeg
     }
 
+    enum PhysicsObjectType: String {
+        case Ball
+        case Launcher
+        case Bucket
+        case NormalPeg, NormalPegActive
+        case GoalPeg, GoalPegActive
+        case BlockPeg
+        case SpookyPeg, SpookyPegActive
+        case KaboomPeg, KaboomPegActive
+        case StubbornPeg
+    }
+
     enum MenuState {
         case MainMenu
         case LevelSelectionMenu
         case SettingsMenu
     }
+
+    enum AppScene: String {
+        case StartScene
+        case LevelScene
+        case GameScene
+    }
+
 }

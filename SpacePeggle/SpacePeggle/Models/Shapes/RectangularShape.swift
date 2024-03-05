@@ -8,7 +8,7 @@ struct RectangularShape: UniversalShape {
     var rotation: Double
     var scale: Double
 
-    init(height: Double, width: Double, rotation: Double, scale: Double) {
+    init(height: Double, width: Double, rotation: Double = 0.0, scale: Double = 1.0) {
         self.trueHeight = height
         self.trueWidth = width
         self.rotation = rotation

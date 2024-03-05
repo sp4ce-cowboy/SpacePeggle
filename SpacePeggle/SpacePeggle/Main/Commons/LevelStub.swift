@@ -22,6 +22,11 @@ struct LevelStub {
                 for: LevelStub().gameObjectsStubThree))
     }
 
+    /// Returns an empty level
+    static func getEmptyLevel() -> Level {
+        Level(name: "LevelName", gameObjects: [:])
+    }
+
     static func getGameObjects(for objects: [any GameObject]) -> [UUID: any GameObject] {
         var objectsMap: [UUID: any GameObject] = [:]
         objects.forEach { object in

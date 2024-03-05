@@ -23,19 +23,25 @@ extension GameEngine {
 
     func launchBall() {
         if !isBallLaunched {
-            isBallLaunched = true
             ball.velocity = launcher.launchVelocityVector
             ball.centerPosition = launcher.launcherTipPosition
-
-            self.addPhysicsObject(object: ball)
-            startCheckingForStuckBall()
+            self.addPhysicsObject(object: self.ball)
+            self.startCheckingForStuckBall()
+            self.isBallLaunched = true
         }
+
     }
 
     func updateGameState() {
+        if bucket.containsObject(ball) {
+            Logger.log("bucket contains ball!")
+            self.resetBall()
+        }
+
         if ballIsOutofBounds {
+            self.isBallLaunched = false
+            self.resetBall()
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
-                self.resetBall()
                 self.removeActiveGameObjects()
             }
         }
@@ -45,7 +51,6 @@ extension GameEngine {
         stopCheckingForStuckBall()
         physicsObjects.removeValue(forKey: ball.id)
         ball = Ball()
-        isBallLaunched = false
     }
 
     func removeActiveGameObjects() {

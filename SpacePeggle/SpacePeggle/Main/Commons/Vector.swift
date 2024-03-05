@@ -64,6 +64,10 @@ struct Vector: Codable, Equatable, CustomStringConvertible {
         self.rawY = Double(point.y)
     }
 
+    static var screenCenter: Vector {
+        Vector(x: Vector.widthScale.half, y: Vector.heightScale.half)
+    }
+
     /// Compute the magnitude of the vector
     var magnitude: Double {
         sqrt(pow(x, 2) + pow(y, 2))

@@ -16,7 +16,7 @@ protocol PhysicsEngineDelegate: AnyObject {
 /// Engine, effectively decoupling the Renderer from any concrete Game Engine class.
 ///
 /// Also see `AbstractPhysicsEngine`
-protocol AbstractGameEngine: PhysicsEngineDelegate, LaunchMechanic {
+protocol AbstractGameEngine: PhysicsEngineDelegate, GameMechanic {
     var delegate: GameEngineDelegate? { get set }
 
     var currentLevel: any AbstractLevel { get set }
@@ -32,9 +32,10 @@ protocol AbstractGameEngine: PhysicsEngineDelegate, LaunchMechanic {
     func launchBall()
 }
 
-protocol LaunchMechanic {
+protocol GameMechanic {
     var launcher: Launcher { get set }
     var isBallLaunched: Bool { get set }
     var currentBallPosition: Vector { get }
     var currentBallShape: UniversalShape { get }
+    var bucket: Bucket { get set }
 }

@@ -41,7 +41,7 @@ extension PhysicsEngine {
         let screenXStart = domain.origin.x
         let screenYStart = domain.origin.y
         let screenXEnd = screenBounds.width + screenXStart
-        let screenYEnd = screenBounds.height + screenYStart
+        // let screenYEnd = screenBounds.height + screenYStart
 
         // Check for left or right boundary collision
         if objectX < (screenXStart + widthX) || objectX > (screenXEnd - widthX) {
@@ -52,7 +52,8 @@ extension PhysicsEngine {
                 object.centerPosition.x = (screenXEnd - widthX)
             }
             object.velocity.x.negate()
-            object.velocity.x *= restitution
+            // object.velocity.x *= restitution
+            object.applyRestitution()
         }
 
         // Check for top collision only
@@ -63,7 +64,8 @@ extension PhysicsEngine {
             }
 
             object.velocity.y.negate()
-            object.velocity.y *= restitution
+            // object.velocity.y *= restitution
+            object.applyRestitution()
         }
     }
 }

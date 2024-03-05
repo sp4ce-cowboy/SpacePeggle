@@ -17,7 +17,17 @@ extension GameSceneViewModel: GameObjectManager {
         peggleGameEngine.currentBallShape
     }
 
+    // Communication intermediary method between BucketView and GameEngine
+    var bucket: Bucket {
+        peggleGameEngine.bucket
+    }
+
+    var bucketImage: String {
+        ObjectSet.defaultGameObjectSet["Bucket"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
+    }
+
     func handleGameObjectRemoval(_ view: GameObjectView) {
         peggleGameEngine.handleGameObjectRemoval(id: view.gameObject.id)
     }
+
 }

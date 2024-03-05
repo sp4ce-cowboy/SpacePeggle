@@ -18,23 +18,15 @@ struct LauncherView: View {
     var screenWidthCenter: Double { launcher.centerPosition.x }
     var launcherHeightCenter: Double { launcher.centerPosition.y }
     var launcherHeight: Double { launcher.launcherHeight }
-
-    var launcherWidth = Double(ObjectSet
-        .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
-
-    var inactiveLauncherImageName = ObjectSet
-        .defaultGameObjectSet["Launcher"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
-
-    var activeLauncherImageName = ObjectSet
-        .defaultGameObjectSet["LauncherActive"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
-
+    var launcherWidth: Double { viewModel.getLauncherWidth() }
+    var launcherImageString: String { viewModel.getLauncherImage() }
     // Calibration given if the launcher's width and height are unequal
     var anchorPoint: UnitPoint { UnitPoint(x: 0.5, y: 0.4) }
 
     var body: some View {
         ZStack {
             viewModel.calculateTrajectory()
-            Image(isBallLaunched ? inactiveLauncherImageName : activeLauncherImageName)
+            Image(launcherImageString)
                 .resizable()
                 .frame(width: launcherWidth, height: launcherHeight)
                 .rotationEffect(-launcher.rotationAngle, anchor: .center)
