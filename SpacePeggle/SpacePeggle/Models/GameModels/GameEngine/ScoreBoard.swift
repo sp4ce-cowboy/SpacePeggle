@@ -66,7 +66,8 @@ struct ScoreBoard {
 
     var currentScore: Int {
         clearedGoalPegsCount * 2_000 + (ballEntersBucketCount * 10_000)
-        + clearedSpookyPegsCount * 1_000 + clearedNormalPegsCount * 500
+        + clearedSpookyPegsCount * 1_000 + clearedKaboomPegsCount * 1_000
+        + clearedNormalPegsCount * 500
     }
 
     var getWinState: Bool {

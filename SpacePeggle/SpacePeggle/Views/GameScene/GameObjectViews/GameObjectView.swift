@@ -19,19 +19,16 @@ struct GameObjectView: View {
     }
 
     var body: some View {
-        Image(gameObjectImage)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
-            .position(center.point)
-            .rotationEffect(rotation, anchor: center.unitPoint)
-            .opacity(viewModel.gameObjectOpacities[gameObject.id, default: .unit])
-            .gesture(handleLongPress)
-            .if(viewModel.getObjectAnimation(self)) { view in
-                view.scaleEffect(viewModel.getObjectScale(self),
-                                 anchor: center.unitPoint)
-                    .animation(.easeOut(duration: 1.0))
-            }
+        ZStack {
+            Image(gameObjectImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
+                .position(center.point)
+                .rotationEffect(rotation, anchor: center.unitPoint)
+                .opacity(viewModel.gameObjectOpacities[gameObject.id, default: .unit])
+                .gesture(handleLongPress)
+        }
 
     }
 

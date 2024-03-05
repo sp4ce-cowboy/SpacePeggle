@@ -4,7 +4,7 @@ import SwiftUI
 /// updating the views of game object states.
 protocol GameEngineDelegate: AnyObject {
     func removeActiveGameObjects(withId id: UUID)
-    func processSpecialGameObjects()
+    func processSpecialGameObjects(withId id: UUID)
     func notifyEffect(withId id: UUID)
     func notifySpecialEffect()
     func transferScores(scores: ScoreBoard)
@@ -65,8 +65,8 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     /// Remove exploding pegs 
-    func processSpecialGameObjects() {
-        for (id, value) in gameObjects where value.gameObjectType == .KaboomPegActive {
+    func processSpecialGameObjects(withId id: UUID) {
+        // for (id, value) in gameObjects where value.gameObjectType == .KaboomPegActive {
 
             withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
                 gameObjectOpacities[id] = 0
@@ -77,7 +77,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
             }
 
             peggleGameEngine.handleObjectRemoval(id: id)
-        }
+        // }
     }
 
     func handlePause() {
@@ -181,7 +181,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func getObjectScale(_ view: GameObjectView) -> Double {
-        view.gameObject.height.twice.twice
+        view.gameObject.height.twice
     }
 
 }

@@ -14,7 +14,8 @@ struct ScoreBoardView: View {
                 HStack {
                     Spacer()
                     goalPegCount
-                    specialPegCount
+                    spookyPegCount
+                    kaboomPegCount
                     availableBallCount
                     Spacer()
                     status

@@ -51,9 +51,6 @@ public class Constants {
     /// Explosion strength for kaboom pegs
     static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 10
 
-    /// Universally declared precision for determining overlap
-    static let OVERLAP_PRECISION: Double = 0.01
-
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit
 
@@ -68,13 +65,6 @@ public class Constants {
 
     /// The minimum movement required to register a drag gesture
     static let MOVEMENT_THRESHOLD: CGFloat = 1.0
-
-    /*
-    static let SHAPE_CONSTANTS: [String: (UniversalShape, UniversalShape, Vector, Vector) -> Double?] = [
-        Enums.ShapeType.circle.rawValue: { this, other, 
-     start, end in this.intersects(with: other, at: start, and: end) }
-        ]
-     */
 
     // A universal helper function to dismiss the keyboard from anywhere
     public static func dismissKeyboard() {

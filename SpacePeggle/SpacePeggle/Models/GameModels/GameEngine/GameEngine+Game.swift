@@ -126,7 +126,6 @@ extension GameEngine {
         if !explodingObjects.isEmpty {
             scores.status = "Explosion Alert!"
             explodingObjects.forEach { explodingObject in
-
                 /// 0. Determine explosion radius of eR = 4R (i.e. 4x Diameter)
                 let explosionShape = CircularShape(diameter: explodingObject.height * 4)
                 let explosionObject = KaboomPeg(centerPosition: explodingObject.centerPosition,
@@ -164,12 +163,10 @@ extension GameEngine {
 
                 /// 4. Call delegate to process animation, delegate will callback to
                 /// process game object removal, separating each layer.
-                delegate?.processSpecialGameObjects()
-                scores.clearedKaboomPegsCount += 1
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 2.0) {
-                    self.scores.status = ""
-                }
+                self.delegate?.processSpecialGameObjects(withId: explodingObject.id)
+                self.scores.status = ""
+                self.scores.clearedKaboomPegsCount += 1
 
             }
         }
