@@ -107,8 +107,8 @@ extension PhysicsEngine {
 
         object1.velocity = newVelocity1
         object2.velocity = newVelocity2
-        object1.applyRestitution()
-        object2.applyRestitution()
+        // object1.applyRestitution()
+        // object2.applyRestitution()
 
         // Notify delegate about collision
         delegate?.handleCollision(withID: object1.id)
@@ -163,22 +163,36 @@ extension PhysicsEngine {
             return (reflectedVelocity1, object2.velocity)
         }
 
+        // Both objects have finite mass, calculate collision response with normals
         let mass1 = object1.mass
         let mass2 = object2.mass
+
         let velocity1 = object1.velocity
         let velocity2 = object2.velocity
 
-        let totalMass = mass1 + mass2
-        let massDifference1 = mass1 - mass2
-        let massDifference2 = mass2 - mass1
+        // Calculate the normal vector from the center of object1 to object2
+        let collisionNormal = (object2.centerPosition - object1.centerPosition).normalized
 
-        let newVelocity1 = ((massDifference1 / totalMass) * velocity1)
-        + ((2 * mass2 / totalMass) * velocity2)
+        // Decompose the velocities into components parallel and perpendicular to the normal
+        let velocity1Normal = Vector.project(this: velocity1, onto: collisionNormal)
+        let velocity2Normal = Vector.project(this: velocity2, onto: collisionNormal)
 
-        let newVelocity2 = ((2 * mass1 / totalMass) * velocity1)
-        + ((massDifference2 / totalMass) * velocity2)
+        let velocity1Tangential = velocity1 - velocity1Normal
+        let velocity2Tangential = velocity2 - velocity2Normal
+
+        // Use the conservation of momentum to calculate the new normal components
+        let newVelocity1Normal = ((mass1 - mass2) / (mass1 + mass2)) * velocity1Normal
+        + ((2 * mass2) / (mass1 + mass2)) * velocity2Normal
+
+        let newVelocity2Normal = ((2 * mass1) / (mass1 + mass2)) * velocity1Normal
+        - ((mass1 - mass2) / (mass1 + mass2)) * velocity2Normal
+
+        // Recombine the normal and tangential components
+        let newVelocity1 = newVelocity1Normal + velocity1Tangential
+        let newVelocity2 = newVelocity2Normal + velocity2Tangential
 
         return (newVelocity1, newVelocity2)
+
     }
 
     private func reflectVelocity(movingObjectVelocity: Vector, normal: Vector) -> Vector {

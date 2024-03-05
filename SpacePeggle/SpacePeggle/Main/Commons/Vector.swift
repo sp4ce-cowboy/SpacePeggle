@@ -99,7 +99,7 @@ struct Vector: Codable, Equatable, CustomStringConvertible {
 
 }
 
-/// This extension provides static functions to return normalized vectors
+/// This extension provides static functions to return special vectors
 extension Vector {
 
     /// Returns a zero vector
@@ -115,6 +115,7 @@ extension Vector {
     func applyDamping(_ factor: Double) -> Vector {
         self * factor
     }
+
 }
 
 /// This extension to the vector struct allows for vector arithmetic
@@ -136,7 +137,7 @@ extension Vector {
         Vector(x: vector.x * scalar, y: vector.y * scalar)
     }
 
-    // Scalar multiplication
+    // Scalar multiplication to make swift compiler do less work
     static func * (_ scalar: Double, _ vector: Vector) -> Vector {
         Vector(x: vector.x * scalar, y: vector.y * scalar)
     }
@@ -161,6 +162,16 @@ extension Vector {
 
     static func == (lhs: Vector, rhs: Vector) -> Bool {
         lhs.x == rhs.x && lhs.y == rhs.y
+    }
+
+    static func project(this a: Vector, onto that: Vector) -> Vector {
+        // The dot product of a and b gives the magnitude of the projection of a onto b,
+        // when b is a unit vector.
+        let dotProduct = dot(a, that)
+        let ontoMagnitudeSquared = dot(that, that)
+
+        let scalarProjection = dotProduct / ontoMagnitudeSquared
+        return that * scalarProjection
     }
 
 }

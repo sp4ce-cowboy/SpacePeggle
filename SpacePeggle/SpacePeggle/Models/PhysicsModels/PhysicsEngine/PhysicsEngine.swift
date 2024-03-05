@@ -71,8 +71,14 @@ final class PhysicsEngine {
         }
     }
 
-    // Only considered to contain point if domain is not expanded
-    func isWithinDomain(point: Vector) -> Bool {
-        domain.contains(point.point) && !isDomainExpansionActive
+    /// Only considered to contain point if domain is not expanded
+    /// Returns true if not within domain. Nil and false values indicate
+    /// the opposite.
+    func isNotWithinDomain(point: Vector) -> Bool? {
+        if !isDomainExpansionActive {
+            return !domain.contains(point.point)
+        } else {
+            return nil
+        }
     }
 }

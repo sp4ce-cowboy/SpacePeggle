@@ -13,12 +13,12 @@ struct GameScene: View {
     var body: some View {
         ZStack {
             GameAreaView()
-            GamePauseButtonView()
             BallView()
-            LauncherView()
             GameObjectsBoardView()
             BucketView()
             ScoreBoardView()
+            LauncherView()
+            GamePauseButtonView()
         }
         .if(viewModel.isPaused) { view in
             view.overlay { GameMenuView() }

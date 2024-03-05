@@ -43,7 +43,7 @@ public class Constants {
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
     /// Universally declared launch force as a proportion of screen width
-    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_WIDTH
+    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_WIDTH.twice
 
     /// Ball mass
     static let UNIVERSAL_BALL_MASS: Double = 100
@@ -55,7 +55,7 @@ public class Constants {
     static var UNIVERSAL_POWER_UP: Enums.PowerUp = .Spooky
 
     /// Explosion strength for kaboom pegs
-    static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 10
+    static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 5
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit

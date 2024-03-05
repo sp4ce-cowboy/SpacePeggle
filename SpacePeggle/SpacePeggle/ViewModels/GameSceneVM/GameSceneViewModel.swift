@@ -7,7 +7,7 @@ protocol GameEngineDelegate: AnyObject {
     func processSpecialGameObjects(withId id: UUID)
     func notifyEffect(withId id: UUID)
     func notifySpecialEffect()
-    func transferScores(scores: ScoreBoard)
+    func transferScores(scores: ScoreBoard, state: Bool)
     func triggerLoss()
 }
 
@@ -117,7 +117,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         self.setupGameLoop()
     }
 
-    func transferScores(scores: ScoreBoard) {
+    func transferScores(scores: ScoreBoard, state: Bool) {
         triggerRefresh()
         if scores.currentScore > self.scores.currentScore + Constants.SCORE_COMBO_THRESHOLD {
             self.scores = scores
@@ -125,15 +125,14 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
             self.scores.status = "\(Constants.SCORE_COMBO_THRESHOLD) COMBO BONUS!"
         } else {
             self.scores = scores
-            self.scores.status.empty()
         }
 
-        if scores.getWinState {
+        if scores.getWinState && state {
             self.scores.status = "YOU WIN!"
             triggerWin()
         }
 
-        if scores.getLoseState {
+        if scores.getLoseState && state {
             self.scores.status = "YOU LOSE!"
             triggerLoss()
         }

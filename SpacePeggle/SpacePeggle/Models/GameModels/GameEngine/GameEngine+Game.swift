@@ -40,10 +40,11 @@ extension GameEngine {
     }
 
     func updateGameState() {
+        delegate?.transferScores(scores: scores, state: ballIsOutOfBounds)
 
-        /// Perform score check
+        /// Perform victory check
         if !isBallLaunched && scores.availableBallCount == 0 {
-            delegate?.transferScores(scores: scores)
+            delegate?.transferScores(scores: scores, state: true)
             delegate?.triggerLoss()
             return
         }
@@ -76,7 +77,7 @@ extension GameEngine {
             self.processActiveGameObjects()
         }
 
-        self.delegate?.transferScores(scores: scores)
+        self.delegate?.transferScores(scores: scores, state: ballIsOutOfBounds)
     }
 
     func processActiveGameObjects() {
@@ -85,25 +86,12 @@ extension GameEngine {
                 continue
             }
 
+            /// Expansion for type-specific logic
             switch gameObject.gameObjectType {
-            case .GoalPeg, .GoalPegActive:
-                scores.clearedGoalPegsCount += 1
-
-            case .NormalPeg, .NormalPegActive:
-                scores.clearedNormalPegsCount += 1
-
-            case .SpookyPeg, .SpookyPegActive:
-                scores.clearedSpookyPegsCount += 1
+            case .SpookyPegActive:
                 physicsEngine.isDomainExpansionActive = false
                 scores.status.empty()
-
-            case .KaboomPeg, .KaboomPegActive: // cases covered separately!
-                break
-
-            case .StubbornPeg:
-                break
-
-            case .BlockPeg:
+            default:
                 break
             }
 
@@ -170,8 +158,8 @@ extension GameEngine {
     }
 
     func handleGameObjectsOutOfBoundary() {
-        gameObjects.values
-            .filter { !physicsEngine.isWithinDomain(point: $0.centerPosition) }
+        gameObjects.values      // if nil, return false. If false, return false. If true return true.
+            .filter { physicsEngine.isNotWithinDomain(point: $0.centerPosition) ?? false ? true : false }
             .forEach { self.handleObjectRemoval(id: $0.id) }
     }
 

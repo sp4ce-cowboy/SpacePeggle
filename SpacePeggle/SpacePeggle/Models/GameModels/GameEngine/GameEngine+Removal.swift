@@ -31,6 +31,7 @@ extension GameEngine {
         velocityCheckTimer?.invalidate()
         timeBelowThreshold = 0
         ballIsStuck = false
+
     }
 
     func handleGameObjectRemoval(id: UUID) {
@@ -42,6 +43,25 @@ extension GameEngine {
 
     func handleCollision(withID id: UUID) {
         delegate?.notifyEffect(withId: id)
-        gameObjects[id]?.activateGameObject()
+        if let gameObject = gameObjects[id], !gameObject.isActive {
+            gameObjects[id]?.activateGameObject()
+
+            switch gameObject.gameObjectType {
+            case .GoalPegActive:
+                scores.clearedGoalPegsCount += 1
+
+            case .NormalPegActive:
+                scores.clearedNormalPegsCount += 1
+
+            case .SpookyPegActive:
+                scores.clearedSpookyPegsCount += 1
+
+            case .KaboomPegActive: // cases covered separately!
+                break
+
+            default:
+                break
+            }
+        }
     }
 }
