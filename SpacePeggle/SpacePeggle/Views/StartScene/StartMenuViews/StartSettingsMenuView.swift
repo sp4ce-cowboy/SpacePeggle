@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StartSettingsView: View {
+struct StartSettingsMenuView: View {
     @EnvironmentObject var viewModel: StartSceneViewModel
 
     var body: some View {

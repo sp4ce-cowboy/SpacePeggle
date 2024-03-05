@@ -49,7 +49,9 @@ class ObjectSet {
         "StubbornPeg": ("delete", CONSTANT_SIZE),
         "StubbornPegActive": ("delete", CONSTANT_SIZE),
         "Remove": ("delete", CONSTANT_SIZE),
-        "BlockPeg": ("block", CONSTANT_SIZE)
+        "BlockPeg": ("block", CONSTANT_SIZE),
+        "Bucket": ("bucket-square", CGSize(width: Constants.UNIVERSAL_LAUNCHER_HEIGHT.twice,
+                                           height: Constants.UNIVERSAL_LAUNCHER_HEIGHT))
     ]
 
     /// A dictionary of available game objects and closures that create default instances

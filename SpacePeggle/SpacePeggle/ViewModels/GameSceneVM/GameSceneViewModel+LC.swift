@@ -13,6 +13,22 @@ extension GameSceneViewModel: LaunchManager {
         set { peggleGameEngine.launcher = newValue }
     }
 
+    func getLauncherWidth() -> Double {
+        Double(ObjectSet
+            .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))
+    }
+
+    func getLauncherImage() -> String {
+        triggerRefresh()
+        let inactiveLauncherImageName = ObjectSet
+            .defaultGameObjectSet["Launcher"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
+
+        let activeLauncherImageName = ObjectSet
+            .defaultGameObjectSet["LauncherActive"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
+
+        return ballIsLaunched ? inactiveLauncherImageName : activeLauncherImageName
+    }
+
     // LauncherView tells GameSceneViewModel and GameSceneViewModel tells the game engine
     func updateLauncherRotation(with dragValue: DragGesture.Value) {
         peggleGameEngine.updateLauncherRotation(with: dragValue,

@@ -17,6 +17,7 @@ protocol PhysicsObject: UniversalObject {
       //   centerPosition: Vector, force: Vector, id: UUID, shape: UniversalShape)
 
     mutating func applyPhysics(timeStep: TimeInterval)
+    mutating func applyRestitution()
 
     func collide(with object: any PhysicsObject) -> Double?
 }
@@ -72,6 +73,11 @@ extension PhysicsObject {
 
     mutating func subjectToGravity() {
         force = Constants.UNIVERSAL_GRAVITY * mass
+    }
+
+    mutating func applyRestitution() {
+        let newVelocity = velocity * Constants.UNIVERSAL_RESTITUTION
+        velocity = newVelocity
     }
 
 }

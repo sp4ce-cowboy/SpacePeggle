@@ -3,32 +3,34 @@ import SwiftUI
 /// The Ball model extends the PhysicsObject protocol
 final class Ball: PhysicsObject {
 
+    static let DEFAULT_DIAMETER: Double =
+        Double(ObjectSet.defaultPhysicsObjectSet["Ball"]?.size.width ??
+               CGFloat(Constants.UNIVERSAL_LENGTH))
+
     var id: UUID
     var mass: Double
     var centerPosition: Vector
     var velocity: Vector
     var force: Vector
-    var shape: UniversalShape
+    var shape: UniversalShape = CircularShape(diameter: Ball.DEFAULT_DIAMETER)
+
     var isSubjectToGravity = false
 
     init(mass: Double = 100,
          velocity: Vector = Vector.zero,
          centerPosition: Vector = .zero,
          force: Vector = .zero,
-         id: UUID = UUID(),
-         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+         id: UUID = UUID()) {
 
         self.mass = mass
         self.centerPosition = centerPosition
         self.velocity = velocity
         self.force = force
         self.id = id
-        self.shape = shape
     }
 
     func updatePosition(to finalLocation: Vector) {
         self.centerPosition = finalLocation
-        // self.shape.center = self.centerPosition
     }
 
     func applyPhysics(timeStep: TimeInterval) {

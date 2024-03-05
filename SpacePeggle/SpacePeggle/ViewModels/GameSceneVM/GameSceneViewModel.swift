@@ -29,7 +29,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         Logger.log("ViewModel is deinitialized from \(self)", self)
     }
 
-    private func triggerRefresh() {
+    func triggerRefresh() {
         DispatchQueue.main.async { self.objectWillChange.send() }
     }
 

@@ -33,11 +33,12 @@ final class GameEngine {
     var physicsEngine: AbstractPhysicsEngine
     var currentScreenGeometry: GeometryProxy
 
-    var currentLevel: AbstractLevel = LevelStub().getLevelOneStub()
+    var currentLevel: AbstractLevel = LevelStub.getEmptyLevel()
     var isGameActive = false
 
     var launcher: Launcher  // Can be swapped for a [UUID : Launcher] map if needed
-    @Published var ball: Ball          // Can be swapped for a [UUID : Ball] map if needed
+    @Published var ball: Ball   // Can be swapped for a [UUID : Ball] map if needed
+    @Published var bucket: Bucket
     var isBallLaunched = false // Can be swapped for a [UUID : Bool] if needed
 
     var velocityCheckTimer: Timer?
@@ -59,6 +60,7 @@ final class GameEngine {
         Logger.log("Game Engine is initialized")
         self.launcher = Launcher(layoutSize: geometry.size)
         self.ball = Ball()
+        self.bucket = Bucket()
         self.currentScreenGeometry = geometry
         self.physicsEngine = PhysicsEngine(
             domain: Constants.getFullScreen(from: geometry))

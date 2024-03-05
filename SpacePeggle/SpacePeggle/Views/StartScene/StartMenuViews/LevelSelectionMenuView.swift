@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LevelSelectionMenu: View {
+struct LevelSelectionMenuView: View {
     @EnvironmentObject var viewModel: StartSceneViewModel
 
     var body: some View {
