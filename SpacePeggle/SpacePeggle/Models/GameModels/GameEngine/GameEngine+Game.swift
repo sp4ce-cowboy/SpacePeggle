@@ -150,7 +150,7 @@ extension GameEngine {
                                                     at: explosionObject.centerPosition,
                                                     for: explosionObject.height.half)
 
-                /// 3. Apply velocity on all non-finite physics objects
+                /// 3. Apply velocity on all applicable physics objects
                 affectedObjects.forEach { affectedPhysicsObject in
                     Logger.log("Affected physics objects are \(affectedObjects)")
                     if let physicsObject = affectedPhysicsObject as? (any PhysicsObject) {

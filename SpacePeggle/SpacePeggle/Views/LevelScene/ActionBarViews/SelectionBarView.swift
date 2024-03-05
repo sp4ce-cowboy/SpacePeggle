@@ -5,7 +5,7 @@ struct SelectionBarView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
 
     let DIAMETER = Constants.UNIVERSAL_LENGTH * 1.3
-    let HALF_OPACITY = 0.5
+    let HALF_OPACITY = 0.3
     let FULL_OPACITY = 1.0
 
     var body: some View {
@@ -13,8 +13,10 @@ struct SelectionBarView: View {
             normalPegButton
             goalPegButton
             specialPegButton
-            blockButton
+            Spacer()
             stubbornPegButton
+            blockButton
+            Spacer()
             Spacer()
             deleteButton
         }
@@ -40,7 +42,7 @@ struct SelectionBarView: View {
         // Normal Peg (blue)
         Button(action: { viewModel.selectedMode = .NormalPeg },
                label: { buttonImage(for: .NormalPeg) })
-        .padding([.leading, .trailing, .top])
+        .padding([.leading, .trailing])
         .opacity(getOpacity(for: .NormalPeg))
     }
 
@@ -48,7 +50,7 @@ struct SelectionBarView: View {
         // Goal Peg (orange)
         Button(action: { viewModel.selectedMode = .GoalPeg },
                label: { buttonImage(for: .GoalPeg) })
-        .padding([.trailing, .top])
+        .padding([.trailing])
         .opacity(getOpacity(for: .GoalPeg))
     }
 
@@ -56,7 +58,7 @@ struct SelectionBarView: View {
         // Spooky Peg (green)
         Button(action: { viewModel.selectedMode = viewModel.getCurrentSpecialPeg() },
                label: { buttonImage(for: viewModel.getCurrentSpecialPeg()) })
-        .padding([.trailing, .top])
+        .padding([.trailing])
         .opacity(getOpacity(for: viewModel.getCurrentSpecialPeg()))
     }
 
@@ -64,7 +66,7 @@ struct SelectionBarView: View {
         // Spooky Peg (green)
         Button(action: { viewModel.selectedMode = .SpookyPeg },
                label: { buttonImage(for: .SpookyPeg) })
-        .padding([.trailing, .top])
+        .padding([.trailing])
         .opacity(getOpacity(for: .SpookyPeg))
     }
 
@@ -72,24 +74,23 @@ struct SelectionBarView: View {
     var kaboomPegButton: some View {
         Button(action: { viewModel.selectedMode = .KaboomPeg },
                label: { buttonImage(for: .KaboomPeg) })
-        .padding([.trailing, .top])
+        .padding([.trailing])
         .opacity(getOpacity(for: .SpookyPeg))
     }
-    
+
     var stubbornPegButton: some View {
         // Delete button
-        Button(action: { viewModel.selectedMode = .StubbonPeg },
-               label: { buttonImage(for: .StubbonPeg) })
-        .padding([.trailing, .top])
-        .opacity(getOpacity(for: .StubbonPeg))
+        Button(action: { viewModel.selectedMode = .StubbornPeg },
+               label: { buttonImage(for: .StubbornPeg) })
+        .padding([.trailing])
+        .opacity(getOpacity(for: .StubbornPeg))
     }
 
     var deleteButton: some View {
         // Delete button
         Button(action: { viewModel.selectedMode = .Remove },
                label: { buttonImage(for: .Remove) })
-        .padding([.leading, .trailing], 30)
-        .padding(.top)
+        .padding([.leading, .trailing, .top], 30)
         .opacity(getOpacity(for: .Remove))
         .onLongPressGesture { viewModel.selectedMode = .NormalPeg } // revert on long press
     }
@@ -98,8 +99,8 @@ struct SelectionBarView: View {
         // Delete button
         Button(action: { viewModel.selectedMode = .BlockPeg },
                label: { buttonImage(for: .BlockPeg) })
-        .padding([.leading, .trailing, .top])
+        .padding([.leading, .trailing])
         .opacity(getOpacity(for: .BlockPeg))
     }
-    
+
 }

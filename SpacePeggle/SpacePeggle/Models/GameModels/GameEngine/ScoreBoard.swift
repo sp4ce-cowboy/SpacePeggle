@@ -4,6 +4,7 @@ import SwiftUI
 struct ScoreBoard {
     var powerUp: Enums.PowerUp = Constants.UNIVERSAL_POWER_UP
     var ballEntersBucketCount: Int = 0
+    var scoreBonus: Int = 0
 
     var status: String = ""
 
@@ -67,7 +68,7 @@ struct ScoreBoard {
     var currentScore: Int {
         clearedGoalPegsCount * 2_000 + (ballEntersBucketCount * 10_000)
         + clearedSpookyPegsCount * 1_000 + clearedKaboomPegsCount * 1_000
-        + clearedNormalPegsCount * 500
+        + clearedNormalPegsCount * 500 + scoreBonus
     }
 
     var getWinState: Bool {

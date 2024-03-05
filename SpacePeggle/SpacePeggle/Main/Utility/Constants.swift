@@ -66,6 +66,9 @@ public class Constants {
     /// The minimum movement required to register a drag gesture
     static let MOVEMENT_THRESHOLD: CGFloat = 1.0
 
+    /// The threshold for which a given score difference can be considered a combo
+    static var SCORE_COMBO_THRESHOLD: Int = 10_000
+
     // A universal helper function to dismiss the keyboard from anywhere
     public static func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(

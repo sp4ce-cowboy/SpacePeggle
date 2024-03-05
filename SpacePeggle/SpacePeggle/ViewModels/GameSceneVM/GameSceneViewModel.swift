@@ -51,8 +51,8 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     func removeActiveGameObjects(withId id: UUID) {
         /*guard gameObjects[id]?.gameObjectType != .SpookyPegActive else {
-            return
-        }*/
+         return
+         }*/
 
         withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
             gameObjectOpacities[id] = 0
@@ -64,19 +64,19 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     }
 
-    /// Remove exploding pegs 
+    /// Remove exploding pegs
     func processSpecialGameObjects(withId id: UUID) {
         // for (id, value) in gameObjects where value.gameObjectType == .KaboomPegActive {
 
-            withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
-                gameObjectOpacities[id] = 0
-            }
-            // After the fade-out duration, remove the GameObject from the dictionary
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 2.0) {
-                self.gameObjectOpacities[id] = nil
-            }
+        withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
+            gameObjectOpacities[id] = 0
+        }
+        // After the fade-out duration, remove the GameObject from the dictionary
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 2.0) {
+            self.gameObjectOpacities[id] = nil
+        }
 
-            peggleGameEngine.handleObjectRemoval(id: id)
+        peggleGameEngine.handleObjectRemoval(id: id)
         // }
     }
 
@@ -119,13 +119,22 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     func transferScores(scores: ScoreBoard) {
         triggerRefresh()
-        self.scores = scores
+        if scores.currentScore > self.scores.currentScore + Constants.SCORE_COMBO_THRESHOLD {
+            self.scores = scores
+            self.scores.scoreBonus += Constants.SCORE_COMBO_THRESHOLD
+            self.scores.status = "\(Constants.SCORE_COMBO_THRESHOLD) COMBO BONUS!"
+        } else {
+            self.scores = scores
+            self.scores.status.empty()
+        }
 
         if scores.getWinState {
+            self.scores.status = "YOU WIN!"
             triggerWin()
         }
 
         if scores.getLoseState {
+            self.scores.status = "YOU LOSE!"
             triggerLoss()
         }
     }
@@ -153,11 +162,13 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func notifyEffect(withId id: UUID) {
-        switch gameObjects[id]?.gameObjectType {
-        case .GoalPeg, .KaboomPeg, .SpookyPeg:
+        switch self.gameObjects[id]?.gameObjectType {
+        case .GoalPeg, .SpookyPeg:
             AudioManager.shared.playHitEffect()
-        case .NormalPeg, .BlockPeg, .StubbornPeg:
-            AudioManager.shared.playBeepEffect()
+            // case .NormalPeg, .BlockPeg, .StubbornPeg:
+            // AudioManager.shared.playBeepEffect()
+        case .KaboomPeg:
+            AudioManager.shared.playSpecialEffect()
         default:
             break
         }

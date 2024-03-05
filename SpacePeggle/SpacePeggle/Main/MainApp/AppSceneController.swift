@@ -12,7 +12,7 @@ import SwiftUI
 /// follows the singleton design patterns so that only one instance of it can
 /// exist at any time.
 final class AppSceneController: ObservableObject {
-    @Published private(set) var currentSceneName: String = "StartScene"
+    @Published private(set) var currentSceneName: Enums.AppScene = .StartScene
     @Published var currentLevel: AbstractLevel?
     // static let shared = AppSceneController() // Singleton instance
 
@@ -21,7 +21,7 @@ final class AppSceneController: ObservableObject {
     /// This allows for this scene controller to be used as a base for different
     /// application configurations, for example, a version meant for testing purposes.
     private static var sceneCollection:
-    [String: (GeometryProxy, AppSceneController) -> AnyView] = [:]
+    [Enums.AppScene: (GeometryProxy, AppSceneController) -> AnyView] = [:]
 
     init() {
         Logger.log("AppSceneController initialized", self)
@@ -41,7 +41,7 @@ final class AppSceneController: ObservableObject {
     }
 
     // func newGameScene(geometry: GeometryProxy)
-    func updateScene(to sceneName: String) {
+    func updateScene(to sceneName: Enums.AppScene) {
         guard AppSceneController.sceneCollection.keys.contains(sceneName) else {
             return
         }
@@ -52,7 +52,7 @@ final class AppSceneController: ObservableObject {
         currentLevel = level
     }
 
-    static func uploadScene(withName name: String,
+    static func uploadScene(withName name: Enums.AppScene,
                             withViewClosure viewClosure:
                             @escaping (GeometryProxy, AppSceneController) -> AnyView) {
         AppSceneController.sceneCollection[name] = viewClosure

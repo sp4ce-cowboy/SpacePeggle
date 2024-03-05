@@ -63,7 +63,7 @@ class ObjectSet {
         .BlockPeg: { center in BlockPeg(centerPosition: center) },
         .SpookyPeg: { center in SpookyPeg(centerPosition: center) },
         .KaboomPeg: { center in KaboomPeg(centerPosition: center) },
-        .StubbonPeg: { center in StubbornPeg(centerPosition: center) }
+        .StubbornPeg: { center in StubbornPeg(centerPosition: center) }
     ]
 
     /// A dictionary of available game objects and closures that create them
@@ -73,7 +73,7 @@ class ObjectSet {
         .BlockPeg: { center in BlockPeg(centerPosition: center) },
         .SpookyPeg: { center in SpookyPeg(centerPosition: center) },
         .KaboomPeg: { center in KaboomPeg(centerPosition: center) },
-        .StubbonPeg: { center in StubbornPeg(centerPosition: center) }
+        .StubbornPeg: { center in StubbornPeg(centerPosition: center) }
     ]
 
     /*/// A dictionary of available game objects and closures that execute an action

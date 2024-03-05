@@ -40,6 +40,7 @@ final class StubbornPeg: Peg {
 
     func activateGameObject() {  }
 
+    /*
     func updatePosition(to finalLocation: Vector) {
         self.centerPosition = finalLocation
     }
@@ -68,4 +69,5 @@ final class StubbornPeg: Peg {
         let newVelocity = velocity * Constants.UNIVERSAL_RESTITUTION * 1_000
         velocity = newVelocity
     }
+     */
 }

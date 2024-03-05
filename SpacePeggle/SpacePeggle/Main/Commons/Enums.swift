@@ -35,7 +35,7 @@ class Enums {
         case BlockPeg
         case SpookyPeg
         case KaboomPeg
-        case StubbonPeg
+        case StubbornPeg
         case Remove
     }
 

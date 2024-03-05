@@ -25,25 +25,25 @@ extension AppSceneController {
 
     func transitionToStartScene() {
         AudioManager.shared.stop()
-        updateScene(to: "StartScene")
+        updateScene(to: .StartScene)
     }
 
     func transitionToGameScene() {
-        updateScene(to: "GameScene")
+        updateScene(to: .GameScene)
         AudioManager.shared.play()
     }
 }
 
 extension AppSceneController {
     func transitionToLevelScene() {
-        updateScene(to: "LevelScene")
+        updateScene(to: .LevelScene)
     }
 }
 
 extension AppSceneController {
     func transitionToGameScene(with level: any AbstractLevel) {
         updateLevel(to: level)
-        updateScene(to: "GameScene")
+        updateScene(to: .GameScene)
         AudioManager.shared.play()
     }
 }

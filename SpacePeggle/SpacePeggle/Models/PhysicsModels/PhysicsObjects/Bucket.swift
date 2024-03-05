@@ -36,11 +36,11 @@ class Bucket {
     }
 
     func containsObject(_ object: any UniversalObject) -> Bool {
-        let withinXAxis = object.rightCenter.x <= bucketRight.leftCenter.x
-        && object.leftCenter.x >= bucketLeft.rightCenter.x
+        let withinXAxis = object.rightCenter.x < bucketRight.leftCenter.x
+        && object.leftCenter.x > bucketLeft.rightCenter.x
 
-        let withinYAxis = object.topCenter.y >= bucketRight.topCenter.y
-        && object.bottomCenter.y <= bucketRight.bottomCenter.y
+        let withinYAxis = object.topCenter.y > bucketRight.topCenter.y
+        && object.bottomCenter.y < bucketRight.bottomCenter.y
         return withinXAxis && withinYAxis
     }
 }

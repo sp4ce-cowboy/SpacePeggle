@@ -36,10 +36,10 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         } catch {
             Logger.log("Failed to play sound effect \(soundName): \(error)", self)
         }
+    }
 
         /*
-         
-         //guard let audioData = NSDataAsset(name: "field-of-memories-soundtrack")?.data
+        guard let audioData = NSDataAsset(name: "field-of-memories-soundtrack")?.data
         else {
             Logger.log("Background audio asset not found", self)
             return
@@ -55,8 +55,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         } catch {
             Logger.log("Failed to initialize audio player: \(error)", self)
         }
-         */
-    }
+    }*/
 
     // Play background music
     func play() {
@@ -103,7 +102,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     // Play a sound effect
     func playSoundEffect(named soundName: String) {
         // Attempt to use a cached player if available
-        if let player = soundEffectPlayers[soundName], player.isPlaying == false {
+        if let player = soundEffectPlayers[soundName] {
             player.play()
         } else {
             // Create a new player for the sound effect
@@ -113,10 +112,10 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             }
             do {
                 let player = try AVAudioPlayer(contentsOf: soundURL)
-                player.volume = 1.5
+                player.volume = 1.0
                 player.prepareToPlay()
                 player.play()
-                soundEffectPlayers[soundName] = player // Cache the player for reuse
+                soundEffectPlayers[soundName] = player
             } catch {
                 Logger.log("Failed to play sound effect \(soundName): \(error)", self)
             }

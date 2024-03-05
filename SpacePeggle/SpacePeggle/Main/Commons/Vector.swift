@@ -136,6 +136,11 @@ extension Vector {
         Vector(x: vector.x * scalar, y: vector.y * scalar)
     }
 
+    // Scalar multiplication
+    static func * (_ scalar: Double, _ vector: Vector) -> Vector {
+        Vector(x: vector.x * scalar, y: vector.y * scalar)
+    }
+
     // Scalar division
     static func / (_ vector: Vector, _ scalar: Double) -> Vector {
         guard scalar != 0 else {
