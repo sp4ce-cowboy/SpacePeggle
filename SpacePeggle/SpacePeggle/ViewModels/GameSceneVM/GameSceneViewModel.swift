@@ -154,9 +154,9 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     func notifyEffect(withId id: UUID) {
         switch gameObjects[id]?.gameObjectType {
-        case .GoalPeg:
+        case .GoalPeg, .KaboomPeg, .SpookyPeg:
             AudioManager.shared.playHitEffect()
-        case .NormalPeg:
+        case .NormalPeg, .BlockPeg, .StubbornPeg:
             AudioManager.shared.playBeepEffect()
         default:
             break

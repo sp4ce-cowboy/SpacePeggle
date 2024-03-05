@@ -14,6 +14,7 @@ struct SelectionBarView: View {
             goalPegButton
             specialPegButton
             blockButton
+            stubbornPegButton
             Spacer()
             deleteButton
         }
@@ -74,6 +75,14 @@ struct SelectionBarView: View {
         .padding([.trailing, .top])
         .opacity(getOpacity(for: .SpookyPeg))
     }
+    
+    var stubbornPegButton: some View {
+        // Delete button
+        Button(action: { viewModel.selectedMode = .StubbonPeg },
+               label: { buttonImage(for: .StubbonPeg) })
+        .padding([.trailing, .top])
+        .opacity(getOpacity(for: .StubbonPeg))
+    }
 
     var deleteButton: some View {
         // Delete button
@@ -92,4 +101,5 @@ struct SelectionBarView: View {
         .padding([.leading, .trailing, .top])
         .opacity(getOpacity(for: .BlockPeg))
     }
+    
 }

@@ -46,8 +46,8 @@ class ObjectSet {
         "SpookyPegActive": ("peg-green-glow", CONSTANT_SIZE),
         "KaboomPeg": ("peg-purple", CONSTANT_SIZE),
         "KaboomPegActive": ("peg-purple-glow", CONSTANT_SIZE),
-        "StubbornPeg": ("delete", CONSTANT_SIZE),
-        "StubbornPegActive": ("delete", CONSTANT_SIZE),
+        "StubbornPeg": ("peg-grey", CONSTANT_SIZE),
+        "StubbornPegActive": ("peg-grey-glow", CONSTANT_SIZE),
         "Remove": ("delete", CONSTANT_SIZE),
         "BlockPeg": ("block", CONSTANT_SIZE),
 

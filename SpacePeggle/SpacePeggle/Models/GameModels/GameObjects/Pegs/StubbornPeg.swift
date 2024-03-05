@@ -39,4 +39,33 @@ final class StubbornPeg: Peg {
     }
 
     func activateGameObject() {  }
+
+    func updatePosition(to finalLocation: Vector) {
+        self.centerPosition = finalLocation
+    }
+
+    func applyPhysics(timeStep: TimeInterval) {
+        applyRestitution()
+        applyVelocityOnPosition(timeStep: timeStep)
+    }
+
+    func applyVelocityOnPosition(timeStep: TimeInterval) {
+        // Displacement = Velocity * Time
+        let newPosition = centerPosition + (velocity * timeStep)
+        updatePosition(to: newPosition)
+    }
+
+    func applyAccelerationOnVelocity(timeStep: TimeInterval) {
+        let newVelocity = velocity + (acceleration * timeStep)
+        velocity = newVelocity
+    }
+
+    func subjectToGravity() {
+
+    }
+
+    func applyRestitution() {
+        let newVelocity = velocity * Constants.UNIVERSAL_RESTITUTION * 1_000
+        velocity = newVelocity
+    }
 }
