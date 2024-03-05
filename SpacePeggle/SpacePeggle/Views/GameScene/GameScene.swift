@@ -23,6 +23,12 @@ struct GameScene: View {
         .if(viewModel.isPaused) { view in
             view.overlay { GameMenuView() }
         }
+        .if(viewModel.isWin) { view in
+            view.overlay { GameWonView() }
+        }
+        .if(viewModel.isLose) { view in
+            view.overlay { GameOverView() }
+        }
         .background { GameBackgroundView() }
         .environmentObject(viewModel)
         // .environmentObject(sceneController)

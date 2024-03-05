@@ -11,6 +11,8 @@
 		BA0343DA2B95829300B6EA95 /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0343D92B95829300B6EA95 /* FileListView.swift */; };
 		BA0343DC2B95830500B6EA95 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0343DB2B95830500B6EA95 /* Options.swift */; };
 		BA0343DE2B959A7D00B6EA95 /* Level+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0343DD2B959A7D00B6EA95 /* Level+Storage.swift */; };
+		BA0A26FD2B971433005AA65A /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A26FC2B971433005AA65A /* GameOverView.swift */; };
+		BA0A26FF2B97144A005AA65A /* GameWonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A26FE2B97144A005AA65A /* GameWonView.swift */; };
 		BA12BB002B90782400BCE72C /* AppSceneController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */; };
 		BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB012B907F9100BCE72C /* AudioManager.swift */; };
 		BA12BB042B90886100BCE72C /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* AppScene.swift */; };
@@ -126,6 +128,8 @@
 		BA0343D92B95829300B6EA95 /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
 		BA0343DB2B95830500B6EA95 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		BA0343DD2B959A7D00B6EA95 /* Level+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+Storage.swift"; sourceTree = "<group>"; };
+		BA0A26FC2B971433005AA65A /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		BA0A26FE2B97144A005AA65A /* GameWonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWonView.swift; sourceTree = "<group>"; };
 		BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppSceneController+Transition.swift"; sourceTree = "<group>"; };
 		BA12BB012B907F9100BCE72C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BA12BB032B90886100BCE72C /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
@@ -248,6 +252,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA0A27002B971D9E005AA65A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		BA28FD6A2B962DBE0044CAC8 /* StartSceneVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +281,7 @@
 		BA67193F2B942554004FA712 /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				BA0A27002B971D9E005AA65A /* Sounds */,
 				BA7662442B8C89590022C267 /* SpacePeggleApp.swift */,
 				BAD80ADB2B90B243008E998F /* AppDelegate.swift */,
 				BA12BB032B90886100BCE72C /* AppScene.swift */,
@@ -353,6 +365,8 @@
 				BA76620F2B8C89590022C267 /* GamePauseButtonView.swift */,
 				BA8B6AE92B8DEA3100A4FD96 /* GameMenuView.swift */,
 				BAD77AE72B970A05009374B7 /* ScoreBoardView.swift */,
+				BA0A26FC2B971433005AA65A /* GameOverView.swift */,
+				BA0A26FE2B97144A005AA65A /* GameWonView.swift */,
 			);
 			path = GameBoardViews;
 			sourceTree = "<group>";
@@ -843,6 +857,7 @@
 				BA76625D2B8C89590022C267 /* PhysicsObject.swift in Sources */,
 				BA96F3152B93133E006BE36D /* SelectionBarView.swift in Sources */,
 				BAD77AE82B970A05009374B7 /* ScoreBoardView.swift in Sources */,
+				BA0A26FD2B971433005AA65A /* GameOverView.swift in Sources */,
 				BA7662652B8C89590022C267 /* GameEngine+Removal.swift in Sources */,
 				BA63CCAB2B945CCF005D23EB /* LauncherStubView.swift in Sources */,
 				BAD77AE62B970862009374B7 /* ScoreBoard.swift in Sources */,
@@ -864,6 +879,7 @@
 				BA7662612B8C89590022C267 /* GameEngine+Start.swift in Sources */,
 				BABA64A52B937F8900A02BD1 /* LevelObjectResizerView.swift in Sources */,
 				BA7662762B8C89590022C267 /* GameSceneViewModel+LC.swift in Sources */,
+				BA0A26FF2B97144A005AA65A /* GameWonView.swift in Sources */,
 				BAAC29FC2B8E094100938B85 /* StartScene.swift in Sources */,
 				BA8256962B91E4E500EF31C9 /* RectangularShape.swift in Sources */,
 				BA7662642B8C89590022C267 /* AbstractGameEngine.swift in Sources */,

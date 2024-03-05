@@ -23,12 +23,12 @@ extension GameEngine {
 
     func launchBall() {
         if !isBallLaunched {
+            self.scores.shotBallCount += 1
             ball.velocity = launcher.launchVelocityVector
             ball.centerPosition = launcher.launcherTipPosition
             self.addPhysicsObject(object: self.ball)
             self.startCheckingForStuckBall()
             self.isBallLaunched = true
-            self.scores.shotBallCount += 1
         }
 
     }
@@ -37,6 +37,7 @@ extension GameEngine {
         if ballIsOutofBounds || bucket.containsObject(ball) {
             if bucket.containsObject(ball) {
                 self.scores.ballEntersBucketCount += 1
+                self.scores.totalBallCount += 1
                 Logger.log("bucket contains ball!", self)
             }
 
@@ -45,6 +46,7 @@ extension GameEngine {
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
                 self.removeActiveGameObjects()
             }
+
         }
 
         self.delegate?.transferScores(scores: scores)
@@ -61,6 +63,22 @@ extension GameEngine {
             guard let gameObject = gameObjects[id], gameObject.isActive else {
                 continue
             }
+
+            switch gameObject.gameObjectType {
+            case .GoalPeg, .GoalPegActive:
+                scores.clearedGoalPegsCount += 1
+            case .NormalPeg, .NormalPegActive:
+                scores.clearedNormalPegsCount += 1
+            case .BlockPeg:
+                break
+            case .SpookyPeg, .SpookyPegActive:
+                break
+            case .KaboomPeg, .KaboomPegActive:
+                break
+            case .StubbornPeg:
+                break
+            }
+
             delegate?.processActiveGameObjects(withID: id)
 
             // Object needs to be removed from the physics object
@@ -68,7 +86,7 @@ extension GameEngine {
             // the game-physics engine synchronization-loop
             physicsObjects.removeValue(forKey: id)
             gameObjects.removeValue(forKey: id)
-
         }
+
     }
 }

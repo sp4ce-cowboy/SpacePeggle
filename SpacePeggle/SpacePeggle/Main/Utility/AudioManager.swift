@@ -1,15 +1,18 @@
 import SwiftUI
 import AVFoundation
 
-class AudioManager: NSObject, AVAudioPlayerDelegate {
-    static let shared = AudioManager() // Singleton instance
-    private var audioPlayer: AVAudioPlayer?
+/// Explicit Internal class to ensure that external clients cannot
+/// interfere with singleton instance.
+internal class AudioManager: NSObject, AVAudioPlayerDelegate {
+    internal static let shared = AudioManager() // Singleton instance
+    private var backgroundAudioPlayer: AVAudioPlayer?
+    private var soundEffectPlayer: AVAudioPlayer?
     private var isPlaying = false
 
     override init() {
         super.init()
         setupAudioPlayer()
-        audioPlayer?.prepareToPlay()
+        backgroundAudioPlayer?.prepareToPlay()
         Logger.log("AudioManager is initialized", self)
     }
 
@@ -23,37 +26,37 @@ class AudioManager: NSObject, AVAudioPlayerDelegate {
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-            audioPlayer = try AVAudioPlayer(data: audioData)
-            audioPlayer?.delegate = self
-            audioPlayer?.numberOfLoops = -1 // Loop indefinitely
-            audioPlayer?.volume = 1
+            backgroundAudioPlayer = try AVAudioPlayer(data: audioData)
+            backgroundAudioPlayer?.delegate = self
+            backgroundAudioPlayer?.numberOfLoops = -1 // Loop indefinitely
+            backgroundAudioPlayer?.volume = 1
         } catch {
             Logger.log("Failed to initialize audio player: \(error)", self)
         }
     }
 
     func play() {
-        audioPlayer?.play()
+        backgroundAudioPlayer?.play()
         isPlaying = true
     }
 
     func pause() {
-        audioPlayer?.pause()
+        backgroundAudioPlayer?.pause()
         isPlaying = false
     }
 
     func stop() {
-        audioPlayer?.stop()
-        audioPlayer?.currentTime = 0
+        backgroundAudioPlayer?.stop()
+        backgroundAudioPlayer?.currentTime = 0
         isPlaying = false
     }
 
     func mute() {
-        audioPlayer?.volume = 0
+        backgroundAudioPlayer?.volume = 0
     }
 
     func unmute() {
-        audioPlayer?.volume = 1.0
+        backgroundAudioPlayer?.volume = 1.0
     }
 
     func toggle() {

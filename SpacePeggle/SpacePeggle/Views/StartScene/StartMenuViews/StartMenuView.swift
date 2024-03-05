@@ -1,10 +1,3 @@
-//
-//  StartMenuView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 29/2/24.
-//
-
 import SwiftUI
 
 struct StartMenuView: View {

@@ -7,6 +7,23 @@ extension GameEngine {
         self.isGameActive = true
         self.loadLevel(with: level)
         Logger.log("Start method: Game is loaded with \(currentLevel.gameObjects.count)", self)
+
+        for object in gameObjects.values {
+            switch object.gameObjectType {
+            case .GoalPeg, .GoalPegActive:
+                scores.totalGoalPegsCount += 1
+            case .NormalPeg, .NormalPegActive:
+                scores.totalNormalPegsCount += 1
+            case .BlockPeg:
+                break
+            case .SpookyPeg, .SpookyPegActive:
+                break
+            case .KaboomPeg, .KaboomPegActive:
+                break
+            case .StubbornPeg:
+                break
+            }
+        }
     }
 
     func loadLevel(with level: AbstractLevel = LevelStub().getLevelOneStub()) {

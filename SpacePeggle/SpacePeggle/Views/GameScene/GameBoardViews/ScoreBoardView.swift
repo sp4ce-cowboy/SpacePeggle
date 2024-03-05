@@ -13,9 +13,9 @@ struct ScoreBoardView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    totalPegsCount
                     goalPegCount
                     availableBallCount
+                    Spacer()
                     Spacer()
                     scoreCount
                     Spacer()
@@ -46,23 +46,12 @@ struct ScoreBoardView: View {
             .frame(width: DIAMETER, height: DIAMETER)
     }
 
-    var totalPegsCount: some View {
-        ZStack {
-            buttonImage(for: "NormalPeg")
-                .padding()
-
-            Text("\(scores.currentTotalPegsCount)")
-                .font(.largeTitle)
-                .foregroundColor(.black)
-        }
-    }
-
     var goalPegCount: some View {
         ZStack {
             buttonImage(for: "GoalPeg")
                 .padding()
 
-            Text("\(scores.currentGoalPegsCount)")
+            Text("\(scores.remainingGoalPegsCount)")
                 .font(.largeTitle)
                 .foregroundColor(.black)
         }

@@ -18,6 +18,8 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     var currentViewSize: CGSize { geometryState.size }
     var gameLoop = DisplayLink()
     var isPaused = false
+    var isWin = false
+    var isLose = false
 
     init(_ geometryState: GeometryProxy, _ sceneController: AppSceneController) {
         self.geometryState = geometryState
@@ -66,12 +68,32 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     func handleExitButton() {
         handleReturnButton()
+        AudioManager.shared.stop()
         sceneController.transitionToStartScene()
     }
 
     func transferScores(scores: ScoreBoard) {
         triggerRefresh()
         self.scores = scores
+
+        if scores.getWinState {
+            self.stopGame()
+            self.isWin = true
+            AudioManager.shared.stop()
+            return
+        }
+
+        if scores.getLoseState {
+            self.stopGame()
+            self.isLose = true
+            AudioManager.shared.stop()
+            return
+        }
+    }
+
+    func getHighScore() -> Int {
+        triggerRefresh()
+        return scores.currentScore
     }
 
 }
