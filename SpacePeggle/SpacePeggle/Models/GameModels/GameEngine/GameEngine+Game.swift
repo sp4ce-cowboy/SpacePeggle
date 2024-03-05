@@ -69,13 +69,13 @@ extension GameEngine {
                 scores.clearedGoalPegsCount += 1
             case .NormalPeg, .NormalPegActive:
                 scores.clearedNormalPegsCount += 1
-            case .BlockPeg:
-                break
             case .SpookyPeg, .SpookyPegActive:
-                break
+                scores.clearedSpookyPegsCount += 1
             case .KaboomPeg, .KaboomPegActive:
                 break
             case .StubbornPeg:
+                break
+            case .BlockPeg:
                 break
             }
 
@@ -88,9 +88,10 @@ extension GameEngine {
             gameObjects.removeValue(forKey: id)
         }
 
-        if scores.availableBallCount == 0 && scores.remainingGoalPegsCount > 0 {
+        if !isBallLaunched &&
+            scores.availableBallCount == 0 &&
+            scores.remainingGoalPegsCount > 0 {
             delegate?.triggerLoss()
         }
-
     }
 }

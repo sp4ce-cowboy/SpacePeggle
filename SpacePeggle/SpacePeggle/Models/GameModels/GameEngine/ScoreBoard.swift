@@ -16,6 +16,12 @@ struct ScoreBoard {
         totalNormalPegsCount - clearedNormalPegsCount
     }
 
+    var totalSpookyPegsCount: Int = 0
+    var clearedSpookyPegsCount: Int = 0
+    var remainingSpookyPegsCount: Int {
+        totalSpookyPegsCount - clearedSpookyPegsCount
+    }
+
     var totalBallCount: Int = 2
     var shotBallCount: Int = 0
     var availableBallCount: Int {
@@ -24,6 +30,7 @@ struct ScoreBoard {
 
     var currentScore: Int {
         clearedGoalPegsCount * 1_000 + (ballEntersBucketCount * 10_000)
+        + clearedSpookyPegsCount * 2_000
     }
 
     var getWinState: Bool {

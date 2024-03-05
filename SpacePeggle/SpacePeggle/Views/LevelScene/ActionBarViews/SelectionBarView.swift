@@ -53,10 +53,10 @@ struct SelectionBarView: View {
 
     var spookyPegButton: some View {
         // Spooky Peg (green)
-        Button(action: { viewModel.selectedMode = .GoalPeg },
+        Button(action: { viewModel.selectedMode = .SpookyPeg },
                label: { buttonImage(for: "SpookyPeg") })
         .padding([.trailing, .top])
-        .opacity(getOpacity(for: .GoalPeg))
+        .opacity(getOpacity(for: .SpookyPeg))
     }
 
     var deleteButton: some View {
