@@ -5,6 +5,7 @@ import SwiftUI
 protocol GameEngineDelegate: AnyObject {
     func processActiveGameObjects(withID id: UUID)
     func transferScores(scores: ScoreBoard)
+    func triggerLoss()
 }
 
 class GameSceneViewModel: ObservableObject, GameEngineDelegate {
@@ -53,6 +54,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 0.5) {
             self.gameObjectOpacities[id] = nil
         }
+
     }
 
     func handlePause() {
@@ -80,15 +82,22 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
             self.stopGame()
             self.isWin = true
             AudioManager.shared.stop()
+            AudioManager.shared.playWinSoundEffect()
             return
         }
 
         if scores.getLoseState {
-            self.stopGame()
-            self.isLose = true
-            AudioManager.shared.stop()
-            return
+            triggerLoss()
         }
+    }
+
+    func triggerLoss() {
+        triggerRefresh()
+        self.stopGame()
+        self.isLose = true
+        AudioManager.shared.stop()
+        AudioManager.shared.playLoseSoundEffect()
+        return
     }
 
     func getHighScore() -> Int {

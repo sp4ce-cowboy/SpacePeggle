@@ -10,7 +10,7 @@ extension GameEngine {
 
     var currentBallPosition: Vector { ball.centerPosition }
     var currentBallShape: UniversalShape { ball.shape }
-    var ballIsOutofBounds: Bool { currentBallPosition.y > physicsEngine.domain.height }
+    var ballIsOutOfBounds: Bool { currentBallPosition.y > physicsEngine.domain.height }
 
     func addPhysicsObject(object: any PhysicsObject) {
         Logger.log("added \(object)")
@@ -30,11 +30,11 @@ extension GameEngine {
             self.startCheckingForStuckBall()
             self.isBallLaunched = true
         }
-
     }
 
     func updateGameState() {
-        if ballIsOutofBounds || bucket.containsObject(ball) {
+
+        if ballIsOutOfBounds || bucket.containsObject(ball) {
             if bucket.containsObject(ball) {
                 self.scores.ballEntersBucketCount += 1
                 self.scores.totalBallCount += 1
@@ -46,10 +46,10 @@ extension GameEngine {
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
                 self.removeActiveGameObjects()
             }
-
         }
 
         self.delegate?.transferScores(scores: scores)
+
     }
 
     func resetBall() {
@@ -86,6 +86,10 @@ extension GameEngine {
             // the game-physics engine synchronization-loop
             physicsObjects.removeValue(forKey: id)
             gameObjects.removeValue(forKey: id)
+        }
+
+        if scores.availableBallCount == 0 && scores.remainingGoalPegsCount > 0 {
+            delegate?.triggerLoss()
         }
 
     }
