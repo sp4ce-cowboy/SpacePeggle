@@ -28,6 +28,10 @@ struct GameOverView: View {
 
                         Spacer()
 
+                        /*StyleSheet.getRectangleButtonWithAction(
+                            text: "RETRY LEVEL",
+                            action: { viewModel.handleRetryLevelButton() })*/
+
                         StyleSheet.getRectangleButtonWithAction(
                             text: "RETURN TO MENU",
                             action: { viewModel.handleExitButton() })

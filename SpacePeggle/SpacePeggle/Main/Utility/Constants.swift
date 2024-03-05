@@ -48,7 +48,11 @@ public class Constants {
     /// Universally declared power up state
     static var UNIVERSAL_POWER_UP: Enums.PowerUp = .Spooky
 
+    /// Explosion strength for kaboom pegs
     static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 10
+
+    /// Universally declared precision for determining overlap
+    static let OVERLAP_PRECISION: Double = 0.01
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit

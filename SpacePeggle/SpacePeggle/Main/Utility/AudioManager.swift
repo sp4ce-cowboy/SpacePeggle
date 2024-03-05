@@ -138,4 +138,8 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     func playSpecialEffect() {
         playSoundEffect(named: "jump.mp3")
     }
+
+    func playBeepEffect() {
+        playSoundEffect(named: "beep.mp3")
+    }
 }

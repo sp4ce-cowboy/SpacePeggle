@@ -30,8 +30,7 @@ struct GameObjectView: View {
             .if(viewModel.getObjectAnimation(self)) { view in
                 view.scaleEffect(viewModel.getObjectScale(self),
                                  anchor: center.unitPoint)
-                    .animation(.easeOut(duration: 1.0),
-                               value: viewModel.getObjectAnimation(self))
+                    .animation(.easeOut(duration: 1.0))
             }
 
     }

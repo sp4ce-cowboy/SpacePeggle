@@ -97,6 +97,26 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         sceneController.transitionToStartScene()
     }
 
+    func handleRetryLevelButton() {
+        triggerRefresh()
+        self.resetAll()
+        // sceneController.transitionToGameScene(with: sceneController.currentLevel ?? peggleGameEngine.currentLevel)
+        if let level = sceneController.currentLevel {
+            self.peggleGameEngine.currentLevel = level
+        }
+        self.startGame()
+    }
+
+    private func resetAll() {
+        self.isPaused = false
+        self.isWin = false
+        self.isLose = false
+        self.peggleGameEngine = GameEngine(geometry: geometryState)
+        peggleGameEngine.delegate = self
+        self.gameLoop = DisplayLink()
+        self.setupGameLoop()
+    }
+
     func transferScores(scores: ScoreBoard) {
         triggerRefresh()
         self.scores = scores
@@ -133,7 +153,14 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func notifyEffect(withId id: UUID) {
-        AudioManager.shared.playHitEffect()
+        switch gameObjects[id]?.gameObjectType {
+        case .GoalPeg:
+            AudioManager.shared.playHitEffect()
+        case .NormalPeg:
+            AudioManager.shared.playBeepEffect()
+        default:
+            break
+        }
     }
 
     func notifySpecialEffect() {

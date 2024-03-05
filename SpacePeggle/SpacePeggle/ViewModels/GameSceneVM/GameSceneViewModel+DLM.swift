@@ -17,7 +17,6 @@ extension GameSceneViewModel: DisplayLinkManager {
     }
 
     func startGame() {
-        Logger.log("Game has started from MainViewModel", self)
         isPaused = false
         // DisplayLink.sharedInstance.setupDisplayLink()
         gameLoop.setupDisplayLink()
@@ -30,10 +29,7 @@ extension GameSceneViewModel: DisplayLinkManager {
     }
 
     func stopGame() {
-        Logger.log("Game has been stopped from MainViewModel", self)
-        peggleGameEngine.delegate = nil
         gameLoop.invalidate()
-        print("game stopped from viewmodel")
     }
 
     func uploadLevel(to level: AbstractLevel) {

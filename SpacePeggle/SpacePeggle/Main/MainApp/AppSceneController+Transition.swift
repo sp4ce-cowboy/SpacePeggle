@@ -43,9 +43,7 @@ extension AppSceneController {
 extension AppSceneController {
     func transitionToGameScene(with level: any AbstractLevel) {
         updateLevel(to: level)
-        Logger.log("Received \(level)")
         updateScene(to: "GameScene")
-        Logger.log("Update scene with \(String(describing: currentLevel))")
         AudioManager.shared.play()
     }
 }
