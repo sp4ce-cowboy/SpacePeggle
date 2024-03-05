@@ -14,9 +14,10 @@ struct ScoreBoardView: View {
                 HStack {
                     Spacer()
                     goalPegCount
-                    normalPegCount
+                    specialPegCount
                     availableBallCount
                     Spacer()
+                    status
                     Spacer()
                     scoreCount
                     Spacer()
@@ -69,6 +70,39 @@ struct ScoreBoardView: View {
         }
     }
 
+    var specialPegCount: some View {
+        ZStack {
+            buttonImage(for: viewModel.handleGetCurrentPowerUpImage())
+                .padding()
+
+            Text("\(scores.remainingSpecialPegsCount)")
+                .font(.largeTitle)
+                .foregroundColor(.black)
+        }
+    }
+
+    var spookyPegCount: some View {
+        ZStack {
+            buttonImage(for: "SpookyPeg")
+                .padding()
+
+            Text("\(scores.remainingSpookyPegsCount)")
+                .font(.largeTitle)
+                .foregroundColor(.black)
+        }
+    }
+
+    var kaboomPegCount: some View {
+        ZStack {
+            buttonImage(for: "KaboomPeg")
+                .padding()
+
+            Text("\(scores.remainingKaboomPegsCount)")
+                .font(.largeTitle)
+                .foregroundColor(.black)
+        }
+    }
+
     var availableBallCount: some View {
         ZStack {
             buttonImage(for: "Ball")
@@ -82,7 +116,13 @@ struct ScoreBoardView: View {
 
     var scoreCount: some View {
         Text("\(scores.currentScore)")
-            .font(.largeTitle)
+            .font(.title)
+            .foregroundColor(.blue)
+    }
+
+    var status: some View {
+        Text("\(scores.status)")
+            .font(.title)
             .foregroundColor(.black)
     }
 }

@@ -82,7 +82,7 @@ class Enums {
     }
 
     enum PowerUp: String {
-        case Spooky
-        case Kaboom
+        case Spooky = "SpookyPeg"
+        case Kaboom = "KaboomPeg"
     }
 }

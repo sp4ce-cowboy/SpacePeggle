@@ -12,7 +12,7 @@ struct SelectionBarView: View {
         HStack {
             normalPegButton
             goalPegButton
-            spookyPegButton
+            specialPegButton
             blockButton
             Spacer()
             deleteButton
@@ -20,9 +20,9 @@ struct SelectionBarView: View {
     }
 
     // Helper function to determine the image name based on the selected object's type.
-    private func buttonImage(for buttonName: String) -> some View {
+    private func buttonImage(for buttonName: Enums.SelectedMode) -> some View {
         let imageName = ObjectSet
-            .defaultGameObjectSet[buttonName]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
+            .defaultGameObjectSet[buttonName.rawValue]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
 
         return Image(imageName)
             .resizable()
@@ -38,7 +38,7 @@ struct SelectionBarView: View {
     var normalPegButton: some View {
         // Normal Peg (blue)
         Button(action: { viewModel.selectedMode = .NormalPeg },
-               label: { buttonImage(for: "NormalPeg") })
+               label: { buttonImage(for: .NormalPeg) })
         .padding([.leading, .trailing, .top])
         .opacity(getOpacity(for: .NormalPeg))
     }
@@ -46,15 +46,31 @@ struct SelectionBarView: View {
     var goalPegButton: some View {
         // Goal Peg (orange)
         Button(action: { viewModel.selectedMode = .GoalPeg },
-               label: { buttonImage(for: "GoalPeg") })
+               label: { buttonImage(for: .GoalPeg) })
         .padding([.trailing, .top])
         .opacity(getOpacity(for: .GoalPeg))
+    }
+
+    var specialPegButton: some View {
+        // Spooky Peg (green)
+        Button(action: { viewModel.selectedMode = viewModel.getCurrentSpecialPeg() },
+               label: { buttonImage(for: viewModel.getCurrentSpecialPeg()) })
+        .padding([.trailing, .top])
+        .opacity(getOpacity(for: viewModel.getCurrentSpecialPeg()))
     }
 
     var spookyPegButton: some View {
         // Spooky Peg (green)
         Button(action: { viewModel.selectedMode = .SpookyPeg },
-               label: { buttonImage(for: "SpookyPeg") })
+               label: { buttonImage(for: .SpookyPeg) })
+        .padding([.trailing, .top])
+        .opacity(getOpacity(for: .SpookyPeg))
+    }
+
+    // Either spooky or kaboom depending on game master
+    var kaboomPegButton: some View {
+        Button(action: { viewModel.selectedMode = .KaboomPeg },
+               label: { buttonImage(for: .KaboomPeg) })
         .padding([.trailing, .top])
         .opacity(getOpacity(for: .SpookyPeg))
     }
@@ -62,7 +78,7 @@ struct SelectionBarView: View {
     var deleteButton: some View {
         // Delete button
         Button(action: { viewModel.selectedMode = .Remove },
-               label: { buttonImage(for: "Remove") })
+               label: { buttonImage(for: .Remove) })
         .padding([.leading, .trailing], 30)
         .padding(.top)
         .opacity(getOpacity(for: .Remove))
@@ -72,7 +88,7 @@ struct SelectionBarView: View {
     var blockButton: some View {
         // Delete button
         Button(action: { viewModel.selectedMode = .BlockPeg },
-               label: { buttonImage(for: "BlockPeg") })
+               label: { buttonImage(for: .BlockPeg) })
         .padding([.leading, .trailing, .top])
         .opacity(getOpacity(for: .BlockPeg))
     }

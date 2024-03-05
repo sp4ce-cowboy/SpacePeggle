@@ -109,3 +109,9 @@ extension Angle: Codable {
         self.init(radians: value)
     }
 }
+
+extension String {
+    mutating func empty() {
+        self = ""
+    }
+}

@@ -23,39 +23,53 @@ extension GameEngine {
 
     func launchBall() {
         if !isBallLaunched {
-            self.scores.shotBallCount += 1
             ball.velocity = launcher.launchVelocityVector
             ball.centerPosition = launcher.launcherTipPosition
             self.addPhysicsObject(object: self.ball)
             self.startCheckingForStuckBall()
             self.isBallLaunched = true
+            self.scores.shotBallCount += 1
+            updateGameState()
         }
     }
 
     func updateGameState() {
 
+        /// Perform score check
+        if !isBallLaunched && scores.availableBallCount == 0 {
+            delegate?.transferScores(scores: scores)
+            delegate?.triggerLoss()
+            return
+        }
+
+        /// Facilitate ball explosion
+        if gameObjects.values.contains(where: { $0.gameObjectType == .KaboomPegActive }) {
+            delegate?.processSpecialGameObjects()
+        }
+
+        /// Facilitate domain expansion ability
         if gameObjects.values.contains(where: { $0.gameObjectType == .SpookyPegActive }) {
+            scores.status = "Domain Expansion!"
             physicsEngine.isDomainExpansionActive = true
         }
 
+        /// Facilitate ball reset
         if ballIsOutOfBounds || bucket.containsObject(ball) {
             if bucket.containsObject(ball) {
+                delegate?.notifySpecialEffect()
                 self.scores.ballEntersBucketCount += 1
                 self.scores.totalBallCount += 1
                 Logger.log("bucket contains ball!", self)
                 physicsEngine.isDomainExpansionActive = false
-                // delegate?.processSpecialGameObjects()
             }
 
             self.isBallLaunched = false
             self.resetBall()
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
-                self.processActiveGameObjects()
-            }
+            // DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
+            self.processActiveGameObjects()
         }
 
         self.delegate?.transferScores(scores: scores)
-
     }
 
     func resetBall() {
@@ -76,20 +90,28 @@ extension GameEngine {
             switch gameObject.gameObjectType {
             case .GoalPeg, .GoalPegActive:
                 scores.clearedGoalPegsCount += 1
+
             case .NormalPeg, .NormalPegActive:
                 scores.clearedNormalPegsCount += 1
+
             case .SpookyPeg, .SpookyPegActive:
                 scores.clearedSpookyPegsCount += 1
                 physicsEngine.isDomainExpansionActive = false
+                scores.status.empty()
+
             case .KaboomPeg, .KaboomPegActive:
-                break
+                scores.clearedKaboomPegsCount += 1
+                scores.status = "Explosion Alert!"
+                delegate?.processSpecialGameObjects()
+
             case .StubbornPeg:
                 break
+
             case .BlockPeg:
                 break
             }
 
-            delegate?.removeActiveGameObjects(withID: id)
+            delegate?.removeActiveGameObjects(withId: id)
 
             // Object needs to be removed from the physics object
             // storage to ensure that it does not get resusciated from
@@ -98,11 +120,11 @@ extension GameEngine {
             gameObjects.removeValue(forKey: id)
         }
 
-        if !isBallLaunched &&
+        /*if !isBallLaunched &&
             scores.availableBallCount == 0 &&
             scores.remainingGoalPegsCount > 0 {
             delegate?.triggerLoss()
-        }
+        }*/
     }
 
     func handleObjectRemoval(id: UUID) {

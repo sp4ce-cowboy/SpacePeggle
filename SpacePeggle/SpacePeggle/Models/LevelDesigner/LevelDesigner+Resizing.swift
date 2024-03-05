@@ -33,10 +33,15 @@ extension LevelDesigner {
 
 /// This extension allows the LevelDesigner to handle resizing and rotating of level objects.
 extension LevelDesigner {
+
     func updateObjectRotation(_ object: any GameObject, value: Angle) {
-        levelObjects[object.id]?.rotation = value
-        Logger.log("New object static sides are \(String(describing: levelObjects[object.id]?.sideVectors))")
-        Logger.log("New object edges are \(String(describing: levelObjects[object.id]?.edgeVectors))")
+        // levelObjects[object.id]?.rotation = value
+
+        if var object = levelObjects[object.id] {
+            if !handleBoundaryScalingCollision(object: &object) {
+                object.rotation = value
+            }
+        }
     }
 
     func handleObjectMagnification(_ object: any GameObject, scale: Double, isDecreasing: Bool) {

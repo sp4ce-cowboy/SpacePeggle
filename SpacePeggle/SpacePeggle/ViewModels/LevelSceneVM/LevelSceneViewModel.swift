@@ -285,3 +285,15 @@ extension LevelSceneViewModel {
         }
     }
 }
+
+/// This extension adds handling abiities for the funion bar
+extension LevelSceneViewModel {
+    func getCurrentSpecialPeg() -> Enums.SelectedMode {
+        switch Constants.UNIVERSAL_POWER_UP {
+        case .Kaboom:
+            return .KaboomPeg
+        case .Spooky:
+            return .SpookyPeg
+        }
+    }
+}

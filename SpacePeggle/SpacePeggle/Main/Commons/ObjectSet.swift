@@ -44,8 +44,8 @@ class ObjectSet {
                                                    height: Constants.UNIVERSAL_LAUNCHER_HEIGHT)),
         "SpookyPeg": ("peg-green", CONSTANT_SIZE),
         "SpookyPegActive": ("peg-green-glow", CONSTANT_SIZE),
-        "KaboomPeg": ("delete", CONSTANT_SIZE),
-        "KaboomPegActive": ("delete", CONSTANT_SIZE),
+        "KaboomPeg": ("peg-purple", CONSTANT_SIZE),
+        "KaboomPegActive": ("peg-purple-glow", CONSTANT_SIZE),
         "StubbornPeg": ("delete", CONSTANT_SIZE),
         "StubbornPegActive": ("delete", CONSTANT_SIZE),
         "Remove": ("delete", CONSTANT_SIZE),
@@ -75,13 +75,13 @@ class ObjectSet {
     ]
 
     /*/// A dictionary of available game objects and closures that execute an action
-    /// on a scoreboard
-    static var gameObjectProcessing: [Enums.GameObjectType: () -> ScoreBoard] = [
-        .NormalPeg: { scores.clearedNormalPegsCount += 1 },
-        .GoalPeg: { scores.clearedGoalPegsCount +=1 },
-        .NormalPegActive: { scores.clearedNormalPegsCount += 1 },
-        .GoalPegActive: { scores.clearedGoalPegsCount +=1 }
-    ]*/
+     /// on a scoreboard
+     static var gameObjectProcessing: [Enums.GameObjectType: () -> ScoreBoard] = [
+     .NormalPeg: { scores.clearedNormalPegsCount += 1 },
+     .GoalPeg: { scores.clearedGoalPegsCount +=1 },
+     .NormalPegActive: { scores.clearedNormalPegsCount += 1 },
+     .GoalPegActive: { scores.clearedGoalPegsCount +=1 }
+     ]*/
 
     /// A dictionary of available game objects and closures that create full instances
     static var fullGameObjectCreation: [Enums.GameObjectType: (Vector, UUID, UniversalShape) -> any GameObject] = [
@@ -94,14 +94,10 @@ class ObjectSet {
     ]
 
     static var fullShapeCreation: [Enums.ShapeType: (Double, Double, Double, Double) -> any UniversalShape] = [
-        .circle: { height, _, angle, scale in CircularShape(diameter: height,
-                                                            rotation: angle,
-                                                            scale: scale)},
-
-            .rectangle: { height, width, angle, scale in RectangularShape(height: height,
-                                                                          width: width,
-                                                                          rotation: angle,
-                                                                          scale: scale)}
+        .circle: { height, _, angle, scale in
+            CircularShape(diameter: height, rotation: angle, scale: scale)},
+        .rectangle: { height, width, angle, scale in
+            RectangularShape(height: height, width: width, rotation: angle, scale: scale)}
     ]
 
     /// Returns a closure that takes in a vector and creates a default game object.

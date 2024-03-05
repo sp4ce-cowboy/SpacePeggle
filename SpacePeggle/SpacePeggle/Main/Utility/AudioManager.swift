@@ -29,7 +29,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             backgroundAudioPlayer = try AVAudioPlayer(data: audioData)
             backgroundAudioPlayer?.delegate = self
             backgroundAudioPlayer?.numberOfLoops = -1 // Loop indefinitely
-            backgroundAudioPlayer?.volume = 1
+            backgroundAudioPlayer?.volume = 0.8
         } catch {
             Logger.log("Failed to initialize audio player: \(error)", self)
         }
@@ -90,6 +90,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             }
             do {
                 let player = try AVAudioPlayer(contentsOf: soundURL)
+                player.volume = 1.5
                 player.prepareToPlay()
                 player.play()
                 soundEffectPlayers[soundName] = player // Cache the player for reuse
@@ -105,5 +106,13 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
 
     func playLoseSoundEffect() {
         playSoundEffect(named: "lose.mp3")
+    }
+
+    func playHitEffect() {
+        playSoundEffect(named: "hit-sound.mp3")
+    }
+
+    func playSpecialEffect() {
+        playSoundEffect(named: "jump.mp3")
     }
 }

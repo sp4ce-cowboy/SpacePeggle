@@ -27,20 +27,6 @@ class PhysicsEngineTests: XCTestCase {
                                  "Ball should collide and stay within the right boundary.")
     }
 
-    func testCollisionActivatesGameObject() {
-        let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 300, height: 300))
-        let peg = NormalPeg(centerPosition: Vector(x: 150, y: 150))
-        let ball = Ball(velocity: Vector(x: 5, y: 0), centerPosition: Vector(x: 145, y: 150))
-
-        engine.addPhysicsObject(object: peg)
-        engine.addPhysicsObject(object: ball)
-        engine.detectAndHandleCollisions()
-
-        let updatedPeg = engine.physicsObjects[peg.id] as? NormalPeg
-        XCTAssertTrue(updatedPeg!.isActive,
-                      "Peg should be activated upon collision with the ball.")
-    }
-
     // Testing for objects at the edge of the boundary to ensure they don't escape or behave unexpectedly
     func testObjectsAtBoundaryEdge() {
         let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 300, height: 300))

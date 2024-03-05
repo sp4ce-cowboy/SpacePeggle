@@ -92,11 +92,15 @@ extension StartSceneViewModel {
     }
 
     func handleKaboomButton() {
+        triggerRefresh()
         Constants.UNIVERSAL_POWER_UP = .Kaboom
+        Logger.log("Kaboom handled: Current power up is \(Constants.UNIVERSAL_POWER_UP)")
     }
 
     func handleSpookyButton() {
+        triggerRefresh()
         Constants.UNIVERSAL_POWER_UP = .Spooky
+        Logger.log("Spooky handled: Current power up is \(Constants.UNIVERSAL_POWER_UP)")
     }
 
     func handleReturnToSettingsButton() {
@@ -104,10 +108,13 @@ extension StartSceneViewModel {
     }
 
     func handleGetCurrentPowerUp() -> String {
-        triggerRefresh()
-        return Constants.UNIVERSAL_POWER_UP.rawValue
+        switch Constants.UNIVERSAL_POWER_UP {
+        case .Kaboom:
+            return "Kaboom"
+        case .Spooky:
+            return "Spooky"
+        }
     }
-
 }
 
 /// Extension for settings sub menu

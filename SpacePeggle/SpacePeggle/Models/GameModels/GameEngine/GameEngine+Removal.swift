@@ -41,6 +41,10 @@ extension GameEngine {
     }
 
     func handleCollision(withID id: UUID) {
+        if gameObjects[id]?.gameObjectType == .GoalPeg {
+            delegate?.notifyEffect(withId: id)
+        }
+
         gameObjects[id]?.activateGameObject()
     }
 }

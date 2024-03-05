@@ -14,13 +14,11 @@ extension GameEngine {
                 scores.totalGoalPegsCount += 1
             case .NormalPeg, .NormalPegActive:
                 scores.totalNormalPegsCount += 1
-            case .BlockPeg:
-                break
             case .SpookyPeg, .SpookyPegActive:
                 scores.totalSpookyPegsCount += 1
             case .KaboomPeg, .KaboomPegActive:
-                break
-            case .StubbornPeg:
+                scores.totalKaboomPegsCount += 1
+            case .StubbornPeg, .BlockPeg:
                 break
             }
         }

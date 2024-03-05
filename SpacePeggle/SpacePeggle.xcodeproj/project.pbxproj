@@ -24,6 +24,8 @@
 		BA28FD6C2B962DD00044CAC8 /* StartSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */; };
 		BA28FD6E2B96AA190044CAC8 /* StartMenuDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */; };
 		BA28FD702B96AA410044CAC8 /* LevelSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */; };
+		BA5E34152B976299002219AC /* hit-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5E34142B976299002219AC /* hit-sound.mp3 */; };
+		BA5E34172B976418002219AC /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5E34162B976417002219AC /* jump.mp3 */; };
 		BA63CCAB2B945CCF005D23EB /* LauncherStubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA63CCAA2B945CCF005D23EB /* LauncherStubView.swift */; };
 		BA67193D2B941F50004FA712 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67193C2B941F50004FA712 /* LevelDesigner.swift */; };
 		BA6719422B943E53004FA712 /* LevelDesigner+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */; };
@@ -68,14 +70,8 @@
 		BA7662752B8C89590022C267 /* GameSceneViewModel+GOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662462B8C89590022C267 /* GameSceneViewModel+GOM.swift */; };
 		BA7662762B8C89590022C267 /* GameSceneViewModel+LC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662472B8C89590022C267 /* GameSceneViewModel+LC.swift */; };
 		BA7662772B8C89590022C267 /* GameSceneViewModel+DLM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662482B8C89590022C267 /* GameSceneViewModel+DLM.swift */; };
-		BA7662872B8C8AE10022C267 /* DisplayLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76627B2B8C8AE10022C267 /* DisplayLinkTests.swift */; };
 		BA7662882B8C8AE10022C267 /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76627C2B8C8AE10022C267 /* VectorTests.swift */; };
 		BA7662892B8C8AE10022C267 /* LauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76627E2B8C8AE10022C267 /* LauncherTests.swift */; };
-		BA76628A2B8C8AE10022C267 /* GameObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76627F2B8C8AE10022C267 /* GameObjectTests.swift */; };
-		BA76628B2B8C8AE10022C267 /* LevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662802B8C8AE10022C267 /* LevelTests.swift */; };
-		BA76628C2B8C8AE10022C267 /* PegTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662812B8C8AE10022C267 /* PegTests.swift */; };
-		BA76628D2B8C8AE10022C267 /* PhysicsModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662842B8C8AE10022C267 /* PhysicsModelsTests.swift */; };
-		BA76628E2B8C8AE10022C267 /* BallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662852B8C8AE10022C267 /* BallTests.swift */; };
 		BA76628F2B8C8AE10022C267 /* PhysicsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */; };
 		BA7662932B8CA2520022C267 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7662922B8CA2520022C267 /* View+Extensions.swift */; };
 		BA8256922B91BBB800EF31C9 /* UniversalShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8256912B91BBB800EF31C9 /* UniversalShape.swift */; };
@@ -146,6 +142,8 @@
 		BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneViewModel.swift; sourceTree = "<group>"; };
 		BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuDefaultView.swift; sourceTree = "<group>"; };
 		BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionMenuView.swift; sourceTree = "<group>"; };
+		BA5E34142B976299002219AC /* hit-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hit-sound.mp3"; sourceTree = "<group>"; };
+		BA5E34162B976417002219AC /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		BA63CCAA2B945CCF005D23EB /* LauncherStubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherStubView.swift; sourceTree = "<group>"; };
 		BA67193C2B941F50004FA712 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		BA6719412B943E53004FA712 /* LevelDesigner+Resizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelDesigner+Resizing.swift"; sourceTree = "<group>"; };
@@ -192,14 +190,8 @@
 		BA7662462B8C89590022C267 /* GameSceneViewModel+GOM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameSceneViewModel+GOM.swift"; sourceTree = "<group>"; };
 		BA7662472B8C89590022C267 /* GameSceneViewModel+LC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameSceneViewModel+LC.swift"; sourceTree = "<group>"; };
 		BA7662482B8C89590022C267 /* GameSceneViewModel+DLM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameSceneViewModel+DLM.swift"; sourceTree = "<group>"; };
-		BA76627B2B8C8AE10022C267 /* DisplayLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLinkTests.swift; sourceTree = "<group>"; };
 		BA76627C2B8C8AE10022C267 /* VectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
 		BA76627E2B8C8AE10022C267 /* LauncherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherTests.swift; sourceTree = "<group>"; };
-		BA76627F2B8C8AE10022C267 /* GameObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObjectTests.swift; sourceTree = "<group>"; };
-		BA7662802B8C8AE10022C267 /* LevelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTests.swift; sourceTree = "<group>"; };
-		BA7662812B8C8AE10022C267 /* PegTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PegTests.swift; sourceTree = "<group>"; };
-		BA7662842B8C8AE10022C267 /* PhysicsModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsModelsTests.swift; sourceTree = "<group>"; };
-		BA7662852B8C8AE10022C267 /* BallTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallTests.swift; sourceTree = "<group>"; };
 		BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsEngineTests.swift; sourceTree = "<group>"; };
 		BA7662922B8CA2520022C267 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BA7662972B8CE3480022C267 /* DeveloperGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DeveloperGuide.md; sourceTree = "<group>"; };
@@ -265,6 +257,8 @@
 		BA0A27002B971D9E005AA65A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BA5E34162B976417002219AC /* jump.mp3 */,
+				BA5E34142B976299002219AC /* hit-sound.mp3 */,
 				BA0A27052B97351E005AA65A /* success.mp3 */,
 				BA0A27092B9735A0005AA65A /* lose.mp3 */,
 				BA0A27072B973527005AA65A /* field-of-memories-soundtrack.mp3 */,
@@ -499,7 +493,6 @@
 		BA76627A2B8C8AE10022C267 /* UtilityTests */ = {
 			isa = PBXGroup;
 			children = (
-				BA76627B2B8C8AE10022C267 /* DisplayLinkTests.swift */,
 				BA76627C2B8C8AE10022C267 /* VectorTests.swift */,
 			);
 			path = UtilityTests;
@@ -509,9 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				BA76627E2B8C8AE10022C267 /* LauncherTests.swift */,
-				BA76627F2B8C8AE10022C267 /* GameObjectTests.swift */,
-				BA7662802B8C8AE10022C267 /* LevelTests.swift */,
-				BA7662812B8C8AE10022C267 /* PegTests.swift */,
 			);
 			path = GameModelsTests;
 			sourceTree = "<group>";
@@ -526,8 +516,6 @@
 		BA7662832B8C8AE10022C267 /* PhysicsModelsTests */ = {
 			isa = PBXGroup;
 			children = (
-				BA7662842B8C8AE10022C267 /* PhysicsModelsTests.swift */,
-				BA7662852B8C8AE10022C267 /* BallTests.swift */,
 				BA7662862B8C8AE10022C267 /* PhysicsEngineTests.swift */,
 			);
 			path = PhysicsModelsTests;
@@ -770,8 +758,10 @@
 			files = (
 				BA0A27082B973527005AA65A /* field-of-memories-soundtrack.mp3 in Resources */,
 				BA7661DB2B8C86010022C267 /* Assets.xcassets in Resources */,
+				BA5E34172B976418002219AC /* jump.mp3 in Resources */,
 				BAC447382B95CC740011581F /* LaunchScreen.storyboard in Resources */,
 				BA0A27062B97351E005AA65A /* success.mp3 in Resources */,
+				BA5E34152B976299002219AC /* hit-sound.mp3 in Resources */,
 				BA716F312B95DC3300C8EB3B /* space-background-compressed.jpeg in Resources */,
 				BA0A270A2B9735A0005AA65A /* lose.mp3 in Resources */,
 			);
@@ -913,13 +903,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA76628C2B8C8AE10022C267 /* PegTests.swift in Sources */,
-				BA7662872B8C8AE10022C267 /* DisplayLinkTests.swift in Sources */,
-				BA76628E2B8C8AE10022C267 /* BallTests.swift in Sources */,
-				BA76628B2B8C8AE10022C267 /* LevelTests.swift in Sources */,
 				BA76628F2B8C8AE10022C267 /* PhysicsEngineTests.swift in Sources */,
-				BA76628A2B8C8AE10022C267 /* GameObjectTests.swift in Sources */,
-				BA76628D2B8C8AE10022C267 /* PhysicsModelsTests.swift in Sources */,
 				BA7662882B8C8AE10022C267 /* VectorTests.swift in Sources */,
 				BA7662892B8C8AE10022C267 /* LauncherTests.swift in Sources */,
 			);

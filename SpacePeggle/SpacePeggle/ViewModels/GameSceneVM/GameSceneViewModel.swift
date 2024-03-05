@@ -3,8 +3,10 @@ import SwiftUI
 /// parent ViewModel in order to provide for callback functions like
 /// updating the views of game object states.
 protocol GameEngineDelegate: AnyObject {
-    func removeActiveGameObjects(withID id: UUID)
+    func removeActiveGameObjects(withId id: UUID)
     func processSpecialGameObjects()
+    func notifyEffect(withId id: UUID)
+    func notifySpecialEffect()
     func transferScores(scores: ScoreBoard)
     func triggerLoss()
 }
@@ -47,10 +49,11 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         peggleGameEngine.gameObjects
     }
 
-    func removeActiveGameObjects(withID id: UUID) {
-        guard gameObjects[id]?.gameObjectType != .SpookyPegActive else {
+    func removeActiveGameObjects(withId id: UUID) {
+        /*guard gameObjects[id]?.gameObjectType != .SpookyPegActive else {
             return
-        }
+        }*/
+
         withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
             gameObjectOpacities[id] = 0
         }
@@ -62,16 +65,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func processSpecialGameObjects() {
-        for (id, value) in gameObjects where value.gameObjectType == .SpookyPegActive {
-
-            withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
-                gameObjectOpacities[id] = 0
-            }
-            // After the fade-out duration, remove the GameObject from the dictionary
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 0.5) {
-                self.gameObjectOpacities[id] = nil
-
-            }
+        for (id, value) in gameObjects where value.gameObjectType == .KaboomPegActive {
 
             peggleGameEngine.handleObjectRemoval(id: id)
         }
@@ -127,6 +121,23 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     func getHighScore() -> Int {
         triggerRefresh()
         return scores.currentScore
+    }
+
+    func notifyEffect(withId id: UUID) {
+        AudioManager.shared.playHitEffect()
+    }
+
+    func notifySpecialEffect() {
+        AudioManager.shared.playSpecialEffect()
+    }
+
+    func handleGetCurrentPowerUpImage() -> String {
+        switch Constants.UNIVERSAL_POWER_UP {
+        case .Kaboom:
+            return "KaboomPeg"
+        case .Spooky:
+            return "SpookyPeg"
+        }
     }
 
 }
