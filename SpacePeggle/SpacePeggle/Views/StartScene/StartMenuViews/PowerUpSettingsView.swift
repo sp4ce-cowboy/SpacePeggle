@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StartSettingsMenuView: View {
+struct PowerUpSettingsView: View {
     @EnvironmentObject var viewModel: StartSceneViewModel
 
     var body: some View {
@@ -8,7 +8,7 @@ struct StartSettingsMenuView: View {
             Spacer()
             Spacer()
 
-            Text("🪐 SETTINGS 🪐")
+            Text(" CHOOSE GAMEMASTER: ")
                 .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                 .fontDesign(.monospaced)
                 .fontWeight(.heavy)
@@ -17,21 +17,17 @@ struct StartSettingsMenuView: View {
 
             Spacer()
 
-            /*StyleSheet.getRectangleButtonWithAction(
-                text: "SET GRAVITY",
-                action: { viewModel.handleGravityButton() })*/
+            StyleSheet.getRectangleButtonWithAction(
+                text: "KABOOM - Exploding Pegs!",
+                action: { viewModel.handleKaboomButton() })
 
             StyleSheet.getRectangleButtonWithAction(
-                text: "SELECT ENVIRONMENT",
-                action: { viewModel.handleEnvironmentButton() })
-
-            StyleSheet.getRectangleButtonWithAction(
-                text: "CHOOSE POWER-UP",
-                action: { viewModel.handleGamePowerUpButton() })
+                text: "SPOOKY - Magical Pegs!",
+                action: { viewModel.handleSpookyButton() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "RETURN",
-                action: { viewModel.handleReturnButton() })
+                action: { viewModel.handleReturnToSettingsButton() })
 
             Spacer()
         }

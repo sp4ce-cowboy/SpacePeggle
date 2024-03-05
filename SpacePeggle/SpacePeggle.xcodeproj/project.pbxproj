@@ -13,6 +13,8 @@
 		BA0343DE2B959A7D00B6EA95 /* Level+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0343DD2B959A7D00B6EA95 /* Level+Storage.swift */; };
 		BA0A26FD2B971433005AA65A /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A26FC2B971433005AA65A /* GameOverView.swift */; };
 		BA0A26FF2B97144A005AA65A /* GameWonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A26FE2B97144A005AA65A /* GameWonView.swift */; };
+		BA0A27022B972197005AA65A /* PowerUpSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A27012B972197005AA65A /* PowerUpSettingsView.swift */; };
+		BA0A27042B97235B005AA65A /* EnvironmentMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A27032B97235B005AA65A /* EnvironmentMenuView.swift */; };
 		BA12BB002B90782400BCE72C /* AppSceneController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */; };
 		BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB012B907F9100BCE72C /* AudioManager.swift */; };
 		BA12BB042B90886100BCE72C /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12BB032B90886100BCE72C /* AppScene.swift */; };
@@ -130,6 +132,8 @@
 		BA0343DD2B959A7D00B6EA95 /* Level+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+Storage.swift"; sourceTree = "<group>"; };
 		BA0A26FC2B971433005AA65A /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		BA0A26FE2B97144A005AA65A /* GameWonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWonView.swift; sourceTree = "<group>"; };
+		BA0A27012B972197005AA65A /* PowerUpSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpSettingsView.swift; sourceTree = "<group>"; };
+		BA0A27032B97235B005AA65A /* EnvironmentMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentMenuView.swift; sourceTree = "<group>"; };
 		BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppSceneController+Transition.swift"; sourceTree = "<group>"; };
 		BA12BB012B907F9100BCE72C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BA12BB032B90886100BCE72C /* AppScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScene.swift; sourceTree = "<group>"; };
@@ -601,6 +605,8 @@
 				BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */,
 				BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */,
 				BAB41A3F2B96BA58004C76E4 /* StartSettingsMenuView.swift */,
+				BA0A27012B972197005AA65A /* PowerUpSettingsView.swift */,
+				BA0A27032B97235B005AA65A /* EnvironmentMenuView.swift */,
 			);
 			path = StartMenuViews;
 			sourceTree = "<group>";
@@ -828,10 +834,12 @@
 				BA7662502B8C89590022C267 /* LauncherView.swift in Sources */,
 				BA7662522B8C89590022C267 /* GameObjectView.swift in Sources */,
 				BA7662632B8C89590022C267 /* GameEngine+Translation.swift in Sources */,
+				BA0A27042B97235B005AA65A /* EnvironmentMenuView.swift in Sources */,
 				BACF21CD2B90329E007FCE8D /* GameSceneViewModel.swift in Sources */,
 				BA76624C2B8C89590022C267 /* GameBackgroundView.swift in Sources */,
 				BA76624B2B8C89590022C267 /* GamePauseButtonView.swift in Sources */,
 				BA12BB022B907F9100BCE72C /* AudioManager.swift in Sources */,
+				BA0A27022B972197005AA65A /* PowerUpSettingsView.swift in Sources */,
 				BA12BB002B90782400BCE72C /* AppSceneController+Transition.swift in Sources */,
 				BA67193D2B941F50004FA712 /* LevelDesigner.swift in Sources */,
 				BA96F30D2B922B3A006BE36D /* Storage.swift in Sources */,

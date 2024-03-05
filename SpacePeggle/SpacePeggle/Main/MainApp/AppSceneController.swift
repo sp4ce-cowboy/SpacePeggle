@@ -12,7 +12,7 @@ import SwiftUI
 /// follows the singleton design patterns so that only one instance of it can
 /// exist at any time.
 final class AppSceneController: ObservableObject {
-    @Published private(set) var currentSceneName: String = "LevelScene"
+    @Published private(set) var currentSceneName: String = "StartScene"
     @Published var currentLevel: AbstractLevel?
     // static let shared = AppSceneController() // Singleton instance
 

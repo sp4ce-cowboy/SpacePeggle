@@ -13,6 +13,9 @@ public class Constants {
     /// Universally declared screen height
     static var UI_SCREEN_HEIGHT: Double { UI_SCREEN_SIZE.height }
 
+    /// Universal background image
+    static var BACKGROUND_IMAGE: String = "space-background"
+
     /// The name of the folder used to store the levels locally
     public static let STORAGE_CONTAINER_NAME: String = "Levels"
 
@@ -31,7 +34,7 @@ public class Constants {
     static let VELOCITY_CUTOFF: Double = 20.0
 
     /// Universally declared gravitational field strength
-    static var UNIVERSAL_GRAVITY = Vector(x: .zero, y: UI_SCREEN_HEIGHT)
+    static var UNIVERSAL_GRAVITY = Vector(x: .zero, y: 1_000)
 
     /// Computed restitution range for more natural physics
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }

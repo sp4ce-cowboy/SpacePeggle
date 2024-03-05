@@ -25,7 +25,7 @@ struct GameWonView: View {
                             .fontWeight(.heavy)
                             .foregroundStyle(Color.green)
                             .padding()
-                        
+
                         Spacer()
 
                         StyleSheet.getRectangleButtonWithAction(

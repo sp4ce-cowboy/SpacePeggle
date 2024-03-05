@@ -19,14 +19,13 @@ struct GameOverView: View {
                             .foregroundStyle(Color.red)
                             .padding()
 
-
                         Text("SCORE = \(viewModel.getHighScore())")
                             .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                             .fontDesign(.monospaced)
                             .fontWeight(.heavy)
                             .foregroundStyle(Color.red)
                             .padding()
-                        
+
                         Spacer()
 
                         StyleSheet.getRectangleButtonWithAction(

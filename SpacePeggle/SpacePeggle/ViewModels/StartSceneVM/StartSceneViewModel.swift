@@ -19,7 +19,9 @@ class StartSceneViewModel: ObservableObject {
     private var menuCollection: [Enums.MenuState: () -> AnyView] = [
         .MainMenu: { AnyView(StartMenuDefaultView()) },
         .LevelSelectionMenu: { AnyView(LevelSelectionMenuView()) },
-        .SettingsMenu: { AnyView(StartSettingsMenuView()) }
+        .SettingsMenu: { AnyView(StartSettingsMenuView()) },
+        .PowerUpMenu: { AnyView(PowerUpSettingsView()) },
+        .EnvironmentMenu: { AnyView(EnvironmentMenuView()) }
     ]
 
     @ViewBuilder
@@ -82,11 +84,53 @@ extension StartSceneViewModel {
     }
 
     func handleEnvironmentButton() {
-
+        currentMenuState = .EnvironmentMenu
     }
 
-    func handleGameMasterButton() {
+    func handleGamePowerUpButton() {
+        currentMenuState = .PowerUpMenu
+    }
 
+    func handleKaboomButton() {
+        /// switch state
+    }
+
+    func handleSpookyButton() {
+        /// switch state
+    }
+
+    func handleReturnToSettingsButton() {
+        currentMenuState = .SettingsMenu
+    }
+
+}
+
+/// Extension for settings sub menu
+extension StartSceneViewModel {
+
+    func handleEarth() {
+        triggerRefresh()
+        Constants.BACKGROUND_IMAGE = "background"
+        Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 1_000)
+    }
+
+    func handleSaturn() {
+        triggerRefresh()
+        triggerRefresh()
+        Constants.BACKGROUND_IMAGE = "saturn-background"
+        Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 2_500)
+    }
+
+    func handleMars() {
+        triggerRefresh()
+        Constants.BACKGROUND_IMAGE = "mars-background"
+        Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 700)
+    }
+
+    func handleSpace() {
+        triggerRefresh()
+        Constants.BACKGROUND_IMAGE = "space-background"
+        Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 300)
     }
 
 }

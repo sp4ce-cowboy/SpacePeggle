@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StartSettingsMenuView: View {
+struct EnvironmentMenuView: View {
     @EnvironmentObject var viewModel: StartSceneViewModel
 
     var body: some View {
@@ -8,7 +8,7 @@ struct StartSettingsMenuView: View {
             Spacer()
             Spacer()
 
-            Text("🪐 SETTINGS 🪐")
+            Text("CHOOSE YOUR PLANET")
                 .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                 .fontDesign(.monospaced)
                 .fontWeight(.heavy)
@@ -17,17 +17,21 @@ struct StartSettingsMenuView: View {
 
             Spacer()
 
-            /*StyleSheet.getRectangleButtonWithAction(
-                text: "SET GRAVITY",
-                action: { viewModel.handleGravityButton() })*/
+            StyleSheet.getRectangleButtonWithAction(
+                text: "EARTH 🌍",
+                action: { viewModel.handleEarth() })
 
             StyleSheet.getRectangleButtonWithAction(
-                text: "SELECT ENVIRONMENT",
-                action: { viewModel.handleEnvironmentButton() })
+                text: "SATURN 🪐",
+                action: { viewModel.handleSaturn() })
 
             StyleSheet.getRectangleButtonWithAction(
-                text: "CHOOSE POWER-UP",
-                action: { viewModel.handleGamePowerUpButton() })
+                text: "MARS ☄️",
+                action: { viewModel.handleMars() })
+
+            StyleSheet.getRectangleButtonWithAction(
+                text: "SPACE 🌌",
+                action: { viewModel.handleSpace() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "RETURN",

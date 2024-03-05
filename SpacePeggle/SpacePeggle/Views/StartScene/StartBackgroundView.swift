@@ -11,7 +11,7 @@ struct StartBackgroundView: View {
     }
 
     var body: some View {
-        Image("space-background")
+        Image(Constants.BACKGROUND_IMAGE)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: currentWidth)

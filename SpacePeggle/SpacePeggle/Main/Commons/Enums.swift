@@ -64,6 +64,12 @@ class Enums {
         case MainMenu
         case LevelSelectionMenu
         case SettingsMenu
+        case PowerUpMenu
+        case EnvironmentMenu
+    }
+
+    enum BackgroundImages: String {
+        case Space = "space-background"
     }
 
     enum AppScene: String {
