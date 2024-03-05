@@ -3,13 +3,13 @@ import SwiftUI
 /// This extension adds core game logic to `GameEngine`, like
 /// starting, stopping, and updating the game or loading a new level
 extension GameEngine {
-    func startGame(with level: AbstractLevel = LevelStub().getLevelStub()) {
+    func startGame(with level: AbstractLevel = LevelStub().getLevelOneStub()) {
         self.isGameActive = true
         self.loadLevel(with: level)
         Logger.log("Start method: Game is loaded with \(currentLevel.gameObjects.count)", self)
     }
 
-    func loadLevel(with level: AbstractLevel = LevelStub().getLevelStub()) {
+    func loadLevel(with level: AbstractLevel = LevelStub().getLevelOneStub()) {
         self.currentLevel = level
         Logger.log("Load function: Game is loaded with"
                    + "\(currentLevel.gameObjects.count)", self)

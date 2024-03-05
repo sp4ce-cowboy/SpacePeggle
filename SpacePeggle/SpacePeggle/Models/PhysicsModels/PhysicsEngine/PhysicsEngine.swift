@@ -33,6 +33,7 @@ extension PhysicsEngine: AbstractPhysicsEngine { }
 /// of core physics elements that are needed to work together. To apply different
 /// sets of Physics rules, a new Physics Implementation conformant must be created.
 final class PhysicsEngine {
+    weak var delegate: PhysicsEngineDelegate?
     let gravity = Constants.UNIVERSAL_GRAVITY
     let velocityCutOff = Constants.VELOCITY_CUTOFF
     var restitution: Double { Constants.UNIVERSAL_RESTITUTION }

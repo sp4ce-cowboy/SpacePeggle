@@ -1,6 +1,8 @@
 import SwiftUI
 
 class LevelSceneViewModel: ObservableObject {
+    var sceneController: AppSceneController
+
     @Published var isLevelDesignerPaused = false
     @Published var isLevelObjectSelected = false
     @Published var currentGameObject: UUID?
@@ -12,12 +14,17 @@ class LevelSceneViewModel: ObservableObject {
 
     var geometryState: GeometryProxy
 
-    init(_ geometryState: GeometryProxy) {
+    init(_ geometryState: GeometryProxy, _ sceneController: AppSceneController) {
         self.geometryState = geometryState
+        self.sceneController = sceneController
     }
 
     deinit {
         Logger.log("ViewModel is deinitialized from \(self)", self)
+    }
+
+    private func triggerRefresh() {
+        DispatchQueue.main.async { self.objectWillChange.send() }
     }
 
     var levelObjects: [UUID: any GameObject] {
@@ -33,8 +40,15 @@ class LevelSceneViewModel: ObservableObject {
         isLevelDesignerPaused.toggle()
     }
 
-    func triggerRefresh() {
-        DispatchQueue.main.async { self.objectWillChange.send() }
+    func handleReturnButton() {
+        triggerRefresh()
+        isLevelDesignerPaused.toggle()
+    }
+
+    func handleExitButton() {
+        triggerRefresh()
+        handleReturnButton()
+        sceneController.transitionToStartScene()
     }
 
 }
@@ -136,7 +150,7 @@ extension LevelSceneViewModel {
     }
 
     func handleTransitionToGameSceneWithLevel() {
-        AppSceneController.transitionToGameScene(
+        sceneController.transitionToGameScene(
                                 with: Level(name: levelDesigner.levelName,
                                             gameObjects: levelDesigner.levelObjects))
     }
@@ -238,7 +252,8 @@ extension LevelSceneViewModel {
     func handleStart() {
         triggerRefresh()
         clearEmptyTextFieldAndDismissKeyboard()
-        AppSceneController.transitionToGameScene(with: options.level)
+        // sceneController.transitionToGameScene(with: options.level)
+        handleTransitionToGameSceneWithLevel()
     }
 
     func handleDeleteAllFiles() {

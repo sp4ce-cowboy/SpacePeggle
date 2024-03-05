@@ -7,6 +7,7 @@ struct GameObjectView: View {
     @EnvironmentObject var viewModel: GameSceneViewModel
     var gameObject: any GameObject
 
+    var center: Vector { gameObject.centerPosition }
     var rotation: Angle { gameObject.rotation }
     var scale: Double { gameObject.scale }
     var gameObjectType: String { gameObject.gameObjectType.rawValue }
@@ -22,9 +23,8 @@ struct GameObjectView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
-            .position(gameObject.centerPosition.point)
-            .rotationEffect(rotation, anchor: .center)
-            .scaleEffect(scale, anchor: .center)
+            .position(center.point)
+            .rotationEffect(rotation, anchor: center.unitPoint)
             .opacity(viewModel.gameObjectOpacities[gameObject.id, default: .unit])
             .gesture(handleLongPress)
 

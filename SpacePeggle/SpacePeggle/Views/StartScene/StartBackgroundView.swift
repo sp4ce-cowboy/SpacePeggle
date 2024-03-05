@@ -2,19 +2,19 @@ import SwiftUI
 
 /// A View that presents the backdrop of the start screen
 struct StartBackgroundView: View {
-    @State var proxy: GeometryProxy
+    @EnvironmentObject var viewModel: StartSceneViewModel
 
     // The width is required to ensure that the backgroud is displayed consistently
     // across iPads of different sizes.
     var currentWidth: Double {
-        proxy.size.width
+        viewModel.geometryState.size.width
     }
 
     var body: some View {
         Image("space-background")
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: proxy.size.width)
+            .frame(width: currentWidth)
             .clipped()   // To crop the image to the bounds of the frame
             .ignoresSafeArea()
     }

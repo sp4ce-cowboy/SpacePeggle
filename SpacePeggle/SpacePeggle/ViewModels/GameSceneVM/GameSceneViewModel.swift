@@ -8,22 +8,29 @@ protocol GameEngineDelegate: AnyObject {
 
 class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
+    var sceneController: AppSceneController
     @Published var gameObjectOpacities: [UUID: Double] = [:]
     var peggleGameEngine: AbstractGameEngine
     var geometryState: GeometryProxy
     var currentViewSize: CGSize { geometryState.size }
+    var gameLoop = DisplayLink()
     var isPaused = false
 
-    init(_ geometryState: GeometryProxy) {
+    init(_ geometryState: GeometryProxy, _ sceneController: AppSceneController) {
         self.geometryState = geometryState
+        self.sceneController = sceneController
         self.peggleGameEngine = GameEngine(geometry: geometryState)
         peggleGameEngine.delegate = self
-        setupDisplayLink()
+        setupGameLoop()
     }
 
     deinit {
         peggleGameEngine.delegate = nil
         Logger.log("ViewModel is deinitialized from \(self)", self)
+    }
+
+    private func triggerRefresh() {
+        DispatchQueue.main.async { self.objectWillChange.send() }
     }
 
     /// The main liasion between the game objects renderer and the game engine that
@@ -44,8 +51,19 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     }
 
     func handlePause() {
+        triggerRefresh()
         isPaused.toggle()
         AudioManager.shared.toggle()
+    }
+
+    func handleReturnButton() {
+        isPaused.toggle()
+        AudioManager.shared.toggle()
+    }
+
+    func handleExitButton() {
+        handleReturnButton()
+        sceneController.transitionToStartScene()
     }
 
 }

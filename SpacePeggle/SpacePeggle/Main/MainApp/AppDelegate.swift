@@ -17,17 +17,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         Logger.log("AppDelegate has completed delegated tasks", self)
 
-        /// Load scenes into scene controller
-        AppSceneController.uploadScene(withName: "StartScene") { geometry in
-            AnyView(StartScene(forGeometry: geometry))
+        /// Load default scenes into scene controller
+        AppSceneController.uploadScene(withName: "StartScene") { geometry, sceneController in
+            AnyView(StartScene(forGeometry: geometry, with: sceneController))
         }
 
-        AppSceneController.uploadScene(withName: "GameScene") { geometry in
-            AnyView(GameScene(forGeometry: geometry))
+        AppSceneController.uploadScene(withName: "GameScene") { geometry, sceneController in
+            AnyView(GameScene(forGeometry: geometry, with: sceneController))
         }
 
-        AppSceneController.uploadScene(withName: "LevelScene") { geometry in
-            AnyView(LevelScene(forGeometry: geometry))
+        AppSceneController.uploadScene(withName: "LevelScene") { geometry, sceneController in
+            AnyView(LevelScene(forGeometry: geometry, with: sceneController))
         }
 
         Logger.log("AppDelegate has uploaded app scenes", self)

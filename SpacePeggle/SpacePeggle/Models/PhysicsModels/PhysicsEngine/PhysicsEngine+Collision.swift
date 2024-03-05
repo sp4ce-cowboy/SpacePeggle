@@ -57,9 +57,8 @@ extension PhysicsEngine {
         let finalVelocity = movingObject.velocity - reflection
         movingObject.velocity = finalVelocity
 
-        if let gameObject = stationaryObject as? (any GameObject) {
-            gameObject.activateGameObject()
-        }
+        delegate?.handleCollision(withID: stationaryObject.id)
+
     }
 
     /// Rectangle collision

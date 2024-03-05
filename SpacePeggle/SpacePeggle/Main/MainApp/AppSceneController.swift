@@ -13,23 +13,30 @@ import SwiftUI
 /// exist at any time.
 final class AppSceneController: ObservableObject {
     @Published private(set) var currentSceneName: String = "LevelScene"
-    static let shared = AppSceneController() // Singleton instance
+    @Published var currentLevel: AbstractLevel?
+    // static let shared = AppSceneController() // Singleton instance
 
     /// A dictionary mapping strings to closures that return some View. The
     /// required views are manually loaded at the application's entry point.
     /// This allows for this scene controller to be used as a base for different
     /// application configurations, for example, a version meant for testing purposes.
-    private static var sceneCollection: [String: (GeometryProxy) -> AnyView] = [:]
+    private static var sceneCollection:
+    [String: (GeometryProxy, AppSceneController) -> AnyView] = [:]
 
-    // Make the initializer private to prevent instantiation
-    private init() { }
+    init() {
+        Logger.log("AppSceneController initialized", self)
+    }
+
+    deinit {
+        Logger.log("AppSceneController deinitialized", self)
+    }
 
     @ViewBuilder
-    func currentScene(geometry: GeometryProxy) -> some View {
+    func currentScene(geometry: GeometryProxy, sceneController: AppSceneController) -> some View {
         if let viewClosure = AppSceneController.sceneCollection[currentSceneName] {
-            viewClosure(geometry) // ViewBuilder infers returned view type
+            viewClosure(geometry, sceneController) // ViewBuilder infers returned view type
         } else {
-            StartScene(forGeometry: geometry)
+            StartScene(forGeometry: geometry, with: sceneController)
         }
     }
 
@@ -41,8 +48,13 @@ final class AppSceneController: ObservableObject {
         currentSceneName = sceneName
     }
 
+    func updateLevel(to level: AbstractLevel) {
+        currentLevel = level
+    }
+
     static func uploadScene(withName name: String,
-                            withViewClosure viewClosure: @escaping (GeometryProxy) -> AnyView) {
+                            withViewClosure viewClosure:
+                            @escaping (GeometryProxy, AppSceneController) -> AnyView) {
         AppSceneController.sceneCollection[name] = viewClosure
     }
 

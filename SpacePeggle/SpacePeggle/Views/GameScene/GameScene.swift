@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct GameScene: View {
-    /// StateObject becauses MainView owns this ViewModel
     @StateObject var viewModel: GameSceneViewModel
+    // @EnvironmentObject var sceneController: AppSceneController
 
-    init(forGeometry geometryState: GeometryProxy) {
-        _viewModel = StateObject(wrappedValue: GameSceneViewModel(geometryState))
+    init(forGeometry geometryState: GeometryProxy, with sceneController: AppSceneController) {
+        _viewModel = StateObject(wrappedValue:
+                                    GameSceneViewModel(geometryState, sceneController))
     }
 
     // @ViewBuilder
@@ -23,17 +24,12 @@ struct GameScene: View {
         }
         .background { GameBackgroundView() }
         .environmentObject(viewModel)
+        // .environmentObject(sceneController)
         .onAppear {
             viewModel.startGame()
         }
         .onDisappear {
             viewModel.stopGame()
         }
-    }
-}
-
-#Preview {
-    GeometryReader { proxy in
-        GameScene(forGeometry: proxy)
     }
 }

@@ -47,4 +47,10 @@ class Enums {
         case KaboomPeg, KaboomPegActive
         case StubbornPeg
     }
+
+    enum MenuState {
+        case MainMenu
+        case LevelSelectionMenu
+        case SettingsMenu
+    }
 }

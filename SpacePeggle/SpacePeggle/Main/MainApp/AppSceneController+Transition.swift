@@ -23,26 +23,29 @@ import SwiftUI
 /// I make, with the transition function contained therein.
 extension AppSceneController {
 
-    static func transitionToStartScene() {
+    func transitionToStartScene() {
         AudioManager.shared.stop()
-        shared.updateScene(to: "StartScene")
+        updateScene(to: "StartScene")
     }
 
-    static func transitionToGameScene() {
-        shared.updateScene(to: "GameScene")
+    func transitionToGameScene() {
+        updateScene(to: "GameScene")
         AudioManager.shared.play()
     }
 }
 
 extension AppSceneController {
-    static func transitionToLevelScene() {
-        shared.updateScene(to: "LevelScene")
+    func transitionToLevelScene() {
+        updateScene(to: "LevelScene")
     }
 }
 
 extension AppSceneController {
-    static func transitionToGameScene(with: any AbstractLevel) {
-        shared.updateScene(to: "GameScene")
+    func transitionToGameScene(with level: any AbstractLevel) {
+        updateLevel(to: level)
+        Logger.log("Received \(level)")
+        updateScene(to: "GameScene")
+        Logger.log("Update scene with \(String(describing: currentLevel))")
         AudioManager.shared.play()
     }
 }

@@ -61,7 +61,6 @@ struct FunctionBarView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .environment(\.colorScheme, .light)
             .keyboardType(.default)
-            // .autocorrectionDisabled()
             .padding()
     }
 

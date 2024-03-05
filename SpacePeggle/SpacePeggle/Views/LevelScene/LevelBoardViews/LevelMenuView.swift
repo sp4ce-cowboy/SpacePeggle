@@ -8,18 +8,15 @@ struct LevelMenuView: View {
             StyleSheet
                 .getRectangleOverlay()
                 .overlay {
-
                     VStack {
-
                         StyleSheet.getRectangleButtonWithAction(
                             text: "Return to Level",
-                            action: { viewModel.handlePause() })
+                            action: { viewModel.handleReturnButton() })
 
                         StyleSheet.getRectangleButtonWithAction(
                             text: "Exit to Menu",
                             action: {
-                                viewModel.handlePause()
-                                AppSceneController.transitionToStartScene()
+                                viewModel.handleExitButton()
                             })
                         .foregroundColor(Color.red)
 

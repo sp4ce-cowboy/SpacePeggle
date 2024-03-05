@@ -1,6 +1,13 @@
 import Foundation
 import SwiftUI
 
+/// Allows the physics engine to communicate with the game engine via a
+/// delegate without knowing about the game engine is, allowing for game
+/// objects to be "activated" without violating the physics-game layer.
+protocol PhysicsEngineDelegate: AnyObject {
+    func handleCollision(withID id: UUID)
+}
+
 /// The `AbstractGameEngine` is the point of interface between the Renderer
 /// and any concrere implementations of a Game Engine.
 ///
@@ -9,14 +16,14 @@ import SwiftUI
 /// Engine, effectively decoupling the Renderer from any concrete Game Engine class.
 ///
 /// Also see `AbstractPhysicsEngine`
-protocol AbstractGameEngine: LaunchMechanic {
+protocol AbstractGameEngine: PhysicsEngineDelegate, LaunchMechanic {
     var delegate: GameEngineDelegate? { get set }
 
     var currentLevel: any AbstractLevel { get set }
     var gameObjects: [UUID: any GameObject] { get }
     var isGameActive: Bool { get set }
 
-    mutating func startGame(with level: AbstractLevel)
+    func startGame(with level: AbstractLevel)
     func stopGame()
     func updateGame(timeStep: TimeInterval)
     func handleGameObjectRemoval(id: UUID)
