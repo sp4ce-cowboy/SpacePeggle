@@ -48,6 +48,9 @@ extension GameEngine {
             return
         }
 
+        /// Handle game objects that stray away from game scene
+        handleGameObjectsOutOfBoundary()
+
         /// Facilitate ball explosion
         handleExplodingObjects()
 
@@ -112,12 +115,6 @@ extension GameEngine {
             physicsEngine.removeObject(with: id)
             gameObjects.removeValue(forKey: id)
         }
-
-        /*if !isBallLaunched &&
-            scores.availableBallCount == 0 &&
-            scores.remainingGoalPegsCount > 0 {
-            delegate?.triggerLoss()
-        }*/
     }
 
     func handleExplodingObjects() {
@@ -150,7 +147,7 @@ extension GameEngine {
                                                     at: explosionObject.centerPosition,
                                                     for: explosionObject.height.half)
 
-                /// 3. Apply velocity on all applicable physics objects
+                /// 3. Delegate physics application for all applicable game objects
                 affectedObjects.forEach { affectedPhysicsObject in
                     Logger.log("Affected physics objects are \(affectedObjects)")
                     if let physicsObject = affectedPhysicsObject as? (any PhysicsObject) {
@@ -170,6 +167,12 @@ extension GameEngine {
 
             }
         }
+    }
+
+    func handleGameObjectsOutOfBoundary() {
+        gameObjects.values
+            .filter { physicsEngine.isWithinDomain(point: $0.centerPosition) }
+            .forEach { self.handleObjectRemoval(id: $0.id) }
     }
 
     func handleObjectRemoval(id: UUID) {

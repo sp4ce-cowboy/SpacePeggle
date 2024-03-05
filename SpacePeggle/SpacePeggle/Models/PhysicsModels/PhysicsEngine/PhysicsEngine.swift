@@ -70,4 +70,9 @@ final class PhysicsEngine {
             }
         }
     }
+
+    // Only considered to contain point if domain is not expanded
+    func isWithinDomain(point: Vector) -> Bool {
+        domain.contains(point.point) && !isDomainExpansionActive
+    }
 }

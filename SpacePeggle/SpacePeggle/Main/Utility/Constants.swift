@@ -42,8 +42,14 @@ public class Constants {
     /// Computed restitution range for more natural physics
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
-    /// Universally declared launch force
-    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_HEIGHT
+    /// Universally declared launch force as a proportion of screen width
+    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_WIDTH
+
+    /// Ball mass
+    static let UNIVERSAL_BALL_MASS: Double = 100
+
+    /// Allows for mass scaling with radius
+    static let STUBBORN_PEG_DENSITY: Double = UNIVERSAL_BALL_MASS * 5
 
     /// Universally declared power up state
     static var UNIVERSAL_POWER_UP: Enums.PowerUp = .Spooky

@@ -6,7 +6,8 @@ final class StubbornPeg: Peg {
     var centerPosition: Vector
     var shape: UniversalShape
 
-    var mass: Double = 10_000_000
+    var mass: Double = Constants.UNIVERSAL_LENGTH * Constants.STUBBORN_PEG_DENSITY
+
     var velocity: Vector = .zero
     var force: Vector = .zero
 
@@ -30,23 +31,23 @@ final class StubbornPeg: Peg {
          id: UUID = UUID(),
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
 
-        self.mass = mass
         self.velocity = velocity
         self.centerPosition = centerPosition
         self.force = force
         self.id = id
         self.shape = shape
+        self.mass = shape.width * Constants.STUBBORN_PEG_DENSITY
     }
 
+    /// To override default implementation
     func activateGameObject() {  }
 
-    /*
     func updatePosition(to finalLocation: Vector) {
         self.centerPosition = finalLocation
     }
 
     func applyPhysics(timeStep: TimeInterval) {
-        applyRestitution()
+        // applyRestitution()
         applyVelocityOnPosition(timeStep: timeStep)
     }
 
@@ -61,13 +62,16 @@ final class StubbornPeg: Peg {
         velocity = newVelocity
     }
 
-    func subjectToGravity() {
-
-    }
+    func subjectToGravity() {  }
 
     func applyRestitution() {
-        let newVelocity = velocity * Constants.UNIVERSAL_RESTITUTION * 1_000
+        if velocity.magnitude < Constants.STUCK_VELOCITY_THRESHOLD {
+            velocity = .zero
+            return
+        }
+
+        let newVelocity = velocity * (Constants.UNIVERSAL_RESTITUTION)
         velocity = newVelocity
     }
-     */
+
 }

@@ -13,7 +13,7 @@ extension PhysicsEngine {
                 var object2 = physicsObjectsArray[j]
 
                 if let collideDistance = isColliding(object1: object1, object2: object2) {
-                    handleCollisionBetween(object1: &object1, object2: &object2, with: collideDistance)
+                    handleCollisionsBetween(object1: &object1, object2: &object2, with: collideDistance)
                     physicsObjects[object1.id] = object1
                     physicsObjects[object2.id] = object2
                 }
@@ -93,118 +93,99 @@ extension PhysicsEngine {
     }
 }
 
-/*
- /// Adds dynamic collision physics
- extension PhysicsEngine {
- 
- private func handleCollisionsBetween(object1: inout any PhysicsObject,
- object2: inout any PhysicsObject,
- with distance: Double) {
- 
- // correctPositions(object1: &object1, object2: &object2, with: distance)
- 
- // Calculate new velocities based on the conservation of momentum
- let (newVelocity1, newVelocity2) = calculateNewVelocities(object1: object1, object2: object2)
- 
- object1.velocity = newVelocity1
- object2.velocity = newVelocity2
- 
- // Notify delegate about collision
- delegate?.handleCollision(withID: object1.id)
- delegate?.handleCollision(withID: object2.id)
- }
- 
- private func correctPositions(object1: inout any PhysicsObject,
- object2: inout any PhysicsObject,
- with distance: Double) {
- 
- if object1.isMovable {
- let normalVector = (object1.centerPosition - object2.centerPosition).normalized
- let correction = normalVector * distance
- let correctedPosition = object1.centerPosition + correction
- object1.centerPosition = correctedPosition
- }
- 
- /*let dotProduct = Vector.dot(object1.velocity, normalVector)
-  let reflection = (normalVector * 2.0) * dotProduct
-  let finalVelocity = object1.velocity - reflection
-  object1.velocity = finalVelocity*/
- 
- if object2.isMovable {
- let normalVector2 = (object2.centerPosition - object1.centerPosition).normalized
- let correction2 = normalVector2 * distance
- let correctedPosition2 = object2.centerPosition + correction2
- object2.centerPosition = correctedPosition2
- }
- 
- /*let dotProduct2 = Vector.dot(object2.velocity, normalVector2)
-  let reflection2 = (normalVector2 * 2.0) * dotProduct2
-  let finalVelocity2 = object2.velocity - reflection2
-  object2.velocity = finalVelocity2*/
- }
- 
- private func calculateNewVelocities(object1: any PhysicsObject,
- object2: any PhysicsObject) -> (Vector, Vector) {
- if object1.mass.isInfinite {
- // Object1 is stationary (infinite mass), only reflect object2's velocity
- let reflectedVelocity2 = reflectVelocity(movingObjectVelocity: object2.velocity,
- normal: (object2.centerPosition
- - object1.centerPosition).normalized)
- 
- return (object1.velocity, reflectedVelocity2)
- 
- } else if object2.mass.isInfinite {
- // Object2 is stationary (infinite mass), only reflect object1's velocity
- let reflectedVelocity1 = reflectVelocity(movingObjectVelocity: object1.velocity,
- normal: (object1.centerPosition
- - object2.centerPosition).normalized)
- 
- return (reflectedVelocity1, object2.velocity)
- }
- 
- let mass1 = object1.mass
- let mass2 = object2.mass
- let velocity1 = object1.velocity
- let velocity2 = object2.velocity
- 
- let totalMass = mass1 + mass2
- let massDifference1 = mass1 - mass2
- let massDifference2 = mass2 - mass1
- 
- let newVelocity1 = ((massDifference1 / totalMass) * velocity1)
- + ((2 * mass2 / totalMass) * velocity2)
- 
- let newVelocity2 = ((2 * mass1 / totalMass) * velocity1)
- + ((massDifference2 / totalMass) * velocity2)
- 
- return (newVelocity1, newVelocity2)
- }
- 
- private func reflectVelocity(movingObjectVelocity: Vector, normal: Vector) -> Vector {
- let dotProduct = Vector.dot(movingObjectVelocity, normal)
- let reflection = normal * (2.0 * dotProduct)
- return movingObjectVelocity - reflection
- }
- 
- /*private func calculateNewVelocities(object1: any PhysicsObject,
-  object2: any PhysicsObject) -> (Vector, Vector) {
-  let mass1 = object1.mass
-  let mass2 = object2.mass
-  let velocity1 = object1.velocity
-  let velocity2 = object2.velocity
-  
-  let totalMass = mass1 + mass2
-  let massDifference1 = mass1 - mass2
-  let massDifference2 = mass2 - mass1
-  
-  let newVelocity1 = ((massDifference1 / totalMass) * velocity1)
-  + ((2 * mass2 / totalMass) * velocity2)
-  
-  let newVelocity2 = ((2 * mass1 / totalMass) * velocity1)
-  + ((massDifference2 / totalMass) * velocity2)
-  
-  return (newVelocity1, newVelocity2)
-  }*/
- 
- }
- */
+/// Adds dynamic collision physics
+extension PhysicsEngine {
+
+    private func handleCollisionsBetween(object1: inout any PhysicsObject,
+                                         object2: inout any PhysicsObject,
+                                         with distance: Double) {
+
+        correctPositions(object1: &object1, object2: &object2, with: distance)
+
+        // Calculate new velocities based on the conservation of momentum
+        let (newVelocity1, newVelocity2) = calculateNewVelocities(object1: object1, object2: object2)
+
+        object1.velocity = newVelocity1
+        object2.velocity = newVelocity2
+        object1.applyRestitution()
+        object2.applyRestitution()
+
+        // Notify delegate about collision
+        delegate?.handleCollision(withID: object1.id)
+        delegate?.handleCollision(withID: object2.id)
+    }
+
+    private func correctPositions(object1: inout any PhysicsObject,
+                                  object2: inout any PhysicsObject,
+                                  with distance: Double) {
+
+        if object1.isMovable {
+            let normalVector = (object1.centerPosition - object2.centerPosition).normalized
+            let correction = normalVector * distance
+            let correctedPosition = object1.centerPosition + correction
+            object1.centerPosition = correctedPosition
+        }
+
+        /*let dotProduct = Vector.dot(object1.velocity, normalVector)
+         let reflection = (normalVector * 2.0) * dotProduct
+         let finalVelocity = object1.velocity - reflection
+         object1.velocity = finalVelocity*/
+
+        if object2.isMovable {
+            let normalVector2 = (object2.centerPosition - object1.centerPosition).normalized
+            let correction2 = normalVector2 * distance
+            let correctedPosition2 = object2.centerPosition + correction2
+            object2.centerPosition = correctedPosition2
+        }
+
+        /*let dotProduct2 = Vector.dot(object2.velocity, normalVector2)
+         let reflection2 = (normalVector2 * 2.0) * dotProduct2
+         let finalVelocity2 = object2.velocity - reflection2
+         object2.velocity = finalVelocity2*/
+    }
+
+    private func calculateNewVelocities(object1: any PhysicsObject,
+                                        object2: any PhysicsObject) -> (Vector, Vector) {
+        if object1.mass.isInfinite {
+            // Object1 is stationary (infinite mass), only reflect object2's velocity
+            let reflectedVelocity2 = reflectVelocity(movingObjectVelocity: object2.velocity,
+                                                     normal: (object2.centerPosition
+                                                              - object1.centerPosition).normalized)
+
+            return (object1.velocity, reflectedVelocity2)
+
+        } else if object2.mass.isInfinite {
+            // Object2 is stationary (infinite mass), only reflect object1's velocity
+            let reflectedVelocity1 = reflectVelocity(movingObjectVelocity: object1.velocity,
+                                                     normal: (object1.centerPosition
+                                                              - object2.centerPosition).normalized)
+
+            return (reflectedVelocity1, object2.velocity)
+        }
+
+        let mass1 = object1.mass
+        let mass2 = object2.mass
+        let velocity1 = object1.velocity
+        let velocity2 = object2.velocity
+
+        let totalMass = mass1 + mass2
+        let massDifference1 = mass1 - mass2
+        let massDifference2 = mass2 - mass1
+
+        let newVelocity1 = ((massDifference1 / totalMass) * velocity1)
+        + ((2 * mass2 / totalMass) * velocity2)
+
+        let newVelocity2 = ((2 * mass1 / totalMass) * velocity1)
+        + ((massDifference2 / totalMass) * velocity2)
+
+        return (newVelocity1, newVelocity2)
+    }
+
+    private func reflectVelocity(movingObjectVelocity: Vector, normal: Vector) -> Vector {
+        let dotProduct = Vector.dot(movingObjectVelocity, normal)
+        let reflection = normal * (2.0 * dotProduct)
+        return movingObjectVelocity - reflection
+
+    }
+
+}

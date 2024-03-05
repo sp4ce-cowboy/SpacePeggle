@@ -16,7 +16,7 @@ final class Ball: PhysicsObject {
 
     var isSubjectToGravity = false
 
-    init(mass: Double = 100,
+    init(mass: Double = Constants.UNIVERSAL_BALL_MASS,
          velocity: Vector = Vector.zero,
          centerPosition: Vector = .zero,
          force: Vector = .zero,
