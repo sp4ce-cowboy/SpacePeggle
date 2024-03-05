@@ -21,8 +21,6 @@ final class BucketRight: PhysicsObject {
                                        - DEFAULT_SHAPE.width.half,
                                        y: Constants.UI_SCREEN_HEIGHT - DEFAULT_HEIGHT.half)
 
-
-
     var velocity: Vector {
         get { bucket?.velocity ?? .zero }
         set { bucket?.velocity = newValue }
