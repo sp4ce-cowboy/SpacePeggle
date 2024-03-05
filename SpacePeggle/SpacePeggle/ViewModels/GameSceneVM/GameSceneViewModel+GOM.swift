@@ -26,6 +26,10 @@ extension GameSceneViewModel: GameObjectManager {
         ObjectSet.defaultGameObjectSet["Bucket"]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
     }
 
+    var bucketImageAspectRatio: CGSize {
+        ObjectSet.defaultGameObjectSet["Bucket"]?.size ?? ObjectSet.CONSTANT_SIZE
+    }
+
     func handleGameObjectRemoval(_ view: GameObjectView) {
         peggleGameEngine.handleGameObjectRemoval(id: view.gameObject.id)
     }

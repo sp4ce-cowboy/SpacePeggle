@@ -2,8 +2,8 @@ import SwiftUI
 import AVFoundation
 
 /// Explicit Internal class to ensure that external clients cannot
-/// interfere with singleton instance.
-
+/// interfere with singleton instance. Singleton anti-pattern used here
+/// in line with AVAudioSession's sharedInstance.
 internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     internal static let shared = AudioManager() // Singleton instance
     private var backgroundAudioPlayer: AVAudioPlayer?
@@ -18,7 +18,29 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     }
 
     func setupAudioPlayer() {
-        guard let audioData = NSDataAsset(name: "field-of-memories-soundtrack")?.data else {
+        let soundName = Constants.BACKGROUND_AUDIO
+
+        guard let soundURL = Bundle.main.url(forResource: soundName,
+                                             withExtension: nil) else {
+            Logger.log("Sound effect \(soundName) not found", self)
+            return
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            backgroundAudioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            backgroundAudioPlayer?.delegate = self
+            backgroundAudioPlayer?.numberOfLoops = -1 // Loop indefinitely
+            backgroundAudioPlayer?.volume = 0.8
+            backgroundAudioPlayer?.prepareToPlay()
+        } catch {
+            Logger.log("Failed to play sound effect \(soundName): \(error)", self)
+        }
+
+        /*
+         
+         //guard let audioData = NSDataAsset(name: "field-of-memories-soundtrack")?.data
+        else {
             Logger.log("Background audio asset not found", self)
             return
         }
@@ -33,6 +55,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         } catch {
             Logger.log("Failed to initialize audio player: \(error)", self)
         }
+         */
     }
 
     // Play background music

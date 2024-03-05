@@ -17,7 +17,7 @@ struct BucketView: View {
     var body: some View {
         Image(imageName)
             .resizable()
-            .aspectRatio(CGSize(width: 3, height: 1), contentMode: .fit)
+            .aspectRatio(viewModel.bucketImageAspectRatio, contentMode: .fit)
             .frame(width: bucket.width, height: bucket.height)
             .position(center.point)
             .border(Color.black)
