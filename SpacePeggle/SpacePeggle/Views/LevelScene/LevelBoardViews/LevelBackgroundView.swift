@@ -10,7 +10,7 @@ struct LevelBackgroundView: View {
     }
 
     var body: some View {
-        Image(Constants.BACKGROUND_IMAGE)
+        Image(Constants.BACKGROUND_IMAGE.rawValue)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: width)

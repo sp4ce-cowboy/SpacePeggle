@@ -17,10 +17,6 @@ struct StartSettingsMenuView: View {
 
             Spacer()
 
-            /*StyleSheet.getRectangleButtonWithAction(
-                text: "SET GRAVITY",
-                action: { viewModel.handleGravityButton() })*/
-
             StyleSheet.getRectangleButtonWithAction(
                 text: "SELECT ENVIRONMENT",
                 action: { viewModel.handleEnvironmentButton() })

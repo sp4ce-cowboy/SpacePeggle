@@ -70,6 +70,9 @@ class Enums {
 
     enum BackgroundImages: String {
         case Space = "space-background"
+        case Mars = "mars-background"
+        case Earth = "background"
+        case Saturn = "saturn-background"
     }
 
     enum AppScene: String {
@@ -78,4 +81,8 @@ class Enums {
         case GameScene
     }
 
+    enum PowerUp: String {
+        case Spooky
+        case Kaboom
+    }
 }

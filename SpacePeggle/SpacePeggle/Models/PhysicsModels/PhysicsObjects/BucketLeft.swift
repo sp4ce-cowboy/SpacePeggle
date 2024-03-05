@@ -19,7 +19,7 @@ final class BucketLeft: PhysicsObject {
     static let DEFAULT_CENTER = Vector(x: Constants.UI_SCREEN_WIDTH.half
                                        - DEFAULT_WIDTH.half
                                        + DEFAULT_SHAPE.width.half,
-                                       y: Constants.UI_SCREEN_HEIGHT - DEFAULT_HEIGHT.half)
+                                       y: Constants.UI_SCREEN_HEIGHT - DEFAULT_HEIGHT.twice)
 
     var velocity: Vector {
         get { bucket?.velocity ?? .zero }

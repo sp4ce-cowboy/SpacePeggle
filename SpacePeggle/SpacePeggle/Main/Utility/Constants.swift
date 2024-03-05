@@ -14,7 +14,7 @@ public class Constants {
     static var UI_SCREEN_HEIGHT: Double { UI_SCREEN_SIZE.height }
 
     /// Universal background image
-    static var BACKGROUND_IMAGE: String = "space-background"
+    static var BACKGROUND_IMAGE: Enums.BackgroundImages = .Space
 
     /// The name of the folder used to store the levels locally
     public static let STORAGE_CONTAINER_NAME: String = "Levels"
@@ -41,6 +41,9 @@ public class Constants {
 
     /// Universally declared launch force
     static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_HEIGHT
+
+    /// Universally declared power up state
+    static var UNIVERSAL_POWER_UP: Enums.PowerUp = .Spooky
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit

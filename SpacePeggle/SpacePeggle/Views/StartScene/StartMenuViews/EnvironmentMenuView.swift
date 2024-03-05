@@ -6,7 +6,6 @@ struct EnvironmentMenuView: View {
     var body: some View {
         VStack {
             Spacer()
-            Spacer()
 
             Text("CHOOSE YOUR PLANET")
                 .font(.system(size: StyleSheet.getScaledWidth(4.5)))
@@ -35,7 +34,7 @@ struct EnvironmentMenuView: View {
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "RETURN",
-                action: { viewModel.handleReturnButton() })
+                action: { viewModel.handleReturnToSettingsButton() })
 
             Spacer()
         }

@@ -92,15 +92,20 @@ extension StartSceneViewModel {
     }
 
     func handleKaboomButton() {
-        /// switch state
+        Constants.UNIVERSAL_POWER_UP = .Kaboom
     }
 
     func handleSpookyButton() {
-        /// switch state
+        Constants.UNIVERSAL_POWER_UP = .Spooky
     }
 
     func handleReturnToSettingsButton() {
         currentMenuState = .SettingsMenu
+    }
+
+    func handleGetCurrentPowerUp() -> String {
+        triggerRefresh()
+        return Constants.UNIVERSAL_POWER_UP.rawValue
     }
 
 }
@@ -110,27 +115,26 @@ extension StartSceneViewModel {
 
     func handleEarth() {
         triggerRefresh()
-        Constants.BACKGROUND_IMAGE = "background"
+        Constants.BACKGROUND_IMAGE = .Earth
         Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 1_000)
     }
 
     func handleSaturn() {
         triggerRefresh()
         triggerRefresh()
-        Constants.BACKGROUND_IMAGE = "saturn-background"
+        Constants.BACKGROUND_IMAGE = .Saturn
         Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 2_500)
     }
 
     func handleMars() {
         triggerRefresh()
-        Constants.BACKGROUND_IMAGE = "mars-background"
+        Constants.BACKGROUND_IMAGE = .Mars
         Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 700)
     }
 
     func handleSpace() {
         triggerRefresh()
-        Constants.BACKGROUND_IMAGE = "space-background"
+        Constants.BACKGROUND_IMAGE = .Space
         Constants.UNIVERSAL_GRAVITY = Vector(x: 0, y: 300)
     }
-
 }

@@ -16,7 +16,7 @@ struct ScoreBoard {
         totalNormalPegsCount - clearedNormalPegsCount
     }
 
-    var totalBallCount: Int = 5
+    var totalBallCount: Int = 10
     var shotBallCount: Int = 0
     var availableBallCount: Int {
         totalBallCount - shotBallCount

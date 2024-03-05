@@ -8,7 +8,14 @@ struct PowerUpSettingsView: View {
             Spacer()
             Spacer()
 
-            Text(" CHOOSE GAMEMASTER: ")
+            Text(" CHOOSE GAMEMASTER ")
+                .font(.system(size: StyleSheet.getScaledWidth(4.5)))
+                .fontDesign(.monospaced)
+                .fontWeight(.heavy)
+                .foregroundStyle(Color.white)
+                .padding()
+
+            Text("Current: \(viewModel.handleGetCurrentPowerUp())")
                 .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                 .fontDesign(.monospaced)
                 .fontWeight(.heavy)
