@@ -20,13 +20,13 @@ import SwiftUI
 /// by [Artem V](https://stackoverflow.com/users/16006855/artem-v)
 ///
 class DisplayLink: NSObject {
-    static let sharedInstance = DisplayLink()
+    // static let sharedInstance = DisplayLink()
     var displayLink: CADisplayLink?
 
     /// A closure type that includes the frame duration
     var onUpdate: ((_ frameDuration: TimeInterval) -> Void)?
 
-    override private init() {
+    override init() {
         super.init()
     }
 

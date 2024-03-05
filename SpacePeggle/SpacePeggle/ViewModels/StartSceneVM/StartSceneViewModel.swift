@@ -8,5 +8,5 @@
 import SwiftUI
 
 class StartSceneViewModel {
-    
+
 }

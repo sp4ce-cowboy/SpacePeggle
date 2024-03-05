@@ -62,6 +62,7 @@ final class GameEngine {
         self.currentScreenGeometry = geometry
         self.physicsEngine = PhysicsEngine(
             domain: Constants.getFullScreen(from: geometry))
+        self.physicsEngine.delegate = self
     }
 
     deinit {

@@ -12,13 +12,14 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     var peggleGameEngine: AbstractGameEngine
     var geometryState: GeometryProxy
     var currentViewSize: CGSize { geometryState.size }
+    var gameLoop = DisplayLink()
     var isPaused = false
 
     init(_ geometryState: GeometryProxy) {
         self.geometryState = geometryState
         self.peggleGameEngine = GameEngine(geometry: geometryState)
         peggleGameEngine.delegate = self
-        setupDisplayLink()
+        setupGameLoop()
     }
 
     deinit {

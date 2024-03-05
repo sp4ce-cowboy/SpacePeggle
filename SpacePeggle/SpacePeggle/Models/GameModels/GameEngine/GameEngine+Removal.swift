@@ -39,4 +39,8 @@ extension GameEngine {
             gameObjects.removeValue(forKey: id)
         }
     }
+
+    func handleCollision(withID id: UUID) {
+        gameObjects[id]?.activateGameObject()
+    }
 }
