@@ -68,12 +68,11 @@ extension PhysicsEngine {
         return Vector(x: clampedX, y: clampedY)
     }
 
-
-
     func applySpecialPhysicsOn(objectId: UUID, at position: Vector, for radius: Double) {
 
         /// Explosion will only affect the velocities of objects with finite mass
         guard let physicsObject = physicsObjects[objectId], physicsObject.mass.isFinite else {
+            Logger.log("Mass is not finite for \(String(describing: physicsObjects[objectId]))")
             return
         }
 

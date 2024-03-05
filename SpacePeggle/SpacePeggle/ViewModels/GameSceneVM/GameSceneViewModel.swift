@@ -72,7 +72,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
                 gameObjectOpacities[id] = 0
             }
             // After the fade-out duration, remove the GameObject from the dictionary
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 2.0) {
                 self.gameObjectOpacities[id] = nil
             }
 

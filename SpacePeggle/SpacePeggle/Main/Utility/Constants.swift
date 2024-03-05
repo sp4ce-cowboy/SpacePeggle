@@ -45,7 +45,7 @@ public class Constants {
     /// Universally declared power up state
     static var UNIVERSAL_POWER_UP: Enums.PowerUp = .Spooky
 
-    static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 100
+    static var UNIVERSAL_EXPLOSION_STRENGTH: Double = 10
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit
