@@ -4,12 +4,15 @@ import SwiftUI
 /// updating the views of game object states.
 protocol GameEngineDelegate: AnyObject {
     func processActiveGameObjects(withID id: UUID)
+    func transferScores(scores: ScoreBoard)
 }
 
 class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
-    var sceneController: AppSceneController
     @Published var gameObjectOpacities: [UUID: Double] = [:]
+    @Published var scores = ScoreBoard()
+
+    var sceneController: AppSceneController
     var peggleGameEngine: AbstractGameEngine
     var geometryState: GeometryProxy
     var currentViewSize: CGSize { geometryState.size }
@@ -64,6 +67,11 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
     func handleExitButton() {
         handleReturnButton()
         sceneController.transitionToStartScene()
+    }
+
+    func transferScores(scores: ScoreBoard) {
+        triggerRefresh()
+        self.scores = scores
     }
 
 }

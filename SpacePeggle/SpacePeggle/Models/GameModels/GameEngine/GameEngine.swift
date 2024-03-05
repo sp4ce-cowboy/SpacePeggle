@@ -46,6 +46,8 @@ final class GameEngine {
     let checkInterval: TimeInterval = 0.5
     var ballIsStuck = false
 
+    var scores = ScoreBoard()
+
     var physicsObjects: [UUID: any PhysicsObject] {
         get { physicsEngine.physicsObjects }
         set { physicsEngine.physicsObjects = newValue }

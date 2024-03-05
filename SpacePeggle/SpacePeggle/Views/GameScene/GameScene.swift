@@ -18,6 +18,7 @@ struct GameScene: View {
             LauncherView()
             GameObjectsBoardView()
             BucketView()
+            ScoreBoardView()
         }
         .if(viewModel.isPaused) { view in
             view.overlay { GameMenuView() }

@@ -33,6 +33,7 @@ protocol AbstractGameEngine: PhysicsEngineDelegate, GameMechanic {
 }
 
 protocol GameMechanic {
+    var scores: ScoreBoard { get set }
     var launcher: Launcher { get set }
     var isBallLaunched: Bool { get set }
     var currentBallPosition: Vector { get }

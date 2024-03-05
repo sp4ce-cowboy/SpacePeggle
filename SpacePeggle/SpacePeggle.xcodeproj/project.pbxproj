@@ -106,6 +106,8 @@
 		BACF21D92B904CA5007FCE8D /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACF21D82B904CA5007FCE8D /* StartMenuView.swift */; };
 		BAD77AE22B96F96E009374B7 /* BucketRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD77AE12B96F96E009374B7 /* BucketRight.swift */; };
 		BAD77AE42B96F977009374B7 /* BucketLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD77AE32B96F977009374B7 /* BucketLeft.swift */; };
+		BAD77AE62B970862009374B7 /* ScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD77AE52B970862009374B7 /* ScoreBoard.swift */; };
+		BAD77AE82B970A05009374B7 /* ScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD77AE72B970A05009374B7 /* ScoreBoardView.swift */; };
 		BAD80ADC2B90B243008E998F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD80ADB2B90B243008E998F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +225,8 @@
 		BACF21D82B904CA5007FCE8D /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
 		BAD77AE12B96F96E009374B7 /* BucketRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketRight.swift; sourceTree = "<group>"; };
 		BAD77AE32B96F977009374B7 /* BucketLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketLeft.swift; sourceTree = "<group>"; };
+		BAD77AE52B970862009374B7 /* ScoreBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoard.swift; sourceTree = "<group>"; };
+		BAD77AE72B970A05009374B7 /* ScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardView.swift; sourceTree = "<group>"; };
 		BAD80ADB2B90B243008E998F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -348,6 +352,7 @@
 				BA7662142B8C89590022C267 /* GameObjectsBoardView.swift */,
 				BA76620F2B8C89590022C267 /* GamePauseButtonView.swift */,
 				BA8B6AE92B8DEA3100A4FD96 /* GameMenuView.swift */,
+				BAD77AE72B970A05009374B7 /* ScoreBoardView.swift */,
 			);
 			path = GameBoardViews;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				BA7662322B8C89590022C267 /* GameEngine+Game.swift */,
 				BA76622F2B8C89590022C267 /* GameEngine+Translation.swift */,
 				BA7662312B8C89590022C267 /* GameEngine+Removal.swift */,
+				BAD77AE52B970862009374B7 /* ScoreBoard.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -836,8 +842,10 @@
 				BA96F3172B93134A006BE36D /* FunctionBarView.swift in Sources */,
 				BA76625D2B8C89590022C267 /* PhysicsObject.swift in Sources */,
 				BA96F3152B93133E006BE36D /* SelectionBarView.swift in Sources */,
+				BAD77AE82B970A05009374B7 /* ScoreBoardView.swift in Sources */,
 				BA7662652B8C89590022C267 /* GameEngine+Removal.swift in Sources */,
 				BA63CCAB2B945CCF005D23EB /* LauncherStubView.swift in Sources */,
+				BAD77AE62B970862009374B7 /* ScoreBoard.swift in Sources */,
 				BA96F3202B933133006BE36D /* LevelPauseButtonView.swift in Sources */,
 				BA28FD702B96AA410044CAC8 /* LevelSelectionMenuView.swift in Sources */,
 				BA0343DA2B95829300B6EA95 /* FileListView.swift in Sources */,

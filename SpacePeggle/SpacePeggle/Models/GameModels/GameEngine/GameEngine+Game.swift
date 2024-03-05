@@ -28,23 +28,26 @@ extension GameEngine {
             self.addPhysicsObject(object: self.ball)
             self.startCheckingForStuckBall()
             self.isBallLaunched = true
+            self.scores.shotBallCount += 1
         }
 
     }
 
     func updateGameState() {
-        if bucket.containsObject(ball) {
-            Logger.log("bucket contains ball!", self)
-            self.resetBall()
-        }
+        if ballIsOutofBounds || bucket.containsObject(ball) {
+            if bucket.containsObject(ball) {
+                self.scores.ballEntersBucketCount += 1
+                Logger.log("bucket contains ball!", self)
+            }
 
-        if ballIsOutofBounds {
             self.isBallLaunched = false
             self.resetBall()
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
                 self.removeActiveGameObjects()
             }
         }
+
+        self.delegate?.transferScores(scores: scores)
     }
 
     func resetBall() {
