@@ -80,6 +80,7 @@ extension GameEngine {
                 scores.clearedNormalPegsCount += 1
             case .SpookyPeg, .SpookyPegActive:
                 scores.clearedSpookyPegsCount += 1
+                physicsEngine.isDomainExpansionActive = false
             case .KaboomPeg, .KaboomPegActive:
                 break
             case .StubbornPeg:
