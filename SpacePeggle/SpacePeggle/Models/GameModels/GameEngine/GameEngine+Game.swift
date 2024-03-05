@@ -171,7 +171,7 @@ extension GameEngine {
 
     func handleGameObjectsOutOfBoundary() {
         gameObjects.values
-            .filter { physicsEngine.isWithinDomain(point: $0.centerPosition) }
+            .filter { !physicsEngine.isWithinDomain(point: $0.centerPosition) }
             .forEach { self.handleObjectRemoval(id: $0.id) }
     }
 
