@@ -1,6 +1,7 @@
 import SwiftUI
 
-final class BlockPeg: Peg {
+/// A block is not a peg, but
+final class BlockPeg: GameObject, PhysicsObject {
 
     var id: UUID
     var centerPosition: Vector

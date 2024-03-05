@@ -17,7 +17,7 @@ extension GameEngine {
             case .BlockPeg:
                 break
             case .SpookyPeg, .SpookyPegActive:
-                break
+                scores.totalSpookyPegsCount += 1
             case .KaboomPeg, .KaboomPegActive:
                 break
             case .StubbornPeg:
@@ -32,11 +32,8 @@ extension GameEngine {
                    + "\(currentLevel.gameObjects.count)", self)
 
         self.updatePhysicsObjectsFromGameObjects() // Add game objects to physics engine
-        Logger.log("Bucket not yet added, physics engine now has \(physicsObjects.count)")
         physicsEngine.addPhysicsObject(object: self.bucket.bucketLeft)
         physicsEngine.addPhysicsObject(object: self.bucket.bucketRight)
-        Logger.log("Bucket added, physics engine now has \(physicsObjects.values)")
-        Logger.log("Bucket add, physics engine now has \(physicsObjects.count)")
     }
 
     func updateGame(timeStep: TimeInterval) {

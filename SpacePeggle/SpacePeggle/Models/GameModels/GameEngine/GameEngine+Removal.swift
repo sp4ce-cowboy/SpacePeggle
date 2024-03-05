@@ -35,7 +35,7 @@ extension GameEngine {
 
     func handleGameObjectRemoval(id: UUID) {
         if ballIsStuck {
-            physicsObjects.removeValue(forKey: id)
+            physicsEngine.removeObject(with: id)
             gameObjects.removeValue(forKey: id)
         }
     }

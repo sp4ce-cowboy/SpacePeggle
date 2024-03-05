@@ -3,7 +3,8 @@ import SwiftUI
 /// parent ViewModel in order to provide for callback functions like
 /// updating the views of game object states.
 protocol GameEngineDelegate: AnyObject {
-    func processActiveGameObjects(withID id: UUID)
+    func removeActiveGameObjects(withID id: UUID)
+    func processSpecialGameObjects()
     func transferScores(scores: ScoreBoard)
     func triggerLoss()
 }
@@ -46,7 +47,10 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         peggleGameEngine.gameObjects
     }
 
-    func processActiveGameObjects(withID id: UUID) {
+    func removeActiveGameObjects(withID id: UUID) {
+        guard gameObjects[id]?.gameObjectType != .SpookyPegActive else {
+            return
+        }
         withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
             gameObjectOpacities[id] = 0
         }
@@ -55,6 +59,22 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
             self.gameObjectOpacities[id] = nil
         }
 
+    }
+
+    func processSpecialGameObjects() {
+        for (id, value) in gameObjects where value.gameObjectType == .SpookyPegActive {
+
+            withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
+                gameObjectOpacities[id] = 0
+            }
+            // After the fade-out duration, remove the GameObject from the dictionary
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 0.5) {
+                self.gameObjectOpacities[id] = nil
+
+            }
+
+            peggleGameEngine.handleObjectRemoval(id: id)
+        }
     }
 
     func handlePause() {
@@ -79,11 +99,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         self.scores = scores
 
         if scores.getWinState {
-            self.stopGame()
-            self.isWin = true
-            AudioManager.shared.stop()
-            AudioManager.shared.playWinSoundEffect()
-            return
+            triggerWin()
         }
 
         if scores.getLoseState {
@@ -97,6 +113,14 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         self.isLose = true
         AudioManager.shared.stop()
         AudioManager.shared.playLoseSoundEffect()
+        return
+    }
+
+    func triggerWin() {
+        self.stopGame()
+        self.isWin = true
+        AudioManager.shared.stop()
+        AudioManager.shared.playWinSoundEffect()
         return
     }
 

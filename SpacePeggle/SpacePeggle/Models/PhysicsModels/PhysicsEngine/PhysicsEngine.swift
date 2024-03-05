@@ -40,6 +40,7 @@ final class PhysicsEngine {
 
     /// The area monitored by the Engine.
     var domain: CGRect
+    var isDomainExpansionActive = false
 
     var physicsObjects: [UUID: any PhysicsObject]
 
@@ -54,6 +55,10 @@ final class PhysicsEngine {
 
     func addPhysicsObject(object: any PhysicsObject) {
         self.physicsObjects[object.id] = object
+    }
+
+    func removeObject(with id: UUID) {
+        physicsObjects.removeValue(forKey: id)
     }
 
     func updatePhysics(timeStep: TimeInterval) {

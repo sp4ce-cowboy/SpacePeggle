@@ -34,17 +34,23 @@ extension GameEngine {
 
     func updateGameState() {
 
+        if gameObjects.values.contains(where: { $0.gameObjectType == .SpookyPegActive }) {
+            physicsEngine.isDomainExpansionActive = true
+        }
+
         if ballIsOutOfBounds || bucket.containsObject(ball) {
             if bucket.containsObject(ball) {
                 self.scores.ballEntersBucketCount += 1
                 self.scores.totalBallCount += 1
                 Logger.log("bucket contains ball!", self)
+                physicsEngine.isDomainExpansionActive = false
+                // delegate?.processSpecialGameObjects()
             }
 
             self.isBallLaunched = false
             self.resetBall()
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL) {
-                self.removeActiveGameObjects()
+                self.processActiveGameObjects()
             }
         }
 
@@ -58,11 +64,14 @@ extension GameEngine {
         ball = Ball()
     }
 
-    func removeActiveGameObjects() {
+    func processActiveGameObjects() {
         for (id, _) in gameObjects {
             guard let gameObject = gameObjects[id], gameObject.isActive else {
                 continue
             }
+
+            Logger.log("Game object is \(gameObject)", self)
+            Logger.log("Game object type is \(gameObject.gameObjectType)")
 
             switch gameObject.gameObjectType {
             case .GoalPeg, .GoalPegActive:
@@ -79,12 +88,12 @@ extension GameEngine {
                 break
             }
 
-            delegate?.processActiveGameObjects(withID: id)
+            delegate?.removeActiveGameObjects(withID: id)
 
             // Object needs to be removed from the physics object
             // storage to ensure that it does not get resusciated from
             // the game-physics engine synchronization-loop
-            physicsObjects.removeValue(forKey: id)
+            physicsEngine.removeObject(with: id)
             gameObjects.removeValue(forKey: id)
         }
 
@@ -93,5 +102,10 @@ extension GameEngine {
             scores.remainingGoalPegsCount > 0 {
             delegate?.triggerLoss()
         }
+    }
+
+    func handleObjectRemoval(id: UUID) {
+        physicsEngine.removeObject(with: id)
+        gameObjects.removeValue(forKey: id)
     }
 }

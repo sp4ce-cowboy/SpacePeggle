@@ -20,8 +20,6 @@ struct LauncherView: View {
     var launcherHeight: Double { launcher.launcherHeight }
     var launcherWidth: Double { viewModel.getLauncherWidth() }
     var launcherImageString: String { viewModel.getLauncherImage() }
-    // Calibration given if the launcher's width and height are unequal
-    var anchorPoint: UnitPoint { UnitPoint(x: 0.5, y: 0.4) }
 
     var body: some View {
         ZStack {
@@ -32,7 +30,7 @@ struct LauncherView: View {
                 .rotationEffect(-launcher.rotationAngle, anchor: .center)
                 .position(x: screenWidthCenter, y: launcherHeightCenter)
                 .gesture(handleRotation.exclusively(before: handleTap))
-                .disabled(viewModel.isPaused)
+                .disabled(viewModel.isLauncherDisabled())
         }
     }
 

@@ -27,6 +27,7 @@ protocol AbstractGameEngine: PhysicsEngineDelegate, GameMechanic {
     func stopGame()
     func updateGame(timeStep: TimeInterval)
     func handleGameObjectRemoval(id: UUID)
+    func handleObjectRemoval(id: UUID)
 
     func updateLauncherRotation(with dragValue: DragGesture.Value, for size: CGSize)
     func launchBall()

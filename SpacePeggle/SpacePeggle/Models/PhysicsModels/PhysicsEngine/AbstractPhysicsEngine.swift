@@ -14,7 +14,9 @@ protocol AbstractPhysicsEngine {
     var delegate: PhysicsEngineDelegate? { get set }
     var physicsObjects: [UUID: any PhysicsObject] { get set }
     var domain: CGRect { get set }
+    var isDomainExpansionActive: Bool { get set }
     func addPhysicsObject(object: any PhysicsObject)
+    func removeObject(with id: UUID)
     func updatePhysics(timeStep: TimeInterval)
 
     init(domain: CGRect, physicsObjects: [UUID: any PhysicsObject])

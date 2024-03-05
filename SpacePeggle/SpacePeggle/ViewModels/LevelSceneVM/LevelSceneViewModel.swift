@@ -244,6 +244,7 @@ extension LevelSceneViewModel {
 
     func handleLoad() {
         triggerRefresh()
+        currentGameObject = nil
         options.files = Storage.listSavedFiles()
         clearEmptyTextFieldAndDismissKeyboard()
         options.showingFileList = true

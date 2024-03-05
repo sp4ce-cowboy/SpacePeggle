@@ -89,7 +89,8 @@ class ObjectSet {
         .GoalPeg: { center, id, shape in GoalPeg(centerPosition: center, id: id, shape: shape) },
         .SpookyPeg: { center, id, shape in SpookyPeg(centerPosition: center, id: id, shape: shape) },
         .KaboomPeg: { center, id, shape in KaboomPeg(centerPosition: center, id: id, shape: shape) },
-        .BlockPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) }
+        .BlockPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) },
+        .StubbornPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) }
     ]
 
     static var fullShapeCreation: [Enums.ShapeType: (Double, Double, Double, Double) -> any UniversalShape] = [

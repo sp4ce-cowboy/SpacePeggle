@@ -13,6 +13,10 @@ extension GameSceneViewModel: LaunchManager {
         set { peggleGameEngine.launcher = newValue }
     }
 
+    func isLauncherDisabled() -> Bool {
+        isPaused || isWin || isLose
+    }
+
     func getLauncherWidth() -> Double {
         Double(ObjectSet
             .defaultGameObjectSet["Launcher"]?.size.width ?? CGFloat(Constants.UNIVERSAL_LENGTH))

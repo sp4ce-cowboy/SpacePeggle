@@ -34,8 +34,6 @@ class Bucket {
 
         let withinYAxis = object.topCenter.y >= bucketRight.topCenter.y
         && object.bottomCenter.y <= bucketRight.bottomCenter.y
-
-        Logger.log("Contains object is \(withinXAxis && withinYAxis)")
         return withinXAxis && withinYAxis
     }
 }
