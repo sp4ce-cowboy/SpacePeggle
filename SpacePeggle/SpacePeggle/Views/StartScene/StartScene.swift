@@ -1,11 +1,14 @@
 import SwiftUI
 
 struct StartScene: View {
-    var proxy: GeometryProxy
+    @StateObject var viewModel: StartSceneViewModel
 
-    init(forGeometry proxy: GeometryProxy) {
-        self.proxy = proxy
+    init(forGeometry geometryState: GeometryProxy, with sceneController: AppSceneController) {
+        _viewModel = StateObject(wrappedValue: StartSceneViewModel(geometryState, sceneController))
     }
+
+    var width: Double { viewModel.geometryState.size.width }
+    var height: Double { viewModel.geometryState.size.height }
 
     var body: some View {
             ZStack {
@@ -15,16 +18,8 @@ struct StartScene: View {
                         StartMenuView()
                     }
             }
-            .frame(width: proxy.size.width,
-                   height: proxy.size.height)
-            .background {
-                StartBackgroundView(proxy: proxy)
-            }
-    }
-}
-
-#Preview {
-    GeometryReader { proxy in
-        StartScene(forGeometry: proxy)
+            .frame(width: width, height: height)
+            .background { StartBackgroundView() }
+            .environmentObject(viewModel)
     }
 }

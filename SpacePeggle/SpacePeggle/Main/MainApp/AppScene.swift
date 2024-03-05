@@ -10,13 +10,14 @@ import SwiftUI
 ///
 /// These changes will also be drawn with an animation.
 struct AppScene: View {
-    @EnvironmentObject var sceneController: AppSceneController
+    @StateObject var sceneController = AppSceneController()
 
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 sceneController
-                    .currentScene(geometry: geometry)
+                    .currentScene(geometry: geometry, sceneController: sceneController)
+                    // .environmentObject(sceneController)
                     .id(sceneController.currentSceneName)
             }
             .animation(.default, value: sceneController.currentSceneName)
@@ -40,10 +41,4 @@ struct AppScene: View {
 
     }
 
-}
-
-#Preview {
-    AppScene()
-        .environmentObject(AppSceneController.shared)
-        .preferredColorScheme(.dark)
 }

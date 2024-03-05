@@ -2,9 +2,10 @@ import SwiftUI
 
 struct LevelScene: View {
     @StateObject var viewModel: LevelSceneViewModel
+    // @EnvironmentObject var sceneController: AppSceneController
 
-    init(forGeometry geometryState: GeometryProxy) {
-        _viewModel = StateObject(wrappedValue: LevelSceneViewModel(geometryState))
+    init(forGeometry geometryState: GeometryProxy, with sceneController: AppSceneController) {
+        _viewModel = StateObject(wrappedValue: LevelSceneViewModel(geometryState, sceneController))
     }
 
     // @ViewBuilder
@@ -22,12 +23,6 @@ struct LevelScene: View {
         }
         .background { LevelBackgroundView() }
         .environmentObject(viewModel)
+        // .environmentObject(sceneController)
     }
-}
-
-#Preview {
-    GeometryReader { proxy in
-        LevelScene(forGeometry: proxy)
-    }
-
 }

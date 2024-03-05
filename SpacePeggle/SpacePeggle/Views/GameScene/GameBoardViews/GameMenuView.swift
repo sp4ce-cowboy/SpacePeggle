@@ -30,14 +30,13 @@ struct GameMenuView: View {
                             value: Vector(x: 0, y: 9_810))
 
                         StyleSheet.getRectangleButtonWithAction(
-                            text: "Return to Game",
-                            action: { viewModel.handlePause() })
+                            text: "RETURN TO GAME",
+                            action: { viewModel.handleReturnButton() })
 
                         StyleSheet.getRectangleButtonWithAction(
-                            text: "Exit to Menu",
+                            text: "EXIT TO MENU",
                             action: {
-                                viewModel.handlePause()
-                                AppSceneController.transitionToStartScene()
+                                viewModel.handleExitButton()
                             })
                         .foregroundColor(Color.red)
 

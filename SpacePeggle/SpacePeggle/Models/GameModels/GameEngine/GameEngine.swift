@@ -33,7 +33,7 @@ final class GameEngine {
     var physicsEngine: AbstractPhysicsEngine
     var currentScreenGeometry: GeometryProxy
 
-    var currentLevel: AbstractLevel = LevelStub().getLevelStub()
+    var currentLevel: AbstractLevel = LevelStub().getLevelOneStub()
     var isGameActive = false
 
     var launcher: Launcher  // Can be swapped for a [UUID : Launcher] map if needed

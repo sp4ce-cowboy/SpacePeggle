@@ -1,13 +1,8 @@
-//
-//  StartMenuView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 29/2/24.
-//
-
 import SwiftUI
 
-struct StartMenuView: View {
+struct StartMenuDefaultView: View {
+    @EnvironmentObject var viewModel: StartSceneViewModel
+
     var body: some View {
         VStack {
             Spacer()
@@ -23,22 +18,22 @@ struct StartMenuView: View {
             Spacer()
 
             StyleSheet.getRectangleButtonWithAction(
+                text: "START GAME",
+                action: { viewModel.handleStartGameButton() })
+
+            StyleSheet.getRectangleButtonWithAction(
                 text: "LOAD LEVEL",
-                action: { AppSceneController.transitionToGameScene() })
+                action: { viewModel.handleLoadLevelButton() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "DESIGN LEVEL",
-                action: { AppSceneController.transitionToLevelScene() })
+                action: { viewModel.handleDesignButton() })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "SETTINGS",
-                action: { AppSceneController.transitionToGameScene() })
+                action: { viewModel.handleSettingsButton() })
 
             Spacer()
         }
     }
-}
-
-#Preview {
-    StartMenuView()
 }
