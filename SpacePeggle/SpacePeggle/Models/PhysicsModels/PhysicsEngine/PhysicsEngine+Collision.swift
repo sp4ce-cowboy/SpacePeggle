@@ -67,4 +67,29 @@ extension PhysicsEngine {
         let clampedY = max(rect.minY, min(circleCenter.y, rect.maxY))
         return Vector(x: clampedX, y: clampedY)
     }
+
+
+
+    func applySpecialPhysicsOn(objectId: UUID, at position: Vector, for radius: Double) {
+
+        /// Explosion will only affect the velocities of objects with finite mass
+        guard let physicsObject = physicsObjects[objectId], physicsObject.mass.isFinite else {
+            return
+        }
+
+        let baseExplosionStrength = Constants.UNIVERSAL_EXPLOSION_STRENGTH
+        let distanceVector = physicsObject.centerPosition - position
+        let distance = distanceVector.magnitude
+        let normalizedDirection = distanceVector.normalized
+
+        let forceMagnitudeFactor = (1 - (distance / (radius * 4)))
+        let explosionForceMagnitude = baseExplosionStrength * forceMagnitudeFactor * radius
+        let explosionForce = normalizedDirection * explosionForceMagnitude
+
+        let newVelocity = physicsObject.velocity + explosionForce
+        physicsObjects[objectId]?.velocity = newVelocity
+
+        Logger.log("Applied explosion force of magnitude \(explosionForce.magnitude) at distance \(distance)", self)
+
+    }
 }

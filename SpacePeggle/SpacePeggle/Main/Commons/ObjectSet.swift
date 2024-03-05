@@ -50,7 +50,9 @@ class ObjectSet {
         "StubbornPegActive": ("delete", CONSTANT_SIZE),
         "Remove": ("delete", CONSTANT_SIZE),
         "BlockPeg": ("block", CONSTANT_SIZE),
-        "Bucket": ("bucket-square", CGSize(width: Constants.UNIVERSAL_LAUNCHER_HEIGHT.twice * 1.5,
+
+        /// Pre-defined ratio according to actual dimensional ratio of the image used
+        "Bucket": ("bucket-square", CGSize(width: Constants.UNIVERSAL_LAUNCHER_HEIGHT * 3.0,
                                            height: Constants.UNIVERSAL_LAUNCHER_HEIGHT))
     ]
 

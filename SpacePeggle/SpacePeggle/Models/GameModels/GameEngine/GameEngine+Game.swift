@@ -33,6 +33,12 @@ extension GameEngine {
         }
     }
 
+    func resetBall() {
+        stopCheckingForStuckBall()
+        physicsObjects.removeValue(forKey: ball.id)
+        ball = Ball()
+    }
+
     func updateGameState() {
 
         /// Perform score check
@@ -43,8 +49,41 @@ extension GameEngine {
         }
 
         /// Facilitate ball explosion
-        if gameObjects.values.contains(where: { $0.gameObjectType == .KaboomPegActive }) {
-            delegate?.processSpecialGameObjects()
+        let explodingObjects = gameObjects.values.filter { $0.gameObjectType == .KaboomPegActive }
+
+        if !explodingObjects.isEmpty {
+            scores.status = "Explosion Alert!"
+            explodingObjects.forEach { explodingObject in
+                /// 1. Active all objects in explosion radius of eR = 4R (i.e. 4x Diameter)
+                /// Objects will be activated on the smallest of overlap
+                let explosionShape = CircularShape(diameter: explodingObject.height * 4)
+                let explosionObject = KaboomPeg(centerPosition: explodingObject.centerPosition,
+                                                shape: explosionShape)
+
+                let affectedObjects = gameObjects.values.filter { affectedObject in
+                    if explosionObject.overlap(with: affectedObject) != nil {
+                        return true
+                    }
+                    return false
+                }
+
+                affectedObjects.forEach { $0.activateGameObject() }
+
+                /// 2. Apply velocity on all non-finite physics objects
+                affectedObjects.forEach { affectedPhysicsObject in
+                    Logger.log("Affected physics objects are \(affectedObjects)")
+                    if let physicsObject = affectedPhysicsObject as? (any PhysicsObject) {
+                        Logger.log("Affected physics single object is \(affectedObjects)")
+                        physicsEngine.applySpecialPhysicsOn(objectId: physicsObject.id,
+                                                            at: explosionObject.centerPosition,
+                                                            for: explosionObject.height.half)
+                    }
+                }
+
+                delegate?.processSpecialGameObjects()
+                scores.clearedKaboomPegsCount += 1
+                scores.status = "Explosion Complete!"
+            }
         }
 
         /// Facilitate domain expansion ability
@@ -72,20 +111,11 @@ extension GameEngine {
         self.delegate?.transferScores(scores: scores)
     }
 
-    func resetBall() {
-        stopCheckingForStuckBall()
-        physicsObjects.removeValue(forKey: ball.id)
-        ball = Ball()
-    }
-
     func processActiveGameObjects() {
         for (id, _) in gameObjects {
             guard let gameObject = gameObjects[id], gameObject.isActive else {
                 continue
             }
-
-            Logger.log("Game object is \(gameObject)", self)
-            Logger.log("Game object type is \(gameObject.gameObjectType)")
 
             switch gameObject.gameObjectType {
             case .GoalPeg, .GoalPegActive:
@@ -99,10 +129,8 @@ extension GameEngine {
                 physicsEngine.isDomainExpansionActive = false
                 scores.status.empty()
 
-            case .KaboomPeg, .KaboomPegActive:
-                scores.clearedKaboomPegsCount += 1
-                scores.status = "Explosion Alert!"
-                delegate?.processSpecialGameObjects()
+            case .KaboomPeg, .KaboomPegActive: // cases covered separately!
+                break
 
             case .StubbornPeg:
                 break

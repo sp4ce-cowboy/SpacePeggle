@@ -12,13 +12,20 @@ class Bucket {
                y: (bucketLeft.centerPosition.y + bucketRight.centerPosition.y).half)
     }
 
-    var width: Double {
+    /*var width: Double {
         (bucketRight.centerPosition.x + bucketRight.width.half)
         - (bucketLeft.centerPosition.x + bucketLeft.width.half)
+    }*/
+
+    var width: Double {
+            Double(ObjectSet.defaultGameObjectSet["Bucket"]?.size.width ??
+                   CGFloat(Constants.UNIVERSAL_LENGTH))
     }
 
     var height: Double {
-        bucketRight.height
+        // bucketRight.height
+        Double(ObjectSet.defaultGameObjectSet["Bucket"]?.size.height ??
+               CGFloat(Constants.UNIVERSAL_LENGTH))
     }
 
     init(bucketLeft: BucketLeft = BucketLeft(), bucketRight: BucketRight = BucketRight()) {

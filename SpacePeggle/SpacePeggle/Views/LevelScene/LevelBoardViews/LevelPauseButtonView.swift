@@ -13,8 +13,8 @@ struct LevelPauseButtonView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 40.0)
-                            .foregroundStyle(Color.black)
-                            .opacity(0.6)
+                            .foregroundStyle(Color.gray)
+                            .opacity(0.8)
                     }
                     .padding([.all], 30)
                 }

@@ -27,6 +27,12 @@ struct GameObjectView: View {
             .rotationEffect(rotation, anchor: center.unitPoint)
             .opacity(viewModel.gameObjectOpacities[gameObject.id, default: .unit])
             .gesture(handleLongPress)
+            .if(viewModel.getObjectAnimation(self)) { view in
+                view.scaleEffect(viewModel.getObjectScale(self),
+                                 anchor: center.unitPoint)
+                    .animation(.easeOut(duration: 1.0),
+                               value: viewModel.getObjectAnimation(self))
+            }
 
     }
 

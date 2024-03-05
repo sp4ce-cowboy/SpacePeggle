@@ -14,12 +14,12 @@ final class BucketRight: PhysicsObject {
            CGFloat(Constants.UNIVERSAL_LENGTH))
 
     static let DEFAULT_SHAPE = RectangularShape(height: DEFAULT_HEIGHT,
-                                                width: DEFAULT_WIDTH / 10.0)
+                                                width: DEFAULT_WIDTH / 10)
 
     static let DEFAULT_CENTER = Vector(x: Constants.UI_SCREEN_WIDTH.half
                                        + DEFAULT_WIDTH.half
                                        - DEFAULT_SHAPE.width.half,
-                                       y: Constants.UI_SCREEN_HEIGHT - DEFAULT_HEIGHT)
+                                       y: Constants.UI_SCREEN_HEIGHT - DEFAULT_HEIGHT.oneHalf)
 
     var velocity: Vector {
         get { bucket?.velocity ?? .zero }

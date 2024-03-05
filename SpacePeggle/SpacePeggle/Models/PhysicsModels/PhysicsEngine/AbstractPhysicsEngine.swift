@@ -19,5 +19,7 @@ protocol AbstractPhysicsEngine {
     func removeObject(with id: UUID)
     func updatePhysics(timeStep: TimeInterval)
 
+    func applySpecialPhysicsOn(objectId: UUID, at position: Vector, for radius: Double)
+
     init(domain: CGRect, physicsObjects: [UUID: any PhysicsObject])
 }

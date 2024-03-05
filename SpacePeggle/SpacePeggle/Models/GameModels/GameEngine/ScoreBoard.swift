@@ -58,7 +58,7 @@ struct ScoreBoard {
         }
     }
 
-    var totalBallCount: Int = 2
+    var totalBallCount: Int = 5
     var shotBallCount: Int = 0
     var availableBallCount: Int {
         totalBallCount - shotBallCount

@@ -64,8 +64,17 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
 
     }
 
+    /// Remove exploding pegs 
     func processSpecialGameObjects() {
         for (id, value) in gameObjects where value.gameObjectType == .KaboomPegActive {
+
+            withAnimation(.easeInOut(duration: Constants.TRANSITION_INTERVAL)) {
+                gameObjectOpacities[id] = 0
+            }
+            // After the fade-out duration, remove the GameObject from the dictionary
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.TRANSITION_INTERVAL + 0.5) {
+                self.gameObjectOpacities[id] = nil
+            }
 
             peggleGameEngine.handleObjectRemoval(id: id)
         }
@@ -138,6 +147,14 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         case .Spooky:
             return "SpookyPeg"
         }
+    }
+
+    func getObjectAnimation(_ view: GameObjectView) -> Bool {
+        view.gameObject.gameObjectType == .KaboomPegActive
+    }
+
+    func getObjectScale(_ view: GameObjectView) -> Double {
+        view.gameObject.height.twice.twice
     }
 
 }

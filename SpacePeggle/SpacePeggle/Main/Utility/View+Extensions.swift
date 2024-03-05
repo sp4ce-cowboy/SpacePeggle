@@ -55,6 +55,7 @@ extension Double {
     static var unit: Double { 1.0 }
     var half: Double { self * 0.5 }
     var twice: Double { self * 2.0 }
+    var oneHalf: Double { self * 1.5 }
     var square: Double { pow(self, 2) }
     var sqroot: Double { sqrt(self) }
 }
