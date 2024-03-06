@@ -12,16 +12,19 @@ final class GoalPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .GoalPeg
     var isActive = false
+    var hp: Double?
 
     /// Initializer for Peg as a GameObject
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .GoalPeg,
-         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
+         hp: Double? = nil) {
 
         self.centerPosition = centerPosition
         self.id = id
         self.shape = shape
+        self.hp = hp
 
     }
 

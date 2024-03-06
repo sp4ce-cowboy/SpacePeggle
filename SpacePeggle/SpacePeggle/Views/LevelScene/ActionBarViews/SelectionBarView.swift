@@ -90,9 +90,9 @@ struct SelectionBarView: View {
         // Delete button
         Button(action: { viewModel.selectedMode = .Remove },
                label: { buttonImage(for: .Remove) })
-        .padding([.leading, .trailing, .top], 30)
+        .padding([.leading, .trailing], 30)
         .opacity(getOpacity(for: .Remove))
-        .onLongPressGesture { viewModel.selectedMode = .NormalPeg } // revert on long press
+        .onTapGesture(count: 2) { viewModel.selectedMode = .NormalPeg } // revert on double tap
     }
 
     var blockButton: some View {

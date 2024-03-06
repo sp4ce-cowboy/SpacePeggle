@@ -15,6 +15,7 @@ class Enums {
         case shapeRotation
         case shapeScale
         case shape
+        case hp
     }
 
     enum LevelCodingKeys: String, CodingKey {

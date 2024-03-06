@@ -10,6 +10,7 @@ protocol Peg: GameObject, PhysicsObject {
     var velocity: Vector { get set }
     var force: Vector { get set }
     var shape: any UniversalShape { get set }
+    var hp: Double? { get set }
 
     var gameObjectType: Enums.GameObjectType { get set }
     var isActive: Bool { get set }

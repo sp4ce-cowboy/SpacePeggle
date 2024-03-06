@@ -40,6 +40,7 @@ extension Level {
         let shapeRotation = try gameObjectDict.decode(Double.self, forKey: .shapeRotation)
         let shapeScale = try gameObjectDict.decode(Double.self, forKey: .shapeScale)
         let shapeType = try gameObjectDict.decode(Enums.ShapeType.self, forKey: .shapeType)
+        let hp = try gameObjectDict.decode(Enums.ShapeType.self, forKey: .shapeType)
 
         let decodedShape: UniversalShape = ObjectSet
             .fullShapeCreation[shapeType]?(shapeHeight, shapeWidth, shapeRotation, shapeScale) ??

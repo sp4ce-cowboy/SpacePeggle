@@ -13,15 +13,18 @@ final class StubbornPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .StubbornPeg
     var isActive = false
+    var hp: Double?
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .StubbornPeg,
-         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
+         hp: Double? = nil) {
 
         self.centerPosition = centerPosition
         self.id = id
         self.shape = shape
+        self.hp = nil
     }
 
     init(mass: Double = .infinity,
@@ -65,6 +68,7 @@ final class StubbornPeg: Peg {
     func subjectToGravity() {  }
 
     func applyRestitution() {
+        // Ensure no micro-movements
         if velocity.magnitude < Constants.STUCK_VELOCITY_THRESHOLD {
             velocity = .zero
             return

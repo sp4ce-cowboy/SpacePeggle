@@ -49,7 +49,7 @@ extension PhysicsObject {
     }
 
     var isMovable: Bool {
-        mass.isFinite
+        !mass.isInfinite
     }
 
     mutating func applyPhysics(timeStep: TimeInterval) {

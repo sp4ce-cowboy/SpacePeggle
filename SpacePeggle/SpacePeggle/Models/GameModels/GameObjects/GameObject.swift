@@ -20,10 +20,11 @@ protocol GameObject: UniversalObject, Codable {
     var gameObjectType: Enums.GameObjectType { get set }
     var isActive: Bool { get set }
     var shape: UniversalShape { get set }
+    var hp: Double? { get set }
 
     func activateGameObject()
     init(centerPosition: Vector, id: UUID,
-         gameObjectType: Enums.GameObjectType, shape: UniversalShape)
+         gameObjectType: Enums.GameObjectType, shape: UniversalShape, hp: Double?)
 
     /// GameObjects overlap while PhysicsObjects collide, both of which
     /// are determined by UniversalShapes that intersect.

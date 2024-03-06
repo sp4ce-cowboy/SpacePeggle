@@ -100,10 +100,12 @@ extension PhysicsEngine {
                                          object2: inout any PhysicsObject,
                                          with distance: Double) {
 
+        // Correct positions taking overlap into account
         correctPositions(object1: &object1, object2: &object2, with: distance)
 
         // Calculate new velocities based on the conservation of momentum
-        let (newVelocity1, newVelocity2) = calculateNewVelocities(object1: object1, object2: object2)
+        let (newVelocity1, newVelocity2) =
+        calculateNewVelocities(object1: object1, object2: object2)
 
         object1.velocity = newVelocity1
         object2.velocity = newVelocity2
@@ -126,27 +128,17 @@ extension PhysicsEngine {
             object1.centerPosition = correctedPosition
         }
 
-        /*let dotProduct = Vector.dot(object1.velocity, normalVector)
-         let reflection = (normalVector * 2.0) * dotProduct
-         let finalVelocity = object1.velocity - reflection
-         object1.velocity = finalVelocity*/
-
         if object2.isMovable {
             let normalVector2 = (object2.centerPosition - object1.centerPosition).normalized
             let correction2 = normalVector2 * distance
             let correctedPosition2 = object2.centerPosition + correction2
             object2.centerPosition = correctedPosition2
         }
-
-        /*let dotProduct2 = Vector.dot(object2.velocity, normalVector2)
-         let reflection2 = (normalVector2 * 2.0) * dotProduct2
-         let finalVelocity2 = object2.velocity - reflection2
-         object2.velocity = finalVelocity2*/
     }
 
     private func calculateNewVelocities(object1: any PhysicsObject,
                                         object2: any PhysicsObject) -> (Vector, Vector) {
-        if object1.mass.isInfinite {
+        if !object1.isMovable {
             // Object1 is stationary (infinite mass), only reflect object2's velocity
             let reflectedVelocity2 = reflectVelocity(movingObjectVelocity: object2.velocity,
                                                      normal: (object2.centerPosition
@@ -154,7 +146,7 @@ extension PhysicsEngine {
 
             return (object1.velocity, reflectedVelocity2)
 
-        } else if object2.mass.isInfinite {
+        } else if !object2.isMovable {
             // Object2 is stationary (infinite mass), only reflect object1's velocity
             let reflectedVelocity1 = reflectVelocity(movingObjectVelocity: object1.velocity,
                                                      normal: (object1.centerPosition

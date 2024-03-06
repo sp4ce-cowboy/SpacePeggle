@@ -11,15 +11,18 @@ final class KaboomPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .KaboomPeg
     var isActive = false
+    var hp: Double?
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .KaboomPeg,
-         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE) {
+         shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
+         hp: Double? = nil) {
 
         self.centerPosition = centerPosition
         self.id = id
         self.shape = shape
+        self.hp = hp
     }
 
     init(mass: Double = .infinity,

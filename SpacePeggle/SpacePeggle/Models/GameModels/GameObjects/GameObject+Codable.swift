@@ -16,6 +16,7 @@ extension GameObject {
         let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeScale = try container.decode(Double.self, forKey: .shapeScale)
         let shapeType = try container.decode(Enums.ShapeType.self, forKey: .shapeType)
+        let hp = try container.decode(Double.self, forKey: .hp)
 
         var decodedShape: UniversalShape
 
@@ -33,7 +34,8 @@ extension GameObject {
         }
 
         self.init(centerPosition: center, id: id,
-                  gameObjectType: gameObjectType, shape: decodedShape)
+                  gameObjectType: gameObjectType,
+                  shape: decodedShape, hp: hp)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -45,9 +47,10 @@ extension GameObject {
 
         try container.encode(shape.trueWidth, forKey: .shapeWidth)
         try container.encode(shape.trueHeight, forKey: .shapeHeight)
-        // try container.encode(shape.rotation.radians, forKey: .shapeRotation)
+
         try container.encode(shape.rotation, forKey: .shapeRotation)
         try container.encode(shape.scale, forKey: .shapeScale)
         try container.encode(shape.shapeType, forKey: .shapeType)
+        try container.encode(hp, forKey: .hp)
     }
 }
