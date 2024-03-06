@@ -79,7 +79,7 @@ public class Constants {
     static var MAX_HP_VALUE: Int = 10
 
     /// MIN HP VALUE
-    static var MIN_HP_VALUE: Int = 0
+    static var MIN_HP_VALUE: Int = 1
 
     // A universal helper function to dismiss the keyboard from anywhere
     public static func dismissKeyboard() {
@@ -131,16 +131,19 @@ public class Constants {
     /// accomodating to the width would ensure that all iPads fit.
     ///
     /// The game area will essentially be a square that the user can interact with.
-    /// Regardless of the screen size, the start of the game area will be adjusted
-    /// by x points in the positive y-direction where x is a ratio of the launcher
+    /// Regardless of the screen size, the origin of the game area will be adjusted
+    /// by a points in the positive y-direction where a is a ratio of the launcher
     /// size, determined by the screen. This is to accomodate the launcher's
     /// minimum size, and some added buffer space so that game objects do not get
     /// in the way of the user's ability to aim and launch the cannon.
+    ///
+    /// Furthermore, the offset ensures that both the selection bar is fully
+    /// visible below the game area.
     static func getAdjustedGameArea() -> CGRect {
         let width = UI_SCREEN_WIDTH
         let height = UI_SCREEN_WIDTH
         let size = CGSize(width: width, height: height)
-        let origin = Vector(x: 0, y: UNIVERSAL_LAUNCHER_HEIGHT * 1.2).point
+        let origin = Vector(x: 0, y: UNIVERSAL_LAUNCHER_HEIGHT * 1.1).point
         return CGRect(origin: origin, size: size)
     }
 

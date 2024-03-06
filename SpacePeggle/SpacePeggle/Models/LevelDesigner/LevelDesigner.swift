@@ -21,6 +21,7 @@ protocol AbstractLevelDesigner {
     func handleObjectMovement(_ object: any GameObject,
                               with drag: DragGesture.Value,
                               and state: inout Bool)
+    func updateObjectHitPoints(withId id: UUID, and value: Int)
 }
 
 /// See PhysicsEngine and GameEngine
@@ -95,6 +96,24 @@ extension LevelDesigner {
     func handleObjectRemoval(_ location: Vector) {
         if let object = levelObjects.values.first(where: { $0.contains(location) }) {
             handleObjectRemoval(object)
+        }
+    }
+}
+
+/// This extension allows for the modification of the hitpoints of game objects
+extension LevelDesigner {
+
+    func updateObjectHitPoints(withId id: UUID, and value: Int) {
+        if let levelObject = levelObjects[id] {
+            if levelObject.hp == Constants.MIN_HP_VALUE, value < .zero {
+                return
+            }
+
+            if levelObject.hp == Constants.MAX_HP_VALUE, value > .zero {
+                return
+            }
+
+            levelObjects[id]?.hp += value
         }
     }
 }

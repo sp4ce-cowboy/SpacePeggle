@@ -77,7 +77,7 @@ class Enums {
         case Saturn = "saturn-background"
     }
 
-    enum AppScene: String {
+    enum AppScene {
         case StartScene
         case LevelScene
         case GameScene

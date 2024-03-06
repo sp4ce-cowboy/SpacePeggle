@@ -289,6 +289,23 @@ extension LevelSceneViewModel {
     }
 
     var maxHpValue: Double {
-        Double(Constants.MIN_HP_VALUE)
+        Double(Constants.MAX_HP_VALUE)
+    }
+
+    func handleIncrement() {
+        triggerRefresh()
+        Logger.log("Increment handled", self)
+        if let currentObjectId = currentHitPointsGameObject {
+            levelDesigner.updateObjectHitPoints(withId: currentObjectId,
+                                                and: .unit)
+        }
+    }
+
+    func handleDecrement() {
+        triggerRefresh()
+        if let currentObjectId = currentHitPointsGameObject {
+            levelDesigner.updateObjectHitPoints(withId: currentObjectId,
+                                                and: .negativeUnit)
+        }
     }
 }

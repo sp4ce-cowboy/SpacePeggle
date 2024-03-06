@@ -9,6 +9,8 @@ struct LevelObjectView: View {
 
     var isSelected: Bool { viewModel.currentResizingGameObject == levelObject.id }
     var currentGameObject: UUID? { viewModel.currentResizingGameObject }
+    var isHpSelected: Bool { viewModel.currentHitPointsGameObject == levelObject.id }
+    var currentHpGameObject: UUID? { viewModel.currentHitPointsGameObject }
     var rotation: Angle { levelObject.rotation }
     var center: Vector { levelObject.centerPosition }
 
@@ -22,14 +24,13 @@ struct LevelObjectView: View {
     var current: Double { Double(levelObject.hp) }
     var minValue: Double { Double(0) }
     var maxValue: Double { Double(10) }
-    @State var isTapped = false
 
     var body: some View {
         ZStack(alignment: .center) {
             Image(levelObjectImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .if(isTapped) { view in
+                .if(isHpSelected) { view in
                     view.overlay(HealthOverlayView(levelObject: levelObject))
                         .environmentObject(viewModel)
                 }
@@ -38,7 +39,7 @@ struct LevelObjectView: View {
                 .position(center.point)
                 .rotationEffect(rotation, anchor: center.unitPoint)
             // .onTapGesture { handleTap() }
-                .onTapGesture(count: 2) { isTapped.toggle() }
+                .onTapGesture(count: 2) { handleDoubleTap() }
                 .gesture(TapGesture().onEnded { _ in handleTap() })
                 .simultaneousGesture(handleLongPress.exclusively(before: handleDrag))
                 .if(isSelected) { view in
@@ -70,10 +71,10 @@ struct LevelObjectView: View {
     }
 
     private func handleDoubleTap() {
-        if isSelected {
-            viewModel.currentResizingGameObject = nil
+        if isHpSelected {
+            viewModel.currentHitPointsGameObject = nil
         } else {
-            viewModel.currentResizingGameObject = levelObject.id
+            viewModel.currentHitPointsGameObject = levelObject.id
         }
     }
 

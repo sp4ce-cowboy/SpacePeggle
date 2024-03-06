@@ -60,6 +60,12 @@ extension Double {
     var sqroot: Double { sqrt(self) }
 }
 
+extension Int {
+    static var unit: Int { 1 }
+    static var zero: Int { 0 }
+    static var negativeUnit: Int { -1 }
+}
+
 extension CGFloat {
     static var unit: Double { Double.unit }
     var half: Double { Double(self).half }

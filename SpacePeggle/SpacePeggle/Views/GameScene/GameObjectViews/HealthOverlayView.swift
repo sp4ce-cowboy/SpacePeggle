@@ -13,19 +13,19 @@ struct HealthOverlayView: View {
         ZStack {
             Gauge(value: current, in: minValue...maxValue) {
                 Image(systemName: "heart")
-                    .foregroundColor(.red)
+                    .foregroundStyle(Color.red)
             } currentValueLabel: {
                 Text("\(Int(current))")
-                    .foregroundColor(Color.green)
+                    .foregroundStyle(Color.green)
             } minimumValueLabel: {
                 Text("\(Int(minValue))")
-                    .foregroundColor(Color.green)
+                    .foregroundStyle(Color.green)
             } maximumValueLabel: {
                 Text("\(Int(maxValue))")
-                    .foregroundColor(Color.red)
+                    .foregroundStyle(Color.red)
             }
             .gaugeStyle(.accessoryCircularCapacity)
-            .scaleEffect(0.8, anchor: center.unitPoint)
+            .scaleEffect(0.6)
         }
     }
 }

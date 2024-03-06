@@ -103,17 +103,19 @@ struct SelectionBarView: View {
     }
 
     var getIncrementButton: some View {
-        Button(action: { viewModel.selectedMode = .BlockPeg },
-               label: { buttonImage(for: .BlockPeg) })
+        Button(action: { viewModel.handleIncrement() },
+               label: { Image(systemName: "plus.circle")
+            .imageScale(.large)})
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .BlockPeg))
+        .opacity(getOpacity(for: .HitPoints))
     }
 
     var getDecrementButton: some View {
-        Button(action: { viewModel.selectedMode = .BlockPeg },
-               label: { buttonImage(for: .BlockPeg) })
+        Button(action: { viewModel.handleDecrement() },
+               label: { Image(systemName: "minus.circle")
+                .imageScale(.large)})
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .BlockPeg))
+        .opacity(getOpacity(for: .HitPoints))
     }
 
 }

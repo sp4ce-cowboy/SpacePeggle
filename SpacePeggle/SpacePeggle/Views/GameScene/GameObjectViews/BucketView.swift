@@ -20,7 +20,6 @@ struct BucketView: View {
             .aspectRatio(viewModel.bucketImageAspectRatio, contentMode: .fit)
             .frame(width: bucket.width, height: bucket.height)
             .position(center.point)
-            .border(Color.black)
             .onAppear {
                 Logger.log("BucketCenter is \(bucket.centerPosition)")
             }
