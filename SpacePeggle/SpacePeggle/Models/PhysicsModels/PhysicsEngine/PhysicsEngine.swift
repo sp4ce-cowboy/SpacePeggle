@@ -33,22 +33,32 @@ extension PhysicsEngine: AbstractPhysicsEngine { }
 /// of core physics elements that are needed to work together. To apply different
 /// sets of Physics rules, a new Physics Implementation conformant must be created.
 final class PhysicsEngine {
+    weak var delegate: PhysicsEngineDelegate?
     let gravity = Constants.UNIVERSAL_GRAVITY
     let velocityCutOff = Constants.VELOCITY_CUTOFF
-    let restitution = Constants.UNIVERSAL_RESTITUTION
+    var restitution: Double { Constants.UNIVERSAL_RESTITUTION }
 
     /// The area monitored by the Engine.
     var domain: CGRect
+    var isDomainExpansionActive = false
 
     var physicsObjects: [UUID: any PhysicsObject]
 
-    init(areaOfEffect: CGRect, physicsObjects: [UUID: any PhysicsObject] = [:]) {
+    init(domain: CGRect, physicsObjects: [UUID: any PhysicsObject] = [:]) {
         self.physicsObjects = physicsObjects
-        self.domain = areaOfEffect
+        self.domain = domain
+    }
+
+    deinit {
+        Logger.log("PhysicsEngine is deinitialized", self)
     }
 
     func addPhysicsObject(object: any PhysicsObject) {
         self.physicsObjects[object.id] = object
+    }
+
+    func removeObject(with id: UUID) {
+        physicsObjects.removeValue(forKey: id)
     }
 
     func updatePhysics(timeStep: TimeInterval) {
@@ -58,6 +68,17 @@ final class PhysicsEngine {
                 physicsObject.applyPhysics(timeStep: timeStep)
                 handleBoundaryCollision(object: &physicsObject)
             }
+        }
+    }
+
+    /// Only considered to contain point if domain is not expanded
+    /// Returns true if not within domain. Nil and false values indicate
+    /// the opposite.
+    func isNotWithinDomain(point: Vector) -> Bool? {
+        if !isDomainExpansionActive {
+            return !domain.contains(point.point)
+        } else {
+            return nil
         }
     }
 }

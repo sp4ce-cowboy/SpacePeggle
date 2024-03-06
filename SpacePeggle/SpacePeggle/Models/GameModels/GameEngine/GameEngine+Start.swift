@@ -3,36 +3,57 @@ import SwiftUI
 /// This extension adds core game logic to `GameEngine`, like
 /// starting, stopping, and updating the game or loading a new level
 extension GameEngine {
-    func startGame() {
+    func startGame(with level: AbstractLevel) {
         self.isGameActive = true
-        self.loadLevel()
-    }
+        self.loadLevel(with: level)
+        Logger.log("Start method: Game is loaded with \(currentLevel.gameObjects.count)", self)
 
-    func updateGame(timeStep: TimeInterval) {
-        physicsEngine.updatePhysics(timeStep: timeStep)
-        updateGameObjectState()
-        updateBallState()
-        updateGameState()
-    }
-
-    func stopGame() {
-        // MARK: - Game stop point. Can be used for post-game clean up 
-        isGameActive = false
-    }
-
-    func loadLevel(with level: AbstractLevel = LevelStub.levelStub) {
-        self.currentLevel = level
-        self.updatePhysicsObjectsFromGameObjects()
-    }
-
-    func updateGameState() {
-        Logger.log("number of game objects = \(gameObjects.values.count)")
-        if gameObjects.values.isEmpty {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                // MARK: - Level restart/progress point. Can be used to load other levels in the future.
-                self.startGame()    // These are commented out to comply with PS3 requirements
+        for object in gameObjects.values {
+            switch object.gameObjectType {
+            case .GoalPeg, .GoalPegActive:
+                scores.totalGoalPegsCount += 1
+            case .NormalPeg, .NormalPegActive:
+                scores.totalNormalPegsCount += 1
+            case .SpookyPeg, .SpookyPegActive:
+                scores.totalSpookyPegsCount += 1
+            case .KaboomPeg, .KaboomPegActive:
+                scores.totalKaboomPegsCount += 1
+            case .StubbornPeg, .BlockPeg:
+                break
             }
         }
     }
 
+    func loadLevel(with level: AbstractLevel = LevelStub().getLevelOneStub()) {
+        self.currentLevel = level
+        Logger.log("Load function: Game is loaded with "
+                   + "\(currentLevel.gameObjects.count)", self)
+
+        self.updatePhysicsObjectsFromGameObjects() // Add game objects to physics engine
+        physicsEngine.addPhysicsObject(object: self.bucket.bucketLeft)
+        physicsEngine.addPhysicsObject(object: self.bucket.bucketRight)
+    }
+
+    func updateGame(timeStep: TimeInterval) {
+        physicsEngine.updatePhysics(timeStep: timeStep) // Updates PhysicsObjects
+        synchronizeGameObjects() // Updates GameObjects from PhysicsObjects
+        updateGameState() // Checks if ball out of bounds
+        updateLevelState() // Check if game board is empty
+    }
+
+    func stopGame() {
+        // MARK: - Game stop point. Can be used for post-game clean up
+        isGameActive = false
+    }
+
+    func updateLevelState() {
+        // Logger.log("Bucket center = \(bucket.centerPosition) and velocity = \(bucket.velocity)", self)
+        // self.startGame(with: currentLevel)
+        // Logger.log("number of game objects = \(gameObjects.values.count)")
+        /*if gameObjects.values.isEmpty {
+         withAnimation(.easeOut(duration: Constants.TRANSITION_INTERVAL)) {
+         self.startGame(with: level)
+         }
+         }*/
+    }
 }

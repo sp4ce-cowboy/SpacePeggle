@@ -8,6 +8,7 @@ import SwiftUI
 ///
 /// Also see `PhysicsEngine`
 extension GameEngine: AbstractGameEngine {
+
     /// As an example:
     /// ```
     ///    func updateGame(timeSte: TimeInterval) {
@@ -32,17 +33,20 @@ final class GameEngine {
     var physicsEngine: AbstractPhysicsEngine
     var currentScreenGeometry: GeometryProxy
 
-    var currentLevel: AbstractLevel
+    var currentLevel: AbstractLevel = LevelStub.getEmptyLevel()
     var isGameActive = false
 
     var launcher: Launcher  // Can be swapped for a [UUID : Launcher] map if needed
-    var ball: Ball          // Can be swapped for a [UUID : Ball] map if needed
+    @Published var ball: Ball   // Can be swapped for a [UUID : Ball] map if needed
+    @Published var bucket: Bucket
     var isBallLaunched = false // Can be swapped for a [UUID : Bool] if needed
 
     var velocityCheckTimer: Timer?
     var timeBelowThreshold: TimeInterval = 0
     let checkInterval: TimeInterval = 0.5
     var ballIsStuck = false
+
+    var scores = ScoreBoard()
 
     var physicsObjects: [UUID: any PhysicsObject] {
         get { physicsEngine.physicsObjects }
@@ -54,13 +58,19 @@ final class GameEngine {
         set { currentLevel.gameObjects = newValue }
     }
 
-    init(geometry: GeometryProxy, currentLevel: AbstractLevel = LevelStub.levelStub) {
+    init(geometry: GeometryProxy) {
+        Logger.log("Game Engine is initialized")
         self.launcher = Launcher(layoutSize: geometry.size)
         self.ball = Ball()
-        self.currentLevel = currentLevel
+        self.bucket = Bucket()
         self.currentScreenGeometry = geometry
         self.physicsEngine = PhysicsEngine(
-            areaOfEffect: Constants.getGameScreen(from: geometry))
+            domain: Constants.getFullScreen(from: geometry))
+        self.physicsEngine.delegate = self
+    }
+
+    deinit {
+        Logger.log("Game Engine is deinitialized.")
     }
 
 }

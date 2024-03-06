@@ -20,13 +20,12 @@ opt_in_rules:
   - empty_xctest_method
   - expiring_todo
   - explicit_init
-  - explicit_self
+  # - explicit_self moved to analyzer_rules section
   - fallthrough
   - fatal_error_message
   - file_name
   - first_where
   - flatmap_over_map_reduce
-  - function_default_parameter_at_end
   - identical_operands
   - implicit_return
   - joined_default_parameter
@@ -65,11 +64,16 @@ opt_in_rules:
   - unneeded_parentheses_in_closure_argument
   - unowned_variable_capture
   - untyped_error_in_catch
-  - unused_declaration
-  - unused_import
+  # - unused_declaration moved to analyzer_rules section
+  # - unused_import moved to analyzer_rules section
   - vertical_parameter_alignment_on_call
   - xct_specific_matcher
   - yoda_condition
+
+analyzer_rules:
+  - explicit_self
+  - unused_declaration
+  - unused_import
 
 disabled_rules:
   - attributes
@@ -77,6 +81,7 @@ disabled_rules:
   - multiple_closures_with_trailing_closure # for e.g. SwiftUI buttons
   - todo
   - type_name
+  - function_default_parameter_at_end # disabled because it makes code less extensible by requiring unnecessary refactoring.
 
 line_length:
   warning: 120
