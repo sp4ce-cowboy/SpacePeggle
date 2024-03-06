@@ -2,6 +2,7 @@ import XCTest
 import SwiftUI
 @testable import SpacePeggle
 
+/// Tests have been drastically reduced and changed to playtesting test plans instead
 class LauncherTests: XCTestCase {
 
     func testLauncherInitialization() {

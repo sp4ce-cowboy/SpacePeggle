@@ -25,6 +25,7 @@
 		BA28FD6E2B96AA190044CAC8 /* StartMenuDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */; };
 		BA28FD702B96AA410044CAC8 /* LevelSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */; };
 		BA2F30FE2B98A25C00628E45 /* LevelLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F30FD2B98A25C00628E45 /* LevelLoadingView.swift */; };
+		BA2F31002B98B04200628E45 /* LevelSceneViewModel+HP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F30FF2B98B04200628E45 /* LevelSceneViewModel+HP.swift */; };
 		BA3919E42B980DB000943A39 /* LevelObjectHealthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3919E32B980DB000943A39 /* LevelObjectHealthOverlayView.swift */; };
 		BA3EC37F2B9865190032CC0E /* GameObjectHealthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3EC37E2B9865190032CC0E /* GameObjectHealthOverlayView.swift */; };
 		BA3EC3812B9872550032CC0E /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3EC3802B9872550032CC0E /* Counter.swift */; };
@@ -148,6 +149,7 @@
 		BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuDefaultView.swift; sourceTree = "<group>"; };
 		BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionMenuView.swift; sourceTree = "<group>"; };
 		BA2F30FD2B98A25C00628E45 /* LevelLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoadingView.swift; sourceTree = "<group>"; };
+		BA2F30FF2B98B04200628E45 /* LevelSceneViewModel+HP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LevelSceneViewModel+HP.swift"; sourceTree = "<group>"; };
 		BA3919E32B980DB000943A39 /* LevelObjectHealthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelObjectHealthOverlayView.swift; sourceTree = "<group>"; };
 		BA3EC37E2B9865190032CC0E /* GameObjectHealthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectHealthOverlayView.swift; sourceTree = "<group>"; };
 		BA3EC3802B9872550032CC0E /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -264,9 +266,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA0A27002B971D9E005AA65A /* Sounds */ = {
+		BA0A27002B971D9E005AA65A /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				BA716F302B95DC3300C8EB3B /* space-background-compressed.jpeg */,
 				BA5E34182B979BCB002219AC /* beep.mp3 */,
 				BA5E34162B976417002219AC /* jump.mp3 */,
 				BA5E34142B976299002219AC /* hit-sound.mp3 */,
@@ -274,7 +277,7 @@
 				BA0A27092B9735A0005AA65A /* lose.mp3 */,
 				BA0A27072B973527005AA65A /* field-of-memories-soundtrack.mp3 */,
 			);
-			path = Sounds;
+			path = Media;
 			sourceTree = "<group>";
 		};
 		BA28FD6A2B962DBE0044CAC8 /* StartSceneVM */ = {
@@ -299,13 +302,12 @@
 		BA67193F2B942554004FA712 /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
-				BA0A27002B971D9E005AA65A /* Sounds */,
+				BA0A27002B971D9E005AA65A /* Media */,
 				BA7662442B8C89590022C267 /* SpacePeggleApp.swift */,
 				BAD80ADB2B90B243008E998F /* AppDelegate.swift */,
 				BA12BB032B90886100BCE72C /* AppScene.swift */,
 				BA85C6702B8F3EC900039CCE /* AppSceneController.swift */,
 				BA12BAFF2B90782400BCE72C /* AppSceneController+Transition.swift */,
-				BA716F302B95DC3300C8EB3B /* space-background-compressed.jpeg */,
 				BAC447372B95CC740011581F /* LaunchScreen.storyboard */,
 			);
 			path = MainApp;
@@ -357,7 +359,6 @@
 		BA7661E62B8C86020022C267 /* SpacePeggleTests */ = {
 			isa = PBXGroup;
 			children = (
-				BA7662822B8C8AE10022C267 /* CommonsTests */,
 				BA76627D2B8C8AE10022C267 /* GameModelsTests */,
 				BA7662832B8C8AE10022C267 /* PhysicsModelsTests */,
 				BA76627A2B8C8AE10022C267 /* UtilityTests */,
@@ -519,13 +520,6 @@
 			path = GameModelsTests;
 			sourceTree = "<group>";
 		};
-		BA7662822B8C8AE10022C267 /* CommonsTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommonsTests;
-			sourceTree = "<group>";
-		};
 		BA7662832B8C8AE10022C267 /* PhysicsModelsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,11 +607,11 @@
 			children = (
 				BACF21D82B904CA5007FCE8D /* StartMenuView.swift */,
 				BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */,
+				BA2F30FD2B98A25C00628E45 /* LevelLoadingView.swift */,
 				BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */,
 				BAB41A3F2B96BA58004C76E4 /* StartSettingsMenuView.swift */,
 				BA0A27012B972197005AA65A /* PowerUpSettingsView.swift */,
 				BA0A27032B97235B005AA65A /* EnvironmentMenuView.swift */,
-				BA2F30FD2B98A25C00628E45 /* LevelLoadingView.swift */,
 			);
 			path = StartMenuViews;
 			sourceTree = "<group>";
@@ -664,6 +658,7 @@
 			children = (
 				BACF21D32B9046AE007FCE8D /* LevelSceneViewModel.swift */,
 				BA0343DB2B95830500B6EA95 /* Options.swift */,
+				BA2F30FF2B98B04200628E45 /* LevelSceneViewModel+HP.swift */,
 			);
 			path = LevelSceneVM;
 			sourceTree = "<group>";
@@ -899,6 +894,7 @@
 				BA7662712B8C89590022C267 /* Logger.swift in Sources */,
 				BA76625A2B8C89590022C267 /* AbstractPhysicsEngine.swift in Sources */,
 				BA76624F2B8C89590022C267 /* GameObjectsBoardView.swift in Sources */,
+				BA2F31002B98B04200628E45 /* LevelSceneViewModel+HP.swift in Sources */,
 				BA7662722B8C89590022C267 /* DisplayLink.swift in Sources */,
 				BA8256942B91E4D800EF31C9 /* CircularShape.swift in Sources */,
 				BAAC2A012B8E0A8800938B85 /* StartBackgroundView.swift in Sources */,

@@ -15,7 +15,6 @@ struct RectangularShape: UniversalShape {
         self.scale = scale
     }
 
-    // Function to calculate the corners of the object
     func corners(centerPosition: Vector) -> [Vector] {
         let halfWidth = width / 2
         let halfHeight = height / 2
@@ -56,7 +55,7 @@ extension RectangularShape {
 
 extension RectangularShape {
 
-    /// REGULAR
+    /// APPROXIMATE METHOD
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
                     and otherPosition: Vector) -> Double? {
@@ -119,105 +118,3 @@ extension RectangularShape {
         return nil
     }
 }
-
-extension RectangularShape {
-
-    /*
-     /// Separating Axis Theorem
-     func intersectsss(withRectangle rectangle: RectangularShape,
-     at thisPosition: Vector,
-     and otherPosition: Vector) -> Double? {
-     
-     let thisCorners = self.corners(at: thisPosition)
-     let otherCorners = rectangle.corners(at: otherPosition)
-     
-     // Get axes by subtracting adjacent corners (normals to the sides)
-     let axes = self.getAxes(with: thisCorners) + rectangle.getAxes(with: otherCorners)
-     
-     for axis in axes where !overlapsOnAxis(axis: axis, thisCorners: thisCorners, otherCorners: otherCorners) {
-     // No overlap found on this axis, rectangles do not intersect
-     return nil
-     }
-     
-     // Overlap found on all axes, rectangles intersect
-     return 0.0001
-     
-     }
-     
-     // Calculate axes (normals to the sides)
-     private func getAxes(with corners: [Vector]) -> [Vector] {
-     var axes = [Vector]()
-     for i in 0..<corners.count {
-     let p1 = corners[i]
-     let p2 = corners[(i + 1) % corners.count]
-     let edge = p2 - p1
-     let normal = Vector(x: -edge.y, y: edge.x).normalized
-     axes.append(normal)
-     }
-     return axes
-     }
-     
-     // Check for overlap on a given axis
-     private func overlapsOnAxis(axis: Vector, thisCorners: [Vector], otherCorners: [Vector]) -> Bool {
-     let thisProj = projectCorners(corners: thisCorners, axis: axis)
-     let otherProj = projectCorners(corners: otherCorners, axis: axis)
-     
-     // Check for overlap
-     return !(thisProj.max < otherProj.min || thisProj.min > otherProj.max)
-     }
-     
-     // Project corners onto an axis and find min/max
-     private func projectCorners(corners: [Vector], axis: Vector) -> (min: Double, max: Double) {
-     var min = Vector.dot(corners[0], axis)
-     var max = min
-     for corner in corners[1...] {
-     let proj = Vector.dot(corner, axis)
-     if proj < min { min = proj }
-     if proj > max { max = proj }
-     }
-     return (min, max)
-     } */
-
-}
-
-/*
- // Helper method to calculate corners of the rectangle
- func corners(at centerPosition: Vector) -> [Vector] {
- 
- var topRightCorner: Vector {
- let x: Double = width / 2
- let y: Double = -height / 2
- return Vector(x: centerPosition.x + (x * cos(rotation) - y * sin(rotation)),
- y: centerPosition.y + (-x * sin(rotation) + y * cos(rotation)))
- }
- 
- var bottomRightCorner: Vector {
- let x: Double = width / 2
- let y: Double = height / 2
- let adjustedWidth = (x * cos(rotation) - y * sin(rotation))
- let adjustedHeight = (-x * sin(rotation) + y * cos(rotation))
- return Vector(x: centerPosition.x + adjustedWidth,
- y: centerPosition.y + adjustedHeight)
- }
- 
- var topLeftCorner: Vector {
- let x: Double = -width / 2
- let y: Double = -height / 2
- return Vector(x: centerPosition.x + (x * cos(rotation) - y * sin(rotation)),
- y: centerPosition.y + (-x * sin(rotation) + y * cos(rotation)))
- }
- 
- var bottomLeftCorner: Vector {
- let x: Double = -width / 2
- let y: Double = height / 2
- return Vector(x: centerPosition.x + (x * cos(rotation) - y * sin(rotation)),
- y: centerPosition.y + (-x * sin(rotation) + y * cos(rotation)))
- }
- 
- var edgeVectors: [Vector] {
- [topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner]
- }
- 
- return edgeVectors
- }
- */

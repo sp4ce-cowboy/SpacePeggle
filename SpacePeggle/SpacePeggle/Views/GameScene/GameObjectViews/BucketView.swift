@@ -1,10 +1,3 @@
-//
-//  BucketView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 27/2/24.
-//
-
 import SwiftUI
 
 struct BucketView: View {

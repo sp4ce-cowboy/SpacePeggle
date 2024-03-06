@@ -109,7 +109,6 @@ struct SelectionBarView: View {
     }
 
     var deleteButton: some View {
-        // Delete button
         Button(action: { viewModel.selectedMode = .Remove },
                label: { viewModel.buttonImage(for: .Remove) })
         .padding([.leading, .trailing], 30)

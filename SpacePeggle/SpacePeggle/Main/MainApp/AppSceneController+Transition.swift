@@ -7,7 +7,7 @@ import SwiftUI
 /// the `updateScene` method with the appropriate scene name.
 ///
 /// This approach allows for the retention of the dictionary's cyclomatic
-/// simplicity as opposed to a non-extendable enum while preserving the
+/// "non-complexity" as opposed to a non-extendable enum while preserving the
 /// sub-type safety offered by enums. Essentially, the scene collection can be
 /// extended with more scenes (via a simple store method) and this new scene
 /// can be safely retrieved from the dictionary by adding an extension to the
@@ -18,9 +18,6 @@ import SwiftUI
 /// approach respects the open-closed principle. Additionally, unlike dictionaries
 /// whose retrieval mechanisms are entirely open-ended as compared to enums,
 /// this approach enforces a certain restriction on the transitions available.
-///
-/// To demonstrate this in practise, I add extensions for every new Scene transition
-/// I make, with the transition function contained therein.
 extension AppSceneController {
 
     func transitionToStartScene() {

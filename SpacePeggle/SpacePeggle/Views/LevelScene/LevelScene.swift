@@ -2,7 +2,6 @@ import SwiftUI
 
 struct LevelScene: View {
     @StateObject var viewModel: LevelSceneViewModel
-    // @EnvironmentObject var sceneController: AppSceneController
 
     init(forGeometry geometryState: GeometryProxy, with sceneController: AppSceneController) {
         _viewModel = StateObject(wrappedValue: LevelSceneViewModel(geometryState, sceneController))

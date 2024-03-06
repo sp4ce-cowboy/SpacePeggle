@@ -27,7 +27,6 @@ class PhysicsEngineTests: XCTestCase {
                                  "Ball should collide and stay within the right boundary.")
     }
 
-    // Testing for objects at the edge of the boundary to ensure they don't escape or behave unexpectedly
     func testObjectsAtBoundaryEdge() {
         let engine = PhysicsEngine(domain: CGRect(x: 0, y: 0, width: 300, height: 300))
         let edgeBall = Ball(velocity: Vector(x: -10, y: 0), centerPosition: Vector(x: 0, y: 150))

@@ -1,10 +1,3 @@
-//
-//  MenuView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 27/2/24.
-//
-
 import SwiftUI
 
 struct GameMenuView: View {
@@ -23,11 +16,11 @@ struct GameMenuView: View {
 
                         getMenuButtonForGravity(
                             text: "Set Gravity to Earth",
-                            value: Vector(x: 0, y: 981))
+                            value: Constants.UNIVERSAL_GRAVITY)
 
                         getMenuButtonForGravity(
                             text: "Set Gravity to Jupiter",
-                            value: Vector(x: 0, y: 9_810))
+                            value: Vector(x: 0, y: 3_410))
 
                         StyleSheet.getRectangleButtonWithAction(
                             text: "RETURN TO GAME",
@@ -47,7 +40,7 @@ struct GameMenuView: View {
     }
 
     func getMenuButtonForGravity(text: String, value: Vector) -> some View {
-        Button(action: { Constants.UNIVERSAL_GRAVITY = value },
+        Button(action: { viewModel.handleGravityButton(value) },
                label: { StyleSheet.getRectangleWithText(text: text) })
     }
 }

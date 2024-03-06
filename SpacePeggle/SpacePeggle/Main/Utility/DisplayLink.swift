@@ -19,8 +19,8 @@ import SwiftUI
 /// in February 2024 by Rubesh. Originally posted in 2021 to StackOverflow
 /// by [Artem V](https://stackoverflow.com/users/16006855/artem-v)
 ///
+/// Refactor to not follow the single-ton anti pattern.
 class DisplayLink: NSObject {
-    // static let sharedInstance = DisplayLink()
     var displayLink: CADisplayLink?
 
     /// A closure type that includes the frame duration

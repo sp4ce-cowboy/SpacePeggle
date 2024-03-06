@@ -2,8 +2,8 @@ import SwiftUI
 
 struct GameScene: View {
     @StateObject var viewModel: GameSceneViewModel
-    // @EnvironmentObject var sceneController: AppSceneController
 
+    /// The AppSceneController bypasses the Scene to the scene's ViewModel
     init(forGeometry geometryState: GeometryProxy, with sceneController: AppSceneController) {
         _viewModel = StateObject(wrappedValue:
                                     GameSceneViewModel(geometryState, sceneController))
