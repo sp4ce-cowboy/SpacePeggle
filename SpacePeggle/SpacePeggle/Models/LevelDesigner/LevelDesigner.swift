@@ -8,6 +8,7 @@ import SwiftUI
 /// long as the interface specifications are fulfilled.
 protocol AbstractLevelDesigner {
     var levelObjects: [UUID: any GameObject] { get }
+    var levelIsEmpty: Bool { get }
     var levelName: String { get set }
     var domain: CGRect { get set }
 
@@ -73,6 +74,10 @@ class LevelDesigner {
     func getCounter() -> Counter {
         updateCounter()
         return self.counter
+    }
+
+    var levelIsEmpty: Bool {
+        !(getCounter().goalPegCount > 0)
     }
 
     private func updateCounter() {

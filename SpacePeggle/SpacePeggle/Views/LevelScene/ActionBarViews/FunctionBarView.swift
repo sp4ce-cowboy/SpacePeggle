@@ -8,6 +8,12 @@ struct FunctionBarView: View {
     var isFileNameValid: Bool { options.isFileNameValid }
     var levelNameInput: String { options.levelNameInput }
 
+    @State var showingAlert = false
+
+    var alertTitle: String { viewModel.saveAlertTitle }
+    var alertMessage: String { viewModel.saveAlertMessage }
+    var alertButtonText: String { viewModel.saveAlertButtonText }
+
     var body: some View {
         HStack {
             loadButton
@@ -24,11 +30,11 @@ struct FunctionBarView: View {
                 viewModel.updateShowingFileListToFalse()
             }
         }
-        /*.alert(isPresented: viewModel.showingSuccessAlertBinding) {
-            Alert(title: Text("Level \(levelNameInput) Saved"),
-                  m]essage: Text("The level has been saved successfully."),
-                  dismissButton: .default(Text("OK")))
-        }*/
+        .alert(Text(alertTitle),
+               isPresented: $showingAlert,
+               actions: { Button(alertButtonText) { } },
+               message: { Text(alertMessage) }
+        )
     }
 
     var loadButton: some View {
@@ -43,6 +49,7 @@ struct FunctionBarView: View {
             guard isFileNameValid else {
                 return
             }
+            showingAlert = true
             viewModel.handleSave()
         }
         .disabled(!isFileNameValid)
@@ -69,5 +76,6 @@ struct FunctionBarView: View {
             viewModel.handleStart()
         }
         .padding(.trailing, 20)
+        .disabled(!viewModel.isStartEnabled()) // Need at least one goal peg to proceed.
     }
 }

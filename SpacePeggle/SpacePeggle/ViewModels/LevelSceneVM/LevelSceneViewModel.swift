@@ -51,6 +51,11 @@ class LevelSceneViewModel: ObservableObject {
         sceneController.transitionToStartScene()
     }
 
+    func handleUpdatePresented() {
+        triggerRefresh()
+        options.isPresented = false
+    }
+
 }
 
 /// This extension adds basic level object management abilities.
@@ -154,6 +159,14 @@ extension LevelSceneViewModel {
 /// liaise with the Function bar
 extension LevelSceneViewModel {
 
+    var deletionAlertTitle: String { "Confirm Deletion" }
+    var deletionAlertMessage: String { "Are you sure you want to delete all files? This action cannot be undone." }
+    var deletionAlertButtonText: String { "Delete All" }
+
+    var saveAlertTitle: String {"Level Saved"}
+    var saveAlertMessage: String {"Level successfully saved"}
+    var saveAlertButtonText: String {"OK"}
+
     var showingFileListBinding: Binding<Bool> {
         triggerRefresh()
         return Binding<Bool>(
@@ -219,9 +232,14 @@ extension LevelSceneViewModel {
         options.showingFileList = false
     }
 
-    func updateShowingFileList() {
+    func updateDeleteAllAlertToFalse() {
         triggerRefresh()
-        options.showingFileList.toggle()
+        options.showingDeleteAllAlert = false
+    }
+
+    func updateDeleteAllAlertToTrue() {
+        triggerRefresh()
+        options.showingDeleteAllAlert = true
     }
 
     func handleLoad() {
@@ -229,7 +247,11 @@ extension LevelSceneViewModel {
         currentGameObjectId = nil
         options.files = Storage.listSavedFiles()
         clearEmptyTextFieldAndDismissKeyboard()
-        options.showingFileList = true
+        updateShowingFileListToTrue()
+    }
+
+    func isStartEnabled() -> Bool {
+        !levelDesigner.levelIsEmpty
     }
 
     func handleStart() {
@@ -241,8 +263,10 @@ extension LevelSceneViewModel {
 
     func handleDeleteAllFiles() {
         triggerRefresh()
+        options.showingDeleteAllAlert = false
         Storage.deleteAllFiles(options.files)
         options.files.removeAll()
+        // updateShowingFileListToFalse()
     }
 
     /// Helper function to facilitate the swipe to delete functionality

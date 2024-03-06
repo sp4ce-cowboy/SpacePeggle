@@ -4,18 +4,17 @@ import SwiftUI
 /// but also contains some helper methods conventionally delegated to a ViewModel.
 struct FileListView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
+    @State var showingAlert = false
 
-    var showingDeleteAllAlert: Bool {
-        get { viewModel.options.showingDeleteAllAlert }
-        set { viewModel.options.showingDeleteAllAlert = newValue }
-    }
-    var isPresented: Bool { viewModel.options.isPresented }
     var files: [String] { viewModel.options.files }
-
     var onSelect: (String) -> Void
 
+    var alertTitle: String { viewModel.deletionAlertTitle }
+    var alertMessage: String { viewModel.deletionAlertMessage }
+    var alertButtonText: String { viewModel.deletionAlertButtonText }
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(files, id: \.self) { file in
                     Button(file) { onSelect(file) }
@@ -24,23 +23,17 @@ struct FileListView: View {
             }
             .navigationBarTitle("Select a Level to load", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
-                viewModel.options.showingDeleteAllAlert = true
+                showingAlert = true
             }, label: {
                 Text("Delete All").foregroundColor(.red)
             }), trailing: Button("Done") {
-                viewModel.options.isPresented = true
+                viewModel.updateShowingFileListToFalse()
             })
-
-            .alert(isPresented: viewModel.showingDeleteAllAlertBinding) {
-                Alert(
-                    title: Text("Confirm Deletion"),
-                    message: Text("Are you sure you want to delete all files? This action cannot be undone."),
-                    primaryButton: .destructive(Text("Delete All")) {
-                        viewModel.handleDeleteAllFiles()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
+            .alert(Text(alertTitle),
+                   isPresented: $showingAlert,
+                   actions: { Button(alertButtonText, role: .destructive) { viewModel.handleDeleteAllFiles() } },
+                   message: { Text(alertMessage) }
+            )
         }
     }
 

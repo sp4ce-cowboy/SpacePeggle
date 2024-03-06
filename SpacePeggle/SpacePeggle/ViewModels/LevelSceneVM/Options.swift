@@ -10,6 +10,7 @@ class Options: ObservableObject {
     @Published var isPresented = false
     @Published var files: [String] = []
     @Published var level: AbstractLevel = Level()
+
     var isFileNameValid: Bool {
         !levelNameInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
