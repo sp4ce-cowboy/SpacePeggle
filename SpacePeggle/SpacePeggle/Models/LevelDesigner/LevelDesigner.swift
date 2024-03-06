@@ -5,7 +5,7 @@ import SwiftUI
 /// any ViewModel. Having such an interface decouples the LevelDesigner
 /// from the Level itself. This allows for the underlying Level to be
 /// of any form, even dependence on AbstractLevel is not required, as
-/// long as the interface specifications are fulfilled. 
+/// long as the interface specifications are fulfilled.
 protocol AbstractLevelDesigner {
     var levelObjects: [UUID: any GameObject] { get }
     var levelName: String { get set }
@@ -22,6 +22,7 @@ protocol AbstractLevelDesigner {
                               with drag: DragGesture.Value,
                               and state: inout Bool)
     func updateObjectHitPoints(withId id: UUID, and value: Int)
+    func getOpacity(for id: UUID) -> Double
 }
 
 /// See PhysicsEngine and GameEngine
@@ -114,6 +115,20 @@ extension LevelDesigner {
             }
 
             levelObjects[id]?.hp += value
+        }
+    }
+
+    /// Returns the opacity depending on a game object's ability to be activated
+    func getOpacity(for id: UUID) -> Double {
+        guard let object = levelObjects[id] else {
+            return StyleSheet.HALF_OPACITY
+        }
+
+        switch object.gameObjectType {
+        case .BlockPeg, .StubbornPeg:
+            return StyleSheet.HALF_OPACITY
+        default:
+            return StyleSheet.FULL_OPACITY
         }
     }
 }

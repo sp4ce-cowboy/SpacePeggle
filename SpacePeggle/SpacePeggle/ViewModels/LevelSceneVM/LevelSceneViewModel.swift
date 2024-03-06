@@ -302,6 +302,13 @@ extension LevelSceneViewModel {
 
     func isDisplayHpOverlay(_ view: LevelObjectView) -> Bool {
         triggerRefresh()
+        switch view.levelObject.gameObjectType {
+        case .BlockPeg, .StubbornPeg:
+            return false
+        default:
+            break
+        }
+
         return isSelected(view) || view.levelObject.hp > 1
     }
 
@@ -329,7 +336,10 @@ extension LevelSceneViewModel {
 
     // Helper function to determine the opacity of HP modifiers
     func getHpOpacity() -> Double {
-        currentGameObjectId != nil ? StyleSheet.FULL_OPACITY : StyleSheet.HALF_OPACITY
+        if let currentId = currentGameObjectId {
+            return levelDesigner.getOpacity(for: currentId)
+        }
+        return StyleSheet.HALF_OPACITY
     }
 
     // Helper function to determine the image name based on the selected object's type.
@@ -343,5 +353,10 @@ extension LevelSceneViewModel {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: DIAMETER, height: DIAMETER)
+    }
+
+    /// Allows for the hp buttons to be disabled when inactive
+    func isButtonDisabled() -> Bool {
+        self.getHpOpacity() == StyleSheet.HALF_OPACITY
     }
 }

@@ -89,7 +89,12 @@ extension GameEngine {
             return
         }
 
-        gameObjects[id]?.activateGameObject()
+        if gameObject.hp == 1 {
+            gameObjects[id]?.activateGameObject()
+        } else {
+            gameObjects[id]?.hp -= 1
+        }
+
     }
 
     func processActiveGameObjects() {

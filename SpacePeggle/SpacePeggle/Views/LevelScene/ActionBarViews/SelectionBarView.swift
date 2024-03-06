@@ -90,6 +90,7 @@ struct SelectionBarView: View {
                 .foregroundStyle(Color.green)})
         .padding([.leading, .trailing])
         .opacity(viewModel.getHpOpacity())
+        .disabled(viewModel.isButtonDisabled())
     }
 
     var getDecrementButton: some View {
@@ -101,6 +102,7 @@ struct SelectionBarView: View {
                 .foregroundStyle(Color.red)})
         .padding([.leading, .trailing])
         .opacity(viewModel.getHpOpacity())
+        .disabled(viewModel.isButtonDisabled())
     }
 
 }
