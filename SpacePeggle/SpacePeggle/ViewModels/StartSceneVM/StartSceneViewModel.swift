@@ -41,8 +41,12 @@ extension StartSceneViewModel {
         currentMenuState = .LevelSelectionMenu
     }
 
-    func handleLoadLevelButton() {
-        /// Open files
+    func handleLoadLevelButton() -> [String] {
+        Storage.listSavedFiles()
+    }
+
+    func handleLoadLevel(_ level: AbstractLevel) {
+        sceneController.transitionToGameScene(with: level)
     }
 
     func handleDesignButton() {

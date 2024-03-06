@@ -2,6 +2,7 @@ import SwiftUI
 
 struct StartMenuDefaultView: View {
     @EnvironmentObject var viewModel: StartSceneViewModel
+    @State var showingLevelList = false
 
     var body: some View {
         VStack {
@@ -23,7 +24,7 @@ struct StartMenuDefaultView: View {
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "LOAD LEVEL",
-                action: { viewModel.handleLoadLevelButton() })
+                action: { showingLevelList = true })
 
             StyleSheet.getRectangleButtonWithAction(
                 text: "DESIGN LEVEL",
@@ -34,6 +35,14 @@ struct StartMenuDefaultView: View {
                 action: { viewModel.handleSettingsButton() })
 
             Spacer()
+        }
+        .sheet(isPresented: $showingLevelList) {
+            LevelLoadingView(showingLevelList: $showingLevelList) { selectedFile in
+                if let loadedLevel = Storage.loadLevel(from: selectedFile) {
+                    viewModel.handleLoadLevel(loadedLevel)
+                }
+                showingLevelList = false
+            }
         }
     }
 }

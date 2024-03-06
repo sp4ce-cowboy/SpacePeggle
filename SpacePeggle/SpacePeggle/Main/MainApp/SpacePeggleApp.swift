@@ -11,7 +11,7 @@ struct SpacePeggleApp: App {
     var body: some Scene {
         WindowGroup {
             AppScene()
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
         }
     }
 }
