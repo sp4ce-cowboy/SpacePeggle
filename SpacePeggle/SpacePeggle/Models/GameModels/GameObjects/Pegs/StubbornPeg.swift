@@ -13,18 +13,18 @@ final class StubbornPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .StubbornPeg
     var isActive = false
-    var hp: Double?
+    var hp: Int = 1
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .StubbornPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
-         hp: Double? = nil) {
+         hp: Int = 1) {
 
         self.centerPosition = centerPosition
         self.id = id
         self.shape = shape
-        self.hp = nil
+        self.hp = hp
     }
 
     init(mass: Double = .infinity,

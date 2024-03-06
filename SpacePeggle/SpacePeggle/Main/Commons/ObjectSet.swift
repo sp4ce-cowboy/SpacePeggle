@@ -86,13 +86,14 @@ class ObjectSet {
      ]*/
 
     /// A dictionary of available game objects and closures that create full instances
-    static var fullGameObjectCreation: [Enums.GameObjectType: (Vector, UUID, UniversalShape) -> any GameObject] = [
-        .NormalPeg: { center, id, shape in NormalPeg(centerPosition: center, id: id, shape: shape) },
-        .GoalPeg: { center, id, shape in GoalPeg(centerPosition: center, id: id, shape: shape) },
-        .SpookyPeg: { center, id, shape in SpookyPeg(centerPosition: center, id: id, shape: shape) },
-        .KaboomPeg: { center, id, shape in KaboomPeg(centerPosition: center, id: id, shape: shape) },
-        .BlockPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) },
-        .StubbornPeg: { center, id, shape in BlockPeg(centerPosition: center, id: id, shape: shape) }
+    static var fullGameObjectCreation: [Enums.GameObjectType:
+                                            (Vector, UUID, UniversalShape, Int) -> any GameObject] = [
+        .NormalPeg: { center, id, shape, hp in NormalPeg(centerPosition: center, id: id, shape: shape, hp: hp) },
+        .GoalPeg: { center, id, shape, hp in GoalPeg(centerPosition: center, id: id, shape: shape, hp: hp) },
+        .SpookyPeg: { center, id, shape, hp in SpookyPeg(centerPosition: center, id: id, shape: shape, hp: hp) },
+        .KaboomPeg: { center, id, shape, hp in KaboomPeg(centerPosition: center, id: id, shape: shape, hp: hp) },
+        .BlockPeg: { center, id, shape, hp in BlockPeg(centerPosition: center, id: id, shape: shape, hp: hp) },
+        .StubbornPeg: { center, id, shape, hp in StubbornPeg(centerPosition: center, id: id, shape: shape, hp: hp) }
     ]
 
     static var fullShapeCreation: [Enums.ShapeType: (Double, Double, Double, Double) -> any UniversalShape] = [

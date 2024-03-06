@@ -40,12 +40,12 @@ extension GameEngine {
     }
 
     func updateGameState() {
-        delegate?.transferScores(scores: scores, state: ballIsOutOfBounds)
+        delegate?.transferScores(scores: scores, state: !isBallLaunched)
 
-        /// Perform victory check
+        /// Perform state check
         if !isBallLaunched && scores.availableBallCount == 0 {
             delegate?.transferScores(scores: scores, state: true)
-            delegate?.triggerLoss()
+            // delegate?.triggerLoss()
             return
         }
 
@@ -80,6 +80,18 @@ extension GameEngine {
         self.delegate?.transferScores(scores: scores, state: ballIsOutOfBounds)
     }
 
+    func handleCollision(withID id: UUID) {
+        delegate?.notifyEffect(withId: id)
+
+        /// 1. Check if hp is at 1, if it is, then activate.
+        /// If it isnt, then decrement by 1
+        guard let gameObject = gameObjects[id] else {
+            return
+        }
+
+        gameObjects[id]?.activateGameObject()
+    }
+
     func processActiveGameObjects() {
         for (id, _) in gameObjects {
             guard let gameObject = gameObjects[id], gameObject.isActive else {
@@ -88,11 +100,24 @@ extension GameEngine {
 
             /// Expansion for type-specific logic
             switch gameObject.gameObjectType {
+
+            case .GoalPegActive:
+                scores.clearedGoalPegsCount += 1
+
+            case .NormalPegActive:
+                scores.clearedNormalPegsCount += 1
+
             case .SpookyPegActive:
+                scores.clearedSpookyPegsCount += 1
                 physicsEngine.isDomainExpansionActive = false
                 scores.status.empty()
+
+            case .KaboomPeg: // cases covered separately!
+                break
+
             default:
                 break
+
             }
 
             delegate?.removeActiveGameObjects(withId: id)
@@ -167,4 +192,5 @@ extension GameEngine {
         physicsEngine.removeObject(with: id)
         gameObjects.removeValue(forKey: id)
     }
+
 }

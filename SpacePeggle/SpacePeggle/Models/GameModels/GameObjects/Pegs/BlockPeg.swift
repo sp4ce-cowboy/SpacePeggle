@@ -11,7 +11,7 @@ final class BlockPeg: GameObject, PhysicsObject {
     var velocity: Vector = .zero
     var force: Vector = .zero
 
-    var hp: Double?
+    var hp: Int = 1
 
     var gameObjectType: Enums.GameObjectType = .BlockPeg
     var isActive = false
@@ -20,12 +20,12 @@ final class BlockPeg: GameObject, PhysicsObject {
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .BlockPeg,
          shape: UniversalShape = Constants.DEFAULT_RECTANGULAR_SHAPE,
-         hp: Double? = nil) {
+         hp: Int = 1) {
 
         self.centerPosition = centerPosition
         self.id = id
         self.shape = shape
-        self.hp = hp
+        self.hp = 1
     }
 
     init(mass: Double = .infinity,

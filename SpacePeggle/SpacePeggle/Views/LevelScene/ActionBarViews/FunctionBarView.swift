@@ -26,7 +26,7 @@ struct FunctionBarView: View {
         }
         /*.alert(isPresented: viewModel.showingSuccessAlertBinding) {
             Alert(title: Text("Level \(levelNameInput) Saved"),
-                  message: Text("The level has been saved successfully."),
+                  m]essage: Text("The level has been saved successfully."),
                   dismissButton: .default(Text("OK")))
         }*/
     }

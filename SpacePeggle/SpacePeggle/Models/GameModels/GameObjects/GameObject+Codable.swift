@@ -16,7 +16,7 @@ extension GameObject {
         let shapeRotation = try container.decode(Double.self, forKey: .shapeRotation)
         let shapeScale = try container.decode(Double.self, forKey: .shapeScale)
         let shapeType = try container.decode(Enums.ShapeType.self, forKey: .shapeType)
-        let hp = try container.decode(Double.self, forKey: .hp)
+        let hp = try container.decode(Int.self, forKey: .hp)
 
         var decodedShape: UniversalShape
 

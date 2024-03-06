@@ -76,6 +76,6 @@ struct ScoreBoard {
     }
 
     var getLoseState: Bool {
-        availableBallCount < 0 && remainingGoalPegsCount > 0
+        availableBallCount <= 0 && remainingGoalPegsCount > 0
     }
 }

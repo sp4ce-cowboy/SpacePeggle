@@ -40,28 +40,4 @@ extension GameEngine {
             gameObjects.removeValue(forKey: id)
         }
     }
-
-    func handleCollision(withID id: UUID) {
-        delegate?.notifyEffect(withId: id)
-        if let gameObject = gameObjects[id], !gameObject.isActive {
-            gameObjects[id]?.activateGameObject()
-
-            switch gameObject.gameObjectType {
-            case .GoalPegActive:
-                scores.clearedGoalPegsCount += 1
-
-            case .NormalPegActive:
-                scores.clearedNormalPegsCount += 1
-
-            case .SpookyPegActive:
-                scores.clearedSpookyPegsCount += 1
-
-            case .KaboomPegActive: // cases covered separately!
-                break
-
-            default:
-                break
-            }
-        }
-    }
 }

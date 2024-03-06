@@ -5,7 +5,8 @@ class LevelSceneViewModel: ObservableObject {
 
     @Published var isLevelDesignerPaused = false
     @Published var isLevelObjectSelected = false
-    @Published var currentGameObject: UUID?
+    @Published var currentResizingGameObject: UUID?
+    @Published var currentHitPointsGameObject: UUID?
     @Published var selectedMode: Enums.SelectedMode = .NormalPeg
     @State var options = Options()
 
@@ -68,24 +69,6 @@ extension LevelSceneViewModel {
 
         let gameObject = ObjectSet.gameObjectCollection[selectedMode]?(locationVector)
                                 ?? ObjectSet.defaultGameObject(locationVector)
-
-        /*switch selectedMode {
-        case .NormalPeg:
-            gameObject = NormalPeg(centerPosition: locationVector)
-        case .GoalPeg:
-            gameObject = GoalPeg(centerPosition: locationVector)
-        case .BlockPeg:
-            gameObject = BlockPeg(centerPosition: locationVector)
-        case .SpookyPeg:
-            gameObject = SpookyPeg(centerPosition: locationVector)
-        case .KaboomPeg:
-            gameObject = KaboomPeg(centerPosition: locationVector)
-        case .StubbonPeg:
-            gameObject = StubbornPeg(centerPosition: locationVector)
-        case .Remove:
-            levelDesigner.handleObjectRemoval(locationVector)
-            return
-        }*/
 
         levelDesigner.handleObjectAddition(gameObject)
     }
@@ -244,7 +227,7 @@ extension LevelSceneViewModel {
 
     func handleLoad() {
         triggerRefresh()
-        currentGameObject = nil
+        currentResizingGameObject = nil
         options.files = Storage.listSavedFiles()
         clearEmptyTextFieldAndDismissKeyboard()
         options.showingFileList = true
@@ -286,7 +269,7 @@ extension LevelSceneViewModel {
     }
 }
 
-/// This extension adds handling abiities for the funion bar
+/// This extension adds handling abiities for the function bar
 extension LevelSceneViewModel {
     func getCurrentSpecialPeg() -> Enums.SelectedMode {
         switch Constants.UNIVERSAL_POWER_UP {
@@ -295,5 +278,17 @@ extension LevelSceneViewModel {
         case .Spooky:
             return .SpookyPeg
         }
+    }
+}
+
+/// This extension adds the ability to modify hit points of objects
+extension LevelSceneViewModel {
+
+    var minHpValue: Double {
+        Double(Constants.MIN_HP_VALUE)
+    }
+
+    var maxHpValue: Double {
+        Double(Constants.MIN_HP_VALUE)
     }
 }

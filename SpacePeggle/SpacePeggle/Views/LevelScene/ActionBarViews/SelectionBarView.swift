@@ -13,11 +13,12 @@ struct SelectionBarView: View {
             normalPegButton
             goalPegButton
             specialPegButton
-            Spacer()
             stubbornPegButton
             blockButton
             Spacer()
             Spacer()
+            getIncrementButton
+            getDecrementButton
             deleteButton
         }
     }
@@ -92,11 +93,23 @@ struct SelectionBarView: View {
                label: { buttonImage(for: .Remove) })
         .padding([.leading, .trailing], 30)
         .opacity(getOpacity(for: .Remove))
-        .onTapGesture(count: 2) { viewModel.selectedMode = .NormalPeg } // revert on double tap
     }
 
     var blockButton: some View {
-        // Delete button
+        Button(action: { viewModel.selectedMode = .BlockPeg },
+               label: { buttonImage(for: .BlockPeg) })
+        .padding([.leading, .trailing])
+        .opacity(getOpacity(for: .BlockPeg))
+    }
+
+    var getIncrementButton: some View {
+        Button(action: { viewModel.selectedMode = .BlockPeg },
+               label: { buttonImage(for: .BlockPeg) })
+        .padding([.leading, .trailing])
+        .opacity(getOpacity(for: .BlockPeg))
+    }
+
+    var getDecrementButton: some View {
         Button(action: { viewModel.selectedMode = .BlockPeg },
                label: { buttonImage(for: .BlockPeg) })
         .padding([.leading, .trailing])

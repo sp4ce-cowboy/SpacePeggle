@@ -29,9 +29,10 @@ struct PlayableAreaView: View {
     }
 
     private var handleTap: some Gesture {
+
         SpatialTapGesture()
             .onEnded { value in
-                viewModel.currentGameObject = nil
+                viewModel.currentResizingGameObject = nil
                 Logger.log("Tap detected at \(value.location)", self)
                 viewModel.handleAreaTap(in: value.location)
             }

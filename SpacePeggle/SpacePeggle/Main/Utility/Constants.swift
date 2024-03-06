@@ -75,6 +75,12 @@ public class Constants {
     /// The threshold for which a given score difference can be considered a combo
     static var SCORE_COMBO_THRESHOLD: Int = 10_000
 
+    /// MAX HP VALUE
+    static var MAX_HP_VALUE: Int = 10
+
+    /// MIN HP VALUE
+    static var MIN_HP_VALUE: Int = 0
+
     // A universal helper function to dismiss the keyboard from anywhere
     public static func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(

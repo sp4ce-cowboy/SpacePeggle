@@ -41,7 +41,7 @@ struct LevelStub {
     ]
 
     private let gameObjectsStubOne: [any GameObject] = [
-        NormalPeg(centerPosition: Vector(scaled_x: 0.232, scaled_y: 0.53), id: UUID()),
+        NormalPeg(centerPosition: Vector(scaled_x: 0.232, scaled_y: 0.53), id: UUID(), hp: 10),
         NormalPeg(centerPosition: Vector(scaled_x: 0.623, scaled_y: 0.392), id: UUID()),
         NormalPeg(centerPosition: Vector(scaled_x: 0.843, scaled_y: 0.408), id: UUID()),
         NormalPeg(centerPosition: Vector(scaled_x: 0.751, scaled_y: 0.655), id: UUID()),

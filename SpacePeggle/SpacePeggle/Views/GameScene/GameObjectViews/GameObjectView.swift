@@ -18,18 +18,44 @@ struct GameObjectView: View {
         ObjectSet.defaultGameObjectSet[gameObjectType]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
     }
 
+    var current: Double { Double(gameObject.hp) }
+    var minValue: Double { Double(0) }
+    var maxValue: Double { Double(10) }
+
     var body: some View {
         ZStack {
             Image(gameObjectImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .if(gameObject.hp != nil) { view in
+                    view.overlay {
+                        ZStack {
+                            Gauge(value: current, in: minValue...maxValue) {
+                                Image(systemName: "heart")
+                                    .foregroundColor(.red)
+                            } currentValueLabel: {
+                                Text("\(Int(current))")
+                                    .foregroundColor(Color.green)
+                            } minimumValueLabel: {
+                                Text("\(Int(minValue))")
+                                    .foregroundColor(Color.green)
+                            } maximumValueLabel: {
+                                Text("\(Int(maxValue))")
+                                    .foregroundColor(Color.red)
+                            }
+                            .gaugeStyle(.accessoryCircularCapacity)
+                            .scaleEffect(0.5)
+                        }
+                    }
+
+                }
+                .scaledToFit()
                 .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
                 .position(center.point)
                 .rotationEffect(rotation, anchor: center.unitPoint)
                 .opacity(viewModel.gameObjectOpacities[gameObject.id, default: .unit])
                 .gesture(handleLongPress)
         }
-
     }
 
     var handleLongPress: some Gesture {

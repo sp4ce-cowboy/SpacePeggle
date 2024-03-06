@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 final class GoalPeg: Peg {
+
     var id: UUID
     var centerPosition: Vector
     var shape: UniversalShape
@@ -12,14 +13,14 @@ final class GoalPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .GoalPeg
     var isActive = false
-    var hp: Double?
+    var hp: Int = 1
 
     /// Initializer for Peg as a GameObject
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .GoalPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
-         hp: Double? = nil) {
+         hp: Int = 1) {
 
         self.centerPosition = centerPosition
         self.id = id

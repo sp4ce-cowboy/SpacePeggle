@@ -16,14 +16,14 @@ final class NormalPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .NormalPeg
     var isActive = false
-    var hp: Double?
+    var hp: Int = 1
 
     /// Initializer for Peg as a GameObject
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .NormalPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
-         hp: Double? = nil) {
+         hp: Int = 1) {
 
         self.centerPosition = centerPosition
         self.id = id

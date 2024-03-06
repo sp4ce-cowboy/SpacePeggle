@@ -11,13 +11,13 @@ final class SpookyPeg: Peg {
 
     var gameObjectType: Enums.GameObjectType = .SpookyPeg
     var isActive = false
-    var hp: Double?
+    var hp: Int = 1
 
     init(centerPosition: Vector,
          id: UUID = UUID(),
          gameObjectType: Enums.GameObjectType = .SpookyPeg,
          shape: UniversalShape = Constants.DEFAULT_CIRCULAR_SHAPE,
-         hp: Double? = nil) {
+         hp: Int = 1) {
 
         self.centerPosition = centerPosition
         self.id = id
