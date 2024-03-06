@@ -28,7 +28,7 @@ struct CircularShape: UniversalShape {
     }
 
     // Function to calculate the corners of the object
-    // For circular objects, this is simply the
+    // For circular objects, this is simply the sides.
     func corners(centerPosition: Vector) -> [Vector] {
         let halfWidth = width / 2
         let halfHeight = height / 2
@@ -74,6 +74,8 @@ extension CircularShape {
 }
 
 extension CircularShape {
+
+    /// Approximate collision resolution with Rectangle
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
                     and otherPosition: Vector) -> Double? {

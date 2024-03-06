@@ -97,6 +97,11 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         sceneController.transitionToStartScene()
     }
 
+    func handleGravityButton(_ vector: Vector) {
+        triggerRefresh()
+        Constants.UNIVERSAL_GRAVITY = vector
+    }
+
     func handleRetryLevelButton() {
         triggerRefresh()
         self.resetAll()
@@ -164,8 +169,6 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         switch self.gameObjects[id]?.gameObjectType {
         case .GoalPeg, .SpookyPeg:
             AudioManager.shared.playHitEffect()
-            // case .NormalPeg, .BlockPeg, .StubbornPeg:
-            // AudioManager.shared.playBeepEffect()
         case .KaboomPeg:
             AudioManager.shared.playSpecialEffect()
         default:

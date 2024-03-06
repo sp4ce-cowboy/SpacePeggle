@@ -18,7 +18,6 @@ extension GameSceneViewModel: DisplayLinkManager {
 
     func startGame() {
         isPaused = false
-        // DisplayLink.sharedInstance.setupDisplayLink()
         gameLoop.setupDisplayLink()
         peggleGameEngine.startGame(with: self.getLevel())
     }

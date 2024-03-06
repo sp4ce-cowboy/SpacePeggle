@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// An encapsulation of options selected with the LevelSceneViewModel
-
 class Options: ObservableObject {
     @Published var levelNameInput: String = ""
     @Published var showingSuccessAlert = false

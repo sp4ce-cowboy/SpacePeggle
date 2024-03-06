@@ -1,10 +1,3 @@
-//
-//  LevelObjectResizerView.swift
-//  SpacePeggle
-//
-//  Created by Rubesh on 2/3/24.
-//
-
 import SwiftUI
 
 struct LevelObjectResizerView: View {

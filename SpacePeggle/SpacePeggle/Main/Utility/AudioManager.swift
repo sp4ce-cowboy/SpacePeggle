@@ -1,14 +1,16 @@
 import SwiftUI
 import AVFoundation
 
-/// Explicit Internal class to ensure that external clients cannot
+/// Explicit internal class to ensure that external clients cannot
 /// interfere with singleton instance. Singleton anti-pattern used here
-/// in line with AVAudioSession's sharedInstance.
+/// in line with Apple's AVAudioSession sharedInstance.
 internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     internal static let shared = AudioManager() // Singleton instance
     private var backgroundAudioPlayer: AVAudioPlayer?
     private var soundEffectPlayers: [String: AVAudioPlayer] = [:] // Cache sound effect players
     private var isPlaying = false
+
+    private let SOUND_EFFECTS_ENABLED = Constants.SOUND_EFFECTS_ENABLED
 
     override init() {
         super.init()
@@ -37,25 +39,6 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Failed to play sound effect \(soundName): \(error)", self)
         }
     }
-
-        /*
-        guard let audioData = NSDataAsset(name: "field-of-memories-soundtrack")?.data
-        else {
-            Logger.log("Background audio asset not found", self)
-            return
-        }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            backgroundAudioPlayer = try AVAudioPlayer(data: audioData)
-            backgroundAudioPlayer?.delegate = self
-            backgroundAudioPlayer?.numberOfLoops = -1 // Loop indefinitely
-            backgroundAudioPlayer?.volume = 0.8
-        } catch {
-            Logger.log("Failed to initialize audio player: \(error)", self)
-        }
-    }*/
 
     // Play background music
     func play() {
@@ -101,6 +84,9 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
 
     // Play a sound effect
     func playSoundEffect(named soundName: String) {
+        guard SOUND_EFFECTS_ENABLED else {
+            return
+        }
         // Attempt to use a cached player if available
         if let player = soundEffectPlayers[soundName] {
             player.play()

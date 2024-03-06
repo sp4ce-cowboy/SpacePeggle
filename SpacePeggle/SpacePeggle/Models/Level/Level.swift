@@ -9,9 +9,6 @@ extension Level: AbstractLevel {
 /// are implicitly equatable. The chances of a UUID collision is infinitesimal.
 ///
 /// This allows for O(1) average access time.
-///
-/// Additionally, the Level Model also plays the role of the "Level Engine" equivalent,
-/// directly handling game objects movement and collision resolution.
 final class Level {
 
     var name: String = "DefaultLevel"

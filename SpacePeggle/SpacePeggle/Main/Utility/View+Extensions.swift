@@ -1,3 +1,4 @@
+/// This file contains some convenience extensions to certain standard classes in Swift.
 import SwiftUI
 
 /// This extension to View adds a conditional modifer to all views.

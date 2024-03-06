@@ -76,15 +76,6 @@ class ObjectSet {
         .StubbornPeg: { center in StubbornPeg(centerPosition: center) }
     ]
 
-    /*/// A dictionary of available game objects and closures that execute an action
-     /// on a scoreboard
-     static var gameObjectProcessing: [Enums.GameObjectType: () -> ScoreBoard] = [
-     .NormalPeg: { scores.clearedNormalPegsCount += 1 },
-     .GoalPeg: { scores.clearedGoalPegsCount +=1 },
-     .NormalPegActive: { scores.clearedNormalPegsCount += 1 },
-     .GoalPegActive: { scores.clearedGoalPegsCount +=1 }
-     ]*/
-
     /// A dictionary of available game objects and closures that create full instances
     static var fullGameObjectCreation: [Enums.GameObjectType:
                                             (Vector, UUID, UniversalShape, Int) -> any GameObject] = [
@@ -145,7 +136,7 @@ class ObjectSet {
 
     /// Returns all the available keys for the current gameObjectSet
     static func getAvailableGameObjects() {
-        print(ObjectSet.defaultGameObjectSet.keys)
+        Logger.log("\(ObjectSet.defaultGameObjectSet.keys)")
     }
 
     /// A function to add game objects to the defined GameObjectSet, and this helps to explicitly

@@ -1,7 +1,6 @@
 import SwiftUI
 
-/// This View presents the File selection view for selecting levels to load,
-/// but also contains some helper methods conventionally delegated to a ViewModel.
+/// This View presents the File selection view for selecting levels to load.
 struct FileListView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
     @State var showingAlert = false

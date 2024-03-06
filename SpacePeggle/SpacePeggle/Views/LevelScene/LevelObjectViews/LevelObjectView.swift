@@ -44,8 +44,6 @@ struct LevelObjectView: View {
         }
     }
 
-    // if isSelected { getResizerView }
-
     private func handleTap() {
         if viewModel.selectedMode == .Remove {
             viewModel.handleLevelObjectRemoval(levelObject)

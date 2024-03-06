@@ -1,6 +1,9 @@
 import SwiftUI
 
-/// A class to model a vector quantity with 2 generic doubles
+/// A class to model a vector quantity with 2 generic doubles.
+/// Each vector is stored and retrieved as a unit point based on the size of
+/// the screen. This ensures that the game remains consistent across iPads of different
+/// sizes.
 struct Vector: Codable, Equatable, CustomStringConvertible {
 
     static let widthScale = Constants.UI_SCREEN_WIDTH

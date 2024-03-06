@@ -1,7 +1,9 @@
 import SwiftUI
 
 /// The UnivershalShape contains basic information about a given object's
-/// contained shape. The height and width of the shape refers to the
+/// contained shape.
+///
+/// Double dispatch is used to resolve intersections between objects.
 protocol UniversalShape {
     var shapeType: Enums.ShapeType { get }
     var trueHeight: Double { get }
@@ -9,6 +11,8 @@ protocol UniversalShape {
 
     var rotation: Double { get set }
     var scale: Double { get set }
+
+    func corners(centerPosition: Vector) -> [Vector]
 
     func intersects(with shape: any UniversalShape,
                     at position: Vector,
@@ -21,8 +25,6 @@ protocol UniversalShape {
     func intersects(withRectangle rectangle: RectangularShape,
                     at thisPosition: Vector,
                     and otherPosition: Vector) -> Double?
-
-    func corners(centerPosition: Vector) -> [Vector]
 }
 
 extension UniversalShape {
@@ -35,5 +37,4 @@ extension UniversalShape {
         get { trueWidth * scale }
         set { scale = newValue / trueWidth }
     }
-
 }

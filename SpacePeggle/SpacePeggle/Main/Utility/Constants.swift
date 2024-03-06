@@ -4,6 +4,11 @@ import SwiftUI
 /// and properties. Also includes some universal utility methods.
 public class Constants {
 
+    static var SOUND_EFFECTS_ENABLED = true
+
+    /// Set logging state
+    static let LOGGING_IS_ACTIVE = false
+
     /// Universally declared screen size
     static var UI_SCREEN_SIZE: CGSize = UIScreen.currentSize
 
@@ -42,8 +47,8 @@ public class Constants {
     /// Computed restitution range for more natural physics
     static var UNIVERSAL_RESTITUTION: Double { Double.random(in: 0.7...0.9) }
 
-    /// Universally declared launch force as a proportion of screen width
-    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_WIDTH.twice
+    /// Universally declared launch force as a proportion of screen width to ensure consistency
+    static let UNIVERSAL_LAUNCH_FORCE: Double = UI_SCREEN_WIDTH
 
     /// Ball mass
     static let UNIVERSAL_BALL_MASS: Double = 100
@@ -59,9 +64,6 @@ public class Constants {
 
     /// Universal interval duration for animations etc.
     static let TRANSITION_INTERVAL: TimeInterval = .unit
-
-    /// Set logging state
-    static let LOGGING_IS_ACTIVE = true
 
     /// Threshold velocity to determine is a ball is stuck
     static let STUCK_VELOCITY_THRESHOLD = 20.0
@@ -136,7 +138,8 @@ public class Constants {
     /// in the way of the user's ability to aim and launch the cannon.
     ///
     /// Furthermore, the offset ensures that both the selection bar is fully
-    /// visible below the game area.
+    /// visible below the game area. This requires trial and error with different
+    /// iPad sizes, "1.1" seems to be the most universal fit.
     static func getAdjustedGameArea() -> CGRect {
         let width = UI_SCREEN_WIDTH
         let height = UI_SCREEN_WIDTH

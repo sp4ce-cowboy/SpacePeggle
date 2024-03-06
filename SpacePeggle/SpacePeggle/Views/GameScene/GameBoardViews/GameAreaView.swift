@@ -23,7 +23,6 @@ struct GameAreaView: View {
     var body: some View {
         Rectangle()
             .foregroundColor(.clear)
-            // .padding()
             .frame(width: width, height: height)
             .contentShape(Rectangle())
             .onAppear {
