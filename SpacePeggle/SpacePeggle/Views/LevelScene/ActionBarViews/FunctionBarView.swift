@@ -52,8 +52,8 @@ struct FunctionBarView: View {
             showingAlert = true
             viewModel.handleSave()
         }
-        .disabled(!isFileNameValid)
-        .foregroundColor(isFileNameValid ? .blue : .gray)
+        .disabled(!isFileNameValid || !viewModel.isStartEnabled())
+        .foregroundColor(isFileNameValid && viewModel.isStartEnabled() ? .blue : .gray)
         .padding()
     }
 
@@ -75,7 +75,8 @@ struct FunctionBarView: View {
         Button("START") {
             viewModel.handleStart()
         }
-        .padding(.trailing, 20)
         .disabled(!viewModel.isStartEnabled()) // Need at least one goal peg to proceed.
+        .foregroundColor(viewModel.isStartEnabled() ? .blue : .gray)
+        .padding(.trailing, 20)
     }
 }
