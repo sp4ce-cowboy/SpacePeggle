@@ -189,7 +189,8 @@ For the image display of the Bucket, I calculated the centerposition and the wid
 
 Known Issues:
 - Simulators tend to be slower with hardware emulation than real ipads, and some older ipads might lag when they hit another goal peg because of the overhead required to play the sound effect each time. If this happens, set the “SOUND_EFFECTS_ENABLED” inside the Constants class inside the Utility folder to false and the sound effects will not play. The background music will still play as it is loaded at the point of loading of the application itself, to disable background music enable the on device silent mode. 
-- The keyboard will cover the action bar when the text field is tapped. This is due to a fundamental issue with the way SwiftUI handles keyboards.
+- The keyboard will cover the action bar when the text field is tapped. This is due to a fundamental issue with the way SwiftUI handles [keyboards]( https://stackoverflow.com/questions/57334604/why-am-i-not-getting-the-keyboard-swiftui-textfield)).
+  
   <img width="887" alt="Pasted Graphic 1" src="https://github.com/cs3217-2324/problem-set-4-sp4ce-cowboy/assets/19762596/44cc5e67-651e-4dfc-848a-24044dbb818f">
 
 
