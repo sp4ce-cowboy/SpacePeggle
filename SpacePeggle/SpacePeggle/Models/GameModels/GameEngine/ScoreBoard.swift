@@ -6,7 +6,7 @@ struct ScoreBoard {
     var ballEntersBucketCount: Int = 0
     var scoreBonus: Int = 0
 
-    var status: String = ""
+    var status: String = "Game on!"
 
     var totalGoalPegsCount: Int = 0
     var clearedGoalPegsCount: Int = 0

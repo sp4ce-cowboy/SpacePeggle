@@ -24,7 +24,14 @@ struct SelectionBarView: View {
     var normalPegButton: some View {
         // Normal Peg (blue)
         Button(action: { viewModel.selectedMode = .NormalPeg },
-               label: { viewModel.buttonImage(for: .NormalPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .NormalPeg)
+                Text("\(viewModel.getNormalPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.leading, .trailing])
         .opacity(viewModel.getOpacity(for: .NormalPeg))
     }
@@ -32,7 +39,14 @@ struct SelectionBarView: View {
     var goalPegButton: some View {
         // Goal Peg (orange)
         Button(action: { viewModel.selectedMode = .GoalPeg },
-               label: { viewModel.buttonImage(for: .GoalPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .GoalPeg)
+                Text("\(viewModel.getGoalPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.trailing])
         .opacity(viewModel.getOpacity(for: .GoalPeg))
     }
@@ -40,28 +54,56 @@ struct SelectionBarView: View {
     // Either spooky or kaboom depending on game master
     var specialPegButton: some View {
         Button(action: { viewModel.selectedMode = viewModel.getCurrentSpecialPeg() },
-               label: { viewModel.buttonImage(for: viewModel.getCurrentSpecialPeg()) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: viewModel.getCurrentSpecialPeg())
+                Text("\(viewModel.getSpecialPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.trailing])
         .opacity(viewModel.getOpacity(for: viewModel.getCurrentSpecialPeg()))
     }
 
     var spookyPegButton: some View {
         Button(action: { viewModel.selectedMode = .SpookyPeg },
-               label: { viewModel.buttonImage(for: .SpookyPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .SpookyPeg)
+                Text("\(viewModel.getSpookyPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.trailing])
         .opacity(viewModel.getOpacity(for: .SpookyPeg))
     }
 
     var kaboomPegButton: some View {
         Button(action: { viewModel.selectedMode = .KaboomPeg },
-               label: { viewModel.buttonImage(for: .KaboomPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .KaboomPeg)
+                Text("\(viewModel.getKaboomPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.trailing])
-        .opacity(viewModel.getOpacity(for: .SpookyPeg))
+        .opacity(viewModel.getOpacity(for: .KaboomPeg))
     }
 
     var stubbornPegButton: some View {
         Button(action: { viewModel.selectedMode = .StubbornPeg },
-               label: { viewModel.buttonImage(for: .StubbornPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .StubbornPeg)
+                Text("\(viewModel.getStubbornPegCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+            }
+        })
         .padding([.trailing])
         .opacity(viewModel.getOpacity(for: .StubbornPeg))
     }
@@ -76,7 +118,14 @@ struct SelectionBarView: View {
 
     var blockButton: some View {
         Button(action: { viewModel.selectedMode = .BlockPeg },
-               label: { viewModel.buttonImage(for: .BlockPeg) })
+               label: {
+            ZStack {
+                viewModel.buttonImage(for: .BlockPeg)
+                Text("\(viewModel.getBlockCount())")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+            }
+        })
         .padding([.leading, .trailing])
         .opacity(viewModel.getOpacity(for: .BlockPeg))
     }
@@ -87,7 +136,7 @@ struct SelectionBarView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: DIAMETER, height: DIAMETER)
-                .foregroundStyle(Color.green)})
+            .foregroundStyle(Color.green)})
         .padding([.leading, .trailing])
         .opacity(viewModel.getHpOpacity())
         .disabled(viewModel.isButtonDisabled())
@@ -99,7 +148,7 @@ struct SelectionBarView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: DIAMETER, height: DIAMETER)
-                .foregroundStyle(Color.red)})
+            .foregroundStyle(Color.red)})
         .padding([.leading, .trailing])
         .opacity(viewModel.getHpOpacity())
         .disabled(viewModel.isButtonDisabled())

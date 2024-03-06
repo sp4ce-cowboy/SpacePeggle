@@ -278,6 +278,49 @@ extension LevelSceneViewModel {
             return .SpookyPeg
         }
     }
+
+    func getNormalPegCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().normalPegCount
+    }
+
+    func getGoalPegCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().goalPegCount
+    }
+
+    func getSpookyPegCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().spookyPegCount
+    }
+
+    func getKaboomPegCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().kaboomPegCount
+    }
+
+    func getBlockCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().blockCount
+    }
+
+    func getStubbornPegCount() -> Int {
+        triggerRefresh()
+        return levelDesigner.getCounter().stubbornPegCount
+    }
+
+    func getSpecialPegCount() -> Int {
+        triggerRefresh()
+        switch getCurrentSpecialPeg() {
+        case .KaboomPeg:
+            return getKaboomPegCount()
+        case .SpookyPeg:
+            return getSpookyPegCount()
+        default:
+            return 0
+        }
+    }
+
 }
 
 /// This extension adds the ability to handle modifications to hit points of objects

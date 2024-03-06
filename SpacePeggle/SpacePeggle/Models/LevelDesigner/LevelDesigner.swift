@@ -23,6 +23,7 @@ protocol AbstractLevelDesigner {
                               and state: inout Bool)
     func updateObjectHitPoints(withId id: UUID, and value: Int)
     func getOpacity(for id: UUID) -> Double
+    func getCounter() -> Counter
 }
 
 /// See PhysicsEngine and GameEngine
@@ -34,6 +35,7 @@ class LevelDesigner {
 
     var currentLevel: AbstractLevel
     var domain: CGRect = Constants.getAdjustedGameArea()
+    var counter = Counter()
     var levelName: String {
         get { currentLevel.name }
         set { currentLevel.name = newValue }
@@ -66,6 +68,20 @@ class LevelDesigner {
 
     func loadLevel(with level: AbstractLevel) {
         currentLevel = level
+    }
+
+    func getCounter() -> Counter {
+        updateCounter()
+        return self.counter
+    }
+
+    private func updateCounter() {
+        counter.normalPegCount = levelObjects.values.filter { $0.gameObjectType == .NormalPeg }.count
+        counter.goalPegCount = levelObjects.values.filter { $0.gameObjectType == .GoalPeg }.count
+        counter.spookyPegCount = levelObjects.values.filter { $0.gameObjectType == .SpookyPeg }.count
+        counter.kaboomPegCount = levelObjects.values.filter { $0.gameObjectType == .KaboomPeg }.count
+        counter.blockCount = levelObjects.values.filter { $0.gameObjectType == .BlockPeg }.count
+        counter.stubbornPegCount = levelObjects.values.filter { $0.gameObjectType == .StubbornPeg }.count
     }
 }
 

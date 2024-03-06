@@ -13,13 +13,14 @@ struct ScoreBoardView: View {
                 Spacer()
                 HStack {
                     Spacer()
+                    normalPegCount
                     goalPegCount
                     spookyPegCount
                     kaboomPegCount
-                    availableBallCount
                     Spacer()
                     status
                     Spacer()
+                    availableBallCount
                     scoreCount
                     Spacer()
                 }
@@ -116,7 +117,7 @@ struct ScoreBoardView: View {
     }
 
     var scoreCount: some View {
-        Text("\(scores.currentScore)")
+        Text("Score: \(scores.currentScore)")
             .font(.title)
             .foregroundColor(.blue)
     }
