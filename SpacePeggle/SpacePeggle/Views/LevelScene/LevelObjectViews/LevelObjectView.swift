@@ -25,7 +25,7 @@ struct LevelObjectView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .if(viewModel.isDisplayHpOverlay(self)) { view in
-                    view.overlay(HealthOverlayView(levelObject: levelObject))
+                    view.overlay(LevelObjectHealthOverlayView(levelObject: levelObject))
                         .environmentObject(viewModel)
                 }
                 .frame(width: levelObjectImageWidth, height: levelObjectImageHeight)

@@ -24,7 +24,8 @@
 		BA28FD6C2B962DD00044CAC8 /* StartSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */; };
 		BA28FD6E2B96AA190044CAC8 /* StartMenuDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */; };
 		BA28FD702B96AA410044CAC8 /* LevelSelectionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */; };
-		BA3919E42B980DB000943A39 /* HealthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3919E32B980DB000943A39 /* HealthOverlayView.swift */; };
+		BA3919E42B980DB000943A39 /* LevelObjectHealthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3919E32B980DB000943A39 /* LevelObjectHealthOverlayView.swift */; };
+		BA3EC37F2B9865190032CC0E /* GameObjectHealthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3EC37E2B9865190032CC0E /* GameObjectHealthOverlayView.swift */; };
 		BA5E34152B976299002219AC /* hit-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5E34142B976299002219AC /* hit-sound.mp3 */; };
 		BA5E34172B976418002219AC /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5E34162B976417002219AC /* jump.mp3 */; };
 		BA5E34192B979BCB002219AC /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5E34182B979BCB002219AC /* beep.mp3 */; };
@@ -144,7 +145,8 @@
 		BA28FD6B2B962DD00044CAC8 /* StartSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneViewModel.swift; sourceTree = "<group>"; };
 		BA28FD6D2B96AA190044CAC8 /* StartMenuDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuDefaultView.swift; sourceTree = "<group>"; };
 		BA28FD6F2B96AA410044CAC8 /* LevelSelectionMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectionMenuView.swift; sourceTree = "<group>"; };
-		BA3919E32B980DB000943A39 /* HealthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthOverlayView.swift; sourceTree = "<group>"; };
+		BA3919E32B980DB000943A39 /* LevelObjectHealthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelObjectHealthOverlayView.swift; sourceTree = "<group>"; };
+		BA3EC37E2B9865190032CC0E /* GameObjectHealthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectHealthOverlayView.swift; sourceTree = "<group>"; };
 		BA5E34142B976299002219AC /* hit-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hit-sound.mp3"; sourceTree = "<group>"; };
 		BA5E34162B976417002219AC /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		BA5E34182B979BCB002219AC /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
@@ -390,7 +392,7 @@
 				BA7662162B8C89590022C267 /* LauncherView.swift */,
 				BA7662192B8C89590022C267 /* BallView.swift */,
 				BA8B6AE72B8DEA2000A4FD96 /* BucketView.swift */,
-				BA3919E32B980DB000943A39 /* HealthOverlayView.swift */,
+				BA3EC37E2B9865190032CC0E /* GameObjectHealthOverlayView.swift */,
 			);
 			path = GameObjectViews;
 			sourceTree = "<group>";
@@ -619,6 +621,7 @@
 			children = (
 				BA96F31B2B9321DA006BE36D /* LevelObjectView.swift */,
 				BABA64A42B937F8900A02BD1 /* LevelObjectResizerView.swift */,
+				BA3919E32B980DB000943A39 /* LevelObjectHealthOverlayView.swift */,
 				BA63CCAA2B945CCF005D23EB /* LauncherStubView.swift */,
 			);
 			path = LevelObjectViews;
@@ -809,6 +812,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3EC37F2B9865190032CC0E /* GameObjectHealthOverlayView.swift in Sources */,
 				BA76626D2B8C89590022C267 /* UniversalObject.swift in Sources */,
 				BA96F3132B93132D006BE36D /* ActionBarView.swift in Sources */,
 				BAC4B9C92B948BF600F9F405 /* GameObject+Codable.swift in Sources */,
@@ -859,7 +863,7 @@
 				BA7662572B8C89590022C267 /* PhysicsEngine.swift in Sources */,
 				BA0343DE2B959A7D00B6EA95 /* Level+Storage.swift in Sources */,
 				BA8B6AEA2B8DEA3100A4FD96 /* GameMenuView.swift in Sources */,
-				BA3919E42B980DB000943A39 /* HealthOverlayView.swift in Sources */,
+				BA3919E42B980DB000943A39 /* LevelObjectHealthOverlayView.swift in Sources */,
 				BAC4B9C52B94884C00F9F405 /* KaboomPeg.swift in Sources */,
 				BAD77AE22B96F96E009374B7 /* BucketRight.swift in Sources */,
 				BAD80ADC2B90B243008E998F /* AppDelegate.swift in Sources */,

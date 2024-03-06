@@ -1,9 +1,6 @@
 import SwiftUI
 
 struct GameObjectView: View {
-    /// Despite its non-usage, having the viewModel here is important to
-    /// allow for the view to refresh and redraw every time the viewModel is
-    /// refreshed.
     @EnvironmentObject var viewModel: GameSceneViewModel
     var gameObject: any GameObject
 
@@ -27,29 +24,10 @@ struct GameObjectView: View {
             Image(gameObjectImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .if(gameObject.hp != nil) { view in
-                    view.overlay {
-                        ZStack {
-                            Gauge(value: current, in: minValue...maxValue) {
-                                Image(systemName: "heart")
-                                    .foregroundColor(.red)
-                            } currentValueLabel: {
-                                Text("\(Int(current))")
-                                    .foregroundColor(Color.green)
-                            } minimumValueLabel: {
-                                Text("\(Int(minValue))")
-                                    .foregroundColor(Color.green)
-                            } maximumValueLabel: {
-                                Text("\(Int(maxValue))")
-                                    .foregroundColor(Color.red)
-                            }
-                            .gaugeStyle(.accessoryCircularCapacity)
-                            .scaleEffect(0.7)
-                        }
-                    }
-
+                .if(gameObject.hp > 1) { view in
+                    view.overlay(GameObjectHealthOverlayView(gameObject: gameObject))
+                        .environmentObject(viewModel)
                 }
-                .scaledToFit()
                 .frame(width: gameObjectImageWidth, height: gameObjectImageHeight)
                 .position(center.point)
                 .rotationEffect(rotation, anchor: center.unitPoint)
@@ -58,6 +36,7 @@ struct GameObjectView: View {
         }
     }
 
+    /// For stuck balls
     var handleLongPress: some Gesture {
         LongPressGesture()
             .onEnded { _ in

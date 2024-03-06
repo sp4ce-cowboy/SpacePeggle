@@ -1,15 +1,14 @@
 import SwiftUI
 
-struct HealthOverlayView: View {
+struct LevelObjectHealthOverlayView: View {
+    /// Despite its non-usage, having the viewModel here is important to
+    /// allow for the view to refresh and redraw every time the viewModel is
+    /// refreshed.
     @EnvironmentObject var viewModel: LevelSceneViewModel
     var levelObject: any GameObject
-    var center: Vector { levelObject.centerPosition }
-    var levelObjectImageHeight: Double { levelObject.height }
-    var levelObjectImageWidth: Double { levelObject.width }
-
     var current: Double { Double(levelObject.hp) }
-    var minValue: Double { viewModel.minHpValue }
-    var maxValue: Double { viewModel.maxHpValue }
+    var minValue: Double { Double(Constants.MIN_HP_VALUE) }
+    var maxValue: Double { Double(Constants.MAX_HP_VALUE) }
 
     var body: some View {
         ZStack {
