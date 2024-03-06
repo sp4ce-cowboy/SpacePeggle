@@ -5,8 +5,6 @@ struct SelectionBarView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
 
     let DIAMETER = Constants.UNIVERSAL_LENGTH * 1.3
-    let HALF_OPACITY = 0.3
-    let FULL_OPACITY = 1.0
 
     var body: some View {
         HStack {
@@ -23,99 +21,86 @@ struct SelectionBarView: View {
         }
     }
 
-    // Helper function to determine the image name based on the selected object's type.
-    private func buttonImage(for buttonName: Enums.SelectedMode) -> some View {
-        let imageName = ObjectSet
-            .defaultGameObjectSet[buttonName.rawValue]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
-
-        return Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: DIAMETER, height: DIAMETER)
-    }
-
-    // Helper function to determine the opacity of a button
-    private func getOpacity(for button: Enums.SelectedMode) -> Double {
-        viewModel.selectedMode == button ? FULL_OPACITY : HALF_OPACITY
-    }
-
     var normalPegButton: some View {
         // Normal Peg (blue)
         Button(action: { viewModel.selectedMode = .NormalPeg },
-               label: { buttonImage(for: .NormalPeg) })
+               label: { viewModel.buttonImage(for: .NormalPeg) })
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .NormalPeg))
+        .opacity(viewModel.getOpacity(for: .NormalPeg))
     }
 
     var goalPegButton: some View {
         // Goal Peg (orange)
         Button(action: { viewModel.selectedMode = .GoalPeg },
-               label: { buttonImage(for: .GoalPeg) })
+               label: { viewModel.buttonImage(for: .GoalPeg) })
         .padding([.trailing])
-        .opacity(getOpacity(for: .GoalPeg))
-    }
-
-    var specialPegButton: some View {
-        // Spooky Peg (green)
-        Button(action: { viewModel.selectedMode = viewModel.getCurrentSpecialPeg() },
-               label: { buttonImage(for: viewModel.getCurrentSpecialPeg()) })
-        .padding([.trailing])
-        .opacity(getOpacity(for: viewModel.getCurrentSpecialPeg()))
-    }
-
-    var spookyPegButton: some View {
-        // Spooky Peg (green)
-        Button(action: { viewModel.selectedMode = .SpookyPeg },
-               label: { buttonImage(for: .SpookyPeg) })
-        .padding([.trailing])
-        .opacity(getOpacity(for: .SpookyPeg))
+        .opacity(viewModel.getOpacity(for: .GoalPeg))
     }
 
     // Either spooky or kaboom depending on game master
+    var specialPegButton: some View {
+        Button(action: { viewModel.selectedMode = viewModel.getCurrentSpecialPeg() },
+               label: { viewModel.buttonImage(for: viewModel.getCurrentSpecialPeg()) })
+        .padding([.trailing])
+        .opacity(viewModel.getOpacity(for: viewModel.getCurrentSpecialPeg()))
+    }
+
+    var spookyPegButton: some View {
+        Button(action: { viewModel.selectedMode = .SpookyPeg },
+               label: { viewModel.buttonImage(for: .SpookyPeg) })
+        .padding([.trailing])
+        .opacity(viewModel.getOpacity(for: .SpookyPeg))
+    }
+
     var kaboomPegButton: some View {
         Button(action: { viewModel.selectedMode = .KaboomPeg },
-               label: { buttonImage(for: .KaboomPeg) })
+               label: { viewModel.buttonImage(for: .KaboomPeg) })
         .padding([.trailing])
-        .opacity(getOpacity(for: .SpookyPeg))
+        .opacity(viewModel.getOpacity(for: .SpookyPeg))
     }
 
     var stubbornPegButton: some View {
-        // Delete button
         Button(action: { viewModel.selectedMode = .StubbornPeg },
-               label: { buttonImage(for: .StubbornPeg) })
+               label: { viewModel.buttonImage(for: .StubbornPeg) })
         .padding([.trailing])
-        .opacity(getOpacity(for: .StubbornPeg))
+        .opacity(viewModel.getOpacity(for: .StubbornPeg))
     }
 
     var deleteButton: some View {
         // Delete button
         Button(action: { viewModel.selectedMode = .Remove },
-               label: { buttonImage(for: .Remove) })
+               label: { viewModel.buttonImage(for: .Remove) })
         .padding([.leading, .trailing], 30)
-        .opacity(getOpacity(for: .Remove))
+        .opacity(viewModel.getOpacity(for: .Remove))
     }
 
     var blockButton: some View {
         Button(action: { viewModel.selectedMode = .BlockPeg },
-               label: { buttonImage(for: .BlockPeg) })
+               label: { viewModel.buttonImage(for: .BlockPeg) })
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .BlockPeg))
+        .opacity(viewModel.getOpacity(for: .BlockPeg))
     }
 
     var getIncrementButton: some View {
         Button(action: { viewModel.handleIncrement() },
                label: { Image(systemName: "plus.circle")
-            .imageScale(.large)})
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: DIAMETER, height: DIAMETER)
+                .foregroundStyle(Color.green)})
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .HitPoints))
+        .opacity(viewModel.getHpOpacity())
     }
 
     var getDecrementButton: some View {
         Button(action: { viewModel.handleDecrement() },
                label: { Image(systemName: "minus.circle")
-                .imageScale(.large)})
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: DIAMETER, height: DIAMETER)
+                .foregroundStyle(Color.red)})
         .padding([.leading, .trailing])
-        .opacity(getOpacity(for: .HitPoints))
+        .opacity(viewModel.getHpOpacity())
     }
 
 }

@@ -1,18 +1,13 @@
 import SwiftUI
 
 struct LevelObjectView: View {
-    /// Despite its non-usage, having the viewModel here is important to
-    /// allow for the view to refresh and redraw every time the viewModel is
-    /// refreshed.
     @EnvironmentObject var viewModel: LevelSceneViewModel
     var levelObject: any GameObject
 
-    var isSelected: Bool { viewModel.currentResizingGameObject == levelObject.id }
-    var currentGameObject: UUID? { viewModel.currentResizingGameObject }
-    var isHpSelected: Bool { viewModel.currentHitPointsGameObject == levelObject.id }
-    var currentHpGameObject: UUID? { viewModel.currentHitPointsGameObject }
+    var isSelected: Bool { levelObject.id == viewModel.currentGameObjectId }
     var rotation: Angle { levelObject.rotation }
     var center: Vector { levelObject.centerPosition }
+    var currentHp: Double { Double(levelObject.hp) }
 
     var levelObjectType: String { levelObject.gameObjectType.rawValue }
     var levelObjectImageHeight: Double { levelObject.height }
@@ -21,26 +16,22 @@ struct LevelObjectView: View {
         ObjectSet.defaultGameObjectSet[levelObjectType]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
     }
 
-    var current: Double { Double(levelObject.hp) }
-    var minValue: Double { Double(0) }
-    var maxValue: Double { Double(10) }
+    var minValue: Double { viewModel.minHpValue }
+    var maxValue: Double { viewModel.maxHpValue }
 
     var body: some View {
         ZStack(alignment: .center) {
             Image(levelObjectImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .if(isHpSelected) { view in
+                .if(viewModel.isDisplayHpOverlay(self)) { view in
                     view.overlay(HealthOverlayView(levelObject: levelObject))
                         .environmentObject(viewModel)
                 }
-                .scaledToFit()
                 .frame(width: levelObjectImageWidth, height: levelObjectImageHeight)
                 .position(center.point)
                 .rotationEffect(rotation, anchor: center.unitPoint)
-            // .onTapGesture { handleTap() }
-                .onTapGesture(count: 2) { handleDoubleTap() }
-                .gesture(TapGesture().onEnded { _ in handleTap() })
+                .onTapGesture { handleTap() }
                 .simultaneousGesture(handleLongPress.exclusively(before: handleDrag))
                 .if(isSelected) { view in
                     view.overlay(LevelObjectResizerView(levelObject: levelObject))
@@ -49,6 +40,7 @@ struct LevelObjectView: View {
                 .if(viewModel.isLevelDesignerPaused) { view in
                     view.disabled(true)
                 }
+
         }
     }
 
@@ -63,18 +55,10 @@ struct LevelObjectView: View {
     }
 
     private func handleEditTap() {
-        if isSelected {
-            viewModel.currentResizingGameObject = nil
+        if levelObject.id == viewModel.currentGameObjectId {
+            viewModel.currentGameObjectId = nil
         } else {
-            viewModel.currentResizingGameObject = levelObject.id
-        }
-    }
-
-    private func handleDoubleTap() {
-        if isHpSelected {
-            viewModel.currentHitPointsGameObject = nil
-        } else {
-            viewModel.currentHitPointsGameObject = levelObject.id
+            viewModel.currentGameObjectId = levelObject.id
         }
     }
 

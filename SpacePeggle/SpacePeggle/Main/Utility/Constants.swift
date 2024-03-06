@@ -77,8 +77,6 @@ public class Constants {
 
     /// MAX HP VALUE
     static var MAX_HP_VALUE: Int = 10
-
-    /// MIN HP VALUE
     static var MIN_HP_VALUE: Int = 1
 
     // A universal helper function to dismiss the keyboard from anywhere

@@ -19,8 +19,8 @@ struct GameObjectView: View {
     }
 
     var current: Double { Double(gameObject.hp) }
-    var minValue: Double { Double(0) }
-    var maxValue: Double { Double(10) }
+    var minValue: Double { Double(Constants.MIN_HP_VALUE) }
+    var maxValue: Double { Double(Constants.MAX_HP_VALUE) }
 
     var body: some View {
         ZStack {
@@ -44,7 +44,7 @@ struct GameObjectView: View {
                                     .foregroundColor(Color.red)
                             }
                             .gaugeStyle(.accessoryCircularCapacity)
-                            .scaleEffect(0.5)
+                            .scaleEffect(0.7)
                         }
                     }
 

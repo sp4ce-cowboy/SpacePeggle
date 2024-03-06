@@ -5,8 +5,7 @@ class LevelSceneViewModel: ObservableObject {
 
     @Published var isLevelDesignerPaused = false
     @Published var isLevelObjectSelected = false
-    @Published var currentResizingGameObject: UUID?
-    @Published var currentHitPointsGameObject: UUID?
+    @Published var currentGameObjectId: UUID?
     @Published var selectedMode: Enums.SelectedMode = .NormalPeg
     @State var options = Options()
 
@@ -227,7 +226,7 @@ extension LevelSceneViewModel {
 
     func handleLoad() {
         triggerRefresh()
-        currentResizingGameObject = nil
+        currentGameObjectId = nil
         options.files = Storage.listSavedFiles()
         clearEmptyTextFieldAndDismissKeyboard()
         options.showingFileList = true
@@ -281,7 +280,7 @@ extension LevelSceneViewModel {
     }
 }
 
-/// This extension adds the ability to modify hit points of objects
+/// This extension adds the ability to handle modifications to hit points of objects
 extension LevelSceneViewModel {
 
     var minHpValue: Double {
@@ -292,10 +291,24 @@ extension LevelSceneViewModel {
         Double(Constants.MAX_HP_VALUE)
     }
 
+    func updateCurrentGameObjectId(_ view: LevelObjectView) {
+        currentGameObjectId = view.levelObject.id
+    }
+
+    func isSelected(_ view: LevelObjectView) -> Bool {
+        triggerRefresh()
+        return currentGameObjectId == view.levelObject.id
+    }
+
+    func isDisplayHpOverlay(_ view: LevelObjectView) -> Bool {
+        triggerRefresh()
+        return isSelected(view) || view.levelObject.hp > 1
+    }
+
     func handleIncrement() {
         triggerRefresh()
         Logger.log("Increment handled", self)
-        if let currentObjectId = currentHitPointsGameObject {
+        if let currentObjectId = currentGameObjectId {
             levelDesigner.updateObjectHitPoints(withId: currentObjectId,
                                                 and: .unit)
         }
@@ -303,9 +316,32 @@ extension LevelSceneViewModel {
 
     func handleDecrement() {
         triggerRefresh()
-        if let currentObjectId = currentHitPointsGameObject {
+        if let currentObjectId = currentGameObjectId {
             levelDesigner.updateObjectHitPoints(withId: currentObjectId,
                                                 and: .negativeUnit)
         }
+    }
+
+    // Helper function to determine the opacity of a button
+    func getOpacity(for button: Enums.SelectedMode) -> Double {
+        selectedMode == button ? StyleSheet.FULL_OPACITY : StyleSheet.HALF_OPACITY
+    }
+
+    // Helper function to determine the opacity of HP modifiers
+    func getHpOpacity() -> Double {
+        currentGameObjectId != nil ? StyleSheet.FULL_OPACITY : StyleSheet.HALF_OPACITY
+    }
+
+    // Helper function to determine the image name based on the selected object's type.
+    func buttonImage(for buttonName: Enums.SelectedMode) -> some View {
+        let imageName = ObjectSet
+            .defaultGameObjectSet[buttonName.rawValue]?.name ?? ObjectSet.DEFAULT_IMAGE_STUB
+
+        let DIAMETER = Constants.UNIVERSAL_LENGTH * 1.3
+
+        return Image(imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: DIAMETER, height: DIAMETER)
     }
 }

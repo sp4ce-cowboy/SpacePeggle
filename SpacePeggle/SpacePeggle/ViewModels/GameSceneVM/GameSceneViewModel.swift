@@ -122,7 +122,7 @@ class GameSceneViewModel: ObservableObject, GameEngineDelegate {
         if scores.currentScore > self.scores.currentScore + Constants.SCORE_COMBO_THRESHOLD {
             self.scores = scores
             self.scores.scoreBonus += Constants.SCORE_COMBO_THRESHOLD
-            self.scores.status = "\(Constants.SCORE_COMBO_THRESHOLD) COMBO BONUS!"
+            self.scores.status = "COMBO BONUS!"
         } else {
             self.scores = scores
         }

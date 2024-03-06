@@ -4,6 +4,8 @@ struct HealthOverlayView: View {
     @EnvironmentObject var viewModel: LevelSceneViewModel
     var levelObject: any GameObject
     var center: Vector { levelObject.centerPosition }
+    var levelObjectImageHeight: Double { levelObject.height }
+    var levelObjectImageWidth: Double { levelObject.width }
 
     var current: Double { Double(levelObject.hp) }
     var minValue: Double { viewModel.minHpValue }

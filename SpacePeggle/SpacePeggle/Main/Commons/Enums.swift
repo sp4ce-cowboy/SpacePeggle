@@ -38,7 +38,6 @@ class Enums {
         case KaboomPeg
         case StubbornPeg
         case Remove
-        case HitPoints
     }
 
     enum GameObjectType: String, Codable, CodingKey {

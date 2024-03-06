@@ -12,6 +12,10 @@ class StyleSheet {
     static var themeAccentColor = Color.accentColor
     static var themeTextColor = Color.black
 
+    /// Selection bar buttom opacities
+    static let HALF_OPACITY = 0.4
+    static let FULL_OPACITY = 1.0
+
     /// A helper function to define a universal size scale.
     ///
     /// Given the required letter-boxing constraint, all sizes will
