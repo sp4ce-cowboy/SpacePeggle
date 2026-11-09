@@ -138,13 +138,13 @@ Publishing on the App Store is **pending**. The game is complete and runs on iPa
 
 ## Coding stats
 
-Tracked with [WakaTime](https://wakatime.com). For scale, CS3217's nominal workload is about
-13 hours a week.
+Tracked with [WakaTime](https://wakatime.com). For scale, NUS's standard workload is 2.5 hours
+a week per unit, so 12.5 hours a week for a 5-unit course like CS3217.
 
 | | |
 |---|---|
 | **Total** | **270 h** of coding: PS2 55 h · PS3 103 h · PS4 112 h |
-| **Peak week** | **93 h** (29 Feb – 6 Mar 2024), about 7× the nominal workload |
+| **Peak week** | **93 h** (29 Feb – 6 Mar 2024), about 7.4× the standard workload |
 | **Peak day** | **19.9 h** (6 Mar 2024, PS4 deadline day) |
 | **Longest push** | **41.7 h** without a break longer than 3 h (Tue 5 Mar 08:20 → Thu 7 Mar 01:59), 33.4 h of it coding |
 | **Commits** | 142 across PS2–PS4, 12 merged pull requests |
@@ -173,6 +173,7 @@ Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound ef
 ## On my resume
 
 - Built Space Peggle, a complete iPad physics game in Swift and SwiftUI with no game framework: a from-scratch physics engine (integration, circle–rectangle collision detection, momentum-conserving response), a game engine, a level designer and JSON persistence. About 6,800 lines of Swift.
-- Separated the game and physics engines behind delegate protocols, and resolved collisions by double dispatch, returning penetration depth as an optional `Double`, so the physics layer stays reusable and unit-testable.
-- Designed gameplay on the engine: explosion falloff out to 4 radii, a portal floor, a three-body moving bucket, per-peg hit points, live-switchable gravity across four planets, a projected aiming path and combo scoring.
-- Delivered across three cumulative problem sets in NUS CS3217, one of the most demanding software-engineering courses in the School of Computing: 142 commits, 14,800 words of developer guides and 270 tracked hours.
+- Architected the game as two independent engines behind delegate protocols: a game engine for rules and scoring, and a physics engine for bodies and forces. A CADisplayLink loop in an MVVM view model drives both, so the physics engine runs and is unit-tested with no game or UI code.
+- Implemented collision detection by double dispatch across circle and rectangle shapes. Each check returns the penetration depth as an optional `Double`, and the same value drives position correction, with no type switches anywhere in the collision path.
+- Shipped gameplay systems on top of the engine: exploding pegs with linear force falloff to 4 radii, a portal floor, a three-body bucket that both deflects and catches the ball, hit points from 1 to 10, and live gravity switching across 4 planets. A level designer saves and validates levels as Codable JSON.
+- Wrote 14,800 words of developer guides across three cumulative NUS CS3217 problem sets (142 commits). They set out design decisions such as engine separation and where the game loop lives, each weighed against its alternatives.
