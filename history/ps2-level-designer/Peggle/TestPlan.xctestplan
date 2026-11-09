@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D8B458F2-62DC-4EB0-A8B9-A32131B3B0B8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Peggle.xcodeproj",
+        "identifier" : "BADAD5C42B66844C002BB889",
+        "name" : "PeggleTests"
+      }
+    }
+  ],
+  "version" : 1
+}

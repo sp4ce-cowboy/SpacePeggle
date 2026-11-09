@@ -1,0 +1,59 @@
+.
+|-- Assets.xcassets
+|   |-- AccentColor.colorset
+|   |   `-- Contents.json
+|   |-- AppIcon.appiconset
+|   |   |-- Contents.json
+|   |   `-- Peggle.png
+|   |-- Contents.json
+|   |-- background.imageset
+|   |   |-- Contents.json
+|   |   `-- background.png
+|   |-- delete.imageset
+|   |   |-- Contents.json
+|   |   `-- delete.png
+|   |-- peg-blue.imageset
+|   |   |-- Contents.json
+|   |   |-- peg-blue@1x.png
+|   |   `-- peg-blue@2x.png
+|   `-- peg-orange.imageset
+|       |-- Contents.json
+|       |-- peg-orange@1x.png
+|       `-- peg-orange@2x.png
+|-- DeveloperGuide.md
+|-- Info.plist
+|-- Main
+|   |-- PeggleApp.swift
+|   `-- Utility.swift
+|-- Models
+|   |-- Enums
+|   |   |-- AvailableButtons.swift
+|   |   `-- PegColor.swift
+|   |-- Game\ Models
+|   |   |-- Level.swift
+|   |   `-- Storage.swift
+|   |-- Game\ Objects
+|   |   |-- Peg+Storage.swift
+|   |   `-- Peg.swift
+|   `-- Protocols
+|       |-- CodableGameObject.swift
+|       `-- GameObject.swift
+|-- ViewModels
+|   |-- LevelViewModel+CheckRep.swift
+|   `-- LevelViewModel.swift
+|-- Views
+|   |-- Action\ Bar\ Area
+|   |   |-- ActionBarView.swift
+|   |   |-- FunctionBarView.swift
+|   |   `-- PegSelectionBarView.swift
+|   |-- File\ Storage
+|   |   `-- FileListView.swift
+|   |-- Game\ Objects
+|   |   `-- PegView.swift
+|   `-- Main\ View
+|       |-- BackgroundView.swift
+|       |-- LevelView.swift
+|       `-- PlayableAreaView.swift
+`-- hello.txt
+
+20 directories, 37 files

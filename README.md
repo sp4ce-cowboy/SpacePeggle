@@ -59,9 +59,9 @@ scratch, through problem sets that stack on each other:
 
 | Problem set | What it adds | Built |
 |---|---|---|
-| **PS2: Level designer** | Place, move, resize and delete pegs; save and load levels; MVVM in SwiftUI | 23 Jan – 5 Feb 2024 |
-| **PS3: Game from scratch** | A physics engine and a game engine, written from first principles: integration, collision detection and response, the game loop | 8 – 23 Feb 2024 |
-| **PS4: Finalising the game** | The full game on top of both: special pegs, the bucket, scoring, hit points, planets, sound, and an integrated designer | 26 Feb – 6 Mar 2024 |
+| **[PS2: Level designer](history/ps2-level-designer)** | Place, move, resize and delete pegs; save and load levels; MVVM in SwiftUI ([developer guide](history/ps2-level-designer/Peggle/Peggle/DeveloperGuide.md)) | 23 Jan – 5 Feb 2024 |
+| **[PS3: Game from scratch](history/ps3-game-engine)** | A physics engine and a game engine, written from first principles: integration, collision detection and response, the game loop ([developer guide](history/ps3-game-engine/PeggleGameplay/DeveloperGuide.md)) | 8 – 23 Feb 2024 |
+| **PS4: Finalising the game** | The full game on top of both: special pegs, the bucket, scoring, hit points, planets, sound, and an integrated designer ([report](DOCUMENTATION.md)). This is the code at the root of this repo | 26 Feb – 6 Mar 2024 |
 
 The course's nominal workload is about 13 hours a week. The busiest week of this build
 (29 Feb – 6 Mar 2024) logged **93 hours** of coding, including one unbroken push of

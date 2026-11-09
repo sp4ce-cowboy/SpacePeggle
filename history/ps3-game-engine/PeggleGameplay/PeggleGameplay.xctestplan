@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "47C36B56-FA8C-421C-8CCA-3FF850D0C330",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:PeggleGameplay.xcodeproj",
+      "identifier" : "BA1D566B2B80CDB4001D7A08",
+      "name" : "PeggleGameplay"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:PeggleGameplay.xcodeproj",
+        "identifier" : "BA1D567B2B80CDB5001D7A08",
+        "name" : "PeggleGameplayTests"
+      }
+    }
+  ],
+  "version" : 1
+}

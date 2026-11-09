@@ -196,8 +196,8 @@ Known Issues:
 
 - My previous DGs contain quite a bit of information about some of my design choices, although some decisions have been changed. They also contain the test plans that can be used for this problem set as well.
 
-- PS2 DG can be found [here](https://github.com/cs3217-2324/problem-set-2-sp4ce-cowboy/blob/master/Peggle/Peggle/DeveloperGuide.md)
-- PS3 DG can be found [here](https://github.com/cs3217-2324/problem-set-3-sp4ce-cowboy/blob/master/PeggleGameplay/DeveloperGuide.md)
+- PS2 DG can be found [here](history/ps2-level-designer/Peggle/Peggle/DeveloperGuide.md)
+- PS3 DG can be found [here](history/ps3-game-engine/PeggleGameplay/DeveloperGuide.md)
 
 
 

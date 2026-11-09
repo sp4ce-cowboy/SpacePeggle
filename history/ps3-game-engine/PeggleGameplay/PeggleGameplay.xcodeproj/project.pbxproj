@@ -1,0 +1,846 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA09F7562B8368D800EE6433 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA09F7552B8368D800EE6433 /* DisplayLink.swift */; };
+		BA1D56702B80CDB4001D7A08 /* PeggleGameplayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D566F2B80CDB4001D7A08 /* PeggleGameplayApp.swift */; };
+		BA1D56722B80CDB4001D7A08 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56712B80CDB4001D7A08 /* MainView.swift */; };
+		BA1D56742B80CDB4001D7A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1D56732B80CDB4001D7A08 /* Assets.xcassets */; };
+		BA1D56A02B80CE91001D7A08 /* DeveloperGuide.md in Resources */ = {isa = PBXBuildFile; fileRef = BA1D569F2B80CE91001D7A08 /* DeveloperGuide.md */; };
+		BA1D56A52B80CF37001D7A08 /* PhysicsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56A42B80CF37001D7A08 /* PhysicsEngine.swift */; };
+		BA1D56A72B80CF42001D7A08 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56A62B80CF42001D7A08 /* GameEngine.swift */; };
+		BA1D56AA2B80CF5D001D7A08 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56A92B80CF5D001D7A08 /* Level.swift */; };
+		BA1D56AC2B80CF7F001D7A08 /* PegView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56AB2B80CF7F001D7A08 /* PegView.swift */; };
+		BA1D56AF2B80CF93001D7A08 /* LauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56AE2B80CF93001D7A08 /* LauncherView.swift */; };
+		BA1D56B12B80CFA0001D7A08 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56B02B80CFA0001D7A08 /* BackgroundView.swift */; };
+		BA1D56B52B80D02B001D7A08 /* Peg.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56B42B80D02B001D7A08 /* Peg.swift */; };
+		BA1D56B72B80D032001D7A08 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56B62B80D032001D7A08 /* Ball.swift */; };
+		BA1D56B92B80D03D001D7A08 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56B82B80D03D001D7A08 /* Launcher.swift */; };
+		BA1D56BB2B80D353001D7A08 /* PhysicsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56BA2B80D353001D7A08 /* PhysicsObject.swift */; };
+		BA1D56C12B80DA04001D7A08 /* GameAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D56C02B80DA04001D7A08 /* GameAreaView.swift */; };
+		BA4ACA372B865450005F8CC5 /* LevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA362B865450005F8CC5 /* LevelTests.swift */; };
+		BA4ACA392B86558E005F8CC5 /* LauncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA382B86558E005F8CC5 /* LauncherTests.swift */; };
+		BA4ACA3B2B865778005F8CC5 /* NormalPeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA3A2B865778005F8CC5 /* NormalPeg.swift */; };
+		BA4ACA3D2B865790005F8CC5 /* GoalPeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA3C2B865790005F8CC5 /* GoalPeg.swift */; };
+		BA4ACA3F2B8657C5005F8CC5 /* GameObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA3E2B8657C5005F8CC5 /* GameObjectTests.swift */; };
+		BA4ACA412B866110005F8CC5 /* PegTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA402B866110005F8CC5 /* PegTests.swift */; };
+		BA4ACA442B86630E005F8CC5 /* BallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA432B86630E005F8CC5 /* BallTests.swift */; };
+		BA4ACA482B86636E005F8CC5 /* PhysicsModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA472B86636E005F8CC5 /* PhysicsModelsTests.swift */; };
+		BA4ACA4A2B866541005F8CC5 /* PhysicsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4ACA492B866541005F8CC5 /* PhysicsEngineTests.swift */; };
+		BA61C7C22B8457C700699A8A /* GameEngine+Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA61C7C12B8457C700699A8A /* GameEngine+Translation.swift */; };
+		BA68EEF62B85F1F500B4FD7E /* GameEngine+Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EEF52B85F1F500B4FD7E /* GameEngine+Start.swift */; };
+		BA68EEF82B85FC2F00B4FD7E /* GameEngine+Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EEF72B85FC2F00B4FD7E /* GameEngine+Game.swift */; };
+		BA68EEFB2B8614DC00B4FD7E /* PhysicsEngine+Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EEFA2B8614DC00B4FD7E /* PhysicsEngine+Collision.swift */; };
+		BA68EEFD2B86151900B4FD7E /* PhysicsEngine+Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EEFC2B86151900B4FD7E /* PhysicsEngine+Boundary.swift */; };
+		BA68EF032B86182F00B4FD7E /* MainViewModel+GOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EF022B86182F00B4FD7E /* MainViewModel+GOM.swift */; };
+		BA68EF052B86185100B4FD7E /* MainViewModel+DLM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EF042B86185100B4FD7E /* MainViewModel+DLM.swift */; };
+		BA68EF072B86188D00B4FD7E /* MainViewModel+LC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EF062B86188D00B4FD7E /* MainViewModel+LC.swift */; };
+		BA68EF092B8618E700B4FD7E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EF082B8618E700B4FD7E /* MainViewModel.swift */; };
+		BA68EF0B2B861D8100B4FD7E /* GameEngine+Removal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA68EF0A2B861D8100B4FD7E /* GameEngine+Removal.swift */; };
+		BA6CFB792B84CAF60041F9B9 /* AbstractLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6CFB782B84CAF60041F9B9 /* AbstractLevel.swift */; };
+		BA6CFB7B2B84CD6F0041F9B9 /* PhysicsShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6CFB7A2B84CD6F0041F9B9 /* PhysicsShape.swift */; };
+		BA6CFB7E2B84CE190041F9B9 /* CircleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6CFB7D2B84CE190041F9B9 /* CircleShape.swift */; };
+		BA774BB72B84999B004BBF6E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA774BB62B84999B004BBF6E /* Logger.swift */; };
+		BA774BBC2B84BBE8004BBF6E /* AbstractPhysicsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA774BBB2B84BBE8004BBF6E /* AbstractPhysicsEngine.swift */; };
+		BA774BBE2B84BE13004BBF6E /* AbstractGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA774BBD2B84BE13004BBF6E /* AbstractGameEngine.swift */; };
+		BA9A1C702B8106240011B508 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C6F2B8106240011B508 /* BallView.swift */; };
+		BA9A1C722B8106610011B508 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C712B8106600011B508 /* Constants.swift */; };
+		BA9A1C772B81B0FD0011B508 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C762B81B0FD0011B508 /* GameObject.swift */; };
+		BA9A1C7B2B81BE190011B508 /* LevelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C7A2B81BE190011B508 /* LevelStub.swift */; };
+		BA9A1C7F2B81C0F40011B508 /* GameObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C7E2B81C0F40011B508 /* GameObjectView.swift */; };
+		BA9A1C812B81C4160011B508 /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C802B81C4160011B508 /* ObjectSet.swift */; };
+		BA9A1C852B81D0D80011B508 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C842B81D0D80011B508 /* LevelView.swift */; };
+		BA9A1C872B81D6300011B508 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C862B81D6300011B508 /* Vector.swift */; };
+		BA9A1C8E2B8246F80011B508 /* UniversalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A1C8D2B8246F80011B508 /* UniversalObject.swift */; };
+		BAE43D182B8646D50010395A /* DisplayLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE43D172B8646D50010395A /* DisplayLinkTests.swift */; };
+		BAE43D1A2B8647220010395A /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE43D192B8647220010395A /* VectorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA1D567D2B80CDB5001D7A08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA1D56642B80CDB4001D7A08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA1D566B2B80CDB4001D7A08;
+			remoteInfo = PeggleGameplay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA09F7552B8368D800EE6433 /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
+		BA1D566C2B80CDB4001D7A08 /* PeggleGameplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeggleGameplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1D566F2B80CDB4001D7A08 /* PeggleGameplayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeggleGameplayApp.swift; sourceTree = "<group>"; };
+		BA1D56712B80CDB4001D7A08 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BA1D56732B80CDB4001D7A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA1D567C2B80CDB5001D7A08 /* PeggleGameplayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeggleGameplayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1D569F2B80CE91001D7A08 /* DeveloperGuide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = DeveloperGuide.md; sourceTree = "<group>"; };
+		BA1D56A42B80CF37001D7A08 /* PhysicsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsEngine.swift; sourceTree = "<group>"; };
+		BA1D56A62B80CF42001D7A08 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		BA1D56A92B80CF5D001D7A08 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		BA1D56AB2B80CF7F001D7A08 /* PegView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegView.swift; sourceTree = "<group>"; };
+		BA1D56AE2B80CF93001D7A08 /* LauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherView.swift; sourceTree = "<group>"; };
+		BA1D56B02B80CFA0001D7A08 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		BA1D56B42B80D02B001D7A08 /* Peg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peg.swift; sourceTree = "<group>"; };
+		BA1D56B62B80D032001D7A08 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		BA1D56B82B80D03D001D7A08 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
+		BA1D56BA2B80D353001D7A08 /* PhysicsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsObject.swift; sourceTree = "<group>"; };
+		BA1D56C02B80DA04001D7A08 /* GameAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAreaView.swift; sourceTree = "<group>"; };
+		BA4ACA352B864FC5005F8CC5 /* PeggleGameplay.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PeggleGameplay.xctestplan; sourceTree = "<group>"; };
+		BA4ACA362B865450005F8CC5 /* LevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTests.swift; sourceTree = "<group>"; };
+		BA4ACA382B86558E005F8CC5 /* LauncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherTests.swift; sourceTree = "<group>"; };
+		BA4ACA3A2B865778005F8CC5 /* NormalPeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPeg.swift; sourceTree = "<group>"; };
+		BA4ACA3C2B865790005F8CC5 /* GoalPeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPeg.swift; sourceTree = "<group>"; };
+		BA4ACA3E2B8657C5005F8CC5 /* GameObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectTests.swift; sourceTree = "<group>"; };
+		BA4ACA402B866110005F8CC5 /* PegTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegTests.swift; sourceTree = "<group>"; };
+		BA4ACA432B86630E005F8CC5 /* BallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallTests.swift; sourceTree = "<group>"; };
+		BA4ACA472B86636E005F8CC5 /* PhysicsModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsModelsTests.swift; sourceTree = "<group>"; };
+		BA4ACA492B866541005F8CC5 /* PhysicsEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsEngineTests.swift; sourceTree = "<group>"; };
+		BA61C7C12B8457C700699A8A /* GameEngine+Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+Translation.swift"; sourceTree = "<group>"; };
+		BA68EEF52B85F1F500B4FD7E /* GameEngine+Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+Start.swift"; sourceTree = "<group>"; };
+		BA68EEF72B85FC2F00B4FD7E /* GameEngine+Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+Game.swift"; sourceTree = "<group>"; };
+		BA68EEFA2B8614DC00B4FD7E /* PhysicsEngine+Collision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Collision.swift"; sourceTree = "<group>"; };
+		BA68EEFC2B86151900B4FD7E /* PhysicsEngine+Boundary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsEngine+Boundary.swift"; sourceTree = "<group>"; };
+		BA68EF022B86182F00B4FD7E /* MainViewModel+GOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel+GOM.swift"; sourceTree = "<group>"; };
+		BA68EF042B86185100B4FD7E /* MainViewModel+DLM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel+DLM.swift"; sourceTree = "<group>"; };
+		BA68EF062B86188D00B4FD7E /* MainViewModel+LC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewModel+LC.swift"; sourceTree = "<group>"; };
+		BA68EF082B8618E700B4FD7E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		BA68EF0A2B861D8100B4FD7E /* GameEngine+Removal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+Removal.swift"; sourceTree = "<group>"; };
+		BA6CFB782B84CAF60041F9B9 /* AbstractLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLevel.swift; sourceTree = "<group>"; };
+		BA6CFB7A2B84CD6F0041F9B9 /* PhysicsShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsShape.swift; sourceTree = "<group>"; };
+		BA6CFB7D2B84CE190041F9B9 /* CircleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShape.swift; sourceTree = "<group>"; };
+		BA774BB62B84999B004BBF6E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BA774BBB2B84BBE8004BBF6E /* AbstractPhysicsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPhysicsEngine.swift; sourceTree = "<group>"; };
+		BA774BBD2B84BE13004BBF6E /* AbstractGameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGameEngine.swift; sourceTree = "<group>"; };
+		BA9A1C6F2B8106240011B508 /* BallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
+		BA9A1C712B8106600011B508 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BA9A1C762B81B0FD0011B508 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		BA9A1C7A2B81BE190011B508 /* LevelStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelStub.swift; sourceTree = "<group>"; };
+		BA9A1C7E2B81C0F40011B508 /* GameObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObjectView.swift; sourceTree = "<group>"; };
+		BA9A1C802B81C4160011B508 /* ObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
+		BA9A1C842B81D0D80011B508 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		BA9A1C862B81D6300011B508 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		BA9A1C8D2B8246F80011B508 /* UniversalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalObject.swift; sourceTree = "<group>"; };
+		BAE43D172B8646D50010395A /* DisplayLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkTests.swift; sourceTree = "<group>"; };
+		BAE43D192B8647220010395A /* VectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA1D56692B80CDB4001D7A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1D56792B80CDB5001D7A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA123FAC2B85E68400F9F0BB /* GameEngine */ = {
+			isa = PBXGroup;
+			children = (
+				BA774BBD2B84BE13004BBF6E /* AbstractGameEngine.swift */,
+				BA1D56A62B80CF42001D7A08 /* GameEngine.swift */,
+				BA68EEF52B85F1F500B4FD7E /* GameEngine+Start.swift */,
+				BA68EEF72B85FC2F00B4FD7E /* GameEngine+Game.swift */,
+				BA68EF0A2B861D8100B4FD7E /* GameEngine+Removal.swift */,
+				BA61C7C12B8457C700699A8A /* GameEngine+Translation.swift */,
+			);
+			path = GameEngine;
+			sourceTree = "<group>";
+		};
+		BA1D56632B80CDB4001D7A08 = {
+			isa = PBXGroup;
+			children = (
+				BA4ACA352B864FC5005F8CC5 /* PeggleGameplay.xctestplan */,
+				BA1D569F2B80CE91001D7A08 /* DeveloperGuide.md */,
+				BA1D566E2B80CDB4001D7A08 /* PeggleGameplay */,
+				BA1D567F2B80CDB5001D7A08 /* PeggleGameplayTests */,
+				BA1D56892B80CDB5001D7A08 /* PeggleGameplayUITests */,
+				BA1D566D2B80CDB4001D7A08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA1D566D2B80CDB4001D7A08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D566C2B80CDB4001D7A08 /* PeggleGameplay.app */,
+				BA1D567C2B80CDB5001D7A08 /* PeggleGameplayTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA1D566E2B80CDB4001D7A08 /* PeggleGameplay */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D56732B80CDB4001D7A08 /* Assets.xcassets */,
+				BA1D56A12B80CE99001D7A08 /* Main */,
+				BA1D56992B80CE3A001D7A08 /* Models */,
+				BA68EEFE2B86179600B4FD7E /* ViewModels */,
+				BA1D569B2B80CE4C001D7A08 /* Views */,
+			);
+			path = PeggleGameplay;
+			sourceTree = "<group>";
+		};
+		BA1D567F2B80CDB5001D7A08 /* PeggleGameplayTests */ = {
+			isa = PBXGroup;
+			children = (
+				BAE43D132B8646880010395A /* UtilityTests */,
+				BAE43D162B8646A70010395A /* PhysicsModelsTests */,
+				BAE43D152B8646980010395A /* GameModelsTests */,
+				BAE43D142B8646900010395A /* CommonsTests */,
+			);
+			path = PeggleGameplayTests;
+			sourceTree = "<group>";
+		};
+		BA1D56892B80CDB5001D7A08 /* PeggleGameplayUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PeggleGameplayUITests;
+			sourceTree = "<group>";
+		};
+		BA1D56992B80CE3A001D7A08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA774BBA2B84B8DB004BBF6E /* Utility */,
+				BA9A1C8C2B82385A0011B508 /* Commons */,
+				BA1D56A82B80CF4F001D7A08 /* GameModels */,
+				BA1D56A32B80CF28001D7A08 /* PhysicsModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA1D569B2B80CE4C001D7A08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A1C832B81C7740011B508 /* MainViews */,
+				BA9A1C822B81C75F0011B508 /* GameObjectViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA1D56A12B80CE99001D7A08 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D566F2B80CDB4001D7A08 /* PeggleGameplayApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BA1D56A32B80CF28001D7A08 /* PhysicsModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D56BA2B80D353001D7A08 /* PhysicsObject.swift */,
+				BA1D56B62B80D032001D7A08 /* Ball.swift */,
+				BA68EEF92B86108F00B4FD7E /* PhysicsEngine */,
+				BA6CFB7C2B84CE050041F9B9 /* PhysicsShapes */,
+			);
+			path = PhysicsModels;
+			sourceTree = "<group>";
+		};
+		BA1D56A82B80CF4F001D7A08 /* GameModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA6CFB772B84CAE50041F9B9 /* LevelModels */,
+				BA9A1C762B81B0FD0011B508 /* GameObject.swift */,
+				BA1D56B82B80D03D001D7A08 /* Launcher.swift */,
+				BA1D56B42B80D02B001D7A08 /* Peg.swift */,
+				BA4ACA3C2B865790005F8CC5 /* GoalPeg.swift */,
+				BA4ACA3A2B865778005F8CC5 /* NormalPeg.swift */,
+				BA123FAC2B85E68400F9F0BB /* GameEngine */,
+			);
+			path = GameModels;
+			sourceTree = "<group>";
+		};
+		BA68EEF92B86108F00B4FD7E /* PhysicsEngine */ = {
+			isa = PBXGroup;
+			children = (
+				BA774BBB2B84BBE8004BBF6E /* AbstractPhysicsEngine.swift */,
+				BA1D56A42B80CF37001D7A08 /* PhysicsEngine.swift */,
+				BA68EEFC2B86151900B4FD7E /* PhysicsEngine+Boundary.swift */,
+				BA68EEFA2B8614DC00B4FD7E /* PhysicsEngine+Collision.swift */,
+			);
+			path = PhysicsEngine;
+			sourceTree = "<group>";
+		};
+		BA68EEFE2B86179600B4FD7E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA68EF082B8618E700B4FD7E /* MainViewModel.swift */,
+				BA68EF022B86182F00B4FD7E /* MainViewModel+GOM.swift */,
+				BA68EF042B86185100B4FD7E /* MainViewModel+DLM.swift */,
+				BA68EF062B86188D00B4FD7E /* MainViewModel+LC.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BA6CFB772B84CAE50041F9B9 /* LevelModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA6CFB782B84CAF60041F9B9 /* AbstractLevel.swift */,
+				BA1D56A92B80CF5D001D7A08 /* Level.swift */,
+			);
+			path = LevelModels;
+			sourceTree = "<group>";
+		};
+		BA6CFB7C2B84CE050041F9B9 /* PhysicsShapes */ = {
+			isa = PBXGroup;
+			children = (
+				BA6CFB7A2B84CD6F0041F9B9 /* PhysicsShape.swift */,
+				BA6CFB7D2B84CE190041F9B9 /* CircleShape.swift */,
+			);
+			path = PhysicsShapes;
+			sourceTree = "<group>";
+		};
+		BA774BBA2B84B8DB004BBF6E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BA09F7552B8368D800EE6433 /* DisplayLink.swift */,
+				BA9A1C712B8106600011B508 /* Constants.swift */,
+				BA774BB62B84999B004BBF6E /* Logger.swift */,
+				BA9A1C862B81D6300011B508 /* Vector.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		BA9A1C822B81C75F0011B508 /* GameObjectViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A1C7E2B81C0F40011B508 /* GameObjectView.swift */,
+				BA1D56AB2B80CF7F001D7A08 /* PegView.swift */,
+				BA1D56AE2B80CF93001D7A08 /* LauncherView.swift */,
+				BA9A1C6F2B8106240011B508 /* BallView.swift */,
+			);
+			path = GameObjectViews;
+			sourceTree = "<group>";
+		};
+		BA9A1C832B81C7740011B508 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D56712B80CDB4001D7A08 /* MainView.swift */,
+				BA1D56B02B80CFA0001D7A08 /* BackgroundView.swift */,
+				BA1D56C02B80DA04001D7A08 /* GameAreaView.swift */,
+				BA9A1C842B81D0D80011B508 /* LevelView.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		BA9A1C8C2B82385A0011B508 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A1C7A2B81BE190011B508 /* LevelStub.swift */,
+				BA9A1C8D2B8246F80011B508 /* UniversalObject.swift */,
+				BA9A1C802B81C4160011B508 /* ObjectSet.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		BAE43D132B8646880010395A /* UtilityTests */ = {
+			isa = PBXGroup;
+			children = (
+				BAE43D172B8646D50010395A /* DisplayLinkTests.swift */,
+				BAE43D192B8647220010395A /* VectorTests.swift */,
+			);
+			path = UtilityTests;
+			sourceTree = "<group>";
+		};
+		BAE43D142B8646900010395A /* CommonsTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommonsTests;
+			sourceTree = "<group>";
+		};
+		BAE43D152B8646980010395A /* GameModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA4ACA362B865450005F8CC5 /* LevelTests.swift */,
+				BA4ACA382B86558E005F8CC5 /* LauncherTests.swift */,
+				BA4ACA3E2B8657C5005F8CC5 /* GameObjectTests.swift */,
+				BA4ACA402B866110005F8CC5 /* PegTests.swift */,
+			);
+			path = GameModelsTests;
+			sourceTree = "<group>";
+		};
+		BAE43D162B8646A70010395A /* PhysicsModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA4ACA432B86630E005F8CC5 /* BallTests.swift */,
+				BA4ACA472B86636E005F8CC5 /* PhysicsModelsTests.swift */,
+				BA4ACA492B866541005F8CC5 /* PhysicsEngineTests.swift */,
+			);
+			path = PhysicsModelsTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA1D566B2B80CDB4001D7A08 /* PeggleGameplay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1D56902B80CDB5001D7A08 /* Build configuration list for PBXNativeTarget "PeggleGameplay" */;
+			buildPhases = (
+				BA0EAA282B83BF6200DFC6EE /* ShellScript */,
+				BA1D56682B80CDB4001D7A08 /* Sources */,
+				BA1D56692B80CDB4001D7A08 /* Frameworks */,
+				BA1D566A2B80CDB4001D7A08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeggleGameplay;
+			productName = PeggleGameplay;
+			productReference = BA1D566C2B80CDB4001D7A08 /* PeggleGameplay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA1D567B2B80CDB5001D7A08 /* PeggleGameplayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1D56932B80CDB5001D7A08 /* Build configuration list for PBXNativeTarget "PeggleGameplayTests" */;
+			buildPhases = (
+				BA1D56782B80CDB5001D7A08 /* Sources */,
+				BA1D56792B80CDB5001D7A08 /* Frameworks */,
+				BA1D567A2B80CDB5001D7A08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA1D567E2B80CDB5001D7A08 /* PBXTargetDependency */,
+			);
+			name = PeggleGameplayTests;
+			productName = PeggleGameplayTests;
+			productReference = BA1D567C2B80CDB5001D7A08 /* PeggleGameplayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA1D56642B80CDB4001D7A08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					BA1D566B2B80CDB4001D7A08 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					BA1D567B2B80CDB5001D7A08 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = BA1D566B2B80CDB4001D7A08;
+					};
+				};
+			};
+			buildConfigurationList = BA1D56672B80CDB4001D7A08 /* Build configuration list for PBXProject "PeggleGameplay" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA1D56632B80CDB4001D7A08;
+			productRefGroup = BA1D566D2B80CDB4001D7A08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA1D566B2B80CDB4001D7A08 /* PeggleGameplay */,
+				BA1D567B2B80CDB5001D7A08 /* PeggleGameplayTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA1D566A2B80CDB4001D7A08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1D56A02B80CE91001D7A08 /* DeveloperGuide.md in Resources */,
+				BA1D56742B80CDB4001D7A08 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1D567A2B80CDB5001D7A08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BA0EAA282B83BF6200DFC6EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\n  #swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA1D56682B80CDB4001D7A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA68EEF82B85FC2F00B4FD7E /* GameEngine+Game.swift in Sources */,
+				BA6CFB792B84CAF60041F9B9 /* AbstractLevel.swift in Sources */,
+				BA1D56B72B80D032001D7A08 /* Ball.swift in Sources */,
+				BA9A1C722B8106610011B508 /* Constants.swift in Sources */,
+				BA9A1C7F2B81C0F40011B508 /* GameObjectView.swift in Sources */,
+				BA9A1C772B81B0FD0011B508 /* GameObject.swift in Sources */,
+				BA68EEF62B85F1F500B4FD7E /* GameEngine+Start.swift in Sources */,
+				BA9A1C852B81D0D80011B508 /* LevelView.swift in Sources */,
+				BA1D56B52B80D02B001D7A08 /* Peg.swift in Sources */,
+				BA1D56722B80CDB4001D7A08 /* MainView.swift in Sources */,
+				BA68EF072B86188D00B4FD7E /* MainViewModel+LC.swift in Sources */,
+				BA6CFB7B2B84CD6F0041F9B9 /* PhysicsShape.swift in Sources */,
+				BA68EEFB2B8614DC00B4FD7E /* PhysicsEngine+Collision.swift in Sources */,
+				BA9A1C8E2B8246F80011B508 /* UniversalObject.swift in Sources */,
+				BA774BB72B84999B004BBF6E /* Logger.swift in Sources */,
+				BA4ACA3B2B865778005F8CC5 /* NormalPeg.swift in Sources */,
+				BA1D56B92B80D03D001D7A08 /* Launcher.swift in Sources */,
+				BA68EF032B86182F00B4FD7E /* MainViewModel+GOM.swift in Sources */,
+				BA09F7562B8368D800EE6433 /* DisplayLink.swift in Sources */,
+				BA6CFB7E2B84CE190041F9B9 /* CircleShape.swift in Sources */,
+				BA1D56A72B80CF42001D7A08 /* GameEngine.swift in Sources */,
+				BA774BBC2B84BBE8004BBF6E /* AbstractPhysicsEngine.swift in Sources */,
+				BA1D56B12B80CFA0001D7A08 /* BackgroundView.swift in Sources */,
+				BA9A1C702B8106240011B508 /* BallView.swift in Sources */,
+				BA1D56AC2B80CF7F001D7A08 /* PegView.swift in Sources */,
+				BA9A1C7B2B81BE190011B508 /* LevelStub.swift in Sources */,
+				BA774BBE2B84BE13004BBF6E /* AbstractGameEngine.swift in Sources */,
+				BA68EF052B86185100B4FD7E /* MainViewModel+DLM.swift in Sources */,
+				BA68EEFD2B86151900B4FD7E /* PhysicsEngine+Boundary.swift in Sources */,
+				BA1D56BB2B80D353001D7A08 /* PhysicsObject.swift in Sources */,
+				BA9A1C812B81C4160011B508 /* ObjectSet.swift in Sources */,
+				BA4ACA3D2B865790005F8CC5 /* GoalPeg.swift in Sources */,
+				BA1D56A52B80CF37001D7A08 /* PhysicsEngine.swift in Sources */,
+				BA1D56C12B80DA04001D7A08 /* GameAreaView.swift in Sources */,
+				BA1D56AA2B80CF5D001D7A08 /* Level.swift in Sources */,
+				BA68EF0B2B861D8100B4FD7E /* GameEngine+Removal.swift in Sources */,
+				BA68EF092B8618E700B4FD7E /* MainViewModel.swift in Sources */,
+				BA1D56AF2B80CF93001D7A08 /* LauncherView.swift in Sources */,
+				BA9A1C872B81D6300011B508 /* Vector.swift in Sources */,
+				BA1D56702B80CDB4001D7A08 /* PeggleGameplayApp.swift in Sources */,
+				BA61C7C22B8457C700699A8A /* GameEngine+Translation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1D56782B80CDB5001D7A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAE43D182B8646D50010395A /* DisplayLinkTests.swift in Sources */,
+				BA4ACA442B86630E005F8CC5 /* BallTests.swift in Sources */,
+				BAE43D1A2B8647220010395A /* VectorTests.swift in Sources */,
+				BA4ACA3F2B8657C5005F8CC5 /* GameObjectTests.swift in Sources */,
+				BA4ACA372B865450005F8CC5 /* LevelTests.swift in Sources */,
+				BA4ACA4A2B866541005F8CC5 /* PhysicsEngineTests.swift in Sources */,
+				BA4ACA412B866110005F8CC5 /* PegTests.swift in Sources */,
+				BA4ACA482B86636E005F8CC5 /* PhysicsModelsTests.swift in Sources */,
+				BA4ACA392B86558E005F8CC5 /* LauncherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA1D567E2B80CDB5001D7A08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA1D566B2B80CDB4001D7A08 /* PeggleGameplay */;
+			targetProxy = BA1D567D2B80CDB5001D7A08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BA1D568E2B80CDB5001D7A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BA1D568F2B80CDB5001D7A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA1D56912B80CDB5001D7A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPB6799M73;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space-cowboy.PeggleGameplay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		BA1D56922B80CDB5001D7A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPB6799M73;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space-cowboy.PeggleGameplay";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		BA1D56942B80CDB5001D7A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPB6799M73;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space-cowboy.PeggleGameplayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeggleGameplay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PeggleGameplay";
+			};
+			name = Debug;
+		};
+		BA1D56952B80CDB5001D7A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPB6799M73;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "space-cowboy.PeggleGameplayTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeggleGameplay.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PeggleGameplay";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA1D56672B80CDB4001D7A08 /* Build configuration list for PBXProject "PeggleGameplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA1D568E2B80CDB5001D7A08 /* Debug */,
+				BA1D568F2B80CDB5001D7A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA1D56902B80CDB5001D7A08 /* Build configuration list for PBXNativeTarget "PeggleGameplay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA1D56912B80CDB5001D7A08 /* Debug */,
+				BA1D56922B80CDB5001D7A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA1D56932B80CDB5001D7A08 /* Build configuration list for PBXNativeTarget "PeggleGameplayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA1D56942B80CDB5001D7A08 /* Debug */,
+				BA1D56952B80CDB5001D7A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA1D56642B80CDB4001D7A08 /* Project object */;
+}
