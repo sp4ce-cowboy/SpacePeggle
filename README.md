@@ -134,6 +134,28 @@ physics maths, the bucket, persistence, testing and the trade-offs.
 | **Testing**<br><img alt="XCTest" src="https://img.shields.io/badge/XCTest-unit%20tests-147EFB?logo=xcode&logoColor=white"> | Unit tests for vectors, the physics engine and the launcher ([SpacePeggleTests](SpacePeggle/SpacePeggleTests)), and written test plans in the developer guides | [XCTest](https://developer.apple.com/documentation/xctest) |
 | **Technical writing** | About 14,800 words of developer guides across PS2–PS4: [DOCUMENTATION.md](DOCUMENTATION.md) | — |
 
+## Assessment
+
+Each problem set was graded by the course's teaching team against a detailed rubric. It
+covered the developer guide, every gameplay and designer requirement, code issues
+(architecture and design deductions), coding style, tests and a playtest.
+
+**PS4 · the final game**
+- Full marks on 10 of the 15 rubric items, and 35/40 for bells and whistles.
+- **No deductions for code issues or coding style.**
+- From the grader:
+  - *"Overall, your PS was very well done and I really enjoyed playing and testing your game.
+    I particularly appreciated the UI for resizing and rotating game elements, as well as the
+    choice of circular health bars."*
+  - *"Very smooth testing experience, no noticeable issues!"*
+  - *"Very intuitive choice of UI for level designer for both resizing and rotation. Well done!"*
+
+**PS2 · the level designer**
+- Full marks on 8 of the 11 rubric items.
+- On the developer guide: *"Comprehensive and very well organised."*
+- From the playtest: *"Generally smooth experience testing your app. Swipe to delete and delete
+  all button are a nice touch."*
+
 ## App Store
 
 Publishing on the App Store is **pending**. The game is complete and runs on iPad
@@ -153,6 +175,9 @@ a week per unit, so 12.5 hours a week for a 5-unit course like CS3217.
 | **Commits** | 142 across PS2–PS4, 12 merged pull requests |
 | **Code** | about 6,800 lines of Swift in the final game |
 | **Writing** | about 14,800 words of developer guides (PS2 6,900 · PS3 4,700 · PS4 3,200) |
+
+> *"107h for this PS? You're a strong one."*<br>
+> PS4's grader, on the hours reported in the reflection form.
 
 ```text
 Hours per week (2024)                The last 7 days before the PS4 deadline
@@ -176,7 +201,7 @@ Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound ef
 ## On my resume
 
 - Built Space Peggle, a complete iPad physics game in Swift and SwiftUI with no game framework: a from-scratch physics engine (integration, circle–rectangle collision detection, momentum-conserving response), a game engine, a level designer and JSON persistence. About 6,800 lines of Swift.
-- Architected the game as two independent engines behind delegate protocols: a game engine for rules and scoring, and a physics engine for bodies and forces. A CADisplayLink loop in an MVVM view model drives both, so the physics engine runs and is unit-tested with no game or UI code.
+- Architected the game as two independent engines behind delegate protocols: a game engine for rules and scoring, and a physics engine for bodies and forces. A CADisplayLink loop in an MVVM view model drives both, so the physics engine runs and is unit-tested with no game or UI code. The final submission was graded with zero code-quality deductions.
 - Implemented collision detection by double dispatch across circle and rectangle shapes. Each check returns the penetration depth as an optional `Double`, and the same value drives position correction, with no type switches anywhere in the collision path.
 - Shipped gameplay systems on top of the engine: exploding pegs with linear force falloff to 4 radii, a portal floor, a three-body bucket that both deflects and catches the ball, hit points from 1 to 10, and live gravity switching across 4 planets. A level designer saves and validates levels as Codable JSON.
 - Wrote 14,800 words of developer guides across three cumulative NUS CS3217 problem sets (142 commits). They set out design decisions such as engine separation and where the game loop lives, each weighed against its alternatives.
