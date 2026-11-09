@@ -30,8 +30,11 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 > **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 <p align="center">
-  <img width="420" alt="Space Peggle start screen on iPad" src="docs/images/start-screen.png" />
+  <img width="32%" alt="Start screen" src="docs/images/start-screen.png" />
+  <img width="32%" alt="Gameplay: the ball in flight, lit pegs and the aim line" src="docs/images/gameplay.png" />
+  <img width="32%" alt="Level designer with the peg palette and counters" src="docs/images/level-designer.png" />
 </p>
+<p align="center"><sub>Start screen · Gameplay · Level designer (iPad simulator)</sub></p>
 
 ## At a glance
 
