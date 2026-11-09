@@ -19,7 +19,6 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 ![Swift](https://img.shields.io/badge/Swift-6.8k%20lines-555?style=flat-square)
 ![Docs](https://img.shields.io/badge/developer%20docs-14.8k%20words-555?style=flat-square)
 [![WakaTime](https://img.shields.io/badge/WakaTime-270%20h-555?style=flat-square&logo=wakatime&logoColor=white)](https://wakatime.com)
-![Peak week](https://img.shields.io/badge/peak%20week-93%20h-555?style=flat-square)
 
 </div>
 
@@ -42,7 +41,6 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 | **Built with** | Swift and SwiftUI only (plus AVFoundation for audio). The physics engine, collision system, game loop and level persistence are all written from scratch |
 | **Context** | NUS CS3217 *Software Engineering on Modern Application Platforms*, Problem Sets 2–4, Jan – Mar 2024 |
 | **My role** | Sole developer: design, code, tests and developer documentation |
-| **Effort** | 270 h of tracked coding across the three problem sets; 93 h in the peak week |
 | **Status** | Complete; App Store publishing pending |
 
 ## The course
@@ -62,10 +60,6 @@ scratch, through problem sets that stack on each other:
 | **[PS2: Level designer](history/ps2-level-designer)** | Place, move, resize and delete pegs; save and load levels; MVVM in SwiftUI ([developer guide](history/ps2-level-designer/Peggle/Peggle/DeveloperGuide.md)) | 23 Jan – 5 Feb 2024 |
 | **[PS3: Game from scratch](history/ps3-game-engine)** | A physics engine and a game engine, written from first principles: integration, collision detection and response, the game loop ([developer guide](history/ps3-game-engine/PeggleGameplay/DeveloperGuide.md)) | 8 – 23 Feb 2024 |
 | **PS4: Finalising the game** | The full game on top of both: special pegs, the bucket, scoring, hit points, planets, sound, and an integrated designer ([report](DOCUMENTATION.md)). This is the code at the root of this repo | 26 Feb – 6 Mar 2024 |
-
-The course's nominal workload is about 13 hours a week. The busiest week of this build
-(29 Feb – 6 Mar 2024) logged **93 hours** of coding, including one unbroken push of
-**42 hours** (33 of them coding) from 5 to 7 March, right before the PS4 deadline.
 
 ## Features
 
@@ -142,16 +136,31 @@ physics maths, the bucket, persistence, testing and the trade-offs.
 Publishing on the App Store is **pending**. The game is complete and runs on iPad
 (iPadOS 17.2+). The release is planned once an Apple Developer Program membership is in place.
 
-## By the numbers
+## Coding stats
+
+Tracked with [WakaTime](https://wakatime.com). For scale, CS3217's nominal workload is about
+13 hours a week.
 
 | | |
 |---|---|
-| Period | 23 Jan – 6 Mar 2024 (final README updates in April) |
-| Commits | 142 across PS2, PS3 and PS4 (12 merged pull requests) |
-| Code | about 6,800 lines of Swift in the final game |
-| Developer docs | about 14,800 words (PS2 6,900 · PS3 4,700 · PS4 3,200) |
-| Time tracked | 270 h in WakaTime: PS2 55 h, PS3 103 h, PS4 112 h |
-| Peak | 93 h in one week (29 Feb – 6 Mar 2024); 19.9 h in one day (6 Mar) |
+| **Total** | **270 h** of coding: PS2 55 h · PS3 103 h · PS4 112 h |
+| **Peak week** | **93 h** (29 Feb – 6 Mar 2024), about 7× the nominal workload |
+| **Peak day** | **19.9 h** (6 Mar 2024, PS4 deadline day) |
+| **Longest push** | **41.7 h** without a break longer than 3 h (Tue 5 Mar 08:20 → Thu 7 Mar 01:59), 33.4 h of it coding |
+| **Commits** | 142 across PS2–PS4, 12 merged pull requests |
+| **Code** | about 6,800 lines of Swift in the final game |
+| **Writing** | about 14,800 words of developer guides (PS2 6,900 · PS3 4,700 · PS4 3,200) |
+
+```text
+Hours per week (2024)                The last 7 days before the PS4 deadline
+22 Jan  ████                14.0     Thu 29 Feb  ████████████        12.9
+29 Jan  ███████████         40.4     Fri 01 Mar  █████████            9.8
+05 Feb  █████████           32.1     Sat 02 Mar  █████████            9.7
+12 Feb  ██████              21.2     Sun 03 Mar  █████████████       14.2
+19 Feb  ██████████████      50.2     Mon 04 Mar  ████████████        13.2
+26 Feb  ██████████████████  63.9     Tue 05 Mar  ████████████        13.2
+04 Mar  █████████████       47.5     Wed 06 Mar  ██████████████████  19.9
+```
 
 ## Getting started
 
@@ -166,4 +175,4 @@ Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound ef
 - Built Space Peggle, a complete iPad physics game in Swift and SwiftUI with no game framework: a from-scratch physics engine (integration, circle–rectangle collision detection, momentum-conserving response), a game engine, a level designer and JSON persistence. About 6,800 lines of Swift.
 - Separated the game and physics engines behind delegate protocols, and resolved collisions by double dispatch, returning penetration depth as an optional `Double`, so the physics layer stays reusable and unit-testable.
 - Designed gameplay on the engine: explosion falloff out to 4 radii, a portal floor, a three-body moving bucket, per-peg hit points, live-switchable gravity across four planets, a projected aiming path and combo scoring.
-- Delivered across three cumulative problem sets in NUS CS3217, one of the most demanding software-engineering courses in the School of Computing: 142 commits, 14,800 words of developer guides, and 270 tracked hours, including a 93-hour peak week.
+- Delivered across three cumulative problem sets in NUS CS3217, one of the most demanding software-engineering courses in the School of Computing: 142 commits, 14,800 words of developer guides and 270 tracked hours.

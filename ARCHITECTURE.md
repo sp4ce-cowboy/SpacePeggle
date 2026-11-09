@@ -235,9 +235,7 @@ the game noticing. Game objects never refer to their visuals directly.
 | PS4 · Space Peggle | 91 | 112.2 h | 26 Feb – 6 Mar 2024 (docs to April) |
 | **Total** | **142** | **270.2 h** | |
 
-The peak week was 29 Feb – 6 Mar 2024, with 93.0 h of coding. The peak day was 6 Mar
-(19.9 h). The longest push ran 41.7 h from Tue 5 Mar 08:20 to Thu 7 Mar 01:59, with no break
-over three hours and 33.4 h of it coding.
+Peaks and the week-by-week chart are in the README's [Coding stats](README.md#coding-stats).
 
 ## 14. Known issues and hindsight
 
