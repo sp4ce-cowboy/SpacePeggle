@@ -22,7 +22,7 @@ public class Constants {
     static var BACKGROUND_IMAGE: Enums.BackgroundImages = .Space
 
     /// Universal background audio
-    static var BACKGROUND_AUDIO: String = "field-of-memories-soundtrack.mp3"
+    static var BACKGROUND_AUDIO: String = "bravery-run.mp3"
 
     /// The name of the folder used to store the levels locally
     public static let STORAGE_CONTAINER_NAME: String = "Levels"

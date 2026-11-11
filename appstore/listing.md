@@ -52,6 +52,10 @@ Comet Drop started as a university project at the National University of Singapo
 polished for release. Its physics engine is written from scratch, and the source code is on
 GitHub.
 
+CREDITS
+Space background: Solar System Vectors by Vecteezy (vecteezy.com). Music: "Bravery Run"
+(CC0, OpenGameArt.org). Sound effects: Pixabay.
+
 ## What's new (1.0)
 
 First release.

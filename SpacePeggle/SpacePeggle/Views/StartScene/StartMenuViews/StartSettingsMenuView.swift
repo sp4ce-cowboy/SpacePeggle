@@ -29,6 +29,17 @@ struct StartSettingsMenuView: View {
                 text: "RETURN",
                 action: { viewModel.handleReturnButton() })
 
+            Text("""
+                CREDITS
+                Space background: Solar System Vectors by Vecteezy (vecteezy.com)
+                Music: "Bravery Run" (CC0, OpenGameArt.org) · Sound effects: Pixabay
+                """)
+                .font(.system(size: StyleSheet.getScaledWidth(1.4)))
+                .fontDesign(.monospaced)
+                .foregroundStyle(Color.white.opacity(0.8))
+                .multilineTextAlignment(.center)
+                .padding(.top)
+
             Spacer()
         }
     }
