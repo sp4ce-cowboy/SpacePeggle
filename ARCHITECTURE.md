@@ -1,5 +1,10 @@
 # Space Peggle: architecture
 
+> [!NOTE]
+> This architecture write-up was added by [Claude](https://docs.anthropic.com/en/docs/claude-code)
+> using my [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
+> project's code, git history and documentation.
+
 A technical write-up of Space Peggle, from the code, the git history of all three problem
 sets (PS2 to PS4), and the developer guides written for each. Back to the [README](README.md).
 
