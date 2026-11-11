@@ -23,10 +23,12 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 </div>
 
 > [!NOTE]
-> This consolidated README page was added by [Claude](https://docs.anthropic.com/en/docs/claude-code)
-> using my [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
-> project's code, git history and documentation. The original README, my Problem Set 4 report and
-> developer guide, is in **[DOCUMENTATION.md](DOCUMENTATION.md)**. The technical write-up is in
+> This consolidated README page was added by
+> [Claude](https://docs.anthropic.com/en/docs/claude-code) on 9 Nov 2026 using my
+> [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
+> project's code, git history and documentation. The project itself is from Jan – Mar 2024. The
+> original README, my Problem Set 4 report and developer guide, is in
+> **[DOCUMENTATION.md](DOCUMENTATION.md)**. The technical write-up is in
 > **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 <p align="center">
@@ -190,6 +192,17 @@ Hours per week (2024)                The last 7 days before the PS4 deadline
 04 Mar  █████████████       47.5     Wed 06 Mar  ██████████████████  19.9
 ```
 
+```text
+My commits per week (2024, merges excluded)
+22 Jan  █                       2
+29 Jan  █                       3
+05 Feb  ███████                19
+12 Feb                          0
+19 Feb  █                       1
+26 Feb  ████████████           33
+04 Mar  ██████████████████     51
+```
+
 ## Getting started
 
 1. Open `SpacePeggle/SpacePeggle.xcodeproj` in Xcode 15 or later.
@@ -206,3 +219,5 @@ Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound ef
 - Built a SwiftUI level designer with drag, rotate and resize gestures, long-press deletion, per-peg hit points (1–10) and save validation. Levels persist as Codable JSON, with swipe-to-delete level management.
 - Shipped gameplay systems on top of the engine: exploding pegs with linear force falloff to 4 radii, a portal floor, a three-body bucket that deflects and catches the ball, live gravity switching across 4 planets, a gravity-aware aiming trajectory, and AVFoundation music and effects that respect silent mode.
 - Wrote 14,800 words of developer guides across three cumulative NUS CS3217 problem sets, setting design decisions such as engine separation and game-loop placement against their alternatives, alongside XCTest unit tests and written test plans.
+
+**Skills:** Swift · SwiftUI · MVVM · protocol-oriented programming · game and physics engines · collision detection · CADisplayLink · Codable and JSON persistence · gestures · AVFoundation · XCTest · technical writing
