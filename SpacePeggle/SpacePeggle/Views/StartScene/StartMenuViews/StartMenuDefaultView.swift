@@ -9,7 +9,7 @@ struct StartMenuDefaultView: View {
             Spacer()
             Spacer()
 
-            Text("🪐 SPACE PEGGLE 🪐")
+            Text("☄️ COMET DROP ☄️")
                 .font(.system(size: StyleSheet.getScaledWidth(4.5)))
                 .fontDesign(.monospaced)
                 .fontWeight(.heavy)
