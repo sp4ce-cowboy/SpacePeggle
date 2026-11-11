@@ -36,6 +36,7 @@ Comet Drop is a physics arcade game for iPad. Aim the cannon, fire a comet and w
 ricochet through a field of pegs. Clear every orange peg before you run out of balls.
 
 FEATURES
+• Three built-in levels, and as many of your own as you like.
 • Real physics: every bounce, collision and explosion is simulated, frame by frame.
 • Special pegs: Kaboom pegs explode and push everything nearby; Spooky pegs turn the floor
   into a portal back to the top; Stubborn pegs can be knocked into other pegs.
@@ -57,5 +58,5 @@ First release.
 
 ## App Review notes
 
-No account or sign-in is needed. Start Game plays the default level; Design Level opens the
-level designer.
+No account or sign-in is needed. Start Game offers three built-in levels; Design Level opens
+the level designer, where a new level can be saved and then played from Load Level.
