@@ -9,10 +9,12 @@ Limits in brackets.
 | Subtitle [30] | Peg shooter & level designer |
 | Bundle ID | com.sp4cecowboy.cometdrop |
 | SKU | cometdrop-2026 |
-| Primary category | Games › Arcade |
-| Secondary category | Games › Puzzle |
-| Price | Free, all countries and regions |
-| Age rating | 4+ (no objectionable content) |
+| Category | Games, subcategories Casual and Puzzle (Arcade no longer exists) |
+| Price | Free; 174 of 175 regions (not China mainland, where games need an approval number) |
+| Age rating | 4+ (every questionnaire answer is None or No) |
+| Release | Manual, after approval |
+| Content rights | Uses third-party content, with the rights to it |
+| Screenshots | 13-inch iPad, 2064 × 2752: Saturn gameplay, Space gameplay, aiming, level designer, start screen (`~/Local/Portfolio/app-store-screens/CometDrop/`) |
 | Copyright | 2024 sp4ce-cowboy |
 | Support URL | https://github.com/sp4ce-cowboy/SpacePeggle/issues |
 | Marketing URL | https://github.com/sp4ce-cowboy/SpacePeggle |
