@@ -24,11 +24,11 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 
 > [!NOTE]
 > This consolidated README page was added by
-> [Claude](https://docs.anthropic.com/en/docs/claude-code) on 9 Nov 2026 using my
+> [Claude Opus 5.5](https://docs.anthropic.com/en/docs/claude-code) in Nov 2026 using my
 > [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
 > project's code, git history and documentation. The project itself is from Jan – Mar 2024. The
 > original README, my Problem Set 4 report and developer guide, is in
-> **[DOCUMENTATION.md](DOCUMENTATION.md)**. The technical write-up is in
+> **[README-ORIGINAL.md](README-ORIGINAL.md)**. The technical write-up is in
 > **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 <p align="center">
@@ -44,7 +44,7 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 |---|---|
 | **What** | A complete iPad game: launch a ball from a cannon, clear the orange pegs, catch the ball in a moving bucket. It has special pegs, levels you design yourself, four planets with their own gravity, music and sound |
 | **Built with** | Swift and SwiftUI only (plus AVFoundation for audio). The physics engine, collision system, game loop and level persistence are all written from scratch |
-| **Context** | NUS CS3217 *Software Engineering on Modern Application Platforms*, Problem Sets 2–4, Jan – Mar 2024 |
+| **Context** | NUS [CS3217](https://cs3217.github.io/cs3217-docs/) *Software Engineering on Modern Application Platforms*, Problem Sets 2–4, Jan – Mar 2024 |
 | **My role** | Sole developer: design, code, tests and developer documentation |
 | **Status** | Complete; App Store publishing pending |
 
@@ -64,7 +64,7 @@ scratch, through problem sets that stack on each other:
 |---|---|---|
 | **[PS2: Level designer](history/ps2-level-designer)** | Place, move, resize and delete pegs; save and load levels; MVVM in SwiftUI ([developer guide](history/ps2-level-designer/Peggle/Peggle/DeveloperGuide.md)) | 23 Jan – 5 Feb 2024 |
 | **[PS3: Game from scratch](history/ps3-game-engine)** | A physics engine and a game engine, written from first principles: integration, collision detection and response, the game loop ([developer guide](history/ps3-game-engine/PeggleGameplay/DeveloperGuide.md)) | 8 – 23 Feb 2024 |
-| **PS4: Finalising the game** | The full game on top of both: special pegs, the bucket, scoring, hit points, planets, sound, and an integrated designer ([report](DOCUMENTATION.md)). This is the code at the root of this repo | 26 Feb – 6 Mar 2024 |
+| **PS4: Finalising the game** | The full game on top of both: special pegs, the bucket, scoring, hit points, planets, sound, and an integrated designer ([report](README-ORIGINAL.md)). This is the code at the root of this repo | 26 Feb – 6 Mar 2024 |
 
 ## Features
 
@@ -134,34 +134,31 @@ physics maths, the bucket, persistence, testing and the trade-offs.
 | **Persistence**<br><img alt="Codable" src="https://img.shields.io/badge/Codable-JSON-F05138?logo=swift&logoColor=white"> | `Codable` levels and game objects saved as JSON in the app's documents: [`Storage`](https://github.com/sp4ce-cowboy/SpacePeggle/blob/2167e43069ef354a38f5b61d4369939aa6c73c4b/SpacePeggle/SpacePeggle/Models/Storage/Storage.swift) | [Codable](https://developer.apple.com/documentation/swift/codable) |
 | **Audio**<br><img alt="AVFoundation" src="https://img.shields.io/badge/AVFoundation-AVAudioPlayer-000000?logo=apple&logoColor=white"> | Cached players for music and effects, respecting silent mode: [`AudioManager`](https://github.com/sp4ce-cowboy/SpacePeggle/blob/2167e43069ef354a38f5b61d4369939aa6c73c4b/SpacePeggle/SpacePeggle/Main/Utility/AudioManager.swift) | [AVAudioPlayer](https://developer.apple.com/documentation/avfaudio/avaudioplayer) |
 | **Testing**<br><img alt="XCTest" src="https://img.shields.io/badge/XCTest-unit%20tests-147EFB?logo=xcode&logoColor=white"> | Unit tests for vectors, the physics engine and the launcher ([SpacePeggleTests](SpacePeggle/SpacePeggleTests)), and written test plans in the developer guides | [XCTest](https://developer.apple.com/documentation/xctest) |
-| **Technical writing** | About 14,800 words of developer guides across PS2–PS4: [DOCUMENTATION.md](DOCUMENTATION.md) | — |
+| **Technical writing** | About 14,800 words of developer guides across PS2–PS4: [README-ORIGINAL.md](README-ORIGINAL.md) | — |
 
 ## Assessment
 
-Each problem set was graded by the course's teaching team against a detailed rubric. It
-covered the developer guide, every gameplay and designer requirement, code issues
-(architecture and design deductions), coding style, tests and a playtest.
+Each problem set was graded by the course's teaching team, against a rubric covering the
+developer guide, the requirements, code quality, tests and a playtest. Some nice comments
+from the graders:
 
-**PS4 · the final game**
-- Full marks on 10 of the 15 rubric items, and 35/40 for bells and whistles.
-- **No deductions for code issues or coding style.**
-- From the grader:
-  - *"Overall, your PS was very well done and I really enjoyed playing and testing your game.
-    I particularly appreciated the UI for resizing and rotating game elements, as well as the
-    choice of circular health bars."*
-  - *"Very smooth testing experience, no noticeable issues!"*
-  - *"Very intuitive choice of UI for level designer for both resizing and rotation. Well done!"*
+> *"Overall, your PS was very well done and I really enjoyed playing and testing your game. I
+> particularly appreciated the UI for resizing and rotating game elements, as well as the
+> choice of circular health bars."*<br>
+> <sub>PS4 · the final game</sub>
 
-**PS2 · the level designer**
-- Full marks on 8 of the 11 rubric items.
-- On the developer guide: *"Comprehensive and very well organised."*
-- From the playtest: *"Generally smooth experience testing your app. Swipe to delete and delete
-  all button are a nice touch."*
+> *"Very intuitive choice of UI for level designer for both resizing and rotation. Well done!"*<br>
+> <sub>PS4 · the final game</sub>
 
-## App Store
+> *"Very smooth testing experience, no noticeable issues!"*<br>
+> <sub>PS4 · playtest</sub>
 
-Publishing on the App Store is **pending**. The game is complete and runs on iPad
-(iPadOS 17.2+). The release is planned once an Apple Developer Program membership is in place.
+> *"Comprehensive and very well organised."*<br>
+> <sub>PS2 · on the developer guide</sub>
+
+> *"Generally smooth experience testing your app. Swipe to delete and delete all button are a
+> nice touch."*<br>
+> <sub>PS2 · playtest</sub>
 
 ## Coding stats
 
@@ -203,15 +200,9 @@ My commits per week (2024, merges excluded)
 04 Mar  ██████████████████     51
 ```
 
-## Getting started
-
-1. Open `SpacePeggle/SpacePeggle.xcodeproj` in Xcode 15 or later.
-2. Pick an iPad simulator or device on iPadOS 17.2+, and run.
-3. Optional: install [SwiftLint](https://realm.github.io/SwiftLint/), which the build phase runs.
-
-Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound effects: [Pixabay](https://pixabay.com/service/license-summary/).
-
 ## On my resume
+
+**Skills:** Swift · SwiftUI · MVVM · protocol-oriented programming · game and physics engines · collision detection · CADisplayLink · Codable and JSON persistence · gestures · AVFoundation · XCTest · technical writing
 
 - Built Space Peggle, a complete iPad physics game in Swift and SwiftUI with no game framework: a from-scratch physics engine (integration, circle–rectangle collision detection, momentum-conserving response), a game engine, a level designer and JSON persistence. About 6,800 lines of Swift.
 - Architected the app in MVVM, with a VIPER-style presenter coordinating three scenes, and split the game and physics engines behind delegate protocols. A CADisplayLink loop in the view model drives both, so the physics engine runs and is unit-tested with no game or UI code. The final submission was graded with zero code-quality deductions.
@@ -220,4 +211,15 @@ Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound ef
 - Shipped gameplay systems on top of the engine: exploding pegs with linear force falloff to 4 radii, a portal floor, a three-body bucket that deflects and catches the ball, live gravity switching across 4 planets, a gravity-aware aiming trajectory, and AVFoundation music and effects that respect silent mode.
 - Wrote 14,800 words of developer guides across three cumulative NUS CS3217 problem sets, setting design decisions such as engine separation and game-loop placement against their alternatives, alongside XCTest unit tests and written test plans.
 
-**Skills:** Swift · SwiftUI · MVVM · protocol-oriented programming · game and physics engines · collision detection · CADisplayLink · Codable and JSON persistence · gestures · AVFoundation · XCTest · technical writing
+## App Store
+
+Publishing on the App Store is **pending**. The game is complete and runs on iPad
+(iPadOS 17.2+). The release is planned once an Apple Developer Program membership is in place.
+
+## Getting started
+
+1. Open `SpacePeggle/SpacePeggle.xcodeproj` in Xcode 15 or later.
+2. Pick an iPad simulator or device on iPadOS 17.2+, and run.
+3. Optional: install [SwiftLint](https://realm.github.io/SwiftLint/), which the build phase runs.
+
+Music: *Field of Memories* by WaterFlame (free for non-commercial use). Sound effects: [Pixabay](https://pixabay.com/service/license-summary/).

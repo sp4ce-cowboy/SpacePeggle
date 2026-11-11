@@ -1,8 +1,9 @@
 # Space Peggle: architecture
 
 > [!NOTE]
-> This architecture write-up was added by [Claude](https://docs.anthropic.com/en/docs/claude-code)
-> using my [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
+> This architecture write-up was added by
+> [Claude Opus 5.5](https://docs.anthropic.com/en/docs/claude-code) in Nov 2026 using my
+> [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
 > project's code, git history and documentation.
 
 A technical write-up of Space Peggle, from the code, the git history of all three problem
@@ -35,7 +36,7 @@ flowchart LR
 ```
 
 Each problem set came with a developer guide: PS2 about 6,900 words, PS3 about 4,700, and
-PS4 about 3,200 ([DOCUMENTATION.md](DOCUMENTATION.md)). PS4 also had to reflect on PS2 and
+PS4 about 3,200 ([README-ORIGINAL.md](README-ORIGINAL.md)). PS4 also had to reflect on PS2 and
 PS3. The main technical debt paid down in PS4 was separating the layers where the physics
 and game engines had crossed.
 

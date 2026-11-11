@@ -1,3 +1,10 @@
+> [!NOTE]
+> This is the project's original README, from the project itself (Jan – Mar 2024). Claude Opus 5.5
+> moved it here in Nov 2026, as part of my
+> [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, when the
+> consolidated [README](README.md) took its place. It is otherwise unchanged, apart from two links
+> that now point to the guides in [history/](history).
+
 # SpacePeggle
 
 ### Part 1 Contents
