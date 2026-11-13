@@ -1,6 +1,6 @@
 <div align="center">
 
-# Space Peggle
+# Space Peggle (Comet Drop)
 
 **A Peggle-style physics game for iPad, built from scratch in Swift and SwiftUI.**<br>
 A hand-written physics engine, game engine and level designer, with no SpriteKit and no game
@@ -13,7 +13,7 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 [![XCTest](https://img.shields.io/badge/XCTest-147EFB?logo=xcode&logoColor=white)](https://developer.apple.com/documentation/xctest)
 [![AVFoundation](https://img.shields.io/badge/AVFoundation-000000?logo=apple&logoColor=white)](https://developer.apple.com/documentation/avfoundation)
 [![SwiftLint](https://img.shields.io/badge/SwiftLint-F05138?logo=swift&logoColor=white)](https://realm.github.io/SwiftLint/)
-[![App Store](https://img.shields.io/badge/App%20Store-publishing%20pending-lightgrey?logo=appstore&logoColor=white)](#app-store)
+[![App Store](https://img.shields.io/badge/App%20Store-Comet%20Drop-0D96F6?logo=appstore&logoColor=white)](https://apps.apple.com/app/id6833552919)
 
 ![Commits](https://img.shields.io/badge/commits-142-555?style=flat-square&logo=git&logoColor=white)
 ![Swift](https://img.shields.io/badge/Swift-6.8k%20lines-555?style=flat-square)
@@ -46,7 +46,7 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 | **Built with** | Swift and SwiftUI only (plus AVFoundation for audio). The physics engine, collision system, game loop and level persistence are all written from scratch |
 | **Context** | NUS [CS3217](https://cs3217.github.io/cs3217-docs/) *Software Engineering on Modern Application Platforms*, Problem Sets 2–4, Jan – Mar 2024 |
 | **My role** | Sole developer: design, code, tests and developer documentation |
-| **Status** | Complete; App Store publishing pending |
+| **Status** | Complete; on the App Store as [Comet Drop](https://apps.apple.com/app/id6833552919) (free, iPad) since Nov 2026 |
 
 ## The course
 
@@ -213,8 +213,12 @@ My commits per week (2024, merges excluded)
 
 ## App Store
 
-Publishing on the App Store is **pending**. The game is complete and runs on iPad
-(iPadOS 17.2+). The release is planned once an Apple Developer Program membership is in place.
+Space Peggle is on the App Store as **[Comet Drop](https://apps.apple.com/app/id6833552919)**: free, for iPad (iPadOS 17.2+),
+in every region except mainland China. Released 13 Nov 2026.
+
+The store build is the branch [`release/app-store`](https://github.com/sp4ce-cowboy/SpacePeggle/tree/release/app-store):
+the same game with the new name, a new icon and *Bravery Run* (CC0) as the music. It collects no
+data ([privacy policy](PRIVACY.md)).
 
 ## Getting started
 
