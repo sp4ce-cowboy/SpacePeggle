@@ -47,11 +47,6 @@ in every region except mainland China. Released 13 Nov 2026.
   <a href="https://apps.apple.com/app/id6833552919"><img alt="Download on the App Store" src="docs/images/download-on-the-app-store.svg" height="54" /></a>
 </p>
 
-<p align="center">
-  <a href="https://apps.apple.com/app/id6833552919"><img width="80%" alt="Comet Drop's page in the App Store" src="docs/images/app-store-listing.png" /></a>
-</p>
-<p align="center"><sub>Comet Drop's store page (App Store on Mac)</sub></p>
-
 The store build is the branch [`release/app-store`](https://github.com/sp4ce-cowboy/SpacePeggle/tree/release/app-store):
 the same game with the new name, a new icon and *Bravery Run* (CC0) as the music. It collects no
 data ([privacy policy](PRIVACY.md)).
