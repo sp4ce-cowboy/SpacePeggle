@@ -134,7 +134,7 @@ flowchart LR
 More in [ARCHITECTURE.md](ARCHITECTURE.md), including the evolution from PS2 to PS4, the
 physics maths, the bucket, persistence, testing and the trade-offs.
 
-## Skills shown
+## Skills covered
 
 | Skill | Where it shows (click the links for the code) | Docs |
 |---|---|---|
