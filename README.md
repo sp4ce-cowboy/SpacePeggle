@@ -38,6 +38,24 @@ framework. Built for NUS CS3217 over three problem sets that build on each other
 </p>
 <p align="center"><sub>Start screen · Gameplay · Level designer (iPad simulator)</sub></p>
 
+## <img src="docs/images/app-store-icon.png" alt="" height="32" align="center"> App Store
+
+Space Peggle is on the App Store as **[Comet Drop](https://apps.apple.com/app/id6833552919)**: free, for iPad (iPadOS 17.2+),
+in every region except mainland China. Released 13 Nov 2026.
+
+<p align="center">
+  <a href="https://apps.apple.com/app/id6833552919"><img alt="Download on the App Store" src="docs/images/download-on-the-app-store.svg" height="54" /></a>
+</p>
+
+<p align="center">
+  <a href="https://apps.apple.com/app/id6833552919"><img width="80%" alt="Comet Drop's page in the App Store" src="docs/images/app-store-listing.png" /></a>
+</p>
+<p align="center"><sub>Comet Drop's store page (App Store on Mac)</sub></p>
+
+The store build is the branch [`release/app-store`](https://github.com/sp4ce-cowboy/SpacePeggle/tree/release/app-store):
+the same game with the new name, a new icon and *Bravery Run* (CC0) as the music. It collects no
+data ([privacy policy](PRIVACY.md)).
+
 ## At a glance
 
 | | |
@@ -210,15 +228,6 @@ My commits per week (2024, merges excluded)
 - Built a SwiftUI level designer with drag, rotate and resize gestures, long-press deletion, per-peg hit points (1–10) and save validation. Levels persist as Codable JSON, with swipe-to-delete level management.
 - Shipped gameplay systems on top of the engine: exploding pegs with linear force falloff to 4 radii, a portal floor, a three-body bucket that deflects and catches the ball, live gravity switching across 4 planets, a gravity-aware aiming trajectory, and AVFoundation music and effects that respect silent mode.
 - Wrote 14,800 words of developer guides across three cumulative NUS CS3217 problem sets, setting design decisions such as engine separation and game-loop placement against their alternatives, alongside XCTest unit tests and written test plans.
-
-## App Store
-
-Space Peggle is on the App Store as **[Comet Drop](https://apps.apple.com/app/id6833552919)**: free, for iPad (iPadOS 17.2+),
-in every region except mainland China. Released 13 Nov 2026.
-
-The store build is the branch [`release/app-store`](https://github.com/sp4ce-cowboy/SpacePeggle/tree/release/app-store):
-the same game with the new name, a new icon and *Bravery Run* (CC0) as the music. It collects no
-data ([privacy policy](PRIVACY.md)).
 
 ## Getting started
 
